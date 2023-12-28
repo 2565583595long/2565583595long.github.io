@@ -8,7 +8,7 @@ document.addEventListener('visibilitychange', function() {
 		clearTimeout(titleTime);
 	} else {
 		$('[rel="icon"]').attr('href', "/img/newtubiao.png");
-		document.title = '(ฅ>ω<*ฅ) 既见君子 云胡不喜' + OriginTitle;
+		document.title = '(ฅ>ω<*ฅ) 既见君子 云胡不喜';
 		titleTime = setTimeout(function() {
 			document.title = OriginTitle;
 		}, 2000);
