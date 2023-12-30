@@ -23,12 +23,12 @@
 <meta property="og:site_name" content="龙泽雨的博客">
 <meta property="og:description" content="本文主要解决因为Hexo的语法和路径要求导致的，插入的图片在本地和Hexo博客上不能同时渲染（预览）的问题。">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://zeyulong.com/2023/12/30/Hexo%E5%8D%9A%E5%AE%A2%E8%A7%A3%E5%86%B3%E6%8F%92%E5%85%A5%E5%9B%BE%E7%89%87%E7%9A%84%E8%B7%AF%E5%BE%84%E9%97%AE%E9%A2%98/Hexo%E5%8D%9A%E5%AE%A2%E8%A7%A3%E5%86%B3%E6%8F%92%E5%85%A5%E5%9B%BE%E7%89%87%E7%9A%84%E8%B7%AF%E5%BE%84%E9%97%AE%E9%A2%98/Markdown%E6%8F%92%E5%85%A5%E5%9B%BE%E7%89%87%E7%9A%84%E8%AF%AD%E6%B3%95.png">
+<meta property="og:image" content="http://zeyulong.com/2023/12/30/Hexo%E5%8D%9A%E5%AE%A2%E8%A7%A3%E5%86%B3%E6%8F%92%E5%85%A5%E5%9B%BE%E7%89%87%E7%9A%84%E8%B7%AF%E5%BE%84%E9%97%AE%E9%A2%98/Markdown%E6%8F%92%E5%85%A5%E5%9B%BE%E7%89%87%E7%9A%84%E8%AF%AD%E6%B3%95.png">
 <meta property="article:published_time" content="2023-12-30T03:04:07.000Z">
-<meta property="article:modified_time" content="2023-12-30T06:55:52.937Z">
+<meta property="article:modified_time" content="2023-12-30T06:58:16.537Z">
 <meta property="article:author" content="龙泽雨">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://zeyulong.com/2023/12/30/Hexo%E5%8D%9A%E5%AE%A2%E8%A7%A3%E5%86%B3%E6%8F%92%E5%85%A5%E5%9B%BE%E7%89%87%E7%9A%84%E8%B7%AF%E5%BE%84%E9%97%AE%E9%A2%98/Hexo%E5%8D%9A%E5%AE%A2%E8%A7%A3%E5%86%B3%E6%8F%92%E5%85%A5%E5%9B%BE%E7%89%87%E7%9A%84%E8%B7%AF%E5%BE%84%E9%97%AE%E9%A2%98/Markdown%E6%8F%92%E5%85%A5%E5%9B%BE%E7%89%87%E7%9A%84%E8%AF%AD%E6%B3%95.png">
+<meta name="twitter:image" content="http://zeyulong.com/2023/12/30/Hexo%E5%8D%9A%E5%AE%A2%E8%A7%A3%E5%86%B3%E6%8F%92%E5%85%A5%E5%9B%BE%E7%89%87%E7%9A%84%E8%B7%AF%E5%BE%84%E9%97%AE%E9%A2%98/Markdown%E6%8F%92%E5%85%A5%E5%9B%BE%E7%89%87%E7%9A%84%E8%AF%AD%E6%B3%95.png">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
@@ -225,7 +225,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          551 字
+          556 字
         
       </span>
     
@@ -298,9 +298,9 @@
 <span id="more"></span>
 
 <h1 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h1><p>在本地使用Typora写Markdown文档时，设置了Typora会自动在文档的根目录下新建<code>./$&#123;filename&#125;</code>文件夹，从而可以方便地使用相对路径在文档中插入图片。例如：</p>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs markdown"><span class="hljs-section"># 文件路径</span><br>hexo-typora<br>├── apppicker.jpg<br>├── logo.png<br>└── rules.jpg<br>hexo-typora.md<br></code></pre></td></tr></table></figure>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs markdown"><span class="hljs-section"># 文件路径</span><br>hexo-typora<br>├── apppicker.jpg<br>├── logo.png<br>└── rules.jpg<br>hexo-typora.md<br>![<span class="hljs-string">logo</span>](<span class="hljs-link">hexo-typora/logo.png</span>)<br></code></pre></td></tr></table></figure>
 
-<img src="./Hexo博客解决插入图片的路径问题/Markdown插入图片的语法.png" srcset="/img/loading.gif" lazyload alt="Markdown插入图片的语法" />
+<img src="/2023/12/30/Hexo%E5%8D%9A%E5%AE%A2%E8%A7%A3%E5%86%B3%E6%8F%92%E5%85%A5%E5%9B%BE%E7%89%87%E7%9A%84%E8%B7%AF%E5%BE%84%E9%97%AE%E9%A2%98/Markdown%E6%8F%92%E5%85%A5%E5%9B%BE%E7%89%87%E7%9A%84%E8%AF%AD%E6%B3%95.png" srcset="/img/loading.gif" lazyload class="" title="Markdown插入图片的语法">
 
 <p>（这里举例的引用格式为什么使用了图片，而没有直接打出，后面见分晓）</p>
 <p>这种将Markdown文档和资源（图片）文件夹放在同一目录下的做法可以方便管理和打包。</p>
