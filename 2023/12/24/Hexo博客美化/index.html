@@ -26,8 +26,9 @@
 <meta property="og:image" content="http://zeyulong.com/2023/12/24/Hexo%E5%8D%9A%E5%AE%A2%E7%BE%8E%E5%8C%96/%E9%BC%A0%E6%A0%87%E7%82%B9%E5%87%BB%E7%89%B9%E6%95%88-1.png">
 <meta property="og:image" content="http://zeyulong.com/2023/12/24/Hexo%E5%8D%9A%E5%AE%A2%E7%BE%8E%E5%8C%96/%E9%BC%A0%E6%A0%87%E7%82%B9%E5%87%BB%E7%89%B9%E6%95%88-2.png">
 <meta property="og:image" content="http://zeyulong.com/2023/12/24/Hexo%E5%8D%9A%E5%AE%A2%E7%BE%8E%E5%8C%96/%E9%BC%A0%E6%A0%87%E7%82%B9%E5%87%BB%E7%89%B9%E6%95%88-3.png">
+<meta property="og:image" content="http://zeyulong.com/2023/12/24/Hexo%E5%8D%9A%E5%AE%A2%E7%BE%8E%E5%8C%96/%E8%8E%B7%E5%8F%96%E5%AD%97%E4%BD%93%E9%93%BE%E6%8E%A5.png">
 <meta property="article:published_time" content="2023-12-24T15:52:40.000Z">
-<meta property="article:modified_time" content="2023-12-31T16:50:40.305Z">
+<meta property="article:modified_time" content="2024-01-01T07:24:09.749Z">
 <meta property="article:author" content="龙泽雨">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="http://zeyulong.com/2023/12/24/Hexo%E5%8D%9A%E5%AE%A2%E7%BE%8E%E5%8C%96/%E9%BC%A0%E6%A0%87%E7%82%B9%E5%87%BB%E7%89%B9%E6%95%88-1.png">
@@ -91,7 +92,7 @@
 
 
   
-<!-- hexo injector head_end start --><link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@200;300;400;500;600;700;900&display=swap" rel="stylesheet"><!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.0.0"></head>
+<meta name="generator" content="Hexo 7.0.0"></head>
 
 
 <body>
@@ -239,7 +240,7 @@
         
         
         
-          105 分钟
+          113 分钟
         
       </span>
     
@@ -289,7 +290,7 @@
               <p id="updated-time" class="note note-info" style="">
                 
                   
-                    本文最后更新于 2024年1月1日 凌晨
+                    本文最后更新于 2024年1月1日 下午
                   
                 
               </p>
@@ -609,6 +610,84 @@
 <p>在<code>./Blog</code>目录下修改主题配置文件<code>_config.fluid.yml</code>，找到<code>custom_css</code>配置项，引入刚刚新建的文件：</p>
 <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-attr">custom_css:</span><br>  <span class="hljs-bullet">-</span> <span class="hljs-string">/custom/LabelPage/LabelPage.js</span><br></code></pre></td></tr></table></figure>
 
+
+
+<h1 id="自定义字体"><a href="#自定义字体" class="headerlink" title="自定义字体"></a>自定义字体</h1><p>本博客选择了全局使用思源宋体，下面介绍方法。</p>
+<h2 id="引入网络上托管的字体"><a href="#引入网络上托管的字体" class="headerlink" title="引入网络上托管的字体"></a>引入网络上托管的字体</h2><ol>
+<li><p>获取字体链接。</p>
+<img src="/2023/12/24/Hexo%E5%8D%9A%E5%AE%A2%E7%BE%8E%E5%8C%96/%E8%8E%B7%E5%8F%96%E5%AD%97%E4%BD%93%E9%93%BE%E6%8E%A5.png" srcset="/img/loading.gif" lazyload class="" title="获取字体链接">
+
+<ol>
+<li><p>根据<a target="_blank" rel="noopener" href="https://www.erenship.com/posts/40222.html#%E8%87%AA%E5%AE%9A%E4%B9%89%E5%AD%97%E4%BD%93">引入网络上托管的字体的参考链接-1</a>的说明，打开 <a target="_blank" rel="noopener" href="https://fonts.google.com/">Google Fonts</a>。</p>
+</li>
+<li><p>搜索思源宋体的英文名：<code>Noto Serif SC</code>。</p>
+</li>
+<li><p>在列表中选择个人觉得合适的字体样式后，注意此处可根据自己需要选择多个样式。</p>
+</li>
+<li><p>点击右上角的购物袋图标 <code>View selected families</code>。</p>
+</li>
+<li><p>获得<code>link</code>链接。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs js">&lt;link href=<span class="hljs-string">&quot;https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@200;300;400;500;600;700;900&amp;display=swap&quot;</span> rel=<span class="hljs-string">&quot;stylesheet&quot;</span>&gt;<br></code></pre></td></tr></table></figure>
+
+
+</li>
+<li></li>
+</ol>
+</li>
+<li><p>引入字体链接。</p>
+<ol>
+<li><p>根据<a target="_blank" rel="noopener" href="https://zhul.in/2023/11/28/use-lxgw-wenkai-in-hexo-fluid/">引入网络上托管的字体的参考链接-2</a>的说明，在<code>./Blog/scripts/</code>文件夹中新建文件<code>font.js</code>并写入以下内容：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs js">hexo.<span class="hljs-property">extend</span>.<span class="hljs-property">injector</span>.<span class="hljs-title function_">register</span>(<span class="hljs-string">&#x27;head_end&#x27;</span>, <span class="hljs-string">&#x27;&lt;link href=&quot;https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@200;300;400;500;600;700;900&amp;display=swap&quot; rel=&quot;stylesheet&quot;&gt;&#x27;</span>, <span class="hljs-string">&#x27;default&#x27;</span>);<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>有的主题可能提供了类似<a target="_blank" rel="noopener" href="https://hexo.fluid-dev.com/docs/">Hexo Fluid</a>主题在<code>./Blog/_config.fluid.yml</code>中指定自定义<code>.js/.css</code>文件路径的功能，可以直接自定义 <code>&lt;head&gt;</code> 节点中的 HTML 内容，例如变量<code>custom_head</code>。如果有这样的话，直接把字体的<code>link</code>链接添加过来应该也可以。</p>
+</blockquote>
+</li>
+<li></li>
+</ol>
+</li>
+<li><p>指定博客的字体。</p>
+<ol>
+<li><p>在<code>./Blog</code>根目录下打开文件<code>_config.fluid.yml</code>，找到一个名为 <code>font-family</code> 的配置项，加入自定义字体的名称：</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs yml"><span class="hljs-comment"># 主题字体配置</span><br><span class="hljs-comment"># Font</span><br><span class="hljs-attr">font:</span><br>  <span class="hljs-attr">font_size:</span> <span class="hljs-string">18px</span><br>  <span class="hljs-attr">font_family:</span> <span class="hljs-string">&quot;Noto Serif SC&quot;</span><br>  <span class="hljs-attr">letter_spacing:</span> <span class="hljs-number">0.</span><span class="hljs-string">02em</span><br>  <span class="hljs-attr">code_font_size:</span> <span class="hljs-number">100</span><span class="hljs-string">%</span><br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>此处指定字体的位置适用于<a target="_blank" rel="noopener" href="https://hexo.fluid-dev.com/docs/">Hexo Fluid</a>主题，其它主题可能需要自行找到指定字体的地方。比如将字体英文名称添加到 <code>\yourtheme\source\css\_variables\</code> 目录下的 <code>base.styl</code> 文件中，具体位置为 <code>font-family:</code> </p>
+</blockquote>
+</li>
+<li><p>到这一步，部署后预览博客，可以博客中除文章里代码块的字体没有被替换后，其它地方都已经替换成功了。</p>
+</li>
+</ol>
+</li>
+<li><p>指定代码块的字体。</p>
+<ol>
+<li><p>根据<a target="_blank" rel="noopener" href="https://github.com/fluid-dev/hexo-theme-fluid/issues/536">如何修改md中代码块的字体？</a>里提供的解决方案，在<code>.\Blog\node_modules\hexo-theme-fluid\source\custom\Markdown</code>文件夹下新建文件<code>CodeFont.css</code>并写入以下内容：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-selector-class">.markdown-body</span> <span class="hljs-selector-tag">code</span>, <span class="hljs-selector-class">.markdown-body</span> pre &#123;<br>    <span class="hljs-attribute">font-family</span>: <span class="hljs-string">&quot;Noto Serif SC&quot;</span>,monospace <span class="hljs-meta">!important</span>;<br>    <span class="hljs-attribute">font-size</span>: <span class="hljs-number">100%</span> <span class="hljs-meta">!important</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>注：这里的<code>custom</code>及其子文件夹为自己新建的文件夹。</p>
+</li>
+<li><p>在<code>./Blog</code>根目录下打开文件<code>_config.fluid.yml</code>，找到一个名为 <code>custom_css</code> 的配置项，加入刚才自定义文件的路径：</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs yml"><span class="hljs-attr">custom_css:</span><br>  <span class="hljs-bullet">-</span> <span class="hljs-string">/custom/Markdown/CodeFont.css</span><br></code></pre></td></tr></table></figure>
+
+
+</li>
+<li></li>
+</ol>
+</li>
+<li><p>大功告成。</p>
+</li>
+</ol>
+<h2 id="引入本地字体"><a href="#引入本地字体" class="headerlink" title="引入本地字体"></a>引入本地字体</h2><p>待实践。</p>
+<h2 id="分别指定中英文字体"><a href="#分别指定中英文字体" class="headerlink" title="分别指定中英文字体"></a>分别指定中英文字体</h2><p>如果想要自己的博客中分别指定中英文字体，经过自己的尝试，前期获取和引入字体的方法与上文一致，类推即可。只是在指定博客的字体时，需要使用的格式略有不同。</p>
+<p>在<code>./Blog</code>根目录下打开文件<code>_config.fluid.yml</code>，找到一个名为 <code>font-family</code> 的配置项，加入自定义字体的名称：</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs yml"><span class="hljs-comment"># 主题字体配置</span><br><span class="hljs-comment"># Font</span><br><span class="hljs-attr">font:</span><br>  <span class="hljs-attr">font_size:</span> <span class="hljs-string">18px</span><br>  <span class="hljs-attr">font_family:</span> <span class="hljs-string">&quot;&#x27;JetBrains Mono&#x27;, &#x27;Noto Serif SC&#x27;&quot;</span><br>  <span class="hljs-attr">letter_spacing:</span> <span class="hljs-number">0.</span><span class="hljs-string">02em</span><br>  <span class="hljs-attr">code_font_size:</span> <span class="hljs-number">100</span><span class="hljs-string">%</span><br></code></pre></td></tr></table></figure>
+
+<p>这里指定的英文字体时<code>JetBrains Mono</code>，中文字体是<code>Noto Serif SC</code>，也就是思源宋体。注意：</p>
+<ol>
+<li>指定的英文字体须在中文字体之前，这是由字体的引用顺序决定的，即排在前面的指定的字体没有适用于该字符的字体时，才会尝试使用后面的指定的字体。</li>
+<li>指定格式是<code>&quot;&#39;JetBrains Mono&#39;, &#39;Noto Serif SC&#39;&quot;</code>。<code>&quot;JetBrains Mono&quot;, &quot;Noto Serif SC&quot;</code>这样会报错的。</li>
+</ol>
+<p>自己本想分别设置博客英文字体为<code>JetBrains Mono</code>，中文字体为<code>Noto Serif SC</code>，但是最后发现整体效果没有只使用<code>Noto Serif SC</code>美观。</p>
 
                 
               </div>
