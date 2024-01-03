@@ -23,13 +23,13 @@
 <meta property="og:site_name" content="龙泽雨的博客">
 <meta property="og:description" content="本文主要解决因为Hexo的语法和路径要求导致的，在本地和Hexo博客上不能同时加载出图片的问题。">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://zeyulong.com/posts/undefined/%E5%9B%BE1-Markdown%E6%8F%92%E5%85%A5%E5%9B%BE%E7%89%87%E7%9A%84%E8%AF%AD%E6%B3%95.png">
-<meta property="og:image" content="http://zeyulong.com/posts/undefined/%E5%9B%BE2-Markdown%E6%8F%92%E5%85%A5%E5%9B%BE%E7%89%87%E7%9A%84%E8%AF%AD%E6%B3%95%EF%BC%88%E6%97%A0%E7%9B%B8%E5%AF%B9%E8%B7%AF%E5%BE%84%E7%AC%A6%E5%8F%B7%EF%BC%89.png">
+<meta property="og:image" content="http://zeyulong.com/posts/437b0d10/%E5%9B%BE1-Markdown%E6%8F%92%E5%85%A5%E5%9B%BE%E7%89%87%E7%9A%84%E8%AF%AD%E6%B3%95.png">
+<meta property="og:image" content="http://zeyulong.com/posts/437b0d10/%E5%9B%BE2-Markdown%E6%8F%92%E5%85%A5%E5%9B%BE%E7%89%87%E7%9A%84%E8%AF%AD%E6%B3%95%EF%BC%88%E6%97%A0%E7%9B%B8%E5%AF%B9%E8%B7%AF%E5%BE%84%E7%AC%A6%E5%8F%B7%EF%BC%89.png">
 <meta property="article:published_time" content="2023-12-30T03:04:07.000Z">
-<meta property="article:modified_time" content="2024-01-02T01:24:19.816Z">
+<meta property="article:modified_time" content="2024-01-03T09:00:03.193Z">
 <meta property="article:author" content="龙泽雨">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://zeyulong.com/posts/undefined/%E5%9B%BE1-Markdown%E6%8F%92%E5%85%A5%E5%9B%BE%E7%89%87%E7%9A%84%E8%AF%AD%E6%B3%95.png">
+<meta name="twitter:image" content="http://zeyulong.com/posts/437b0d10/%E5%9B%BE1-Markdown%E6%8F%92%E5%85%A5%E5%9B%BE%E7%89%87%E7%9A%84%E8%AF%AD%E6%B3%95.png">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
@@ -288,7 +288,7 @@
               <p id="updated-time" class="note note-info" style="">
                 
                   
-                    本文最后更新于 2024年1月2日 上午
+                    本文最后更新于 2024年1月3日 下午
                   
                 
               </p>
@@ -302,7 +302,7 @@
 <h1 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h1><p>在本地使用Typora写Markdown文档时，设置了Typora会自动在文档的根目录下新建<code>./$&#123;filename&#125;</code>文件夹，从而可以方便地使用相对路径在文档中插入图片。例如：</p>
 <figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs markdown"><span class="hljs-section"># 文件路径</span><br>hexo-typora<br>├── apppicker.jpg<br>├── logo.png<br>└── rules.jpg<br>hexo-typora.md<br></code></pre></td></tr></table></figure>
 
-<img src="/posts/undefined/%E5%9B%BE1-Markdown%E6%8F%92%E5%85%A5%E5%9B%BE%E7%89%87%E7%9A%84%E8%AF%AD%E6%B3%95.png" srcset="/img/loading.gif" lazyload class="" title="图1-Markdown插入图片的语法">
+<img src="/posts/437b0d10/%E5%9B%BE1-Markdown%E6%8F%92%E5%85%A5%E5%9B%BE%E7%89%87%E7%9A%84%E8%AF%AD%E6%B3%95.png" srcset="/img/loading.gif" lazyload class="" title="图1-Markdown插入图片的语法">
 
 <p>（这里图1举例的引用格式为什么使用了图片，而没有直接打出，后面进行说明）</p>
 <p>这种将Markdown文档和资源（图片）文件夹放在同一目录下的做法可以方便管理和打包。</p>
@@ -320,7 +320,7 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">npm install hexo-asset-img --save<br><span class="hljs-comment"># or, Latest Dev</span><br>npm install git://github.com/yiyungent/hexo-asset-img.git<span class="hljs-comment">#main</span><br></code></pre></td></tr></table></figure>
 
 <p>再次测试，发现博客还是加载不出图片。究其原因，是博主的<code>hexo-asset-img</code>插件能够将下图（图2）所示的Markdown插入图片的语法在文章编译为html之前，</p>
-<img src="/posts/undefined/%E5%9B%BE2-Markdown%E6%8F%92%E5%85%A5%E5%9B%BE%E7%89%87%E7%9A%84%E8%AF%AD%E6%B3%95%EF%BC%88%E6%97%A0%E7%9B%B8%E5%AF%B9%E8%B7%AF%E5%BE%84%E7%AC%A6%E5%8F%B7%EF%BC%89.png" srcset="/img/loading.gif" lazyload class="" title="图2-Markdown插入图片的语法（无相对路径符号）">在编译过程中转换为标签：
+<img src="/posts/437b0d10/%E5%9B%BE2-Markdown%E6%8F%92%E5%85%A5%E5%9B%BE%E7%89%87%E7%9A%84%E8%AF%AD%E6%B3%95%EF%BC%88%E6%97%A0%E7%9B%B8%E5%AF%B9%E8%B7%AF%E5%BE%84%E7%AC%A6%E5%8F%B7%EF%BC%89.png" srcset="/img/loading.gif" lazyload class="" title="图2-Markdown插入图片的语法（无相对路径符号）">在编译过程中转换为标签：
 
 <figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs markdown">&#123;% asset<span class="hljs-emphasis">_img logo.png logo %&#125;</span><br></code></pre></td></tr></table></figure>
 
@@ -415,6 +415,12 @@
                 <div class="post-prevnext my-3">
                   <article class="post-prev col-6">
                     
+                    
+                      <a href="/posts/7b14eacc/" title="Hexo博客插件推荐">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Hexo博客插件推荐</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
                     
                   </article>
                   <article class="post-next col-6">
