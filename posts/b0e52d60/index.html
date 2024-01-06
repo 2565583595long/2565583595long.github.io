@@ -24,7 +24,7 @@
 <meta property="og:description" content="总结整理了网上分享的ChatGPT的使用技巧，尽可能做到物尽其用，在使用ChatGPT时充分发挥出其优势和性能，以更好地解决问题。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-01-03T09:59:29.000Z">
-<meta property="article:modified_time" content="2024-01-03T13:49:17.729Z">
+<meta property="article:modified_time" content="2024-01-06T02:53:48.619Z">
 <meta property="article:author" content="龙泽雨">
 <meta name="twitter:card" content="summary_large_image">
   
@@ -285,7 +285,7 @@
               <p id="updated-time" class="note note-info" style="">
                 
                   
-                    本文最后更新于 2024年1月3日 晚上
+                    本文最后更新于 2024年1月6日 上午
                   
                 
               </p>
@@ -299,7 +299,7 @@
 <h1 id="提问技巧"><a href="#提问技巧" class="headerlink" title="提问技巧"></a>提问技巧</h1><h2 id="总体提问流程"><a href="#总体提问流程" class="headerlink" title="总体提问流程"></a>总体提问流程</h2><p>结合BRTR原则和提问技巧：</p>
 <ol>
 <li><p>我对你接下来回答问题的要求是：首先，使用你最佳的工作模式进行思考并得出答案。然后，如果得出的答案不是中文，那么，将它翻译成中文。最后，与我进行中文对话。</p>
-<figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs txt">Here&#x27;s what I want you to do next: First, use your best working mode to think and come up with an answer. Then, if the answer is not in Chinese, translate it into Chinese. Finally, chat with me in Chinese.<br></code></pre></td></tr></table></figure>
+<figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs txt">Here&#x27;s what I want you to do next: First, use your best working mode to think and come up with an answer. Then, if the answer is not in Chinese, translate it into Chinese. Finally, chat with me in Chinese.<br><br># Prompt Perfect优化后：<br>Please follow these steps precisely for the next task: Begin by utilizing your most effective thinking method to generate a response. Once you have an answer, ensure that it is translated into Chinese if it is not already. Lastly, engage in a conversation with me using the Chinese language.<br></code></pre></td></tr></table></figure>
 
 
 </li>
@@ -705,21 +705,20 @@
   
     <article id="comments" lazyload>
       
-  <div id="waline"></div>
+  <div id="valine"></div>
   <script type="text/javascript">
-    Fluid.utils.loadComments('#waline', function() {
-      Fluid.utils.createCssLink('https://cdn.staticfile.org/waline/2.15.5/waline.min.css')
-      Fluid.utils.createScript('https://cdn.staticfile.org/waline/2.15.5/waline.min.js', function() {
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://lib.baomitu.com/valine/1.5.1/Valine.min.js', function() {
         var options = Object.assign(
-          {"serverURL":"https://zeyulong-waline-lzacpk077-2565583595longs-projects.vercel.app","path":"window.location.pathname","meta":["nick","mail","link"],"requiredMeta":["nick"],"lang":"zh-CN","emoji":["https://cdn.jsdelivr.net/gh/walinejs/emojis/weibo"],"dark":"html[data-user-color-scheme=\"dark\"]","wordLimit":0,"pageSize":10,"locale":{"placeholder":"哈，快找个位置随便坐~"}},
+          {"appId":"c9RQFY6cw5gqWhjuSJNAjulf-MdYXbMMI","appKey":"fnhfUuYLXfeFYA7wJHS4V3NL","path":"window.location.pathname","placeholder":null,"avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":false},
           {
-            el: '#waline',
+            el: "#valine",
             path: window.location.pathname
           }
         )
-        Waline.init(options);
-        Fluid.utils.waitElementVisible('#waline .vcontent', () => {
-          var imgSelector = '#waline .vcontent img:not(.vemoji)';
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          var imgSelector = '#valine .vcontent img:not(.vemoji)';
           Fluid.plugins.imageCaption(imgSelector);
           Fluid.plugins.fancyBox(imgSelector);
         })
