@@ -28,7 +28,7 @@
 <meta property="og:image" content="http://zeyulong.com/posts/3edad46f/%E9%BC%A0%E6%A0%87%E7%82%B9%E5%87%BB%E7%89%B9%E6%95%88-3.gif">
 <meta property="og:image" content="http://zeyulong.com/posts/3edad46f/%E8%8E%B7%E5%8F%96%E5%AD%97%E4%BD%93%E9%93%BE%E6%8E%A5.png">
 <meta property="article:published_time" content="2023-12-24T15:52:40.000Z">
-<meta property="article:modified_time" content="2024-01-07T10:18:48.664Z">
+<meta property="article:modified_time" content="2024-01-08T15:53:56.799Z">
 <meta property="article:author" content="龙泽雨">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="http://zeyulong.com/posts/3edad46f/%E9%BC%A0%E6%A0%87%E7%82%B9%E5%87%BB%E7%89%B9%E6%95%88-1.gif">
@@ -242,7 +242,7 @@
         
         
         
-          116 分钟
+          120 分钟
         
       </span>
     
@@ -292,7 +292,7 @@
               <p id="updated-time" class="note note-info" style="">
                 
                   
-                    本文最后更新于 2024年1月7日 晚上
+                    本文最后更新于 2024年1月8日 晚上
                   
                 
               </p>
@@ -471,7 +471,8 @@
 <blockquote>
 <p>注：如果选用其他代码高亮风格，有可能会造成代码背景是偏白色的，与黑色的Mac栏不搭。</p>
 </blockquote>
-<h1 id="添加看板娘"><a href="#添加看板娘" class="headerlink" title="添加看板娘"></a>添加看板娘</h1><p>此处主要参考引用了两位博主的博客：</p>
+<p>完成。部署即可。</p>
+<h1 id="看板娘"><a href="#看板娘" class="headerlink" title="看板娘"></a>看板娘</h1><p>此处主要参考引用了两位博主的博客：</p>
 <p><a target="_blank" rel="noopener" href="https://alec-97.github.io/posts/2499736958/">添加看板娘的参考链接-1</a></p>
 <p><a target="_blank" rel="noopener" href="https://wei-ll.github.io/2023/06/23/Butterfly%E4%B8%BB%E9%A2%98%E7%BE%8E%E5%8C%96/index.html">添加看板娘的参考链接-2</a></p>
 <h2 id="实现步骤"><a href="#实现步骤" class="headerlink" title="实现步骤"></a>实现步骤</h2><ol>
@@ -539,7 +540,7 @@
 
 
 </li>
-<li><p>完成！</p>
+<li><p>完成！部署即可。</p>
 </li>
 </ol>
 <h2 id="自定义配置"><a href="#自定义配置" class="headerlink" title="自定义配置"></a>自定义配置</h2><ol>
@@ -604,7 +605,8 @@
 <li></li>
 </ol>
 </li>
-<li></li>
+<li><p>等等。</p>
+</li>
 </ol>
 <h1 id="浏览器标签恶搞"><a href="#浏览器标签恶搞" class="headerlink" title="浏览器标签恶搞"></a>浏览器标签恶搞</h1><p>根据<a target="_blank" rel="noopener" href="https://asteri5m.gitee.io/archives/Fluid%E9%AD%94%E6%94%B9%E7%AC%94%E8%AE%B0.html#0x13-%E6%A0%87%E7%AD%BE%E6%81%B6%E6%90%9E">浏览器标签恶搞的参考链接</a>里的说明，在<code>.\Blog\node_modules\hexo-theme-fluid\source\custom</code>目录下新建文件夹<code>LabelPage</code>，并在该文件夹内新建文件<code>LabelPage.js</code>，内容如下：</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">// 浏览器搞笑标题</span><br><span class="hljs-keyword">var</span> <span class="hljs-title class_">OriginTitle</span> = <span class="hljs-variable language_">document</span>.<span class="hljs-property">title</span>;<br><span class="hljs-keyword">var</span> titleTime;<br><span class="hljs-variable language_">document</span>.<span class="hljs-title function_">addEventListener</span>(<span class="hljs-string">&#x27;visibilitychange&#x27;</span>, <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) &#123;<br>	<span class="hljs-keyword">if</span> (<span class="hljs-variable language_">document</span>.<span class="hljs-property">hidden</span>) &#123;<br>		$(<span class="hljs-string">&#x27;[rel=&quot;icon&quot;]&#x27;</span>).<span class="hljs-title function_">attr</span>(<span class="hljs-string">&#x27;href&#x27;</span>, <span class="hljs-string">&quot;/funny.ico&quot;</span>);<br>		<span class="hljs-variable language_">document</span>.<span class="hljs-property">title</span> = <span class="hljs-string">&#x27;╭(°A°`)╮ 人生若只如初见&#x27;</span>;<br>		<span class="hljs-built_in">clearTimeout</span>(titleTime);<br>	&#125; <span class="hljs-keyword">else</span> &#123;<br>		$(<span class="hljs-string">&#x27;[rel=&quot;icon&quot;]&#x27;</span>).<span class="hljs-title function_">attr</span>(<span class="hljs-string">&#x27;href&#x27;</span>, <span class="hljs-string">&quot;/img/newtubiao.png&quot;</span>);<br>		<span class="hljs-variable language_">document</span>.<span class="hljs-property">title</span> = <span class="hljs-string">&#x27;(ฅ&gt;ω&lt;*ฅ)  既见君子 云胡不喜&#x27;</span>;<br>		titleTime = <span class="hljs-built_in">setTimeout</span>(<span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) &#123;<br>			<span class="hljs-variable language_">document</span>.<span class="hljs-property">title</span> = <span class="hljs-title class_">OriginTitle</span>;<br>		&#125;, <span class="hljs-number">2000</span>);<br>	&#125;<br>&#125;);<br></code></pre></td></tr></table></figure>
@@ -612,8 +614,7 @@
 <p>在<code>./Blog</code>目录下修改主题配置文件<code>_config.fluid.yml</code>，找到<code>custom_css</code>配置项，引入刚刚新建的文件：</p>
 <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-attr">custom_css:</span><br>  <span class="hljs-bullet">-</span> <span class="hljs-string">/custom/LabelPage/LabelPage.js</span><br></code></pre></td></tr></table></figure>
 
-
-
+<p>完成。部署即可。</p>
 <h1 id="自定义字体"><a href="#自定义字体" class="headerlink" title="自定义字体"></a>自定义字体</h1><p>本博客选择了全局使用思源宋体，下面介绍方法。</p>
 <h2 id="引入网络上托管的字体"><a href="#引入网络上托管的字体" class="headerlink" title="引入网络上托管的字体"></a>引入网络上托管的字体</h2><ol>
 <li><p>获取字体链接。</p>
@@ -696,7 +697,7 @@
 </li>
 <li><p>在<code>.\Blog\node_modules\hexo-theme-fluid\source\custom</code>文件夹下新建文件夹<code>LoadingBar</code>，在该文件夹内放入<code>Releases</code>压缩包根目录的<code>pace.min.js</code>和<code>./themes/choice a colour</code>目录下你最喜欢的某个样式的<code>.css</code>文件。每个<code>.css</code>文件都有不同的进度条加载效果，具体效果可以参见<a target="_blank" rel="noopener" href="https://blog.csdn.net/u011236348/article/details/88146947">加载进度条的效果示意</a>，或者自己多尝试几种，找到最适合搭配在自己博客上的效果。</p>
 </li>
-<li><p>在<code>./Blog</code>根目录下打开文件<code>_config.fluid.yml</code>，找到名为<code>custom_js和</code>custom_css&#96;的配置项，加入刚才自定义文件的路径：</p>
+<li><p>在<code>./Blog</code>根目录下打开文件<code>_config.fluid.yml</code>，找到名为<code>custom_js</code>和<code>custom_css</code>的配置项，加入刚才自定义文件的路径：</p>
 <figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs yml"><span class="hljs-attr">custom_js:</span><br>  <span class="hljs-bullet">-</span> <span class="hljs-string">/custom/LoadingBar/pace.min.js</span><br><span class="hljs-attr">custom_css:</span><br>  <span class="hljs-bullet">-</span> <span class="hljs-string">/custom/LoadingBar/pace-theme-corner-indicator.css</span><br></code></pre></td></tr></table></figure>
 
 
@@ -708,6 +709,41 @@
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs js">&lt;head&gt;<br>  <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;https://cdn.jsdelivr.net/npm/pace-js@latest/pace.min.js&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span><br>  <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">&quot;stylesheet&quot;</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;https://cdn.jsdelivr.net/npm/pace-js@latest/pace-theme-default.min.css&quot;</span>&gt;</span></span><br><span class="language-xml"><span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span></span><br></code></pre></td></tr></table></figure>
 
 <p>这里就不再赘述。具体可以参考<a target="_blank" rel="noopener" href="https://hexo.fluid-dev.com/docs/advance/#hexo-%E6%B3%A8%E5%85%A5%E4%BB%A3%E7%A0%81">Hexo注入代码</a>。</p>
+<h1 id="顶部阅读进度条"><a href="#顶部阅读进度条" class="headerlink" title="顶部阅读进度条"></a>顶部阅读进度条</h1><p>根据<a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1197346">超简单实现WEB页面顶部阅读进度条</a>提供的代码，实现步骤为：</p>
+<ol>
+<li><p>在<code>.\Blog\node_modules\hexo-theme-fluid\source\custom\</code>目录下新建文件夹<code>ReadingProgress</code>，在该文件夹下新建文件<code>ReadingProgress.css</code>并写入以下内容：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-selector-id">#content_progress</span> &#123;<br>      <span class="hljs-comment">/* Positioning */</span><br>      <span class="hljs-attribute">position</span>: fixed;<br>      <span class="hljs-attribute">left</span>: <span class="hljs-number">0</span>;<br>      <span class="hljs-attribute">top</span>: <span class="hljs-number">0</span>;<br>      <span class="hljs-attribute">z-index</span>: <span class="hljs-number">32766</span>;<br>      <span class="hljs-attribute">width</span>: <span class="hljs-number">100%</span>;<br>      <span class="hljs-attribute">height</span>: <span class="hljs-number">6px</span>;<br>      -webkit-appearance: none;<br>      -moz-appearance: none;<br>      appearance: none;<br>      <span class="hljs-attribute">border</span>: none;<br>      <span class="hljs-attribute">background-color</span>: transparent;<br>      <span class="hljs-attribute">color</span>: <span class="hljs-number">#29b7cb</span>;<br>&#125;<br><br><span class="hljs-selector-id">#content_progress</span>::-webkit-progress-bar &#123;<br>      <span class="hljs-attribute">background-color</span>: transparent;<br>&#125;<br><br><span class="hljs-selector-id">#content_progress</span>::-webkit-progress-value &#123;<br>      <span class="hljs-attribute">background-color</span>: <span class="hljs-number">#29b7cb</span>;<br>&#125;<br><br><span class="hljs-selector-id">#content_progress</span>::-moz-progress-bar &#123;<br>      <span class="hljs-attribute">background-color</span>: <span class="hljs-number">#29b7cb</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>注：可以通过修改<code>ReadingProgress.css</code>文件的内容来自定义进度条样式，如颜色、位置等。</p>
+</li>
+<li><p>同样的，还是在该文件夹下新建文件<code>ReadingProgress.js</code>并写入以下内容：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-variable language_">document</span>.<span class="hljs-title function_">addEventListener</span>(<span class="hljs-string">&#x27;DOMContentLoaded&#x27;</span>, <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) &#123;<br>      <span class="hljs-keyword">var</span> winHeight = <span class="hljs-variable language_">window</span>.<span class="hljs-property">innerHeight</span>,<br>            docHeight = <span class="hljs-variable language_">document</span>.<span class="hljs-property">documentElement</span>.<span class="hljs-property">scrollHeight</span>,<br>            progressBar = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">querySelector</span>(<span class="hljs-string">&#x27;#content_progress&#x27;</span>);<br>      progressBar.<span class="hljs-property">max</span> = docHeight - winHeight;<br>      progressBar.<span class="hljs-property">value</span> = <span class="hljs-variable language_">window</span>.<span class="hljs-property">scrollY</span>;<br><br>      <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">addEventListener</span>(<span class="hljs-string">&#x27;scroll&#x27;</span>, <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) &#123;<br>            progressBar.<span class="hljs-property">max</span> = <span class="hljs-variable language_">document</span>.<span class="hljs-property">documentElement</span>.<span class="hljs-property">scrollHeight</span> - <span class="hljs-variable language_">window</span>.<span class="hljs-property">innerHeight</span>;<br>            progressBar.<span class="hljs-property">value</span> = <span class="hljs-variable language_">window</span>.<span class="hljs-property">scrollY</span>;<br>      &#125;);<br>&#125;);<br></code></pre></td></tr></table></figure>
+
+
+</li>
+<li><p>在<code>./Blog</code>根目录下打开文件<code>_config.fluid.yml</code>，找到名为<code>custom_js</code>和<code>custom_css</code>的配置项，加入刚才自定义文件的路径：</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs yml"><span class="hljs-attr">custom_js:</span><br>  <span class="hljs-bullet">-</span> <span class="hljs-string">/custom/ReadingProgress/ReadingProgress.js</span><br><span class="hljs-attr">custom_css:</span><br>  <span class="hljs-bullet">-</span> <span class="hljs-string">/custom/ReadingProgress/ReadingProgress.css</span><br></code></pre></td></tr></table></figure>
+
+
+</li>
+<li><p>在<code>./Blog/scripts</code>目录下新建文件<code>ReadingProgress.js</code>并写入以下内容：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs js">hexo.<span class="hljs-property">extend</span>.<span class="hljs-property">injector</span>.<span class="hljs-title function_">register</span>(<span class="hljs-string">&#x27;head_begin&#x27;</span>, <span class="hljs-string">&#x27;&lt;progress id=&quot;content_progress&quot; value=&quot;0&quot;&gt;&lt;/progress&gt;&#x27;</span>, <span class="hljs-string">&#x27;post&#x27;</span>);<br></code></pre></td></tr></table></figure>
+
+<p>这里使用的是<a target="_blank" rel="noopener" href="https://hexo.fluid-dev.com/docs/advance/#hexo-%E6%B3%A8%E5%85%A5%E4%BB%A3%E7%A0%81">Hexo注入代码</a>的功能，其中第三个参数是注入的页面类型，接受以下值：</p>
+<ul>
+<li><code>default</code>: 注入到每个页面（默认值）</li>
+<li><code>home</code>: 只注入到主页（<code>is_home()</code> 为 <code>true</code> 的页面）</li>
+<li><code>post</code>: 只注入到文章页面（<code>is_post()</code> 为 <code>true</code> 的页面）</li>
+<li><code>page</code>: 只注入到独立页面（<code>is_page()</code> 为 <code>true</code> 的页面）</li>
+<li><code>archive</code>: 只注入到归档页面（<code>is_archive()</code> 为 <code>true</code> 的页面）</li>
+<li><code>category</code>: 只注入到分类页面（<code>is_category()</code> 为 <code>true</code> 的页面）</li>
+<li><code>tag</code>: 只注入到标签页面（<code>is_tag()</code> 为 <code>true</code> 的页面）</li>
+<li>或是其他自定义 layout 名称，例如在Fluid 主题中 <code>about</code> 对应关于页、<code>links</code> 对应友联页</li>
+</ul>
+</li>
+<li><p>完成。部署即可。</p>
+</li>
+</ol>
 
                 
               </div>
