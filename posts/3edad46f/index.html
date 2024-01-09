@@ -27,8 +27,9 @@
 <meta property="og:image" content="http://zeyulong.com/posts/3edad46f/%E9%BC%A0%E6%A0%87%E7%82%B9%E5%87%BB%E7%89%B9%E6%95%88-2.gif">
 <meta property="og:image" content="http://zeyulong.com/posts/3edad46f/%E9%BC%A0%E6%A0%87%E7%82%B9%E5%87%BB%E7%89%B9%E6%95%88-3.gif">
 <meta property="og:image" content="http://zeyulong.com/posts/3edad46f/%E8%8E%B7%E5%8F%96%E5%AD%97%E4%BD%93%E9%93%BE%E6%8E%A5.png">
+<meta property="og:image" content="http://zeyulong.com/posts/3edad46f/Vercel%E9%85%8D%E7%BD%AE%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F.png">
 <meta property="article:published_time" content="2023-12-24T15:52:40.000Z">
-<meta property="article:modified_time" content="2024-01-09T15:05:59.441Z">
+<meta property="article:modified_time" content="2024-01-09T16:00:43.086Z">
 <meta property="article:author" content="龙泽雨">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="http://zeyulong.com/posts/3edad46f/%E9%BC%A0%E6%A0%87%E7%82%B9%E5%87%BB%E7%89%B9%E6%95%88-1.gif">
@@ -231,7 +232,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          14k 字
+          15k 字
         
       </span>
     
@@ -242,7 +243,7 @@
         
         
         
-          120 分钟
+          126 分钟
         
       </span>
     
@@ -292,7 +293,7 @@
               <p id="updated-time" class="note note-info" style="">
                 
                   
-                    本文最后更新于 2024年1月9日 晚上
+                    本文最后更新于 2024年1月10日 凌晨
                   
                 
               </p>
@@ -744,8 +745,32 @@
 <li><p>完成。部署即可。</p>
 </li>
 </ol>
-<h1 id="Waline评论"><a href="#Waline评论" class="headerlink" title="Waline评论"></a>Waline评论</h1><p>填写密钥</p>
-<p>添加域名</p>
+<h1 id="评论系统"><a href="#评论系统" class="headerlink" title="评论系统"></a>评论系统</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>根据<a target="_blank" rel="noopener" href="https://hexo.fluid-dev.com/docs/guide/#%E8%AF%84%E8%AE%BA">Hexo Fluid</a>主题的推荐，国内用户推荐使用<a target="_blank" rel="noopener" href="https://valine.js.org/">Valine</a>、<a target="_blank" rel="noopener" href="https://waline.js.org/">Waline</a>或者<a target="_blank" rel="noopener" href="https://twikoo.js.org/">twikoo</a>。</p>
+<p><a target="_blank" rel="noopener" href="https://valine.js.org/">Valine</a>基于LeanCloud，简洁，但因为自身设计的限制，貌似存在安全问题。自己尝试了<a target="_blank" rel="noopener" href="https://valine.js.org/">Valine</a>，但现在应该是因为DNS污染的问题，部署在博客的评论发不出来。</p>
+<p><a target="_blank" rel="noopener" href="https://waline.js.org/">Waline</a>从<a target="_blank" rel="noopener" href="https://valine.js.org/">Valine</a>衍生而来，额外增加了服务端和多种功能，安全性得到了更好地保障。不过同样因为DNS污染的问题，直接部署在博客的评论发不出来。但是，<a target="_blank" rel="noopener" href="https://waline.js.org/">Waline</a>可以通过使用自己的域名进行解析的方式来避开这个问题。在自己使用注册的域名进行解析后，成功在博客上部署了<a target="_blank" rel="noopener" href="https://waline.js.org/">Waline</a>。所以，现在正在使用的就是它。</p>
+<p><a target="_blank" rel="noopener" href="https://twikoo.js.org/">twikoo</a>在<a target="_blank" rel="noopener" href="https://waline.js.org/">Waline</a>部署成功后就没有进行尝试。</p>
+<h2 id="部署Waline评论系统"><a href="#部署Waline评论系统" class="headerlink" title="部署Waline评论系统"></a>部署Waline评论系统</h2><p>关于<a target="_blank" rel="noopener" href="https://waline.js.org/">Waline</a>的部署，在它的官网上已经讲得很清楚了，一步一步跟着做就可以。这里就不再赘述，只做几点补充说明（自己在部署过程中踩的坑）：</p>
+<ol>
+<li><p>借用<a target="_blank" rel="noopener" href="https://blog.kevinchu.top/2023/07/17/vercel-deploy-waline">Vercel部署Waline评论系统</a>中的一张图，在<code>Vercel-Settings-Environment Variables</code>中配置环境变量时，”配置三个环境变量 <code>LEAN_ID</code>, <code>LEAN_KEY</code> 和 <code>LEAN_MASTER_KEY</code> ，它们的值分别对应上一步在 LeanCloud 中获得的 <code>APP ID</code>, <code>APP KEY</code>, <code>Master Key</code>“这句话是这个意思：</p>
+<img src="/posts/3edad46f/Vercel%E9%85%8D%E7%BD%AE%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F.png" srcset="/img/loading.gif" lazyload class="" title="Vercel配置环境变量">
+
+<p>最开始自己尝试半天，就两个空怎么填这些信息？</p>
+</li>
+<li><p>前面也说了，现在因为DNS污染的问题，直接添加Vercel生成的网址进行部署，评论时会报错<code>Failed to fetch</code>，所以需要自己再注册一个域名进行解析。也就是Waline快速上手中绑定域名（可选）的这一步推荐要做。我是通过<a target="_blank" rel="noopener" href="https://wanwang.aliyun.com/">阿里云万网</a>额外购买了一个域名，可以参考这篇文章：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/103860494">个人博客第四篇——购买域名</a>。当然，有的博客也提到了可以免费注册域名，例如：<a target="_blank" rel="noopener" href="https://lisenhui.cn/blog/use-custom-domain-active-vercel-waline.html">使用自定义域名激活Vercel部署的Waline服务</a>。不过自己采用这篇博客提到的方法注册的域名，等了好几天没有等到消息，所以就去购买了一个。</p>
+</li>
+<li><p>在<code>Vercel-Settings-Domains</code>中添加了自己注册的域名后，记得点击顶部的<code>Deployments</code>点击顶部最新的一次部署右侧的<code>Redeploy</code>按钮进行重新部署。</p>
+</li>
+<li><p>如果你和我一样，使用的是<a target="_blank" rel="noopener" href="https://hexo.fluid-dev.com/docs/">Hexo Fluid</a>主题，该主题已经给添加Waline留好了位置，只需在<code>./Blog</code>根目录下打开文件<code>_config.fluid.yml</code>，修改以下内容：</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs yml"><span class="hljs-attr">comments:</span><br>  <span class="hljs-attr">enable:</span> <span class="hljs-literal">true</span><br>  <span class="hljs-attr">type:</span> <span class="hljs-string">waline</span><br></code></pre></td></tr></table></figure>
+
+<p>然后接在配置文件中的<code>waline</code>部分就可以了，例如，我的配置如下：</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs yml"><span class="hljs-attr">waline:</span><br>  <span class="hljs-attr">serverURL:</span> <span class="hljs-string">&#x27;你自己注册的域名&#x27;</span><br>  <span class="hljs-attr">path:</span> <span class="hljs-string">window.location.pathname</span><br>  <span class="hljs-attr">meta:</span> [<span class="hljs-string">&#x27;nick&#x27;</span>, <span class="hljs-string">&#x27;mail&#x27;</span>, <span class="hljs-string">&#x27;link&#x27;</span>]<br>  <span class="hljs-attr">requiredMeta:</span> [<span class="hljs-string">&#x27;nick&#x27;</span>]<br>  <span class="hljs-attr">lang:</span> <span class="hljs-string">&#x27;zh-CN&#x27;</span><br>  <span class="hljs-attr">emoji:</span> [<span class="hljs-string">&#x27;https://cdn.jsdelivr.net/gh/walinejs/emojis/weibo&#x27;</span>]<br>  <span class="hljs-attr">dark:</span> <span class="hljs-string">&#x27;html[data-user-color-scheme=&quot;dark&quot;]&#x27;</span><br>  <span class="hljs-attr">wordLimit:</span> <span class="hljs-number">0</span><br>  <span class="hljs-attr">pageSize:</span> <span class="hljs-number">10</span><br>  <span class="hljs-attr">reaction:</span> <span class="hljs-literal">true</span><br>  <span class="hljs-attr">locale:</span> <br>    <span class="hljs-attr">placeholder:</span> <span class="hljs-string">&#x27;花径不曾缘客扫，蓬门今始为君开。&#x27;</span><br></code></pre></td></tr></table></figure>
+
+<p>跳过Waline快速上手中HTML引入（客户端）这一步就可以了。当然，其它的Hexo主题可能也同样预设了Waline等评论系统的位置，这就需要各自分析了。</p>
+</li>
+<li><p>完成，部署博客即可。</p>
+</li>
+</ol>
 
                 
               </div>
