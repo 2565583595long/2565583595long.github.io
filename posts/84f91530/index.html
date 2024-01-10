@@ -16,15 +16,15 @@
   <meta name="author" content="龙泽雨">
   <meta name="keywords" content="">
   
-    <meta name="description" content="2021年的夏天，自己突发奇想，兴趣使然，乘兴做了一个动漫剪辑MMD。在那个夏天留下了一份纪念，回顾了曾感动过自己的动漫。">
+    <meta name="description" content="本文主要分享在Linux下ROS的安装与版本管理。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="[每日亿遍]来自二次元的甜蜜暴击">
-<meta property="og:url" content="http://zeyulong.com/posts/5723e027/index.html">
+<meta property="og:title" content="ROS的安装与卸载">
+<meta property="og:url" content="http://zeyulong.com/posts/84f91530/index.html">
 <meta property="og:site_name" content="龙泽雨的博客">
-<meta property="og:description" content="2021年的夏天，自己突发奇想，兴趣使然，乘兴做了一个动漫剪辑MMD。在那个夏天留下了一份纪念，回顾了曾感动过自己的动漫。">
+<meta property="og:description" content="本文主要分享在Linux下ROS的安装与版本管理。">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2024-01-08T15:56:33.000Z">
-<meta property="article:modified_time" content="2024-01-08T16:27:35.461Z">
+<meta property="article:published_time" content="2024-01-10T14:06:38.000Z">
+<meta property="article:modified_time" content="2024-01-10T14:28:17.657Z">
 <meta property="article:author" content="龙泽雨">
 <meta name="twitter:card" content="summary_large_image">
   
@@ -32,7 +32,7 @@
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>[每日亿遍]来自二次元的甜蜜暴击 - 龙泽雨的博客</title>
+  <title>ROS的安装与卸载 - 龙泽雨的博客</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -198,7 +198,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle">[每日亿遍]来自二次元的甜蜜暴击</span>
+            <span id="subtitle">ROS的安装与卸载</span>
           
         </div>
 
@@ -214,8 +214,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-01-08 23:56" pubdate>
-          2024年1月8日 晚上
+        <time datetime="2024-01-10 22:06" pubdate>
+          2024年1月10日 晚上
         </time>
       </span>
     
@@ -226,7 +226,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          935 字
+          875 字
         
       </span>
     
@@ -282,12 +282,12 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">[每日亿遍]来自二次元的甜蜜暴击</h1>
+            <h1 id="seo-header">ROS的安装与卸载</h1>
             
               <p id="updated-time" class="note note-info" style="">
                 
                   
-                    本文最后更新于 2024年1月9日 凌晨
+                    本文最后更新于 2024年1月10日 晚上
                   
                 
               </p>
@@ -295,61 +295,67 @@
             
               <div class="markdown-body">
                 
-                <p>2021年的夏天，自己突发奇想，兴趣使然，乘兴做了一个动漫剪辑MMD。在那个夏天留下了一份纪念，回顾了曾感动过自己的动漫。</p>
+                <p>本文主要分享在Linux下ROS的安装与版本管理。</p>
 <span id="more"></span>
 
+<h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><p>不同的ubuntu版本对应不同版本的ros，具体可查询ros官网</p>
+<p><a target="_blank" rel="noopener" href="http://wiki.ros.org/ROS/Installation">http://wiki.ros.org/ROS/Installation</a></p>
+<p>ubuntu16.04以及更老的版本对应<a target="_blank" rel="noopener" href="http://wiki.ros.org/kinetic/Installation">ROS Kinetic Kame</a></p>
+<p>ubuntu18.04对应<a target="_blank" rel="noopener" href="http://wiki.ros.org/melodic/Installation">ROS Melodic Morenia</a></p>
+<p>ubuntu20.04对应<a target="_blank" rel="noopener" href="http://wiki.ros.org/noetic/Installation">ROS Noetic Ninjemys</a></p>
+<p>下面开始安装ROS Melodic，详细安装教程可以参考下面的官网连接：</p>
+<p><a target="_blank" rel="noopener" href="http://wiki.ros.org/melodic/Installation/Ubuntu">http://wiki.ros.org/melodic/Installation/Ubuntu</a></p>
+<h2 id="1-安装"><a href="#1-安装" class="headerlink" title="1. 安装"></a>1. 安装</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo sh -c <span class="hljs-string">&#x27;echo &quot;deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main&quot; &gt; /etc/apt/sources.list.d/ros-latest.list&#x27;</span> <br>sudo apt-key adv --keyserver <span class="hljs-string">&#x27;hkp://keyserver.ubuntu.com:80&#x27;</span> --recv-key C1CF6E31E6BADE8868B172B4F42ED6FBAB17C654 <br>sudo apt update <br>sudo apt install ros-melodic-desktop-full <br></code></pre></td></tr></table></figure>
+
+<h2 id="2-环境设置"><a href="#2-环境设置" class="headerlink" title="2. 环境设置"></a>2. 环境设置</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;source /opt/ros/melodic/setup.bash&quot;</span> &gt;&gt; ~/.bashrc<br><span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;export LD_LIBRARY_PATH=<span class="hljs-variable">$LD_LIBRARY_PATH</span>:/opt/ros/melodic/lib&quot;</span> &gt;&gt; ~/.bashrc<br><span class="hljs-built_in">source</span> ~/.bashrc<br><span class="hljs-comment"># 如果你使用 zsh，替换其中的 bash， 你可以用以下命令来设置你的shell</span><br><span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;source /opt/ros/melodic/setup.zsh&quot;</span> &gt;&gt; ~/.zshrc<br><span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;export LD_LIBRARY_PATH=<span class="hljs-variable">$LD_LIBRARY_PATH</span>:/opt/ros/melodic/lib&quot;</span> &gt;&gt; ~/.zshrc<br><span class="hljs-built_in">source</span> ~/.zshrc<br></code></pre></td></tr></table></figure>
+
+<h2 id="3-安装依赖项"><a href="#3-安装依赖项" class="headerlink" title="3. 安装依赖项"></a>3. 安装依赖项</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo apt install python-rosdep python-rosinstall python-rosinstall-generator python-wstool build-essential<br>sudo apt install python-rosdep<br>sudo rosdep init<br>rosdep update<br></code></pre></td></tr></table></figure>
+
+<p><code>rosdep update</code>报错：The read operation timed out’</p>
+<p>原因：网站被墙</p>
+<p>解决方法：</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_44028876/article/details/120201324">https://blog.csdn.net/weixin_44028876/article/details/120201324</a></p>
+<ol>
+<li><p>打开</p>
+</li>
+<li><pre><code class="bash">sudo gedit /etc/ros/rosdep/sources.list.d/20-default.list
+# 替换文件内容改为下：
+# os-specific listings first
+yaml https://mirror.ghproxy.com/https://raw.githubusercontent.com/ros/rosdistro/master/rosdep/osx-homebrew.yaml osx
+ 
+# generic
+yaml https://mirror.ghproxy.com/https://raw.githubusercontent.com/ros/rosdistro/master/rosdep/base.yaml
+yaml https://mirror.ghproxy.com/https://raw.githubusercontent.com/ros/rosdistro/master/rosdep/python.yaml
+yaml https://mirror.ghproxy.com/https://raw.githubusercontent.com/ros/rosdistro/master/rosdep/ruby.yaml
+gbpdistro https://mirror.ghproxy.com/https://raw.githubusercontent.com/ros/rosdistro/master/releases/fuerte.yaml fuerte
+ 
+# newer distributions (Groovy, Hydro, ...) must not be listed anymore, they are being fetched from the rosdistro index.yaml instead
+<figure class="highlight autohotkey"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs autohotkey"><br><span class="hljs-number">3</span>. 终端重新执行：<br><br>   ```bash<br>   rosdep update<br></code></pre></td></tr></table></figure>
+
+</code></pre>
+</li>
+<li><p>成功运行的输出结果为：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs bash">reading <span class="hljs-keyword">in</span> sources list data from /etc/ros/rosdep/sources.list.d<br>Hit https://mirror.ghproxy.com/https://raw.githubusercontent.com/ros/rosdistro/master/rosdep/osx-homebrew.yaml<br>Hit https://mirror.ghproxy.com/https://raw.githubusercontent.com/ros/rosdistro/master/rosdep/base.yaml<br>Hit https://mirror.ghproxy.com/https://raw.githubusercontent.com/ros/rosdistro/master/rosdep/python.yaml<br>Hit https://mirror.ghproxy.com/https://raw.githubusercontent.com/ros/rosdistro/master/rosdep/ruby.yaml<br>Hit https://mirror.ghproxy.com/https://raw.githubusercontent.com/ros/rosdistro/master/releases/fuerte.yaml<br>Query rosdistro index https://raw.githubusercontent.com/ros/rosdistro/master/index-v4.yaml<br>Skip end-of-life distro <span class="hljs-string">&quot;ardent&quot;</span><br>Skip end-of-life distro <span class="hljs-string">&quot;bouncy&quot;</span><br>Skip end-of-life distro <span class="hljs-string">&quot;crystal&quot;</span><br>Skip end-of-life distro <span class="hljs-string">&quot;dashing&quot;</span><br>Skip end-of-life distro <span class="hljs-string">&quot;eloquent&quot;</span><br>Skip end-of-life distro <span class="hljs-string">&quot;foxy&quot;</span><br>Skip end-of-life distro <span class="hljs-string">&quot;galactic&quot;</span><br>Skip end-of-life distro <span class="hljs-string">&quot;groovy&quot;</span><br>Add distro <span class="hljs-string">&quot;humble&quot;</span><br>Skip end-of-life distro <span class="hljs-string">&quot;hydro&quot;</span><br>Skip end-of-life distro <span class="hljs-string">&quot;indigo&quot;</span><br>Add distro <span class="hljs-string">&quot;iron&quot;</span><br>Skip end-of-life distro <span class="hljs-string">&quot;jade&quot;</span><br>Skip end-of-life distro <span class="hljs-string">&quot;kinetic&quot;</span><br>Skip end-of-life distro <span class="hljs-string">&quot;lunar&quot;</span><br>Skip end-of-life distro <span class="hljs-string">&quot;melodic&quot;</span><br>Add distro <span class="hljs-string">&quot;noetic&quot;</span><br>Add distro <span class="hljs-string">&quot;rolling&quot;</span><br>updated cache <span class="hljs-keyword">in</span> /home/lll25655/.ros/rosdep/sources.cache<br></code></pre></td></tr></table></figure>
 
 
-<div style="position: relative; width: 100%; height: 0; padding-bottom: 75%;"><iframe 
-src=" https://www.bilibili.com/video/BV1hV411q7Gt/?share_source=copy_web&vd_source=8f684a8c6474edd2748b5fd0f5d31f76" scrolling="no" border="0" 
-frameborder="no" framespacing="0" allowfullscreen="true" style="position: absolute; width: 100%; 
-height: 100%; left: 0; top: 0;"> </iframe></div>
+</li>
+<li></li>
+</ol>
+<h2 id="4-安装ros与opencv的桥接工具包"><a href="#4-安装ros与opencv的桥接工具包" class="headerlink" title="4. 安装ros与opencv的桥接工具包"></a>4. 安装ros与opencv的桥接工具包</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo apt-get install ros-melodic-cv-bridge ros-melodic-tf ros-melodic-message-filters ros-melodic-image-transport<br></code></pre></td></tr></table></figure>
+
+<h2 id="5-其他"><a href="#5-其他" class="headerlink" title="5. 其他"></a>5. 其他</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo apt install --reinstall ros-melodic-roslaunch<br>sudo apt-get install python-catkin-tools<br></code></pre></td></tr></table></figure>
+
+<h2 id="6-验证ros是否安装成功"><a href="#6-验证ros是否安装成功" class="headerlink" title="6. 验证ros是否安装成功"></a>6. 验证ros是否安装成功</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash">roscore  <span class="hljs-comment"># 第一个终端</span><br>rosrun turtlesim turtlesim_node  <span class="hljs-comment"># 第二个终端</span><br>rosrun turtlesim turtle_teleop_key  <span class="hljs-comment"># 第三个终端</span><br><span class="hljs-comment"># 鼠标聚焦于第三个终端，使用键盘方向键移动小乌龟，按键盘Q键退出。</span><br></code></pre></td></tr></table></figure>
 
 
 
+<h1 id="卸载"><a href="#卸载" class="headerlink" title="卸载"></a>卸载</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 卸载 ROS</span><br>sudo apt-get remove ros-*<br>sudo apt-get purge ros-*<br><br><span class="hljs-comment"># 删除与 ROS 相关的依赖项</span><br>sudo apt-get remove ros-melodic-ros*<br>sudo apt-get remove ros-melodic-rviz<br>sudo apt-get remove ros-melodic-robot*<br><br><span class="hljs-comment"># 删除ROS源列表</span><br>sudo <span class="hljs-built_in">rm</span> /etc/apt/sources.list.d/ros-latest.list<br>sudo <span class="hljs-built_in">rm</span> /etc/ros/rosdep/sources.list.d/20-default.list<br><br><span class="hljs-comment"># 删除 ROS 安装目录</span><br>sudo <span class="hljs-built_in">rm</span> -r /opt/ros/melodic<br><br><span class="hljs-comment"># 删除ROS安装生成的任何残留文件</span><br>sudo <span class="hljs-built_in">rm</span> -rf ~/.ros<br><br><span class="hljs-comment"># 注释掉~/.bashrc和~/.zshrc里的</span><br><span class="hljs-built_in">source</span> /opt/ros/melodic/setup.zsh<br><span class="hljs-built_in">export</span> LD_LIBRARY_PATH=<span class="hljs-variable">$LD_LIBRARY_PATH</span>:/opt/ros/melodic/lib<br><br><span class="hljs-comment"># 关机重启</span><br></code></pre></td></tr></table></figure>
 
-<h1 id="呀哈喽！"><a href="#呀哈喽！" class="headerlink" title="呀哈喽！"></a>呀哈喽！</h1><blockquote>
-<p>如果我们能活着出去的话，万水千山你愿意陪我一起看吗？</p>
-<p>再次让我成为所有人都羡慕的女主角吧。</p>
-<p>人活着就是为了樱岛麻衣！</p>
-<p>人活着就是为了一色彩羽！</p>
-<p>人活着就是为了时崎狂三！</p>
-<p>话不多说，拔刀吧！o(´^｀)o</p>
-</blockquote>
-<p>呀哈喽！</p>
-<p>从初中被同学推荐看《约会大作战》开始，就逐渐入坑了。Õ_Õ</p>
-<p>人生中最痛苦的事莫过于看完一部动漫后，我不知道下一部动漫要看什么，太痛苦了，太痛苦了。还有就是等每周更新一次的时候，哇哇~。</p>
-<p>就想着留下点回忆吧，毕竟它（她）们给我留下了这么多回忆，都带给我更多的感动，可以说丰富了我的青春吧。如果没有它（她）们，熬夜就少了些意义。</p>
-<p>一路走来，感谢有你。੭ ᐕ)੭*⁾⁾</p>
-<p>看到b站上的up主们通过剪辑的方式记录下自己的感动，我便也蠢蠢欲试了，奈何学业还是有些繁重，就一直有这个想法，却没有实际行动。感谢这个寒假学校放了两个月，终于，是时候开始了。</p>
-<p>这里想感谢一下一位学长，如果不是他在我刚入大一的时候就教会了我PS和PR的基本操作，也许一路走来靠自己摸索不会这么顺畅。甚至如果是技术不过关这个想法都不会有吧，就算有想法也不知如何付诸实践。</p>
-<p>陆陆续续做了半个多月吧，从前期的策划开始，收集素材整理思路（PR竟然识别不了.mkv格式，还要我用格式工厂统一转化成.mp4的格式，谨记谨记）；到中期的剪辑，原来真的有突如其来的惊喜和始料不及的运气，毫不违和的拼接耶；最后是后期的特效处理，拉镜呀，转场啊之类的。</p>
-<p>算是给我这些年一个交代吧。</p>
-<p>正如伦也君所说，……，我喜欢你。虽然我也喜欢……（虚拟角色），也喜欢二次元中许许多多的女主角，但是我最喜欢的，只有眼前的……。</p>
-<p>因为只有你，能让我不加掩饰地传达自己的心意，在你面前我不需要粉饰自己，既不会仰慕也不必苛求，虽然你是一位人人都向往的女主角，但对我来说并没有那么遥远，所以我就觉得，自己说不定有戏。</p>
-<p>这些动漫带给了我纯纯的恋爱的感觉。一直期望着这种纯纯的恋爱的感觉，他们说我太天真，现实生活中怎么可能有呢？我也知道这很难，很难，很难……但是这并不妨碍我这样期待。不过，好吧，我已经过了早恋的年纪了。(｡&gt;∀&lt;｡)</p>
-<p>一路走来，感谢有你。</p>
-<p>综上所述，2020重在参与，2021重在脱单！</p>
-<p>呀吼！Ｏ(≧▽≦)Ｏ</p>
-<h1 id="附录："><a href="#附录：" class="headerlink" title="附录："></a>附录：</h1><h2 id="BGM："><a href="#BGM：" class="headerlink" title="BGM："></a>BGM：</h2><ul>
-<li>You-Hollywood Ending</li>
-</ul>
-<h2 id="素材："><a href="#素材：" class="headerlink" title="素材："></a>素材：</h2><ul>
-<li>埃罗芒阿老师</li>
-<li>关于我转生变成史莱姆这档事</li>
-<li>国家队</li>
-<li>狐妖小红娘</li>
-<li>辉夜大小姐想让我告白？~ 天才的恋爱头脑战 ~</li>
-<li>恋爱研究所</li>
-<li>路人女主的养成方法</li>
-<li>魔法禁书目录</li>
-<li>某科学的超电磁炮</li>
-<li>你的名字。</li>
-<li>青春猪头少年不会梦到兔女郎学姐</li>
-<li>天气之子</li>
-<li>我的青春恋爱物语果然有问题。</li>
-<li>约会大作战</li>
-</ul>
+
+
+<h1 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h1><p>注意：自己源码安装的PCL最好不要安装到系统根目录下，也就是默认的<code>/usr/local/</code>下。因为如果安装到了<code>/usr/local/</code>下，最后链接PCL的库的时候会默认链接到这个路径下的库。但是绝大部分搭建在ROS平台的工程都是使用ROS自带的pcl-1.8的，这个时候虽然编译可以通过，但是运行的时候会出错。血泪教训。</p>
+<h1 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h1><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/u011089570/article/details/115551782">Ubuntu18.04运行Vins-Fusion</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_42731705/article/details/129380907">Ubuntu18安装新版本PCL-1.13，并和ROS自带PCL-1.8共存</a></p>
 
                 
               </div>
@@ -367,8 +373,8 @@ height: 100%; left: 0; top: 0;"> </iframe></div>
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>[每日亿遍]来自二次元的甜蜜暴击</div>
-      <div>http://zeyulong.com/posts/5723e027/</div>
+      <div>ROS的安装与卸载</div>
+      <div>http://zeyulong.com/posts/84f91530/</div>
     </div>
     <div class="license-meta">
       
@@ -380,7 +386,7 @@ height: 100%; left: 0; top: 0;"> </iframe></div>
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2024年1月8日</div>
+          <div>2024年1月10日</div>
         </div>
       
       
@@ -412,9 +418,9 @@ height: 100%; left: 0; top: 0;"> </iframe></div>
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/posts/5c3493c4/" title="Eigen的安装与版本管理">
+                      <a href="/posts/3ccac530/" title="ESVO编译运行调试记录">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Eigen的安装与版本管理</span>
+                        <span class="hidden-mobile">ESVO编译运行调试记录</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -422,8 +428,8 @@ height: 100%; left: 0; top: 0;"> </iframe></div>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/posts/6d384a56/" title="Hexo博客搭建流程">
-                        <span class="hidden-mobile">Hexo博客搭建流程</span>
+                      <a href="/posts/75ff45ce/" title="OpenCV的安装与版本管理">
+                        <span class="hidden-mobile">OpenCV的安装与版本管理</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
