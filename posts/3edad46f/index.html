@@ -29,7 +29,7 @@
 <meta property="og:image" content="http://zeyulong.com/posts/3edad46f/%E8%8E%B7%E5%8F%96%E5%AD%97%E4%BD%93%E9%93%BE%E6%8E%A5.png">
 <meta property="og:image" content="http://zeyulong.com/posts/3edad46f/Vercel%E9%85%8D%E7%BD%AE%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F.png">
 <meta property="article:published_time" content="2023-12-24T15:52:40.000Z">
-<meta property="article:modified_time" content="2024-01-11T17:00:24.466Z">
+<meta property="article:modified_time" content="2024-01-11T17:22:29.703Z">
 <meta property="article:author" content="龙泽雨">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="http://zeyulong.com/posts/3edad46f/%E9%BC%A0%E6%A0%87%E7%82%B9%E5%87%BB%E7%89%B9%E6%95%88-1.gif">
@@ -221,7 +221,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          15k 字
+          16k 字
         
       </span>
     
@@ -232,7 +232,7 @@
         
         
         
-          129 分钟
+          130 分钟
         
       </span>
     
@@ -447,18 +447,21 @@
 </ol>
 <h1 id="行内（反引号-内）代码样式">行内（反引号``内）代码样式</h1>
 <h2 id="修改代码颜色">修改代码颜色</h2>
-<p>根据<a target="_blank" rel="noopener" href="https://github.com/fluid-dev/hexo-theme-fluid/issues/862">请问如何修改行内代码的颜色</a>里的说明，在<code>.\Blog\node_modules\hexo-theme-fluid\source\custom</code>目录下新建文件夹<code>Fonts</code>，并在该文件夹内新建样式文件<code>CodeFont.css</code>，内容如下：</p>
+<p>根据<a target="_blank" rel="noopener" href="https://github.com/fluid-dev/hexo-theme-fluid/issues/862">请问如何修改行内代码的颜色</a>里的说明，首先，在<code>.\Blog\node_modules\hexo-theme-fluid\source\custom</code>目录下新建文件夹<code>Fonts</code>，并在该文件夹内新建样式文件<code>CodeFont.css</code>，内容如下：</p>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-selector-class">.markedown-body</span> pre <span class="hljs-selector-tag">code</span> &#123;<br>    <span class="hljs-attribute">color</span>: <span class="hljs-built_in">rgb</span>(<span class="hljs-number">56</span> <span class="hljs-number">160</span> <span class="hljs-number">110</span>);<br>&#125;<br><br><span class="hljs-selector-tag">code</span> &#123;<br>    <span class="hljs-attribute">color</span>: <span class="hljs-built_in">rgb</span>(<span class="hljs-number">56</span> <span class="hljs-number">160</span> <span class="hljs-number">110</span>);<br>&#125;<br></code></pre></td></tr></table></figure>
-<p>在<code>./Blog</code>目录下修改主题配置文件<code>_config.fluid.yml</code>，找到<code>custom_css</code>配置项，引入刚刚新建的文件：</p>
+<p>然后，在<code>./Blog</code>目录下修改主题配置文件<code>_config.fluid.yml</code>，找到<code>custom_css</code>配置项，引入刚刚新建的文件：</p>
 <figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs yml"><span class="hljs-attr">custom_css:</span><br>  <span class="hljs-bullet">-</span> <span class="hljs-string">/custom/Fonts/CodeFont.css</span><br></code></pre></td></tr></table></figure>
 <p>完成，部署即可。</p>
 <h2 id="修改代码背景">修改代码背景</h2>
-<p>通过查看控制台，我发现定义行内（反引号内）代码背景的语句位于<code>.\Blog\node_modules\hexo-theme-fluid\source\css\_variables\base.styl</code>内的：</p>
+<p>通过尝试修改网页控制台中一个个的颜色，我找到了控制行内代码背景的变量名为<code>inlinecode-bg-color</code>。再在本地文件中检索该变量名，我发现其位于<code>.\Blog\node_modules\hexo-theme-fluid\source\css\_variables\base.styl</code>内的：</p>
 <figure class="highlight styl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs styl"><span class="hljs-comment">// code</span><br><span class="hljs-variable">$inlinecode</span>-bg-<span class="hljs-attribute">color</span> = <span class="hljs-built_in">rgba</span>(<span class="hljs-number">175</span>, <span class="hljs-number">184</span>, <span class="hljs-number">193</span>, .<span class="hljs-number">2</span>)<br><span class="hljs-variable">$inlinecode</span>-bg-<span class="hljs-attribute">color</span>-dark = <span class="hljs-built_in">rgba</span>(<span class="hljs-number">99</span>, <span class="hljs-number">110</span>, <span class="hljs-number">123</span>, .<span class="hljs-number">4</span>)<br></code></pre></td></tr></table></figure>
-<p>这里<code>rgba</code>的<code>a</code>我猜测控制的是不透明度。</p>
-<p>如果你想将代码背景设置为透明的话，可以修改语句为：</p>
-<figure class="highlight styl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs styl"><span class="hljs-comment">// code</span><br><span class="hljs-variable">$inlinecode</span>-bg-<span class="hljs-attribute">color</span> = transparent<br><span class="hljs-variable">$inlinecode</span>-bg-<span class="hljs-attribute">color</span>-dark = transparent<br></code></pre></td></tr></table></figure>
-<p>这里还没有想到能不修改源文件的方法。</p>
+<p>这里<code>rgba</code>的<code>a</code>我猜测控制的是不透明度。找到了根源，就好修改了。</p>
+<p>首先，在<code>.\Blog\node_modules\hexo-theme-fluid\source\custom</code>目录下新建文件夹<code>Fonts</code>，并在该文件夹内新建样式文件<code>inlinecode-bg-color.styl</code>，内容如下：</p>
+<figure class="highlight styl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs styl"><span class="hljs-selector-pseudo">:root</span> &#123;<br>  <span class="hljs-attr">--inlinecode-bg-color</span>: transparent;  <span class="hljs-comment">// rgba(175, 184, 193, .2)</span><br>  <span class="hljs-attr">--inlinecode-bg-color-dark</span>: transparent;  <span class="hljs-comment">// rgba(175, 184, 193, .2)</span><br>&#125;<br></code></pre></td></tr></table></figure>
+<p>注，这里的语法是发现控制台中<code>inlinecode-bg-color</code>变量是被定义在<code>main.css</code>文件内的，进而通过参考<code>main.css</code>文件定义<code>inlinecode-bg-color</code>变量的语法，尝试成功的。</p>
+<p>然后，在<code>./Blog</code>目录下修改主题配置文件<code>_config.fluid.yml</code>，找到<code>custom_css</code>配置项，引入刚刚新建的文件：，</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs yml"><span class="hljs-attr">custom_css:</span><br>  <span class="hljs-bullet">-</span> <span class="hljs-string">/custom/Fonts/inlinecode-bg-color</span><br></code></pre></td></tr></table></figure>
+<p>完成，部署即可。</p>
 <h1 id="Mac风格代码块">Mac风格代码块</h1>
 <p>根据<a target="_blank" rel="noopener" href="https://blog.kevinchu.top/2023/07/17/hexo-theme-fluid-modify/#7-%E6%9B%BF%E6%8D%A2mac%E9%A3%8E%E6%A0%BC%E4%BB%A3%E7%A0%81%E5%9D%97">替换Mac风格代码块的参考链接</a>里的说明，在<code>.\Blog\node_modules\hexo-theme-fluid\source\custom</code>目录下新建文件夹<code>Markdown</code>，并在该文件夹内新建样式文件<code>macpanel.styl</code>，内容如下：</p>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-selector-class">.highlight</span><br>    <span class="hljs-attribute">background</span>: <span class="hljs-number">#21252b</span><br>    border-radius: <span class="hljs-number">5px</span><br>    box-shadow: <span class="hljs-number">0</span> <span class="hljs-number">10px</span> <span class="hljs-number">30px</span> <span class="hljs-number">0</span> <span class="hljs-built_in">rgba</span>(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, .<span class="hljs-number">4</span>)<br>    padding-top: <span class="hljs-number">30px</span><br><br>    &amp;::before<br>      background: <span class="hljs-number">#fc625d</span><br>      border-radius: <span class="hljs-number">50%</span><br>      box-shadow: <span class="hljs-number">20px</span> <span class="hljs-number">0</span> <span class="hljs-number">#fdbc40</span>, <span class="hljs-number">40px</span> <span class="hljs-number">0</span> <span class="hljs-number">#35cd4b</span><br>      content: <span class="hljs-string">&#x27; &#x27;</span><br>      height: <span class="hljs-number">12px</span><br>      left: <span class="hljs-number">12px</span><br>      margin-top: -<span class="hljs-number">20px</span><br>      position: absolute<br>      width: <span class="hljs-number">12px</span><br></code></pre></td></tr></table></figure>
