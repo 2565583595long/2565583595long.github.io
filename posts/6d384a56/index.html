@@ -285,59 +285,60 @@
                 
                 <p>本文主要记录了自己搭建Hexo博客的流程，主要包括搭建Hexo博客、插件安装和主题美化。</p>
 <span id="more"></span>
-
 <blockquote>
 <p>步骤1-5主要为搭建Hexo博客，主要参考了知乎文章<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/102592286">从零开始搭建个人博客（超详细）</a>，这里就不在赘述，只做补充。</p>
 </blockquote>
-<h1 id="1-注册GitHub"><a href="#1-注册GitHub" class="headerlink" title="1. 注册GitHub"></a>1. 注册GitHub</h1><p><a target="_blank" rel="noopener" href="https://github.com/">https://github.com/</a></p>
-<h1 id="2-安装Git"><a href="#2-安装Git" class="headerlink" title="2. 安装Git"></a>2. 安装Git</h1><p><a target="_blank" rel="noopener" href="https://git-scm.com/download">https://git-scm.com/download</a></p>
+<h1>1. 注册GitHub</h1>
+<p><a target="_blank" rel="noopener" href="https://github.com/">https://github.com/</a></p>
+<h1>2. 安装Git</h1>
+<p><a target="_blank" rel="noopener" href="https://git-scm.com/download">https://git-scm.com/download</a></p>
 <p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_41521682/article/details/122764915">Git下载与安装-CSDN博客</a></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">git --version  <span class="hljs-comment"># 查看 Git 版本</span><br></code></pre></td></tr></table></figure>
-
-
-
-<h1 id="3-绑定GitHub并提交文件"><a href="#3-绑定GitHub并提交文件" class="headerlink" title="3. 绑定GitHub并提交文件"></a>3. 绑定GitHub并提交文件</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">git push -u origin main<br><span class="hljs-comment"># or</span><br>git push -u origin master<br></code></pre></td></tr></table></figure>
-
-
-
-<h1 id="4-安装node-js和Hexo"><a href="#4-安装node-js和Hexo" class="headerlink" title="4. 安装node.js和Hexo"></a>4. 安装node.js和Hexo</h1><h2 id="报错处理"><a href="#报错处理" class="headerlink" title="报错处理"></a>报错处理</h2><ol>
-<li><p>注意在建立两个文件夹<code>node_global</code>与<code>node_cache</code>时，需要右键设置<code>“属性”</code>，将用户具有完全属性的权限，否则在<code>npm install webpack</code>时会报错。</p>
+<h1>3. 绑定GitHub并提交文件</h1>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">git push -u origin main<br><span class="hljs-comment"># or</span><br>git push -u origin master<br></code></pre></td></tr></table></figure>
+<h1>4. 安装node.js和Hexo</h1>
+<h2 id="报错处理">报错处理</h2>
+<ol>
+<li>
+<p>注意在建立两个文件夹<code>node_global</code>与<code>node_cache</code>时，需要右键设置<code>“属性”</code>，将用户具有完全属性的权限，否则在<code>npm install webpack</code>时会报错。</p>
 <p>感谢大佬！！！，其实直接以管理员身份运行<code>cmd</code>就行了。</p>
 </li>
 <li></li>
 </ol>
-<h1 id="5-解析域名"><a href="#5-解析域名" class="headerlink" title="5. 解析域名"></a>5. 解析域名</h1><ol>
-<li><p>ping出来地址是ipv6。ping ipv4的方法：</p>
+<h1>5. 解析域名</h1>
+<ol>
+<li>
+<p>ping出来地址是ipv6。ping ipv4的方法：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">ping github.io -4<br></code></pre></td></tr></table></figure>
-
-
 </li>
-<li><p>Hexo部署过程中可能会出现错误：</p>
+<li>
+<p>Hexo部署过程中可能会出现错误：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs bash">fatal: unable to access <span class="hljs-string">&#x27;https://github.com/a956551943/a956551943.github.io/&#x27;</span>: Encountered end of file<br>FATAL &#123;<br>  err: Error: Spawn failed<br>      at ChildProcess.&lt;anonymous&gt; (/usr/local/src/hexo/hanyubolg/node_modules/hexo-util/lib/spawn.js:51:21)<br>      at ChildProcess.emit (events.js:376:20)<br>      at Process.ChildProcess._handle.onexit (internal/child_process.js:277:12) &#123;<br>    code: 128<br>  &#125;<br>&#125; Something<span class="hljs-string">&#x27;s wrong. Maybe you can find the solution here: %s https://hexo.io/docs/troubleshooting.html</span><br></code></pre></td></tr></table></figure>
-
 <p>解决方式一：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment">##进入站点根目录</span><br><span class="hljs-built_in">cd</span> /usr/local/src/hexo/hanyubolg/<br><br><span class="hljs-comment">##删除git提交内容文件夹</span><br><span class="hljs-built_in">rm</span> -rf .deploy_git/<br><br><span class="hljs-comment">##执行</span><br>git config --global core.autocrlf <span class="hljs-literal">false</span><br><br><span class="hljs-comment">##最后</span><br>hexo clean &amp;&amp; hexo g &amp;&amp; hexo d<br><br></code></pre></td></tr></table></figure>
-
 <p>解决方式二：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment">##进入站点根目录</span><br><span class="hljs-built_in">cd</span> /usr/local/src/hexo/hanyubolg/<br><br><span class="hljs-comment">##删除git提交内容文件夹</span><br>vim _config.yml<br><br><span class="hljs-comment">##修改</span><br>deploy:<br><br><span class="hljs-built_in">type</span>: git<br><br>repo: https://github.com/yourname/yourname.github.io.git<br><span class="hljs-comment"># 改为</span><br><span class="hljs-comment"># GitHub项目主页，点击绿色的Code，SSH</span><br>repo: git@github.com:a956551943/weixiaohui.github.io.git<br><br>branch: master<br><br><span class="hljs-comment">##最后</span><br>hexo clean &amp;&amp; hexo g &amp;&amp; hexo d<br><br></code></pre></td></tr></table></figure>
-
 <p>解决方式三：不建议</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment">##进入站点根目录</span><br><span class="hljs-built_in">cd</span> /usr/local/src/hexo/hanyubolg/<br><br><span class="hljs-comment">##进入depoly文件夹</span><br><span class="hljs-built_in">cd</span> .deploy_git/<br><br><span class="hljs-comment">##强制推送</span><br>git push -f<br></code></pre></td></tr></table></figure>
-
-
 </li>
 <li></li>
 </ol>
-<h1 id="6-Hexo基本技巧"><a href="#6-Hexo基本技巧" class="headerlink" title="6. Hexo基本技巧"></a>6. Hexo基本技巧</h1><p>捋一遍<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/">文档 | Hexo</a>就基本可以了。</p>
-<h1 id="7-设置主题和主题美化"><a href="#7-设置主题和主题美化" class="headerlink" title="7. 设置主题和主题美化"></a>7. 设置主题和主题美化</h1><p>实现步骤：</p>
+<h1>6. Hexo基本技巧</h1>
+<p>捋一遍<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/">文档 | Hexo</a>就基本可以了。</p>
+<h1>7. 设置主题和主题美化</h1>
+<p>实现步骤：</p>
 <ol>
-<li><p>在<a target="_blank" rel="noopener" href="https://github.com/">GitHub</a>上搜索<code>Hexo</code>寻找自己喜欢的Hexo主题。我最终选择了<a target="_blank" rel="noopener" href="https://hexo.fluid-dev.com/docs/">Hexo Fluid</a>主题。一款很成熟的主题，简洁大方，有官方中文教程。</p>
+<li>
+<p>在<a target="_blank" rel="noopener" href="https://github.com/">GitHub</a>上搜索<code>Hexo</code>寻找自己喜欢的Hexo主题。我最终选择了<a target="_blank" rel="noopener" href="https://hexo.fluid-dev.com/docs/">Hexo Fluid</a>主题。一款很成熟的主题，简洁大方，有官方中文教程。</p>
 </li>
-<li><p><a target="_blank" rel="noopener" href="https://hexo.fluid-dev.com/docs/start/">安装Hexo Fluid主题</a>。</p>
+<li>
+<p><a target="_blank" rel="noopener" href="https://hexo.fluid-dev.com/docs/start/">安装Hexo Fluid主题</a>。</p>
 </li>
-<li><p><a href="https://zeyulong.com/posts/7b14eacc/">安装Hexo博客插件</a>。</p>
+<li>
+<p><a href="https://zeyulong.com/posts/7b14eacc/">安装Hexo博客插件</a>。</p>
 </li>
-<li><p><a href="https://zeyulong.com/posts/3edad46f/">主题美化</a>。</p>
+<li>
+<p><a href="https://zeyulong.com/posts/3edad46f/">主题美化</a>。</p>
 </li>
 </ol>
 <p>解决的一些问题：</p>

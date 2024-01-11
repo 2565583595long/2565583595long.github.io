@@ -214,7 +214,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          5.1k 字
+          5k 字
         
       </span>
     
@@ -225,7 +225,7 @@
         
         
         
-          43 分钟
+          42 分钟
         
       </span>
     
@@ -285,10 +285,12 @@
                 
                 <p>本文主要分享了自己在编译和运行论文《Event-Based Stereo Visual Odometry》（下面简称为ESVO）的代码时的调试记录。</p>
 <span id="more"></span>
-
-<h1 id="ESVO简介"><a href="#ESVO简介" class="headerlink" title="ESVO简介"></a>ESVO简介</h1><p><a target="_blank" rel="noopener" href="https://sites.google.com/view/esvo-project-page/home">ESVO Project Page</a></p>
+<h1>ESVO简介</h1>
+<p><a target="_blank" rel="noopener" href="https://sites.google.com/view/esvo-project-page/home">ESVO Project Page</a></p>
 <p><a target="_blank" rel="noopener" href="https://github.com/HKUST-Aerial-Robotics/ESVO">Source Code</a></p>
-<h1 id="数据集下载"><a href="#数据集下载" class="headerlink" title="数据集下载"></a>数据集下载</h1><h2 id="原始数据集"><a href="#原始数据集" class="headerlink" title="原始数据集"></a>原始数据集</h2><p><a target="_blank" rel="noopener" href="http://rpg.ifi.uzh.ch/ECCV18_stereo_davis.html">rpg (University of Zurich)</a></p>
+<h1>数据集下载</h1>
+<h2 id="原始数据集">原始数据集</h2>
+<p><a target="_blank" rel="noopener" href="http://rpg.ifi.uzh.ch/ECCV18_stereo_davis.html">rpg (University of Zurich)</a></p>
 <p><a target="_blank" rel="noopener" href="https://daniilidis-group.github.io/mvsec/">upenn (University of Pennsylvania)</a></p>
 <p>为了方便起见，我们提供了文中使用的经过编辑的rosbag文件。建议的版本如<code>./events_repacking_helper</code>下的<code>README.md</code>文件所述。</p>
 <p>edited rpg stereo dataset</p>
@@ -307,95 +309,93 @@
 <ul>
 <li><a target="_blank" rel="noopener" href="https://drive.google.com/file/d/1wywOckwAc7d6xxqqnjAYjv8FNXf4TZ9g/view">hkust_lab.bag</a></li>
 </ul>
-<h1 id="环境配置"><a href="#环境配置" class="headerlink" title="环境配置"></a>环境配置</h1><h2 id="1-配置ROS"><a href="#1-配置ROS" class="headerlink" title="1. 配置ROS"></a>1. 配置ROS</h2><ul>
-<li>Ubuntu 18.04.5 LTS + ROS melodic + gcc 5.5.0 + cmake (&gt;&#x3D;3.10) + OpenCV 3.2</li>
-<li>Ubuntu 16.04 LTS + ROS kinetic + gcc 5.4.0 + cmake (&gt;&#x3D;3.10) + OpenCV 3.2</li>
+<h1>环境配置</h1>
+<h2 id="1-配置ROS">1. 配置ROS</h2>
+<ul>
+<li>Ubuntu 18.04.5 LTS + ROS melodic + gcc 5.5.0 + cmake (&gt;=3.10) + OpenCV 3.2</li>
+<li>Ubuntu 16.04 LTS + ROS kinetic + gcc 5.4.0 + cmake (&gt;=3.10) + OpenCV 3.2</li>
 <li>Ubuntu 20.04 LTS + ROS Noetic + OpenCV 4</li>
 </ul>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 查看版本</span><br><span class="hljs-comment"># gcc</span><br>gcc -v<br><span class="hljs-comment"># cmake</span><br>cmake --version<br><span class="hljs-comment"># Eigen</span><br>gedit /usr/include/eigen3/Eigen/src/Core/util/Macros.h<br><span class="hljs-comment"># Opencv</span><br>pkg-config --modversion opencv  <span class="hljs-comment"># 查询版本</span><br>pkg-config --cflags opencv  <span class="hljs-comment"># 得到opencv的安装路径</span><br><span class="hljs-comment"># -&gt; -I/usr/local/include/opencv -I/usr/local/include</span><br>pkg-config --cflags opencv4  <span class="hljs-comment"># 附加：得到opencv4的安装路径</span><br></code></pre></td></tr></table></figure>
-
 <p>提示：</p>
 <ol>
-<li><p>对于Eigen，安装配置、使用3.3.0的版本，使用3.4.0版本会报错。可以参考链接：<a href="https://zeyulong.com/posts/5c3493c4/">Eigen的安装与版本管理</a>。</p>
+<li>
+<p>对于Eigen，安装配置、使用3.3.0的版本，使用3.4.0版本会报错。可以参考链接：<a href="https://zeyulong.com/posts/5c3493c4/">Eigen的安装与版本管理</a>。</p>
 </li>
-<li><p>对于OpenCV，安装配置、使用大于等于3.2.0的版本。推荐使用<a href="https://zeyulong.com/posts/75ff45ce/">OpenCV的安装与版本管理</a>中版本管理的方法2，即通过修改cv_bridge的配置文件来指定OpenCV的版本。最好在编译前将各个项目中的<code>CmakeList.txt</code>中的：</p>
+<li>
+<p>对于OpenCV，安装配置、使用大于等于3.2.0的版本。推荐使用<a href="https://zeyulong.com/posts/75ff45ce/">OpenCV的安装与版本管理</a>中版本管理的方法2，即通过修改cv_bridge的配置文件来指定OpenCV的版本。最好在编译前将各个项目中的<code>CmakeList.txt</code>中的：</p>
 <figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cmake"><span class="hljs-keyword">find_package</span>(OpenCV REQUIRED)<br></code></pre></td></tr></table></figure>
-
 <p>改为：</p>
 <figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cmake"><span class="hljs-keyword">find_package</span>(cv_bridge)<br></code></pre></td></tr></table></figure>
-
 <p>来防止cmake时使用没有cv_bridge的配置文件来指定OpenCV的版本，还是自行寻找使用的系统中其它的版本，从而产生报错。</p>
 </li>
-<li><p>如果自己之前有源码安装的PCL，最好检查一下，不要安装到系统根目录下，也就是默认的<code>/usr/local/</code>下。如果安装到了<code>/usr/local/</code>下，最后链接PCL的库的时候会默认链接到这个路径下的库。但是绝大部分搭建在ROS上的工程都是使用ROS自带的pcl-1.8的，这个时候虽然编译可以通过，但是运行的时候会出错。血泪教训。具体说明见下文。</p>
+<li>
+<p>如果自己之前有源码安装的PCL，最好检查一下，不要安装到系统根目录下，也就是默认的<code>/usr/local/</code>下。如果安装到了<code>/usr/local/</code>下，最后链接PCL的库的时候会默认链接到这个路径下的库。但是绝大部分搭建在ROS上的工程都是使用ROS自带的pcl-1.8的，这个时候虽然编译可以通过，但是运行的时候会出错。血泪教训。具体说明见下文。</p>
 </li>
-<li><p>如果终端是在conda环境下的话，最好提前退出conda环境，因为conda和ros有冲突：</p>
+<li>
+<p>如果终端是在conda环境下的话，最好提前退出conda环境，因为conda和ros有冲突：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">conda deactivate<br></code></pre></td></tr></table></figure>
-
-
 </li>
-<li><p>如果在编译运行过程中遇到了关于gcc、g++的版本问题，可以参考链接：<a href="https://zeyulong.com/posts/6dba0521/">gcc、g++的安装与版本管理</a>。</p>
+<li>
+<p>如果在编译运行过程中遇到了关于gcc、g++的版本问题，可以参考链接：<a href="https://zeyulong.com/posts/6dba0521/">gcc、g++的安装与版本管理</a>。</p>
 </li>
 </ol>
-<h2 id="2-配置事件相机驱动器"><a href="#2-配置事件相机驱动器" class="headerlink" title="2. 配置事件相机驱动器"></a>2. 配置事件相机驱动器</h2><p><a target="_blank" rel="noopener" href="https://github.com/uzh-rpg/rpg_dvs_ros">项目地址</a></p>
+<h2 id="2-配置事件相机驱动器">2. 配置事件相机驱动器</h2>
+<p><a target="_blank" rel="noopener" href="https://github.com/uzh-rpg/rpg_dvs_ros">项目地址</a></p>
 <blockquote>
-<p>ROS DVS 包为动态视觉传感器(DVS&#x2F;DAVIS)提供 C++ 驱动程序。即使您没有 DAVS 或 DAVIS 设备，您仍然可以使用此驱动程序读取预先录制的事件数据文件。该软件包还提供了一个校准工具，为本征intrinsic和双目stereo校准。</p>
+<p>ROS DVS 包为动态视觉传感器(DVS/DAVIS)提供 C++ 驱动程序。即使您没有 DAVS 或 DAVIS 设备，您仍然可以使用此驱动程序读取预先录制的事件数据文件。该软件包还提供了一个校准工具，为本征intrinsic和双目stereo校准。</p>
 </blockquote>
 <blockquote>
 <p>将下面提到的ROS版本替换为你自己的版本。</p>
 </blockquote>
 <ol>
-<li><p>安装ROS依赖项：</p>
+<li>
+<p>安装ROS依赖项：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># melodic/kinetic/Noetic</span><br>sudo apt-get install ros-melodic-camera-info-manager<br>sudo apt-get install ros-melodic-image-view<br></code></pre></td></tr></table></figure>
-
-
 </li>
-<li><p>安装libcaer</p>
+<li>
+<p>安装libcaer</p>
 <ol>
-<li><p>首先根据下面的网站<a target="_blank" rel="noopener" href="https://inivation.gitlab.io/dv/dv-docs/docs/getting-started.html#ubuntu-linux">iniVation documentation</a>添加存储库：</p>
+<li>
+<p>首先根据下面的网站<a target="_blank" rel="noopener" href="https://inivation.gitlab.io/dv/dv-docs/docs/getting-started.html#ubuntu-linux">iniVation documentation</a>添加存储库：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># Bionic (18.04 LTS) on the x86_64, x86, arm64 and armhf architectures</span><br>sudo add-apt-repository ppa:ubuntu-toolchain-r/test<br>sudo add-apt-repository ppa:inivation-ppa/inivation-bionic<br>sudo apt-get update<br>sudo apt-get install dv-gui<br><br><span class="hljs-comment"># Focal (20.04 LTS) and Jammy (22.04 LTS) on the x86_64, arm64 and armhf architectures</span><br>sudo add-apt-repository ppa:inivation-ppa/inivation<br>sudo apt-get update<br>sudo apt-get install dv-gui<br></code></pre></td></tr></table></figure>
-
 <p>如果您计划开发自己的模块，请安装以下附加软件包：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo apt-get install dv-runtime-dev<br></code></pre></td></tr></table></figure>
-
 <p>在 ARM 上，你可能需要使用以下环境变量来启动 dv 运行时：</p>
 <p><code>UNW_ARM_UNWIND_METHOD=4</code>。</p>
 </li>
-<li><p>安装libcaer：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo apt-get install libcaer-dev<br></code></pre></td></tr></table></figure></li>
+<li>
+<p>安装libcaer：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo apt-get install libcaer-dev<br></code></pre></td></tr></table></figure>
+</li>
 </ol>
 </li>
-<li><p>安装catkin tools：</p>
+<li>
+<p>安装catkin tools：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo apt-get install python-catkin-tools<br></code></pre></td></tr></table></figure>
-
-
 </li>
-<li><p>创建一个catkin工作区：</p>
+<li>
+<p>创建一个catkin工作区：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">cd</span> yourfolder<br><span class="hljs-built_in">mkdir</span> -p catkin_ws/src<br><span class="hljs-built_in">cd</span> catkin_ws<br>catkin config --init --mkdirs --extend /opt/ros/melodic --merge-devel --cmake-args -DCMAKE_BUILD_TYPE=Release<br></code></pre></td></tr></table></figure>
-
-
 </li>
-<li><p>克隆<a target="_blank" rel="noopener" href="https://github.com/catkin/catkin_simple">catkin_simple包</a>，它将用于构建 DVS&#x2F;DAVIS 驱动程序包：</p>
+<li>
+<p>克隆<a target="_blank" rel="noopener" href="https://github.com/catkin/catkin_simple">catkin_simple包</a>，它将用于构建 DVS/DAVIS 驱动程序包：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">cd</span> yourfolder/catkin_ws/src<br>git <span class="hljs-built_in">clone</span> https://github.com/catkin/catkin_simple.git<br></code></pre></td></tr></table></figure>
-
-
 </li>
-<li><p>克隆 rpg_dvs_ros 的存储库：</p>
+<li>
+<p>克隆 rpg_dvs_ros 的存储库：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">cd</span> yourfolder/catkin_ws/src<br>git <span class="hljs-built_in">clone</span> https://github.com/uzh-rpg/rpg_dvs_ros.git<br></code></pre></td></tr></table></figure>
-
-
 </li>
-<li><p>构建软件包：</p>
+<li>
+<p>构建软件包：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 根据第9步的示例，运行DAVIS</span><br><span class="hljs-built_in">cd</span> yourfolder/catkin_ws<br>catkin build dvs_ros_driver  <span class="hljs-comment"># if you are using the DVS128</span><br>catkin build davis_ros_driver  <span class="hljs-comment"># if you are using the DAVIS</span><br>catkin build dvxplorer_ros_driver  <span class="hljs-comment"># if you are using the DVXplorer</span><br></code></pre></td></tr></table></figure>
-
-
 </li>
-<li><p>您可以通过运行提供的启动文件来测试安装。它启动驱动程序(DVS 或 DAVIS)和渲染器(图像查看器)。</p>
+<li>
+<p>您可以通过运行提供的启动文件来测试安装。它启动驱动程序(DVS 或 DAVIS)和渲染器(图像查看器)。</p>
 <ol>
-<li><p>首先，构建渲染器：</p>
+<li>
+<p>首先，构建渲染器：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">cd</span> yourfolder/catkin_ws<br>catkin build dvs_renderer<br></code></pre></td></tr></table></figure>
-
-
-
 <blockquote>
 <p>如果编译报错：</p>
 <p>终端运行<code>catkin clean</code>命令相当于<code>rm -r $&#123;build&#125; $&#123;devel&#125;</code>，但是避免了<code>rm -r</code>这种危险的操作！</p>
@@ -406,66 +406,65 @@
 <li>20240104更新：使用<a href="https://zeyulong.com/posts/75ff45ce/">OpenCV的安装与版本管理</a>中版本管理的方法2进行修改，即可。</li>
 </ul>
 </li>
-<li><p>建立环境：</p>
+<li>
+<p>建立环境：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">source</span> yourfolder/catkin_ws/devel/setup.bash <br><span class="hljs-comment"># or if you use the zsh shell instead</span><br><span class="hljs-built_in">source</span> yourfolder/catkin_ws/devel/setup.zsh<br><span class="hljs-comment"># or</span><br><span class="hljs-built_in">source</span> ./devel/setup.zsh<br><span class="hljs-comment"># 如果不想每次都要刷新环境变量</span><br><span class="hljs-built_in">echo</span> “yourfolder/catkin_ws/devel/setup.zsh” &gt;&gt; ~/.zshrc<br>sudo gedit ~/.zshrc  <span class="hljs-comment"># 用gedit打开文件，查看是否加入</span><br></code></pre></td></tr></table></figure>
-
-
 </li>
-<li><p>然后，启动示例（无示例，略）：</p>
+<li>
+<p>然后，启动示例（无示例，略）：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">roslaunch dvs_renderer dvs_mono.launch  <span class="hljs-comment"># if you are using the DVS128</span><br>roslaunch dvs_renderer davis_mono.launch  <span class="hljs-comment"># if you are using the DAVIS</span><br>roslaunch dvs_renderer dvxplorer_mono.launch  <span class="hljs-comment"># if you are using the DVXplorer</span><br></code></pre></td></tr></table></figure>
-
-
 </li>
-<li><p>得到运行结果。</p>
+<li>
+<p>得到运行结果。</p>
 </li>
 </ol>
 </li>
-<li><p>如果您没有<strong>DAVIS</strong>，您仍然可以使用此驱动程序读取记录的文件。示例：</p>
+<li>
+<p>如果您没有<strong>DAVIS</strong>，您仍然可以使用此驱动程序读取记录的文件。示例：</p>
 <ol>
-<li><p>下载数据集的序列，如<a target="_blank" rel="noopener" href="http://rpg.ifi.uzh.ch/datasets/davis/slider_depth.bag">slider_deep.bag</a>。</p>
+<li>
+<p>下载数据集的序列，如<a target="_blank" rel="noopener" href="http://rpg.ifi.uzh.ch/datasets/davis/slider_depth.bag">slider_deep.bag</a>。</p>
 </li>
-<li><p>打开第一个终端，启动roscore：</p>
+<li>
+<p>打开第一个终端，启动roscore：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">roscore<br></code></pre></td></tr></table></figure>
-
-
 </li>
-<li><p>在第二个终端，播放bag包：</p>
+<li>
+<p>在第二个终端，播放bag包：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">rosbag play -l path-to-file/slider_depth.bag <br></code></pre></td></tr></table></figure>
-
 <p>如果遇到报错：</p>
-<p>&#x2F;opt&#x2F;ros&#x2F;melodic&#x2F;lib&#x2F;rosbag&#x2F;play: error while loading shared libraries: librosbag.so: cannot open shared object file: No such file or directory</p>
+<p>/opt/ros/melodic/lib/rosbag/play: error while loading shared libraries: <a target="_blank" rel="noopener" href="http://librosbag.so">librosbag.so</a>: cannot open shared object file: No such file or directory</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 解决方法</span><br>sudo gedit ~/.zshrc<br><span class="hljs-built_in">export</span> LD_LIBRARY_PATH=<span class="hljs-variable">$LD_LIBRARY_PATH</span>:/opt/ros/melodic/lib<br></code></pre></td></tr></table></figure>
-
-
 </li>
-<li><p>在第三个终端中，启动 DVS&#x2F;DAVIS 渲染器：</p>
+<li>
+<p>在第三个终端中，启动 DVS/DAVIS 渲染器：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">source</span> ./devel/setup.zsh &amp;&amp; roslaunch dvs_renderer renderer_mono.launch<br><span class="hljs-comment"># 如果没有刷新环境变量，会报错 RLException: [xx.launch] is neither a launch file in package [x] nor is [x] a launch file name</span><br></code></pre></td></tr></table></figure>
-
-
 </li>
-<li><p>你可以看到连续图像的播放。</p>
+<li>
+<p>你可以看到连续图像的播放。</p>
 </li>
 </ol>
 </li>
-<li><p>（可选）对于来自 DAVIS 的实时数据流(即，不是记录的文件) ，您可以使用动态重新配置 GUI 根据需要调整 DVS&#x2F;DAVIS 参数。运行</p>
+<li>
+<p>（可选）对于来自 DAVIS 的实时数据流(即，不是记录的文件) ，您可以使用动态重新配置 GUI 根据需要调整 DVS/DAVIS 参数。运行</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 第一个终端</span><br>roscore<br><span class="hljs-comment"># 第二个终端</span><br><span class="hljs-built_in">source</span> ./devel/setup.zsh<br>rosrun rqt_reconfigure rqt_reconfigure<br></code></pre></td></tr></table></figure>
-
 <p>一个窗口将会出现。</p>
 <p>选择 davis_ros_Driver（在左侧面板中），您应该会得到 GUI，它允许您修改传感器的参数。</p>
 </li>
 <li></li>
 </ol>
-<h2 id="3-安装依赖"><a href="#3-安装依赖" class="headerlink" title="3. 安装依赖"></a>3. 安装依赖</h2><ol>
-<li><p>您应该已经在第2节创建了一个<code>catkin</code>工作区。如果没有，请返回并创建一个。</p>
+<h2 id="3-安装依赖">3. 安装依赖</h2>
+<ol>
+<li>
+<p>您应该已经在第2节创建了一个<code>catkin</code>工作区。如果没有，请返回并创建一个。</p>
 </li>
-<li><p>将此存储库克隆到<code>catkin</code>工作区的文件夹中。</p>
+<li>
+<p>将此存储库克隆到<code>catkin</code>工作区的文件夹中。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">cd</span> yourfolder/catkin_ws/src<br>git <span class="hljs-built_in">clone</span> https://github.com/HKUST-Aerial-Robotics/ESVO.git<br></code></pre></td></tr></table></figure>
-
-
 </li>
-<li><p>依赖关系在 <code>./ESVO/dependencies.yaml</code> 文件中指定。它们可以通过以下命令从您的 <code>catkin</code> 工作区的 <code>src</code> 文件夹中安装: </p>
+<li>
+<p>依赖关系在 <code>./ESVO/dependencies.yaml</code> 文件中指定。它们可以通过以下命令从您的 <code>catkin</code> 工作区的 <code>src</code> 文件夹中安装:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">cd</span> yourfolder/catkin_ws/src<br>sudo apt-get install python3-vcstool<br>vcs-import &lt; ESVO/dependencies.yaml<br></code></pre></td></tr></table></figure>
-
 <p>上面的命令应该将存储库克隆到 <code>catkin_simple</code>、 <code>glog_catkin</code>、 <code>gflag_catkin</code>、 <code>minkindr</code> 等文件夹中，这些文件夹位于 <code>catking</code> 工作区的 <code>src</code> 文件夹中，与这个存储库(<code>ESVO</code>)处于同一级别。</p>
 <p>提示：</p>
 <blockquote>
@@ -474,34 +473,30 @@
 </blockquote>
 <p>为防止网路下载不稳定的情况，可以将下载链接替换为本地路径。下载<a target="_blank" rel="noopener" href="https://github.com/gflags/gflags/archive/v2.2.1.zip">v2.2.1.zip</a>到<code>yourfolder/</code>并重命名为<code>gflags-2.2.1.zip</code>。打开<code>./catkin_ws/src/gflags_catkin</code>目录下的<code>Cmakelists.txt</code>文件，修改<code>URL</code>：</p>
 <figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs cmake"><span class="hljs-comment"># URL https://github.com/gflags/gflags/archive/v2.2.1.zip</span><br>URL <span class="hljs-string">&quot;/yourfolder/gflags-2.2.1.zip&quot;</span><br></code></pre></td></tr></table></figure>
-
 <p>注：URL可以直接使用本地地址，但是文件必需为压缩文件，编译时会自动解压。<a target="_blank" rel="noopener" href="https://cmake.org/cmake/help/latest/module/ExternalProject.html">官方文档</a>，<a target="_blank" rel="noopener" href="https://blog.csdn.net/wzj_110/article/details/116722467">中文解读</a>。</p>
 </li>
-<li><p>你可能需要<code>autoreconf</code>来编译<code>glog_catkin</code>，使用以下命令安装<code>autoreconf</code>：</p>
+<li>
+<p>你可能需要<code>autoreconf</code>来编译<code>glog_catkin</code>，使用以下命令安装<code>autoreconf</code>：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># https://askubuntu.com/questions/265471/autoreconf-not-found-error-during-making-qemu-1-4-0/269423#269423</span><br><span class="hljs-comment"># 查询可安装的版本</span><br>apt-cache search autoreconf<br>sudo apt-get install autoconf  <span class="hljs-comment"># 13.04/14.04/16.04/18.04</span><br>sudo apt install dh-autoreconf  <span class="hljs-comment"># 20.04</span><br></code></pre></td></tr></table></figure>
-
-
 </li>
-<li><p><code>yaml-cpp</code> 只用于从 <code>yaml</code> 文件加载校准参数：</p>
+<li>
+<p><code>yaml-cpp</code> 只用于从 <code>yaml</code> 文件加载校准参数：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">cd</span> yourfolder/catkin_ws/src<br>git <span class="hljs-built_in">clone</span> https://github.com/jbeder/yaml-cpp.git<br><span class="hljs-built_in">cd</span> yaml-cpp<br><span class="hljs-built_in">mkdir</span> build &amp;&amp; <span class="hljs-built_in">cd</span> build &amp;&amp; cmake -DYAML_BUILD_SHARED_LIBS=ON ..<br>make -j8<br></code></pre></td></tr></table></figure>
-
-
 </li>
-<li><p>你应该安装好了有 OpenCV（&gt;&#x3D;3.2）和 Eigen 3。</p>
+<li>
+<p>你应该安装好了有 OpenCV（&gt;=3.2）和 Eigen 3。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># Eigen</span><br>gedit /usr/include/eigen3/Eigen/src/Core/util/Macros.h<br><span class="hljs-comment"># Opencv</span><br>pkg-config opencv --modversion<br></code></pre></td></tr></table></figure>
-
-
 </li>
-<li><p>其他 ROS 依赖项应该已经在第2节中安装。如果有问题，安装相应缺失的依赖项。</p>
+<li>
+<p>其他 ROS 依赖项应该已经在第2节中安装。如果有问题，安装相应缺失的依赖项。</p>
 </li>
 <li></li>
 </ol>
-<h2 id="4-安装-ESVO"><a href="#4-安装-ESVO" class="headerlink" title="4. 安装 ESVO"></a>4. 安装 ESVO</h2><ol>
-<li><p>编译</p>
+<h2 id="4-安装-ESVO">4. 安装 ESVO</h2>
+<ol>
+<li>
+<p>编译</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">cd</span> yourfolder/catkin_ws<br><span class="hljs-comment"># catkin list可以查看工作空间中有哪些ros包。</span><br><span class="hljs-comment"># catkin build dvs_ros_driver davis_ros_driver dvxplorer_ros_driver dvs_renderer</span><br>catkin build esvo_time_surface esvo_core<br></code></pre></td></tr></table></figure>
-
-
-
 <blockquote>
 <p>如果编译报错：</p>
 <p>终端运行<code>catkin clean</code>命令相当于<code>rm -r $&#123;build&#125; $&#123;devel&#125;</code>，但是避免了<code>rm -r</code>这种危险的操作！</p>
@@ -509,32 +504,41 @@
 <p>可能遇到的报错及处理：</p>
 <p>报错1：</p>
 <ul>
-<li><p>报错信息：&#x2F;usr&#x2F;lib&#x2F;libgdal.so.20：对‘<a href="mailto:&#84;&#73;&#70;&#x46;&#x52;&#x65;&#97;&#100;&#x52;&#71;&#66;&#x41;&#84;&#x69;&#108;&#x65;&#69;&#x78;&#x74;&#x40;&#x4c;&#x49;&#x42;&#84;&#73;&#70;&#x46;&#x5f;&#x34;&#46;&#x30;">&#84;&#73;&#70;&#x46;&#x52;&#x65;&#97;&#100;&#x52;&#71;&#66;&#x41;&#84;&#x69;&#108;&#x65;&#69;&#x78;&#x74;&#x40;&#x4c;&#x49;&#x42;&#84;&#73;&#70;&#x46;&#x5f;&#x34;&#46;&#x30;</a>’未定义的引用。</p>
+<li>
+<p>报错信息：/usr/lib/libgdal.so.20：对‘TIFFReadRGBATileExt@LIBTIFF_4.0’未定义的引用。</p>
 </li>
-<li><p>报错原因：TIFF的库和conda的TIFF库发生了冲突（对于我解决了问题）</p>
+<li>
+<p>报错原因：TIFF的库和conda的TIFF库发生了冲突（对于我解决了问题）</p>
 </li>
-<li><p>解决方法：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># https://blog.csdn.net/weixin_44368449/article/details/126110009</span><br><span class="hljs-comment"># https://blog.csdn.net/weixin_44362628/article/details/129238795</span><br>conda remove libtiff<br></code></pre></td></tr></table></figure></li>
+<li>
+<p>解决方法：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># https://blog.csdn.net/weixin_44368449/article/details/126110009</span><br><span class="hljs-comment"># https://blog.csdn.net/weixin_44362628/article/details/129238795</span><br>conda remove libtiff<br></code></pre></td></tr></table></figure>
+</li>
 </ul>
 <p>报错2：</p>
 <ul>
-<li>报错信息：CMake Error at gflags_src-stamp&#x2F;download-gflags_src.cmake:159 (message)。</li>
+<li>报错信息：CMake Error at gflags_src-stamp/download-gflags_src.cmake:159 (message)。</li>
 <li>解决办法：如上文所述，断掉外网代理或本地下载和引用.zip文件。</li>
 </ul>
 <p>报错3：</p>
 <ul>
-<li><p>报错信息：CMake Error at &#x2F;opt&#x2F;ros&#x2F;melodic&#x2F;share&#x2F;cv_bridge&#x2F;cmake&#x2F;cv_bridgeConfig.cmake:113 (message):Project ‘cv_bridge’ specifies ‘&#x2F;usr&#x2F;include&#x2F;opencv’ as an include dir,which is not found.</p>
+<li>
+<p>报错信息：CMake Error at /opt/ros/melodic/share/cv_bridge/cmake/cv_bridgeConfig.cmake:113 (message):Project ‘cv_bridge’ specifies ‘/usr/include/opencv’ as an include dir,which is not found.</p>
 <p>或：</p>
-<p>CMake Error at &#x2F;opt&#x2F;ros&#x2F;melodic&#x2F;share&#x2F;image_geometry&#x2F;cmake&#x2F;image_geometryConfig.cmake:113 (message):Project ‘image_geometry’ specifies ‘&#x2F;usr&#x2F;include&#x2F;opencv’ as an include dir,which is not found.</p>
+<p>CMake Error at /opt/ros/melodic/share/image_geometry/cmake/image_geometryConfig.cmake:113 (message):Project ‘image_geometry’ specifies ‘/usr/include/opencv’ as an include dir,which is not found.</p>
 </li>
-<li><p>解决方法：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># https://blog.csdn.net/qq_43310597/article/details/109256838</span><br><span class="hljs-comment"># https://blog.csdn.net/zsq122021821/article/details/128316043</span><br><span class="hljs-comment"># 只需修改上述路径中的cv_bridgeconfig.cmke和image_geometryConfig.cmake文件，将100行附近的两个opencv改成opencv4即可（注意，只需要改动单独一个的opencv,前面有连字符的opencv不需要改动）</span><br><span class="hljs-comment"># 或</span><br>sudo <span class="hljs-built_in">ln</span> -s /usr/include/opencv4 /usr/include/opencv  <span class="hljs-comment"># 这个还适用其他需要opencv库的情况，推荐。</span><br></code></pre></td></tr></table></figure></li>
+<li>
+<p>解决方法：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># https://blog.csdn.net/qq_43310597/article/details/109256838</span><br><span class="hljs-comment"># https://blog.csdn.net/zsq122021821/article/details/128316043</span><br><span class="hljs-comment"># 只需修改上述路径中的cv_bridgeconfig.cmke和image_geometryConfig.cmake文件，将100行附近的两个opencv改成opencv4即可（注意，只需要改动单独一个的opencv,前面有连字符的opencv不需要改动）</span><br><span class="hljs-comment"># 或</span><br>sudo <span class="hljs-built_in">ln</span> -s /usr/include/opencv4 /usr/include/opencv  <span class="hljs-comment"># 这个还适用其他需要opencv库的情况，推荐。</span><br></code></pre></td></tr></table></figure>
+</li>
 </ul>
 <p>报错4：</p>
 <ul>
-<li><p>报错信息：error: no match for ‘operator&lt;&#x3D;’ (operand types are ‘Eigen::internal::enable_if&lt;true, Eigen::IndexedView&lt;Eigen::Matrix&lt;int, -1, -1&gt;, double, double&gt; &gt;::type {aka Eigen::IndexedView&lt;Eigen::Matrix&lt;int, -1, -1&gt;, double, double&gt;}’ and ‘double’)</p>
+<li>
+<p>报错信息：error: no match for ‘operator&lt;=’ (operand types are ‘Eigen::internal::enable_if&lt;true, Eigen::IndexedView&lt;Eigen::Matrix&lt;int, -1, -1&gt;, double, double&gt; &gt;::type {aka Eigen::IndexedView&lt;Eigen::Matrix&lt;int, -1, -1&gt;, double, double&gt;}’ and ‘double’)</p>
 </li>
-<li><p>解决方法：</p>
+<li>
+<p>解决方法：</p>
 <p><a target="_blank" rel="noopener" href="https://github.com/HKUST-Aerial-Robotics/ESVO/issues/20">https://github.com/HKUST-Aerial-Robotics/ESVO/issues/20</a></p>
 <p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_29876847/article/details/128336408">https://blog.csdn.net/qq_29876847/article/details/128336408</a></p>
 <p>Eigen版本切换，指定使用的Eigen版本为3.3.0。3.4.0会报错。参考链接：<a href="https://zeyulong.com/posts/5c3493c4/">Eigen的安装与版本管理</a>。</p>
@@ -542,171 +546,179 @@
 </ul>
 <p>报错5：</p>
 <ul>
-<li><p>报错信息：.&#x2F;ESVO&#x2F;esvo_core&#x2F;src&#x2F;esvo_Mapping.cpp: 对‘cv::Mat::updateContinuityFlag()’未定义的引用</p>
-<p>或：.&#x2F;ESVO&#x2F;esvo_core&#x2F;src&#x2F;esvo_Tracking.cpp:(.text+0x76e)：对‘cv::error(int, std::__cxx11::basic_string&lt;char, std::char_traits<char>, std::allocator<char> &gt; const&amp;, char const*, char const*, int)’未定义的引用</p>
+<li>
+<p>报错信息：./ESVO/esvo_core/src/esvo_Mapping.cpp: 对‘cv::Mat::updateContinuityFlag()’未定义的引用</p>
+<p>或：./ESVO/esvo_core/src/esvo_Tracking.cpp:(.text+0x76e)：对‘cv::error(int, std::__cxx11::basic_string&lt;char, std::char_traits<char>, std::allocator<char> &gt; const&amp;, char const*, char const*, int)’未定义的引用</p>
 </li>
-<li><p>解决办法：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 猜测：虽然使用OpenCV的版本管理的第二种方法对cv_bridge进行了版本指定，指定为3.2.0版本，但是，在CmakeLists.txt中使用find_package(OpenCV REQUIRED)或find_package(OpenCV 3.2.0 REQUIRED)实际上都没有找到/使用3.2.0版本，使用还是低版本3.1.0。甚至寻找使用OpenCV时都没有从ROS的cv_bridge中指定的路径中进行寻找，还是从系统路径自行寻找的。其他项目可能用3.1.0也可以，所以就没有报错。但是，esvo_core项目尤其会报错，需要版本大于等于3.2.0。</span><br><span class="hljs-comment"># 所以。将./ESVO/esvo_core/CmakeLists.txt中的</span><br>find_package(OpenCV REQUIRED)<br><span class="hljs-comment"># 修改为</span><br>find_package(cv_bridge)<br><span class="hljs-comment"># 来强制指定使用cv_bridge中指定的OpenCV版本。</span><br></code></pre></td></tr></table></figure></li>
+<li>
+<p>解决办法：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 猜测：虽然使用OpenCV的版本管理的第二种方法对cv_bridge进行了版本指定，指定为3.2.0版本，但是，在CmakeLists.txt中使用find_package(OpenCV REQUIRED)或find_package(OpenCV 3.2.0 REQUIRED)实际上都没有找到/使用3.2.0版本，使用还是低版本3.1.0。甚至寻找使用OpenCV时都没有从ROS的cv_bridge中指定的路径中进行寻找，还是从系统路径自行寻找的。其他项目可能用3.1.0也可以，所以就没有报错。但是，esvo_core项目尤其会报错，需要版本大于等于3.2.0。</span><br><span class="hljs-comment"># 所以。将./ESVO/esvo_core/CmakeLists.txt中的</span><br>find_package(OpenCV REQUIRED)<br><span class="hljs-comment"># 修改为</span><br>find_package(cv_bridge)<br><span class="hljs-comment"># 来强制指定使用cv_bridge中指定的OpenCV版本。</span><br></code></pre></td></tr></table></figure>
+</li>
 </ul>
 </li>
-<li><p>刷新环境变量</p>
+<li>
+<p>刷新环境变量</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 刷新环境变量</span><br><span class="hljs-built_in">source</span> yourfolder/catkin_ws/devel/setup.bash <br><span class="hljs-comment"># or if you use the zsh shell instead</span><br><span class="hljs-built_in">source</span> yourfolder/catkin_ws/devel/setup.zsh<br><span class="hljs-built_in">source</span> ./devel/setup.zsh<br><span class="hljs-comment"># 如果不想每次都要刷新环境变量</span><br><span class="hljs-built_in">echo</span> “yourfolder/catkin_ws/devel/setup.zsh” &gt;&gt; ~/.zshrc<br>sudo gedit ~/.zshrc  <span class="hljs-comment"># 用gedit打开文件，查看是否加入</span><br></code></pre></td></tr></table></figure>
-
-
 </li>
 <li></li>
 </ol>
-<h1 id="运行使用"><a href="#运行使用" class="headerlink" title="运行使用"></a>运行使用</h1><h2 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h2><p>在 Razor Blade 15笔记本电脑(Intel® Core™ i7-8750H CPU @ 2.20GHz × 12)上可以看到实时性能。</p>
+<h1>运行使用</h1>
+<h2 id="注意事项">注意事项</h2>
+<p>在 Razor Blade 15笔记本电脑(Intel® Core™ i7-8750H CPU @ 2.20GHz × 12)上可以看到实时性能。</p>
 <ul>
-<li><p>为了获得实时性能，您需要一台功能强大的 PC，它具有至少支持6个线程的现代 CPU。记住让你的电脑保持凉爽！</p>
+<li>
+<p>为了获得实时性能，您需要一台功能强大的 PC，它具有至少支持6个线程的现代 CPU。记住让你的电脑保持凉爽！</p>
 </li>
-<li><p>建图和跟踪是松散耦合的，这表明任何一个模块的失败都会导致其它模块的不良结果，从而导致整个系统的不良结果。</p>
+<li>
+<p>建图和跟踪是松散耦合的，这表明任何一个模块的失败都会导致其它模块的不良结果，从而导致整个系统的不良结果。</p>
 </li>
-<li><p>如果初始化看起来不太好，可以通过单击动态重新配置中的复选框<code>resetButton</code>来重置系统。此复选框用作按钮。</p>
+<li>
+<p>如果初始化看起来不太好，可以通过单击动态重新配置中的复选框<code>resetButton</code>来重置系统。此复选框用作按钮。</p>
 </li>
-<li><p>如果您使用的是计算资源有限的PC，那么您可以将rosbag的播放速度降低一个级别，例如修改<code>ESVO/esvo_time_surface/launch/rosbag_launcher/upenn/upenn_indoor_flying1.launch</code>：</p>
+<li>
+<p>如果您使用的是计算资源有限的PC，那么您可以将rosbag的播放速度降低一个级别，例如修改<code>ESVO/esvo_time_surface/launch/rosbag_launcher/upenn/upenn_indoor_flying1.launch</code>：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">rosbag play xxx.bag -r 0.5 --clock<br></code></pre></td></tr></table></figure>
-
 <p>并相应地修改外部时钟的速率(用于同步双目时间表面) ，例如修改<code>ESVO/esvo_core/launch/system/system_upenn.launch</code>：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">`&lt;node name=<span class="hljs-string">&quot;global_timer&quot;</span> pkg=<span class="hljs-string">&quot;rostopic&quot;</span> <span class="hljs-built_in">type</span>=<span class="hljs-string">&quot;rostopic&quot;</span> args=<span class="hljs-string">&quot;pub -s -r 50 /sync std_msgs/Time &#x27;now&#x27; &quot;</span>&gt;`<br></code></pre></td></tr></table></figure>
-
 <p>在这个例子中，bag包文件以0.5的速率播放，因此，同步信号被相应地设置为50Hz。这些修改必须相应地进行，以便在模拟时间内以100Hz的频率更新(刷新)时间表面。你可以通过运行下面的命令来检查：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">rostopic hz /TS_left<br>rostopic hz /TS_right<br></code></pre></td></tr></table></figure>
-
 <p>它们都应该是大约100Hz。</p>
 </li>
-<li><p><code>esvo_core</code>是使用超线程技术实现的。请根据您的PC的能力修改用于映射和跟踪的线程数。参数可以在<code>include/esvo_core/tools/utils.h</code>中找到。</p>
+<li>
+<p><code>esvo_core</code>是使用超线程技术实现的。请根据您的PC的能力修改用于映射和跟踪的线程数。参数可以在<code>include/esvo_core/tools/utils.h</code>中找到。</p>
 </li>
-<li><p><code>esvo_time_surface</code>支持超线程计算。我们发现，当处理分辨率高于DAVIS346 (346 x 260)的传感器时，这可能是必要的。单线程实现在DAVIS240C (240 x 180)上花费&lt;&#x3D;5 ms，在DAVIS346 (346 x 260)上花费&lt;&#x3D;10 ms。我们在上述PC平台上评估了双线程版本，在240 × 180分辨率下&lt;&#x3D;3ms，在&lt;&#x3D; 346 × 260分辨率下&lt;&#x3D;6ms。</p>
+<li>
+<p><code>esvo_time_surface</code>支持超线程计算。我们发现，当处理分辨率高于DAVIS346 (346 x 260)的传感器时，这可能是必要的。单线程实现在DAVIS240C (240 x 180)上花费&lt;=5 ms，在DAVIS346 (346 x 260)上花费&lt;=10 ms。我们在上述PC平台上评估了双线程版本，在240 × 180分辨率下&lt;=3ms，在&lt;= 346 × 260分辨率下&lt;=6ms。</p>
 </li>
-<li><p>请注意，ESVO是不确定的，即每次在同一个rosbag文件上运行它时，结果可能不同。这是由于跟踪过程中涉及的随机操作，以及系统的并行性。性能根据你的个人电脑的情况而不同，例如，如果你关闭所有其他正在运行的程序，你会得到更好的效率。</p>
+<li>
+<p>请注意，ESVO是不确定的，即每次在同一个rosbag文件上运行它时，结果可能不同。这是由于跟踪过程中涉及的随机操作，以及系统的并行性。性能根据你的个人电脑的情况而不同，例如，如果你关闭所有其他正在运行的程序，你会得到更好的效率。</p>
 </li>
-<li><p>提供给ESVO的事件数据需要以比<code>rpg_dvs_ros</code>驱动程序的默认配置(30 Hz)高得多的流速率记录。这是由于<code>esvo_time_surface</code>的工作频率为100Hz。为了最大限度地用最新事件刷新时间面，需要明显更高的流速率(例如1000hz)。流速率既可以在硬件中简单地设置，也可以通过重写bag包来修改。我们在<code>./rosbag_editor</code>中提供了一个简单的示例来演示如何操作。</p>
+<li>
+<p>提供给ESVO的事件数据需要以比<code>rpg_dvs_ros</code>驱动程序的默认配置(30 Hz)高得多的流速率记录。这是由于<code>esvo_time_surface</code>的工作频率为100Hz。为了最大限度地用最新事件刷新时间面，需要明显更高的流速率(例如1000hz)。流速率既可以在硬件中简单地设置，也可以通过重写bag包来修改。我们在<code>./rosbag_editor</code>中提供了一个简单的示例来演示如何操作。</p>
 </li>
-<li><p>如果终端是在conda环境下的话，运行时最好退出conda环境，因为conda和ros有冲突：</p>
+<li>
+<p>如果终端是在conda环境下的话，运行时最好退出conda环境，因为conda和ros有冲突：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">conda deactivate<br></code></pre></td></tr></table></figure>
-
-
 </li>
 <li></li>
 </ul>
-<h2 id="esvo-time-surface"><a href="#esvo-time-surface" class="headerlink" title="esvo_time_surface"></a>esvo_time_surface</h2><h2 id="运行"><a href="#运行" class="headerlink" title="运行"></a>运行</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># conda deactivate &amp;&amp; source ./devel/setup.zsh</span><br><span class="hljs-comment"># roscore  # 不必运行</span><br></code></pre></td></tr></table></figure>
-
+<h2 id="esvo-time-surface">esvo_time_surface</h2>
+<h2 id="运行">运行</h2>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># conda deactivate &amp;&amp; source ./devel/setup.zsh</span><br><span class="hljs-comment"># roscore  # 不必运行</span><br></code></pre></td></tr></table></figure>
 <p>这个包实现了一个不断更新双目时间图（即时间表面）的节点。要单独启动它，打开一个终端并运行命令：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">source</span> ./devel/setup.zsh &amp;&amp; roslaunch esvo_time_surface stereo_time_surface.launch<br></code></pre></td></tr></table></figure>
-
 <p>要播放一个bag包，请转到<code>esvo_time_surface/launch/rosbag_launcher</code>，并根据您的bag包文件下载的位置修改<code>[bag_name].launch</code>中的路径。然后执行：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">source</span> ./devel/setup.zsh &amp;&amp; roslaunch esvo_time_surface [bag_name].launch<br><span class="hljs-comment"># source ./devel/setup.zsh &amp;&amp; roslaunch esvo_time_surface upenn_indoor_flying1.launch</span><br><span class="hljs-comment"># source ./devel/setup.zsh &amp;&amp; roslaunch esvo_time_surface upenn_indoor_flying3.launch</span><br><br><span class="hljs-comment"># source ./devel/setup.zsh &amp;&amp; roslaunch esvo_time_surface rpg_bin.launch</span><br><span class="hljs-comment"># source ./devel/setup.zsh &amp;&amp; roslaunch esvo_time_surface rpg_boxes.launch</span><br><span class="hljs-comment"># source ./devel/setup.zsh &amp;&amp; roslaunch esvo_time_surface rpg_desk.launch</span><br><span class="hljs-comment"># source ./devel/setup.zsh &amp;&amp; roslaunch esvo_time_surface rpg_monitor.launch</span><br><br><span class="hljs-comment"># source ./devel/setup.zsh &amp;&amp; roslaunch esvo_time_surface hkust_lab.launch</span><br></code></pre></td></tr></table></figure>
-
-<h2 id="报错"><a href="#报错" class="headerlink" title="报错"></a>报错</h2><ol>
-<li><p>ROS:ModuleNotFoundError: No module named ‘rospkg’</p>
+<h2 id="报错">报错</h2>
+<ol>
+<li>
+<p>ROS:ModuleNotFoundError: No module named ‘rospkg’</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 安装了anaconda 导致的</span><br><span class="hljs-comment"># https://blog.csdn.net/qq_42995327/article/details/119357775</span><br><span class="hljs-built_in">which</span> pip<br>pip install catkin-tools rospkg pyyaml empy numpy <span class="hljs-comment"># 不能彻底解决问题</span><br><span class="hljs-comment"># 或</span><br>conda deactivate  <span class="hljs-comment"># 可以解决报错</span><br></code></pre></td></tr></table></figure>
-
-
 </li>
-<li><p>ROS:ModuleNotFoundError: No module named ‘PySide2’</p>
+<li>
+<p>ROS:ModuleNotFoundError: No module named ‘PySide2’</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 安装了anaconda 导致的</span><br><span class="hljs-built_in">which</span> pip<br>pip install PySide2  <span class="hljs-comment"># 不能彻底解决问题</span><br><span class="hljs-comment"># 或</span><br>conda deactivate  <span class="hljs-comment"># 可以解决报错</span><br></code></pre></td></tr></table></figure>
-
-
 </li>
 <li></li>
 </ol>
-<h2 id="esvo-core"><a href="#esvo-core" class="headerlink" title="esvo_core"></a>esvo_core</h2><h3 id="运行-1"><a href="#运行-1" class="headerlink" title="运行"></a>运行</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># conda deactivate &amp;&amp; source ./devel/setup.zsh</span><br><span class="hljs-comment"># roscore  # 不必运行</span><br></code></pre></td></tr></table></figure>
-
+<h2 id="esvo-core">esvo_core</h2>
+<h3 id="运行-2">运行</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># conda deactivate &amp;&amp; source ./devel/setup.zsh</span><br><span class="hljs-comment"># roscore  # 不必运行</span><br></code></pre></td></tr></table></figure>
 <p>这个包实现了提出的建图和跟踪方法。初始化在建图部分内部实现。要启动它，打开一个终端并运行命令：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">source</span> ./devel/setup.zsh &amp;&amp; roslaunch esvo_core system_xxx.launch<br><br><span class="hljs-comment"># source ./devel/setup.zsh &amp;&amp; roslaunch esvo_core system_upenn.launch</span><br><br><span class="hljs-comment"># source ./devel/setup.zsh &amp;&amp; roslaunch esvo_core system_rpg.launch</span><br><br><span class="hljs-comment"># source ./devel/setup.zsh &amp;&amp; roslaunch esvo_core system_hkust.launch</span><br></code></pre></td></tr></table></figure>
-
 <p>这将同时启动两个<code>esvo_time_surface</code>节点（分别用于左右事件相机）、建图节点和跟踪节点。然后播放运行输入的包文件：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">source</span> ./devel/setup.zsh &amp;&amp; roslaunch esvo_time_surface [bag_name].launch<br><br><span class="hljs-comment"># source ./devel/setup.zsh &amp;&amp; roslaunch esvo_time_surface upenn_indoor_flying1.launch</span><br><span class="hljs-comment"># source ./devel/setup.zsh &amp;&amp; roslaunch esvo_time_surface upenn_indoor_flying3.launch</span><br><br><span class="hljs-comment"># source ./devel/setup.zsh &amp;&amp; roslaunch esvo_time_surface rpg_bin.launch</span><br><span class="hljs-comment"># source ./devel/setup.zsh &amp;&amp; roslaunch esvo_time_surface rpg_boxes.launch</span><br><span class="hljs-comment"># source ./devel/setup.zsh &amp;&amp; roslaunch esvo_time_surface rpg_desk.launch</span><br><span class="hljs-comment"># source ./devel/setup.zsh &amp;&amp; roslaunch esvo_time_surface rpg_monitor.launch</span><br><br><span class="hljs-comment"># source ./devel/setup.zsh &amp;&amp; roslaunch esvo_time_surface hkust_lab.launch</span><br></code></pre></td></tr></table></figure>
-
 <p>若要在任何时候保存轨迹，请转到另一个终端并通过以下方式终止系统：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">source</span> ./devel/setup.zsh &amp;&amp; rosparam <span class="hljs-built_in">set</span> /ESVO_SYSTEM_STATUS <span class="hljs-string">&quot;TERMINATE&quot;</span><br></code></pre></td></tr></table></figure>
-
 <p>您需要在<code>ESCO/esvo_core/cfg/trace_xxx.yaml</code>中设置将保存结果文件的路径。</p>
 <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-attr">PATH_TO_SAVE_TRAJECTORY:</span> <span class="hljs-string">&quot;./ESVO/output/&quot;</span> <span class="hljs-comment"># CHANGE THIS PATH</span><br></code></pre></td></tr></table></figure>
-
-
-
-<h3 id="报错-1"><a href="#报错-1" class="headerlink" title="报错"></a>报错</h3><ol>
-<li><ul>
-<li><p>QObject::connect: Cannot queue arguments of type ‘QVector<int>‘<br>(Make sure ‘QVector<int>‘ is registered using qRegisterMetaType().)</p>
+<h3 id="报错-2">报错</h3>
+<ol>
+<li>
+<ul>
+<li>
+<p>QObject::connect: Cannot queue arguments of type ‘QVector<int>’<br>
+(Make sure ‘QVector<int>’ is registered using qRegisterMetaType().)</p>
 <p>运行<code>esvo_core/mvstereo</code>时也会报这个错，所以不是这里的问题。</p>
 </li>
-<li><p>REQUIRED process [esvo_Tracking-6] has died!<br>process has died [pid 13057, exit code -6, cmd &#x2F;catkin_ws&#x2F;devel&#x2F;lib&#x2F;esvo_core&#x2F;esvo_Tracking time_surface_left:&#x3D;&#x2F;TS_left time_surface_right:&#x3D;&#x2F;TS_right stamped_pose:&#x3D;&#x2F;esvo_tracking&#x2F;pose_pub gt_pose:&#x3D;&#x2F;optitrack&#x2F;davis_stereo events_left:&#x3D;&#x2F;davis&#x2F;left&#x2F;events pointcloud:&#x3D;&#x2F;esvo_mapping&#x2F;pointcloud_local __name:&#x3D;esvo_Tracking __log:&#x3D;&#x2F;home&#x2F;lll25655&#x2F;.ros&#x2F;log&#x2F;91ef2428-ac63-11ee-a412-10f60abacaed&#x2F;esvo_Tracking-6.log].<br>log file: &#x2F;home&#x2F;lll25655&#x2F;.ros&#x2F;log&#x2F;91ef2428-ac63-11ee-a412-10f60abacaed&#x2F;esvo_Tracking-6*.log<br>Initiating shutdown!</p>
+<li>
+<p>REQUIRED process [esvo_Tracking-6] has died!<br>
+process has died [pid 13057, exit code -6, cmd /catkin_ws/devel/lib/esvo_core/esvo_Tracking time_surface_left:=/TS_left time_surface_right:=/TS_right stamped_pose:=/esvo_tracking/pose_pub gt_pose:=/optitrack/davis_stereo events_left:=/davis/left/events pointcloud:=/esvo_mapping/pointcloud_local __name:=esvo_Tracking __log:=/home/lll25655/.ros/log/91ef2428-ac63-11ee-a412-10f60abacaed/esvo_Tracking-6.log].<br>
+log file: /home/lll25655/.ros/log/91ef2428-ac63-11ee-a412-10f60abacaed/esvo_Tracking-6*.log<br>
+Initiating shutdown!</p>
 </li>
 </ul>
 <p>先说结论：</p>
 <p>我是因为PCL库的问题。具体来说，自己源码安装的PCL最好不要安装到系统根目录下，也就是默认的<code>/usr/local/</code>下，如果安装到了<code>/usr/local/</code>下，最后链接PCL的库的时候会默认链接到这个路径下的库。但是绝大部分搭建在ROS上的工程都是使用ROS自带的pcl-1.8的，这个时候虽然编译可以通过，但是运行的时候会出错。</p>
 <p>再说过程：</p>
-<p>报错信息根本没有PCL这方面的提示，自己根本就不会往这方面想。为了解决这个报错，我花了3天时间，就是解决不了这一个报错。心太累了，昨天已经决定今天重装系统了。天可怜见，还好今天不死心，想再最后挣扎一下。想到有一个代码库指定自己源码安装的OpenCV会报错，使用<code>find_package(cv_bridge)</code>就不会报错。其他代码库就没有这没问题。要不用ROS自带的OpenCV试试？那其他库ROS有没有自带的？都用ROS自带的试试？PCL的话ROS有没有自带？然后就刷到了这篇博客：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_42731705/article/details/129380907">Ubuntu18安装新版本PCL-1.13，并和ROS自带PCL-1.8共存</a>。<br>完美解决！</p>
+<p>报错信息根本没有PCL这方面的提示，自己根本就不会往这方面想。为了解决这个报错，我花了3天时间，就是解决不了这一个报错。心太累了，昨天已经决定今天重装系统了。天可怜见，还好今天不死心，想再最后挣扎一下。想到有一个代码库指定自己源码安装的OpenCV会报错，使用<code>find_package(cv_bridge)</code>就不会报错。其他代码库就没有这没问题。要不用ROS自带的OpenCV试试？那其他库ROS有没有自带的？都用ROS自带的试试？PCL的话ROS有没有自带？然后就刷到了这篇博客：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_42731705/article/details/129380907">Ubuntu18安装新版本PCL-1.13，并和ROS自带PCL-1.8共存</a>。<br>
+完美解决！</p>
 <p>具体步骤：</p>
 <ol>
-<li><p>找到当时源码安装PCL的文件夹（我是源码安装了PCL1.8），进入<code>build</code>文件夹，找到<code>sudo make install</code>之后产生的这个文件<code>install_manifest.txt</code>，里面有安装的所有东西的路径，删除它们：</p>
+<li>
+<p>找到当时源码安装PCL的文件夹（我是源码安装了PCL1.8），进入<code>build</code>文件夹，找到<code>sudo make install</code>之后产生的这个文件<code>install_manifest.txt</code>，里面有安装的所有东西的路径，删除它们：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 参考命令：</span><br><span class="hljs-built_in">cat</span> install_manifest.txt | sudo xargs <span class="hljs-built_in">rm</span><br><span class="hljs-comment"># 或者</span><br>sudo xargs <span class="hljs-built_in">rm</span> &lt; install_manifest.txt<br></code></pre></td></tr></table></figure>
-
-
 </li>
-<li><p>上述命令只会删除掉文件夹里的文件，会留下空文件夹。所以可以继续对照<code>install_manifest.txt</code>文件，手动删掉多余的空文件夹。我这里是：</p>
+<li>
+<p>上述命令只会删除掉文件夹里的文件，会留下空文件夹。所以可以继续对照<code>install_manifest.txt</code>文件，手动删掉多余的空文件夹。我这里是：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo <span class="hljs-built_in">rm</span> -r /usr/local/include/pcl-1.8/<br>sudo <span class="hljs-built_in">rm</span> -r /usr/local/share/pcl-1.8/<br></code></pre></td></tr></table></figure>
-
-
 </li>
-<li><p>如果该方法不行。尝试其它方法也不行的话。可以尝试卸载重装ROS：<a href="https://zeyulong.com/posts/84f91530/">ROS的安装与卸载</a>。</p>
+<li>
+<p>如果该方法不行。尝试其它方法也不行的话。可以尝试卸载重装ROS：<a href="https://zeyulong.com/posts/84f91530/">ROS的安装与卸载</a>。</p>
 </li>
 </ol>
 <p>附：</p>
 <p>ESVO的GitHub Issues上关于这个报错的讨论（没有看到通用的解决办法）：</p>
 <ul>
-<li><p><a target="_blank" rel="noopener" href="https://github.com/HKUST-Aerial-Robotics/ESVO/issues/1">https://github.com/HKUST-Aerial-Robotics/ESVO/issues/1</a></p>
+<li>
+<p><a target="_blank" rel="noopener" href="https://github.com/HKUST-Aerial-Robotics/ESVO/issues/1">https://github.com/HKUST-Aerial-Robotics/ESVO/issues/1</a></p>
 </li>
-<li><p><a target="_blank" rel="noopener" href="https://github.com/HKUST-Aerial-Robotics/ESVO/issues/2">https://github.com/HKUST-Aerial-Robotics/ESVO/issues/2</a></p>
+<li>
+<p><a target="_blank" rel="noopener" href="https://github.com/HKUST-Aerial-Robotics/ESVO/issues/2">https://github.com/HKUST-Aerial-Robotics/ESVO/issues/2</a></p>
 </li>
-<li><p><a target="_blank" rel="noopener" href="https://github.com/HKUST-Aerial-Robotics/ESVO/issues/3">https://github.com/HKUST-Aerial-Robotics/ESVO/issues/3</a></p>
+<li>
+<p><a target="_blank" rel="noopener" href="https://github.com/HKUST-Aerial-Robotics/ESVO/issues/3">https://github.com/HKUST-Aerial-Robotics/ESVO/issues/3</a></p>
 </li>
-<li><p><a target="_blank" rel="noopener" href="https://github.com/HKUST-Aerial-Robotics/ESVO/issues/4">https://github.com/HKUST-Aerial-Robotics/ESVO/issues/4</a></p>
+<li>
+<p><a target="_blank" rel="noopener" href="https://github.com/HKUST-Aerial-Robotics/ESVO/issues/4">https://github.com/HKUST-Aerial-Robotics/ESVO/issues/4</a></p>
 </li>
-<li><p><a target="_blank" rel="noopener" href="https://github.com/HKUST-Aerial-Robotics/ESVO/issues/7">https://github.com/HKUST-Aerial-Robotics/ESVO/issues/7</a> PCL</p>
+<li>
+<p><a target="_blank" rel="noopener" href="https://github.com/HKUST-Aerial-Robotics/ESVO/issues/7">https://github.com/HKUST-Aerial-Robotics/ESVO/issues/7</a> PCL</p>
 </li>
-<li><p><a target="_blank" rel="noopener" href="https://github.com/HKUST-Aerial-Robotics/ESVO/issues/18">https://github.com/HKUST-Aerial-Robotics/ESVO/issues/18</a></p>
+<li>
+<p><a target="_blank" rel="noopener" href="https://github.com/HKUST-Aerial-Robotics/ESVO/issues/18">https://github.com/HKUST-Aerial-Robotics/ESVO/issues/18</a></p>
 </li>
-<li><p><a target="_blank" rel="noopener" href="https://github.com/HKUST-Aerial-Robotics/ESVO/issues/22">https://github.com/HKUST-Aerial-Robotics/ESVO/issues/22</a></p>
+<li>
+<p><a target="_blank" rel="noopener" href="https://github.com/HKUST-Aerial-Robotics/ESVO/issues/22">https://github.com/HKUST-Aerial-Robotics/ESVO/issues/22</a></p>
 </li>
 </ul>
 </li>
 <li></li>
 </ol>
-<h2 id="esvo-core-mvstereo"><a href="#esvo-core-mvstereo" class="headerlink" title="esvo_core&#x2F;mvstereo"></a>esvo_core&#x2F;mvstereo</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># conda deactivate &amp;&amp; source ./devel/setup.zsh</span><br><span class="hljs-comment"># roscore  # 不必运行</span><br></code></pre></td></tr></table></figure>
-
+<h2 id="esvo-core-mvstereo">esvo_core/mvstereo</h2>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># conda deactivate &amp;&amp; source ./devel/setup.zsh</span><br><span class="hljs-comment"># roscore  # 不必运行</span><br></code></pre></td></tr></table></figure>
 <p>该模块实现了ESVO的建图器和其他一些基于事件的建图方法（如[26]，[45]）。作为一个多视图双目（MVS）管道，它假设姿势是已知的先验。要启动建图器，请运行：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">source</span> ./devel/setup.zsh &amp;&amp; roslaunch esvo_core mvstereo_xxx.launch<br><span class="hljs-comment"># source ./devel/setup.zsh &amp;&amp; roslaunch esvo_core mvstereo_upenn.launch</span><br><span class="hljs-comment"># source ./devel/setup.zsh &amp;&amp; roslaunch esvo_core mvstereo_rpg.launch</span><br></code></pre></td></tr></table></figure>
-
 <p>这将同时启动两个<code>esvo_time_surface</code>节点（分别用于左右事件相机）、建图节点和跟踪节点。然后播放运行输入的包文件：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">source</span> ./devel/setup.zsh &amp;&amp; roslaunch esvo_time_surface [bag_name].launch<br><span class="hljs-comment"># source ./devel/setup.zsh &amp;&amp; roslaunch esvo_time_surface upenn_indoor_flying1.launch</span><br><span class="hljs-comment"># source ./devel/setup.zsh &amp;&amp; roslaunch esvo_time_surface upenn_indoor_flying3.launch</span><br><br><span class="hljs-comment"># source ./devel/setup.zsh &amp;&amp; roslaunch esvo_time_surface rpg_bin.launch</span><br><span class="hljs-comment"># source ./devel/setup.zsh &amp;&amp; roslaunch esvo_time_surface rpg_boxes.launch</span><br><span class="hljs-comment"># source ./devel/setup.zsh &amp;&amp; roslaunch esvo_time_surface rpg_desk.launch</span><br><span class="hljs-comment"># source ./devel/setup.zsh &amp;&amp; roslaunch esvo_time_surface rpg_monitor.launch</span><br></code></pre></td></tr></table></figure>
-
 <p>请注意，只有<code>rpg</code>和<code>upenn</code>数据集适用于这个模块，因为它们含有地面真值。</p>
-<h1 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h1><h2 id="conda环境安装"><a href="#conda环境安装" class="headerlink" title="conda环境安装"></a>conda环境安装</h2><p>自己曾尝试在激活conda环境的情况下运行ESVO（ROS），主要是为了解决PCL库问题的一种尝试，当时以为是本地Qt的问题，所以想使用conda的Qt尝试解决问题。</p>
+<h1>其他</h1>
+<h2 id="conda环境安装">conda环境安装</h2>
+<p>自己曾尝试在激活conda环境的情况下运行ESVO（ROS），主要是为了解决PCL库问题的一种尝试，当时以为是本地Qt的问题，所以想使用conda的Qt尝试解决问题。</p>
 <p>当然，最后不了了之，也是<code>conda deactivate</code>运行起来更简单直接。</p>
 <p>下面的配置自建conda环境的步骤供参考：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs bash">conda create -n ESVO python=3.6<br>conda activate ESVO<br>conda search qt<br>conda install qt=5.9.7  <span class="hljs-comment"># 替换为实际可用的版本</span><br><span class="hljs-comment"># conda install pyqt=5.9.*  # 确保版本与Qt版本相匹配</span><br>pip index versions pyqt5<br>pip install pyqt5==5.9.2<br><span class="hljs-comment"># conda list</span><br><span class="hljs-comment"># conda deactivate</span><br><span class="hljs-comment"># conda remove -n env_name --all  # 删除环境</span><br><span class="hljs-comment"># conda info -e  # 查看所有的环境</span><br></code></pre></td></tr></table></figure>
-
 <p>指定此时系统使用conda环境里的Qt：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo gedit /etc/profile<br><span class="hljs-comment"># 注释掉本地的Qt</span><br><span class="hljs-built_in">source</span> /etc/profile <br>sudo gedit ~/.zshrc<br><span class="hljs-comment"># 注释掉本地的Qt</span><br><span class="hljs-built_in">source</span> ~/.zshrc<br>conda activate ESVO<br>qmake -v  <span class="hljs-comment"># 测试当前路径和版本是否正确</span><br></code></pre></td></tr></table></figure>
-
-
-
 <p>验证安装: 安装完成后，你可以通过运行简单的测试来验证Qt是否正确安装和配置。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># test.py</span><br><span class="hljs-keyword">import</span> sys<br><span class="hljs-keyword">from</span> PyQt5.QtWidgets <span class="hljs-keyword">import</span> QApplication, QWidget<br><br>app = QApplication(sys.argv)<br>w = QWidget()<br>w.resize(<span class="hljs-number">250</span>, <span class="hljs-number">150</span>)<br>w.move(<span class="hljs-number">300</span>, <span class="hljs-number">300</span>)<br>w.setWindowTitle(<span class="hljs-string">&#x27;Simple&#x27;</span>)<br>w.show()<br><br>sys.exit(app.exec_())<br></code></pre></td></tr></table></figure>
-
 <p>运行这个Python脚本，如果一切正常，你应该会看到一个简单的窗口。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">cd</span> yourfolder/<br>python test.py<br></code></pre></td></tr></table></figure>
-
-
-
 <p>后续安装：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash">pip install catkin-tools rospkg pyyaml numpy<br>pip install pydot<br>pip install PyQt5-tools<br>pip install empy==3.3.4<br></code></pre></td></tr></table></figure>
-
 <p>（往下没有继续踩坑）</p>
-<h1 id="评估"><a href="#评估" class="headerlink" title="评估"></a>评估</h1><p><a target="_blank" rel="noopener" href="https://github.com/HKUST-Aerial-Robotics/ESVO/issues/29">https://github.com/HKUST-Aerial-Robotics/ESVO/issues/29</a></p>
+<h1>评估</h1>
+<p><a target="_blank" rel="noopener" href="https://github.com/HKUST-Aerial-Robotics/ESVO/issues/29">https://github.com/HKUST-Aerial-Robotics/ESVO/issues/29</a></p>
 <p>[待更新……]</p>
 
                 
