@@ -24,7 +24,7 @@
 <meta property="og:description" content="本文主要分享了自己在编译和运行论文《Event-Based Stereo Visual Odometry》（下面简称为ESVO）的代码时的调试记录。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-01-10T14:29:10.000Z">
-<meta property="article:modified_time" content="2024-01-11T09:23:33.304Z">
+<meta property="article:modified_time" content="2024-01-11T09:30:01.179Z">
 <meta property="article:author" content="龙泽雨">
 <meta name="twitter:card" content="summary_large_image">
   
@@ -419,7 +419,7 @@
 </li>
 </ol>
 </li>
-<li><p>如果您没有 &#x3D;&#x3D;DAVIS&#x3D;&#x3D;，您仍然可以使用此驱动程序读取记录的文件。示例：</p>
+<li><p>如果您没有<strong>DAVIS</strong>，您仍然可以使用此驱动程序读取记录的文件。示例：</p>
 <ol>
 <li><p>下载数据集的序列，如<a target="_blank" rel="noopener" href="http://rpg.ifi.uzh.ch/datasets/davis/slider_depth.bag">slider_deep.bag</a>。</p>
 </li>
@@ -508,7 +508,7 @@
 <p>可能遇到的报错及处理：</p>
 <p>报错1：</p>
 <ul>
-<li><p>报错信息：&#x2F;usr&#x2F;lib&#x2F;libgdal.so.20：对‘<a href="mailto:&#84;&#x49;&#70;&#70;&#82;&#101;&#97;&#x64;&#x52;&#71;&#x42;&#x41;&#84;&#105;&#108;&#101;&#x45;&#120;&#x74;&#64;&#76;&#x49;&#x42;&#x54;&#73;&#x46;&#x46;&#95;&#x34;&#x2e;&#x30;">&#84;&#x49;&#70;&#70;&#82;&#101;&#97;&#x64;&#x52;&#71;&#x42;&#x41;&#84;&#105;&#108;&#101;&#x45;&#120;&#x74;&#64;&#76;&#x49;&#x42;&#x54;&#73;&#x46;&#x46;&#95;&#x34;&#x2e;&#x30;</a>’未定义的引用。</p>
+<li><p>报错信息：&#x2F;usr&#x2F;lib&#x2F;libgdal.so.20：对‘<a href="mailto:&#84;&#73;&#70;&#x46;&#82;&#101;&#x61;&#100;&#82;&#x47;&#66;&#65;&#84;&#x69;&#108;&#x65;&#69;&#120;&#116;&#x40;&#x4c;&#73;&#x42;&#84;&#73;&#x46;&#x46;&#95;&#x34;&#46;&#48;">&#84;&#73;&#70;&#x46;&#82;&#101;&#x61;&#100;&#82;&#x47;&#66;&#65;&#84;&#x69;&#108;&#x65;&#69;&#120;&#116;&#x40;&#x4c;&#73;&#x42;&#84;&#73;&#x46;&#x46;&#95;&#x34;&#46;&#48;</a>’未定义的引用。</p>
 </li>
 <li><p>报错原因：TIFF的库和conda的TIFF库发生了冲突（对于我解决了问题）</p>
 </li>
@@ -682,7 +682,9 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">source</span> ./devel/setup.zsh &amp;&amp; roslaunch esvo_time_surface [bag_name].launch<br><span class="hljs-comment"># source ./devel/setup.zsh &amp;&amp; roslaunch esvo_time_surface upenn_indoor_flying1.launch</span><br><span class="hljs-comment"># source ./devel/setup.zsh &amp;&amp; roslaunch esvo_time_surface upenn_indoor_flying3.launch</span><br><br><span class="hljs-comment"># source ./devel/setup.zsh &amp;&amp; roslaunch esvo_time_surface rpg_bin.launch</span><br><span class="hljs-comment"># source ./devel/setup.zsh &amp;&amp; roslaunch esvo_time_surface rpg_boxes.launch</span><br><span class="hljs-comment"># source ./devel/setup.zsh &amp;&amp; roslaunch esvo_time_surface rpg_desk.launch</span><br><span class="hljs-comment"># source ./devel/setup.zsh &amp;&amp; roslaunch esvo_time_surface rpg_monitor.launch</span><br></code></pre></td></tr></table></figure>
 
 <p>请注意，只有<code>rpg</code>和<code>upenn</code>数据集适用于这个模块，因为它们含有地面真值。</p>
-<h1 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h1><h2 id="conda环境安装"><a href="#conda环境安装" class="headerlink" title="conda环境安装"></a>conda环境安装</h2><p>自己曾尝试在激活conda环境的情况下运行ESVO（ROS），当然，最后不了了之，还是<code>conda deactivate</code>简单直接。下面的步骤供参考：</p>
+<h1 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h1><h2 id="conda环境安装"><a href="#conda环境安装" class="headerlink" title="conda环境安装"></a>conda环境安装</h2><p>自己曾尝试在激活conda环境的情况下运行ESVO（ROS），主要是为了解决PCL库问题的一种尝试，当时以为是本地Qt的问题，所以想使用conda的Qt尝试解决问题。</p>
+<p>当然，最后不了了之，也是<code>conda deactivate</code>运行起来更简单直接。</p>
+<p>下面的配置自建conda环境的步骤供参考：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs bash">conda create -n ESVO python=3.6<br>conda activate ESVO<br>conda search qt<br>conda install qt=5.9.7  <span class="hljs-comment"># 替换为实际可用的版本</span><br><span class="hljs-comment"># conda install pyqt=5.9.*  # 确保版本与Qt版本相匹配</span><br>pip index versions pyqt5<br>pip install pyqt5==5.9.2<br><span class="hljs-comment"># conda list</span><br><span class="hljs-comment"># conda deactivate</span><br><span class="hljs-comment"># conda remove -n env_name --all  # 删除环境</span><br><span class="hljs-comment"># conda info -e  # 查看所有的环境</span><br></code></pre></td></tr></table></figure>
 
 <p>指定此时系统使用conda环境里的Qt：</p>
@@ -701,9 +703,9 @@
 <p>后续安装：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash">pip install catkin-tools rospkg pyyaml numpy<br>pip install pydot<br>pip install PyQt5-tools<br>pip install empy==3.3.4<br></code></pre></td></tr></table></figure>
 
-<p>……</p>
+<p>（往下没有继续踩坑）</p>
 <h1 id="评估"><a href="#评估" class="headerlink" title="评估"></a>评估</h1><p><a target="_blank" rel="noopener" href="https://github.com/HKUST-Aerial-Robotics/ESVO/issues/29">https://github.com/HKUST-Aerial-Robotics/ESVO/issues/29</a></p>
-<p>[待更新]</p>
+<p>[待更新……]</p>
 
                 
               </div>
@@ -786,6 +788,12 @@
                 <div class="post-prevnext my-3">
                   <article class="post-prev col-6">
                     
+                    
+                      <a href="/posts/26eed968/" title="找论文和找代码的步骤总结">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">找论文和找代码的步骤总结</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
                     
                   </article>
                   <article class="post-next col-6">
