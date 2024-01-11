@@ -285,7 +285,7 @@
                 
                 <p>本文主要分享了在Linux下Eigen库的安装与版本管理。</p>
 <span id="more"></span>
-<h1>安装</h1>
+<h1 id="安装">安装</h1>
 <h2 id="利用apt-get进行安装">利用apt-get进行安装</h2>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo apt-get install libeigen3-dev<br></code></pre></td></tr></table></figure>
 <p>通过上面的方式进行安装的Eigen，一般是存放在<code>/usr/include</code>，有一个<code>eigen3</code>文件夹。</p>
@@ -317,7 +317,7 @@
 <p>这样<code>/usr/include</code>目录下就存在两个版本的<code>eigen</code>，一个是以<code>eigen3</code>命名的通过<code>apt-get</code>的方式安装的最新版本3.4.0，另外一个是以<code>eigen330</code>命名通过编译源码的形式安装的自选指定版本3.3.0。</p>
 </li>
 </ol>
-<h1>版本管理</h1>
+<h1 id="版本管理">版本管理</h1>
 <h2 id="mv命令">mv命令</h2>
 <p>Linux <code>mv</code>（英文全拼：move file）命令用来为文件或目录改名、或将文件或目录移入其它位置。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 将源文件名 source_file 改为目标文件名 dest_file</span><br><span class="hljs-built_in">mv</span> source_file(文件) dest_file(文件)<br><span class="hljs-comment"># 将文件 source_file 移动到目标目录 dest_directory 中</span><br><span class="hljs-built_in">mv</span> source_file(文件) dest_directory(目录)<br><span class="hljs-comment"># 目录名 dest_directory 已存在，将 source_directory 移动到目录名 dest_directory 中；</span><br><span class="hljs-comment"># 目录名 dest_directory 不存在则 source_directory 改名为目录名 dest_directory</span><br><span class="hljs-built_in">mv</span> source_directory(目录) dest_directory(目录)<br><span class="hljs-comment"># 出错</span><br><span class="hljs-built_in">mv</span> source_directory(目录) dest_file(文件)<br></code></pre></td></tr></table></figure>
@@ -333,7 +333,7 @@
 <p>这样就通过重命名的方式改变系统查找文件时的指向，进而完成了版本切换的工作。</p>
 <p>现为3.3.0版本，想要切换回3.4.0版本：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo gedit /usr/share/pkgconfig/eigen3.pc<br><span class="hljs-comment"># 把Line 7 改为Version: 3.4.0</span><br><span class="hljs-built_in">cd</span> /usr/include<br>sudo <span class="hljs-built_in">mv</span> eigen3 eigen330  <span class="hljs-comment"># 把eigen3重命名为eigen330</span><br>sudo <span class="hljs-built_in">mv</span> eigen340 eigen3  <span class="hljs-comment"># 把eigen340重命名为eigen3</span><br><span class="hljs-comment"># 此时/usr/include目录下有文件夹eigen3(3.4.0)和eigen330</span><br></code></pre></td></tr></table></figure>
-<h1>参考链接</h1>
+<h1 id="参考链接">参考链接</h1>
 <p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_42265301/article/details/121984300">Eigen3多版本切换</a></p>
 <p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_36594547/article/details/102955881">ubuntu系统简单的eigen版本切换</a></p>
 

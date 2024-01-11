@@ -285,10 +285,10 @@
                 
                 <p>本文主要分享了自己在编译和运行论文《Event-Based Stereo Visual Odometry》（下面简称为ESVO）的代码时的调试记录。</p>
 <span id="more"></span>
-<h1>ESVO简介</h1>
+<h1 id="ESVO简介">ESVO简介</h1>
 <p><a target="_blank" rel="noopener" href="https://sites.google.com/view/esvo-project-page/home">ESVO Project Page</a></p>
 <p><a target="_blank" rel="noopener" href="https://github.com/HKUST-Aerial-Robotics/ESVO">Source Code</a></p>
-<h1>数据集下载</h1>
+<h1 id="数据集下载">数据集下载</h1>
 <h2 id="原始数据集">原始数据集</h2>
 <p><a target="_blank" rel="noopener" href="http://rpg.ifi.uzh.ch/ECCV18_stereo_davis.html">rpg (University of Zurich)</a></p>
 <p><a target="_blank" rel="noopener" href="https://daniilidis-group.github.io/mvsec/">upenn (University of Pennsylvania)</a></p>
@@ -309,7 +309,7 @@
 <ul>
 <li><a target="_blank" rel="noopener" href="https://drive.google.com/file/d/1wywOckwAc7d6xxqqnjAYjv8FNXf4TZ9g/view">hkust_lab.bag</a></li>
 </ul>
-<h1>环境配置</h1>
+<h1 id="环境配置">环境配置</h1>
 <h2 id="1-配置ROS">1. 配置ROS</h2>
 <ul>
 <li>Ubuntu 18.04.5 LTS + ROS melodic + gcc 5.5.0 + cmake (&gt;=3.10) + OpenCV 3.2</li>
@@ -420,7 +420,7 @@
 </ol>
 </li>
 <li>
-<p>如果您没有==DAVIS==，您仍然可以使用此驱动程序读取记录的文件。示例：</p>
+<p>如果您没有<mark>DAVIS</mark>，您仍然可以使用此驱动程序读取记录的文件。示例：</p>
 <ol>
 <li>
 <p>下载数据集的序列，如<a target="_blank" rel="noopener" href="http://rpg.ifi.uzh.ch/datasets/davis/slider_depth.bag">slider_deep.bag</a>。</p>
@@ -562,7 +562,7 @@
 </li>
 <li></li>
 </ol>
-<h1>运行使用</h1>
+<h1 id="运行使用">运行使用</h1>
 <h2 id="注意事项">注意事项</h2>
 <p>在 Razor Blade 15笔记本电脑(Intel® Core™ i7-8750H CPU @ 2.20GHz × 12)上可以看到实时性能。</p>
 <ul>
@@ -612,11 +612,11 @@
 <h2 id="报错">报错</h2>
 <ol>
 <li>
-<p>ROS:ModuleNotFoundError: No module named ‘rospkg’</p>
+<p>ROS:ModuleNotFoundError: No module named 'rospkg'</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 安装了anaconda 导致的</span><br><span class="hljs-comment"># https://blog.csdn.net/qq_42995327/article/details/119357775</span><br><span class="hljs-built_in">which</span> pip<br>pip install catkin-tools rospkg pyyaml empy numpy <span class="hljs-comment"># 不能彻底解决问题</span><br><span class="hljs-comment"># 或</span><br>conda deactivate  <span class="hljs-comment"># 可以解决报错</span><br></code></pre></td></tr></table></figure>
 </li>
 <li>
-<p>ROS:ModuleNotFoundError: No module named ‘PySide2’</p>
+<p>ROS:ModuleNotFoundError: No module named 'PySide2'</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 安装了anaconda 导致的</span><br><span class="hljs-built_in">which</span> pip<br>pip install PySide2  <span class="hljs-comment"># 不能彻底解决问题</span><br><span class="hljs-comment"># 或</span><br>conda deactivate  <span class="hljs-comment"># 可以解决报错</span><br></code></pre></td></tr></table></figure>
 </li>
 <li></li>
@@ -637,8 +637,8 @@
 <li>
 <ul>
 <li>
-<p>QObject::connect: Cannot queue arguments of type ‘QVector<int>’<br>
-(Make sure ‘QVector<int>’ is registered using qRegisterMetaType().)</p>
+<p>QObject::connect: Cannot queue arguments of type 'QVector<int>'<br>
+(Make sure 'QVector<int>' is registered using qRegisterMetaType().)</p>
 <p>运行<code>esvo_core/mvstereo</code>时也会报这个错，所以不是这里的问题。</p>
 </li>
 <li>
@@ -651,8 +651,7 @@ Initiating shutdown!</p>
 <p>先说结论：</p>
 <p>我是因为PCL库的问题。具体来说，自己源码安装的PCL最好不要安装到系统根目录下，也就是默认的<code>/usr/local/</code>下，如果安装到了<code>/usr/local/</code>下，最后链接PCL的库的时候会默认链接到这个路径下的库。但是绝大部分搭建在ROS上的工程都是使用ROS自带的pcl-1.8的，这个时候虽然编译可以通过，但是运行的时候会出错。</p>
 <p>再说过程：</p>
-<p>报错信息根本没有PCL这方面的提示，自己根本就不会往这方面想。为了解决这个报错，我花了3天时间，就是解决不了这一个报错。心太累了，昨天已经决定今天重装系统了。天可怜见，还好今天不死心，想再最后挣扎一下。想到有一个代码库指定自己源码安装的OpenCV会报错，使用<code>find_package(cv_bridge)</code>就不会报错。其他代码库就没有这没问题。要不用ROS自带的OpenCV试试？那其他库ROS有没有自带的？都用ROS自带的试试？PCL的话ROS有没有自带？然后就刷到了这篇博客：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_42731705/article/details/129380907">Ubuntu18安装新版本PCL-1.13，并和ROS自带PCL-1.8共存</a>。<br>
-完美解决！</p>
+<p>报错信息根本没有PCL这方面的提示，自己根本就不会往这方面想。为了解决这个报错，我花了3天时间，就是解决不了这一个报错。心太累了，昨天已经决定今天重装系统了。天可怜见，还好今天不死心，想再最后挣扎一下。想到有一个代码库指定自己源码安装的OpenCV会报错，使用<code>find_package(cv_bridge)</code>就不会报错。其他代码库就没有这没问题。要不用ROS自带的OpenCV试试？那其他库ROS有没有自带的？都用ROS自带的试试？PCL的话ROS有没有自带？然后就刷到了这篇博客：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_42731705/article/details/129380907">Ubuntu18安装新版本PCL-1.13，并和ROS自带PCL-1.8共存</a>。完美解决！</p>
 <p>具体步骤：</p>
 <ol>
 <li>
@@ -702,7 +701,7 @@ Initiating shutdown!</p>
 <p>这将同时启动两个<code>esvo_time_surface</code>节点（分别用于左右事件相机）、建图节点和跟踪节点。然后播放运行输入的包文件：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">source</span> ./devel/setup.zsh &amp;&amp; roslaunch esvo_time_surface [bag_name].launch<br><span class="hljs-comment"># source ./devel/setup.zsh &amp;&amp; roslaunch esvo_time_surface upenn_indoor_flying1.launch</span><br><span class="hljs-comment"># source ./devel/setup.zsh &amp;&amp; roslaunch esvo_time_surface upenn_indoor_flying3.launch</span><br><br><span class="hljs-comment"># source ./devel/setup.zsh &amp;&amp; roslaunch esvo_time_surface rpg_bin.launch</span><br><span class="hljs-comment"># source ./devel/setup.zsh &amp;&amp; roslaunch esvo_time_surface rpg_boxes.launch</span><br><span class="hljs-comment"># source ./devel/setup.zsh &amp;&amp; roslaunch esvo_time_surface rpg_desk.launch</span><br><span class="hljs-comment"># source ./devel/setup.zsh &amp;&amp; roslaunch esvo_time_surface rpg_monitor.launch</span><br></code></pre></td></tr></table></figure>
 <p>请注意，只有<code>rpg</code>和<code>upenn</code>数据集适用于这个模块，因为它们含有地面真值。</p>
-<h1>其他</h1>
+<h1 id="其他">其他</h1>
 <h2 id="conda环境安装">conda环境安装</h2>
 <p>自己曾尝试在激活conda环境的情况下运行ESVO（ROS），主要是为了解决PCL库问题的一种尝试，当时以为是本地Qt的问题，所以想使用conda的Qt尝试解决问题。</p>
 <p>当然，最后不了了之，也是<code>conda deactivate</code>运行起来更简单直接。</p>
@@ -717,7 +716,7 @@ Initiating shutdown!</p>
 <p>后续安装：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash">pip install catkin-tools rospkg pyyaml numpy<br>pip install pydot<br>pip install PyQt5-tools<br>pip install empy==3.3.4<br></code></pre></td></tr></table></figure>
 <p>（往下没有继续踩坑）</p>
-<h1>评估</h1>
+<h1 id="评估">评估</h1>
 <p><a target="_blank" rel="noopener" href="https://github.com/HKUST-Aerial-Robotics/ESVO/issues/29">https://github.com/HKUST-Aerial-Robotics/ESVO/issues/29</a></p>
 <p>[待更新……]</p>
 

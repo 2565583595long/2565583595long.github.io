@@ -295,7 +295,7 @@
                 
                 <p>本文主要分享了在Linux下OpenCV库的安装与版本管理。</p>
 <span id="more"></span>
-<h1>安装</h1>
+<h1 id="安装">安装</h1>
 <h2 id="1-安装依赖">1. 安装依赖</h2>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 安装依赖</span><br>sudo apt-get -y install libopencv-dev build-essential cmake git libgtk2.0-dev libtiff5-dev<br>sudo apt-get -y install pkg-config python-dev python-numpy libdc1394-22 libdc1394-22-dev<br>sudo apt-get -y install libtheora-dev libvorbis-dev libxvidcore-dev x264 v4l-utils unzip<br>sudo apt-get -y install libqt4-dev libfaac-dev libmp3lame-dev libopencore-amrnb-dev libopencore-amrwb-dev<br>sudo apt-get -y install libswscale-dev libgstreamer0.10-dev libgstreamer-plugins-base0.10-dev libv4l-dev libtbb-dev <br>sudo apt-get -y install libjpeg-dev libpng12-dev libjasper-dev libavcodec-dev libavformat-dev <br></code></pre></td></tr></table></figure>
 <h2 id="2-新建文件夹">2. 新建文件夹</h2>
@@ -305,8 +305,7 @@
 <h2 id="3-编译安装">3. 编译安装</h2>
 <h3 id="编译安装流程">编译安装流程</h3>
 <blockquote>
-<p>假设我们已经安装好一版OpenCV，一般都默认安装在<code>/usr/local</code>下。<br>
-如果需要安装另一个版本的OpenCV，就不能再安装到<code>/usr/local</code>，而是选择其他路径，否则会覆盖掉之前的版本。</p>
+<p>假设我们已经安装好一版OpenCV，一般都默认安装在<code>/usr/local</code>下。如果需要安装另一个版本的OpenCV，就不能再安装到<code>/usr/local</code>，而是选择其他路径，否则会覆盖掉之前的版本。</p>
 </blockquote>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 运行cmake，注意CMAKE_INSTALL_PREFIX的路径选择</span><br>sudo cmake -D CMAKE_BUILD_TYPE=RELEASE -D CMAKE_INSTALL_PREFIX=/usr/local -D WITH_TBB=ON -D WITH_V4L=ON -D WITH_QT=ON -D WITH_OPENGL=ON ..<br><span class="hljs-comment"># 在已有opencv3.1.0安装在/usr/local/路径下的前提下，我选择将opencv3.4.5安装在/usr/local/opencv/opencv345/路径下</span><br>sudo cmake -D CMAKE_BUILD_TYPE=RELEASE -D CMAKE_INSTALL_PREFIX=/usr/local/opencv/opencv345 -D WITH_TBB=ON -D WITH_V4L=ON -D WITH_QT=ON -D WITH_OPENGL=ON ..<br><br><span class="hljs-comment"># 建议在make之前先查看CPU的核心数</span><br><span class="hljs-built_in">nproc</span>  <span class="hljs-comment"># 你可以根据你的核心数来调整make指令的参数，比如笔者的CPU核心数为12，则可以执行：</span><br>make -j12<br><br>sudo make -j8  <span class="hljs-comment"># 运行make</span><br>sudo make install  <span class="hljs-comment"># 运行install</span><br></code></pre></td></tr></table></figure>
 <h3 id="报错处理">报错处理</h3>
@@ -322,7 +321,7 @@
 <h4 id="3-2-0">3.2.0</h4>
 <ol>
 <li>
-<p>/usr/include/c++/5/bits/c++0x_warning.h:32:2: error: #error This file requires compiler and library support for the ISO C++ 2011 standard.</p>
+<p>/usr/include/c++/5/bits/c<ins>0x_warning.h:32:2: error: #error This file requires compiler and library support for the ISO C</ins> 2011 standard.</p>
 <p>在根目录的<code>CmakeLists.txt</code>开头加上一句：</p>
 <figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cmake"><span class="hljs-keyword">add_definitions</span>(-std=c++<span class="hljs-number">11</span>)<br></code></pre></td></tr></table></figure>
 </li>
@@ -348,7 +347,7 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">mkdir</span> build<br><span class="hljs-built_in">cd</span> build<br>cmake ..<br>make -j8<br>./test<br></code></pre></td></tr></table></figure>
 <p>输出以下内容，即表明配置成功：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash">OpenCV version : 3.4.5<br>Major version : 3<br>Minor version : 4<br>Subminor version : 5<br></code></pre></td></tr></table></figure>
-<h1>版本管理</h1>
+<h1 id="版本管理">版本管理</h1>
 <h3 id="方法1-去掉cv-bridge，自行在CMakeLists-txt文件里指定OpenCV的路径">方法1. 去掉cv_bridge，自行在CMakeLists.txt文件里指定OpenCV的路径</h3>
 <p>首先进行第一章<code>安装</code>的第4、5步。</p>
 <p>后，编辑<code>CMakeLists.txt</code>文件：</p>
@@ -412,7 +411,7 @@
 </li>
 <li></li>
 </ol>
-<h1>主要参考链接</h1>
+<h1 id="主要参考链接">主要参考链接</h1>
 <p><a target="_blank" rel="noopener" href="https://www.guyuehome.com/34079">Ubuntu环境下ROS安装自己OPENCV版本</a></p>
 <p><a target="_blank" rel="noopener" href="https://immortalqx.github.io/2021/07/06/opencv-notes-0/#%E9%85%8D%E7%BD%AEOpenCV">buntu配置OpenCV及多版本OpenCV共存</a></p>
 

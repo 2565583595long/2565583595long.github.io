@@ -29,7 +29,7 @@
 <meta property="og:image" content="http://zeyulong.com/posts/3edad46f/%E8%8E%B7%E5%8F%96%E5%AD%97%E4%BD%93%E9%93%BE%E6%8E%A5.png">
 <meta property="og:image" content="http://zeyulong.com/posts/3edad46f/Vercel%E9%85%8D%E7%BD%AE%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F.png">
 <meta property="article:published_time" content="2023-12-24T15:52:40.000Z">
-<meta property="article:modified_time" content="2024-01-10T14:36:25.909Z">
+<meta property="article:modified_time" content="2024-01-11T16:13:13.198Z">
 <meta property="article:author" content="龙泽雨">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="http://zeyulong.com/posts/3edad46f/%E9%BC%A0%E6%A0%87%E7%82%B9%E5%87%BB%E7%89%B9%E6%95%88-1.gif">
@@ -231,7 +231,7 @@
         
         
         
-          126 分钟
+          127 分钟
         
       </span>
     
@@ -281,7 +281,7 @@
               <p id="updated-time" class="note note-info" style="">
                 
                   
-                    本文最后更新于 2024年1月10日 晚上
+                    本文最后更新于 2024年1月12日 凌晨
                   
                 
               </p>
@@ -291,7 +291,7 @@
                 
                 <p>理论上讲，这里实现的效果是基于<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/index.html">Hexo</a>的，对于实际使用的主题没有要求，都是适用的。我使用的是<a target="_blank" rel="noopener" href="https://hexo.fluid-dev.com/docs/">Hexo Fluid</a>主题。在这里也感谢各位开发人员的付出，让我们可以更便捷、美观地搭建出自己的个人博客。</p>
 <span id="more"></span>
-<h1>写在前面的话</h1>
+<h1 id="写在前面的话">写在前面的话</h1>
 <h2 id="存在的问题">存在的问题</h2>
 <p>因为我是通过<code>npm</code>命令直接安装的<a target="_blank" rel="noopener" href="https://hexo.fluid-dev.com/docs/">Hexo Fluid</a>主题：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">npm install --save hexo-theme-fluid<br></code></pre></td></tr></table></figure>
@@ -351,7 +351,7 @@
 <p>综上所述，将脚本放在哪里取决于脚本的作用、对页面加载性能的影响，以及对DOM元素的依赖情况。通常推荐将影响DOM的脚本放在<code>&lt;body&gt;</code>的底部以提高页面加载速度和用户体验。</p>
 <h3 id="补救措施">补救措施</h3>
 <p>另外，发现提交到<code>GitHub</code>上的文件夹，即<code>.\Blog\.deploy_git</code>里面存有<code>.\Blog\node_modules\hexo-theme-fluid\</code>即主题文件夹下的配置文件等内容。因此，如果在更新主题前没有及时备份，导致更新主题后之前在主题文件夹下自定义和修改过的文件（夹）被覆盖掉。可以在更新主题后不要急着<code>hexo clean &amp;&amp; hexo g &amp;&amp; hexo d</code>，这之前可以在<code>.\Blog\.deploy_git</code>里面或者<code>GitHub</code>上对应的的存储库中找到之前的文件（夹）。</p>
-<h1>鼠标点击特效</h1>
+<h1 id="鼠标点击特效">鼠标点击特效</h1>
 <p>最终效果如下图所示：</p>
 <img src="/posts/3edad46f/%E9%BC%A0%E6%A0%87%E7%82%B9%E5%87%BB%E7%89%B9%E6%95%88-1.gif" srcset="/img/loading.gif" lazyload class="" title="鼠标点击特效-1">
 <h2 id="摸索过程">摸索过程</h2>
@@ -444,7 +444,13 @@
 </li>
 <li></li>
 </ol>
-<h1>替换Mac风格代码块</h1>
+<h1 id="行内（反引号-内）代码样式">行内（反引号``内）代码样式</h1>
+<p>在<code>.\Blog\node_modules\hexo-theme-fluid\source\custom</code>目录下新建文件夹<code>Fonts</code>，并在该文件夹内新建样式文件<code>CodeFont.css</code>，内容如下：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-selector-class">.markedown-body</span> pre <span class="hljs-selector-tag">code</span> &#123;<br>    <span class="hljs-attribute">color</span>: <span class="hljs-built_in">rgb</span>(<span class="hljs-number">56</span> <span class="hljs-number">160</span> <span class="hljs-number">110</span>);<br>&#125;<br><br><span class="hljs-selector-tag">code</span> &#123;<br>    <span class="hljs-attribute">color</span>: <span class="hljs-built_in">rgb</span>(<span class="hljs-number">56</span> <span class="hljs-number">160</span> <span class="hljs-number">110</span>);<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>在<code>./Blog</code>目录下修改主题配置文件<code>_config.fluid.yml</code>，找到<code>custom_css</code>配置项，引入刚刚新建的文件：</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs yml"><span class="hljs-attr">custom_css:</span><br>  <span class="hljs-bullet">-</span> <span class="hljs-string">/custom/Fonts/CodeFont.css</span><br></code></pre></td></tr></table></figure>
+<p>完成，部署即可。</p>
+<h1 id="Mac风格代码块">Mac风格代码块</h1>
 <p>根据<a target="_blank" rel="noopener" href="https://blog.kevinchu.top/2023/07/17/hexo-theme-fluid-modify/#7-%E6%9B%BF%E6%8D%A2mac%E9%A3%8E%E6%A0%BC%E4%BB%A3%E7%A0%81%E5%9D%97">替换Mac风格代码块的参考链接</a>里的说明，在<code>.\Blog\node_modules\hexo-theme-fluid\source\custom</code>目录下新建文件夹<code>Markdown</code>，并在该文件夹内新建样式文件<code>macpanel.styl</code>，内容如下：</p>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-selector-class">.highlight</span><br>    <span class="hljs-attribute">background</span>: <span class="hljs-number">#21252b</span><br>    border-radius: <span class="hljs-number">5px</span><br>    box-shadow: <span class="hljs-number">0</span> <span class="hljs-number">10px</span> <span class="hljs-number">30px</span> <span class="hljs-number">0</span> <span class="hljs-built_in">rgba</span>(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, .<span class="hljs-number">4</span>)<br>    padding-top: <span class="hljs-number">30px</span><br><br>    &amp;::before<br>      background: <span class="hljs-number">#fc625d</span><br>      border-radius: <span class="hljs-number">50%</span><br>      box-shadow: <span class="hljs-number">20px</span> <span class="hljs-number">0</span> <span class="hljs-number">#fdbc40</span>, <span class="hljs-number">40px</span> <span class="hljs-number">0</span> <span class="hljs-number">#35cd4b</span><br>      content: <span class="hljs-string">&#x27; &#x27;</span><br>      height: <span class="hljs-number">12px</span><br>      left: <span class="hljs-number">12px</span><br>      margin-top: -<span class="hljs-number">20px</span><br>      position: absolute<br>      width: <span class="hljs-number">12px</span><br></code></pre></td></tr></table></figure>
 <p>在<code>./Blog</code>目录下修改主题配置文件<code>_config.fluid.yml</code>，找到<code>custom_css</code>配置项，引入刚刚新建的样式文件（此处引入<code>.styl</code>文件无需加后缀）：</p>
@@ -455,7 +461,7 @@
 <p>注：如果选用其他代码高亮风格，有可能会造成代码背景是偏白色的，与黑色的Mac栏不搭。</p>
 </blockquote>
 <p>完成。部署即可。</p>
-<h1>看板娘</h1>
+<h1 id="看板娘">看板娘</h1>
 <p>此处主要参考引用了两位博主的博客：</p>
 <p><a target="_blank" rel="noopener" href="https://alec-97.github.io/posts/2499736958/">添加看板娘的参考链接-1</a></p>
 <p><a target="_blank" rel="noopener" href="https://wei-ll.github.io/2023/06/23/Butterfly%E4%B8%BB%E9%A2%98%E7%BE%8E%E5%8C%96/index.html">添加看板娘的参考链接-2</a></p>
@@ -600,13 +606,13 @@
 <p>等等。</p>
 </li>
 </ol>
-<h1>浏览器标签恶搞</h1>
+<h1 id="浏览器标签恶搞">浏览器标签恶搞</h1>
 <p>根据<a target="_blank" rel="noopener" href="https://asteri5m.gitee.io/archives/Fluid%E9%AD%94%E6%94%B9%E7%AC%94%E8%AE%B0.html#0x13-%E6%A0%87%E7%AD%BE%E6%81%B6%E6%90%9E">浏览器标签恶搞的参考链接</a>里的说明，在<code>.\Blog\node_modules\hexo-theme-fluid\source\custom</code>目录下新建文件夹<code>LabelPage</code>，并在该文件夹内新建文件<code>LabelPage.js</code>，内容如下：</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">// 浏览器搞笑标题</span><br><span class="hljs-keyword">var</span> <span class="hljs-title class_">OriginTitle</span> = <span class="hljs-variable language_">document</span>.<span class="hljs-property">title</span>;<br><span class="hljs-keyword">var</span> titleTime;<br><span class="hljs-variable language_">document</span>.<span class="hljs-title function_">addEventListener</span>(<span class="hljs-string">&#x27;visibilitychange&#x27;</span>, <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) &#123;<br>	<span class="hljs-keyword">if</span> (<span class="hljs-variable language_">document</span>.<span class="hljs-property">hidden</span>) &#123;<br>		$(<span class="hljs-string">&#x27;[rel=&quot;icon&quot;]&#x27;</span>).<span class="hljs-title function_">attr</span>(<span class="hljs-string">&#x27;href&#x27;</span>, <span class="hljs-string">&quot;/funny.ico&quot;</span>);<br>		<span class="hljs-variable language_">document</span>.<span class="hljs-property">title</span> = <span class="hljs-string">&#x27;╭(°A°`)╮ 人生若只如初见&#x27;</span>;<br>		<span class="hljs-built_in">clearTimeout</span>(titleTime);<br>	&#125; <span class="hljs-keyword">else</span> &#123;<br>		$(<span class="hljs-string">&#x27;[rel=&quot;icon&quot;]&#x27;</span>).<span class="hljs-title function_">attr</span>(<span class="hljs-string">&#x27;href&#x27;</span>, <span class="hljs-string">&quot;/img/newtubiao.png&quot;</span>);<br>		<span class="hljs-variable language_">document</span>.<span class="hljs-property">title</span> = <span class="hljs-string">&#x27;(ฅ&gt;ω&lt;*ฅ)  既见君子 云胡不喜&#x27;</span>;<br>		titleTime = <span class="hljs-built_in">setTimeout</span>(<span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) &#123;<br>			<span class="hljs-variable language_">document</span>.<span class="hljs-property">title</span> = <span class="hljs-title class_">OriginTitle</span>;<br>		&#125;, <span class="hljs-number">2000</span>);<br>	&#125;<br>&#125;);<br></code></pre></td></tr></table></figure>
 <p>在<code>./Blog</code>目录下修改主题配置文件<code>_config.fluid.yml</code>，找到<code>custom_css</code>配置项，引入刚刚新建的文件：</p>
 <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-attr">custom_css:</span><br>  <span class="hljs-bullet">-</span> <span class="hljs-string">/custom/LabelPage/LabelPage.js</span><br></code></pre></td></tr></table></figure>
 <p>完成。部署即可。</p>
-<h1>自定义字体</h1>
+<h1 id="自定义字体">自定义字体</h1>
 <p>本博客选择了全局使用思源宋体，下面介绍方法。</p>
 <h2 id="引入网络上托管的字体">引入网络上托管的字体</h2>
 <ol>
@@ -665,19 +671,19 @@
 <p>指定代码块的字体。</p>
 <ol>
 <li>
-<p>根据<a target="_blank" rel="noopener" href="https://github.com/fluid-dev/hexo-theme-fluid/issues/536">如何修改md中代码块的字体？</a>里提供的解决方案，在<code>.\Blog\node_modules\hexo-theme-fluid\source\custom\Markdown</code>文件夹下新建文件<code>CodeFont.css</code>并写入以下内容：</p>
+<p>根据<a target="_blank" rel="noopener" href="https://github.com/fluid-dev/hexo-theme-fluid/issues/536">如何修改md中代码块的字体？</a>里提供的解决方案，在<code>.\Blog\node_modules\hexo-theme-fluid\source\custom\Fonts</code>文件夹下新建文件<code>CodeFont.css</code>并写入以下内容：</p>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-selector-class">.markdown-body</span> <span class="hljs-selector-tag">code</span>, <span class="hljs-selector-class">.markdown-body</span> pre &#123;<br>    <span class="hljs-attribute">font-family</span>: <span class="hljs-string">&quot;Noto Serif SC&quot;</span>,monospace <span class="hljs-meta">!important</span>;<br>    <span class="hljs-attribute">font-size</span>: <span class="hljs-number">100%</span> <span class="hljs-meta">!important</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
 <p>注：这里的<code>custom</code>及其子文件夹为自己新建的文件夹。</p>
 </li>
 <li>
 <p>在<code>./Blog</code>根目录下打开文件<code>_config.fluid.yml</code>，找到一个名为 <code>custom_css</code> 的配置项，加入刚才自定义文件的路径：</p>
-<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs yml"><span class="hljs-attr">custom_css:</span><br>  <span class="hljs-bullet">-</span> <span class="hljs-string">/custom/Markdown/CodeFont.css</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs yml"><span class="hljs-attr">custom_css:</span><br>  <span class="hljs-bullet">-</span> <span class="hljs-string">/custom/Fonts/CodeFont.css</span><br></code></pre></td></tr></table></figure>
 </li>
 <li></li>
 </ol>
 </li>
 <li>
-<p>大功告成。</p>
+<p>大功告成。部署即可。</p>
 </li>
 </ol>
 <h2 id="引入本地字体">引入本地字体</h2>
@@ -692,7 +698,7 @@
 <li>指定格式是<code>&quot;'JetBrains Mono', 'Noto Serif SC'&quot;</code>。<code>&quot;JetBrains Mono&quot;, &quot;Noto Serif SC&quot;</code>这样会报错的。</li>
 </ol>
 <p>自己本想分别设置博客英文字体为<code>JetBrains Mono</code>，中文字体为<code>Noto Serif SC</code>，但是最后发现整体效果没有只使用<code>Noto Serif SC</code>美观。</p>
-<h1>加载进度条</h1>
+<h1 id="加载进度条">加载进度条</h1>
 <p>实现步骤：</p>
 <ol>
 <li>
@@ -712,7 +718,7 @@
 <p>当然，也可以不使用本地文件，而使用<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/api/injector.html">Hexo注入器</a>来注入链接，例如注入链接：</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs js">&lt;head&gt;<br>  <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;https://cdn.jsdelivr.net/npm/pace-js@latest/pace.min.js&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span><br>  <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">&quot;stylesheet&quot;</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;https://cdn.jsdelivr.net/npm/pace-js@latest/pace-theme-default.min.css&quot;</span>&gt;</span></span><br><span class="language-xml"><span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span></span><br></code></pre></td></tr></table></figure>
 <p>这里就不再赘述。具体可以参考<a target="_blank" rel="noopener" href="https://hexo.fluid-dev.com/docs/advance/#hexo-%E6%B3%A8%E5%85%A5%E4%BB%A3%E7%A0%81">Hexo注入代码</a>。</p>
-<h1>顶部阅读进度条</h1>
+<h1 id="顶部阅读进度条">顶部阅读进度条</h1>
 <p>根据<a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1197346">超简单实现WEB页面顶部阅读进度条</a>提供的代码，实现步骤为：</p>
 <ol>
 <li>
@@ -747,7 +753,7 @@
 <p>完成。部署即可。</p>
 </li>
 </ol>
-<h1>评论系统</h1>
+<h1 id="评论系统">评论系统</h1>
 <h2 id="前言">前言</h2>
 <p>根据<a target="_blank" rel="noopener" href="https://hexo.fluid-dev.com/docs/guide/#%E8%AF%84%E8%AE%BA">Hexo Fluid</a>主题的推荐，国内用户推荐使用<a target="_blank" rel="noopener" href="https://valine.js.org/">Valine</a>、<a target="_blank" rel="noopener" href="https://waline.js.org/">Waline</a>或者<a target="_blank" rel="noopener" href="https://twikoo.js.org/">twikoo</a>。</p>
 <p><a target="_blank" rel="noopener" href="https://valine.js.org/">Valine</a>基于LeanCloud，简洁，但因为自身设计的限制，貌似存在安全问题。自己尝试了<a target="_blank" rel="noopener" href="https://valine.js.org/">Valine</a>，但现在应该是因为DNS污染的问题，部署在博客的评论发不出来。</p>
