@@ -216,7 +216,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          777 字
+          779 字
         
       </span>
     
@@ -287,28 +287,28 @@
                 
                 <p>本文主要分享了在Linux下gcc、g++库的安装与版本管理。</p>
 <span id="more"></span>
-<h1 id="查看版本">查看版本</h1>
+<h1>查看版本</h1>
 <blockquote>
 <p>猜测：例如，<code>/usr/bin/</code>目录下有3个<code>gcc</code>，分别是<code>gcc</code>、<code>gcc-7</code>和<code>gcc-10</code>，三者都是软链接。意思是当前系统中有<code>gcc</code>的版本为7和10两种可以指定给<code>gcc</code>默认使用的版本，指定的方式就是把<code>gcc</code>的软链接指向<code>gcc-7</code>或<code>gcc-10</code>。</p>
 </blockquote>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># gcc</span><br>gcc -v  <span class="hljs-comment"># 此时默认指定的gcc版本</span><br><span class="hljs-comment"># 查询除默认指定的gcc以外的其他gcc的版本</span><br>gcc-10 -v  <span class="hljs-comment"># 请将命令中的10替换为您安装的版本</span><br><span class="hljs-comment"># 查看/usr/bin目录下以gcc为前缀的文件</span><br><span class="hljs-built_in">ls</span> /usr/bin/gcc*<br><span class="hljs-comment">#此处使用 ll 命令更好（可以看到软链接）：</span><br>ll /usr/bin/gcc*<br><br><span class="hljs-comment"># g++</span><br>g++ -v  <span class="hljs-comment"># 此时默认指定的g++版本</span><br><span class="hljs-comment"># 查询除默认指定的gcc以外的其他gcc的版本</span><br>g++-10 -v  <span class="hljs-comment"># 请将命令中的10替换为您安装的版本</span><br><span class="hljs-comment"># 查看/usr/bin目录下以g++为前缀的文件</span><br><span class="hljs-built_in">ls</span> /usr/bin/g++*<br><span class="hljs-comment">#此处使用 ll 命令更好（可以看到软链接）：</span><br>ll /usr/bin/g++*<br></code></pre></td></tr></table></figure>
-<h1 id="安装">安装</h1>
+<h1>安装</h1>
 <h2 id="安装依赖">安装依赖</h2>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo apt update<br>sudo apt upgrade<br>sudo apt install build-essential<br></code></pre></td></tr></table></figure>
 <h2 id="安装gcc、g">安装gcc、g++</h2>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># gcc</span><br>sudo apt-get install gcc   <span class="hljs-comment">##安装最新版本，此处为7</span><br>sudo apt-get install gcc-4.8   <span class="hljs-comment">##安装指定版本</span><br><span class="hljs-comment"># g++</span><br>sudo apt-get install g++   <span class="hljs-comment">##安装最新版本，此处为7</span><br>sudo apt-get install g++-4.8   <span class="hljs-comment">##安装指定版本</span><br></code></pre></td></tr></table></figure>
 <p>如果终端提示找不到：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># gcc</span><br>apt-cache policy gcc-5  <span class="hljs-comment"># 查看gcc5可选的版本</span><br><span class="hljs-comment"># 选择其中一个版本进行安装</span><br>sudo apt-get install gcc-5=5.5.0-12ubuntu1<br><span class="hljs-comment"># g++</span><br>apt-cache policy g++-5  <span class="hljs-comment"># 查看gcc5可选的版本</span><br><span class="hljs-comment"># 选择其中一个版本进行安装</span><br>sudo apt-get install g++-5=5.5.0-12ubuntu1<br></code></pre></td></tr></table></figure>
-<h1 id="版本管理">版本管理</h1>
+<h1>版本管理</h1>
 <p>在安装好多个版本后，使用 <code>update-alternatives</code> 命令为每个 GCC 版本设置优先级。Ubuntu 系统会默认使用优先级最高的版本，如果有需要，可以随时更改。</p>
 <img src="/posts/6dba0521/gcc%E5%91%BD%E4%BB%A4%E8%AF%AD%E6%B3%95.png" srcset="/img/loading.gif" lazyload class="" title="gcc命令语法">
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># gcc</span><br><span class="hljs-comment"># 将版本7加入候选中，其中50、100为优先级</span><br>sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-7 50<br><span class="hljs-comment"># 将版本10加入候选中</span><br>sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-10 100<br><span class="hljs-comment"># 通过下面的指令来选择不同的gcc的版本</span><br>sudo update-alternatives --config gcc<br><span class="hljs-comment"># 删除选项操作</span><br>sudo update-alternatives --remove gcc /usr/bin/gcc-4.8<br><br><span class="hljs-comment"># g++</span><br><span class="hljs-comment"># 将版本7加入候选中，其中50、100为优先级</span><br>sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-7 50<br><span class="hljs-comment"># 将版本10加入候选中</span><br>sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-10 100<br><span class="hljs-comment"># 通过下面的指令来选择不同的g++的版本</span><br>sudo update-alternatives --config g++<br><span class="hljs-comment"># 删除选项操作</span><br>sudo update-alternatives --remove g++ /usr/bin/g++-4.8<br></code></pre></td></tr></table></figure>
 <blockquote>
-<p>当切换使用了其他版本的gcc时，请务必保持g<ins>的版本和gcc版本的一致性，否则用cmake配置出来的项目遇到c</ins>代码还是会用之前版本的gcc。</p>
+<p>当切换使用了其他版本的gcc时，请务必保持g++的版本和gcc版本的一致性，否则用cmake配置出来的项目遇到c++代码还是会用之前版本的gcc。</p>
 </blockquote>
 <p>在配置完优先级之后，通过查询当前gcc、g++版本的方式来验证所期望的版本是否已成为默认版本。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 查看全部的备选项（包括从属链接），请使用 --display 选项：</span><br>sudo update-alternatives --display gcc<br>sudo update-alternatives --display g++<br></code></pre></td></tr></table></figure>
-<h1 id="参考链接">参考链接</h1>
+<h1>参考链接</h1>
 <p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/FBsharl/p/17764874.html">【Linux 基础】gcc、g++多版本间的切换</a></p>
 <p><a target="_blank" rel="noopener" href="https://www.sysgeek.cn/ubuntu-install-gcc-compiler/">如何在 Ubuntu 中安装和切换多版本 GCC 编译器</a></p>
 <p><a target="_blank" rel="noopener" href="https://blog.csdn.net/CharlieVV/article/details/111242143">Ubuntu高版本如何安装低版本GCC (以Ubuntu 20安装GCC5为例)</a></p>
