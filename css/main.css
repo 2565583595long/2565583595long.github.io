@@ -852,7 +852,7 @@ i.iconfont {
   --button-bg-color: transparent;
   --button-hover-bg-color: #f2f3f5;
   --highlight-bg-color: #22272e;
-  --inlinecode-bg-color: transparent;
+  --inlinecode-bg-color: rgba(175,184,193,0.2);
   --fold-title-color: #3c4858;
   --fold-border-color: #eaecef;
 }
