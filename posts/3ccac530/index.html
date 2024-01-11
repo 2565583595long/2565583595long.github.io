@@ -420,7 +420,7 @@
 </ol>
 </li>
 <li>
-<p>如果您没有==DAVIS==，您仍然可以使用此驱动程序读取记录的文件。示例：</p>
+<p>如果您没有<mark>DAVIS</mark>，您仍然可以使用此驱动程序读取记录的文件。示例：</p>
 <ol>
 <li>
 <p>下载数据集的序列，如<a target="_blank" rel="noopener" href="http://rpg.ifi.uzh.ch/datasets/davis/slider_depth.bag">slider_deep.bag</a>。</p>
@@ -651,8 +651,7 @@ Initiating shutdown!</p>
 <p>先说结论：</p>
 <p>我是因为PCL库的问题。具体来说，自己源码安装的PCL最好不要安装到系统根目录下，也就是默认的<code>/usr/local/</code>下，如果安装到了<code>/usr/local/</code>下，最后链接PCL的库的时候会默认链接到这个路径下的库。但是绝大部分搭建在ROS上的工程都是使用ROS自带的pcl-1.8的，这个时候虽然编译可以通过，但是运行的时候会出错。</p>
 <p>再说过程：</p>
-<p>报错信息根本没有PCL这方面的提示，自己根本就不会往这方面想。为了解决这个报错，我花了3天时间，就是解决不了这一个报错。心太累了，昨天已经决定今天重装系统了。天可怜见，还好今天不死心，想再最后挣扎一下。想到有一个代码库指定自己源码安装的OpenCV会报错，使用<code>find_package(cv_bridge)</code>就不会报错。其他代码库就没有这没问题。要不用ROS自带的OpenCV试试？那其他库ROS有没有自带的？都用ROS自带的试试？PCL的话ROS有没有自带？然后就刷到了这篇博客：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_42731705/article/details/129380907">Ubuntu18安装新版本PCL-1.13，并和ROS自带PCL-1.8共存</a>。<br>
-完美解决！</p>
+<p>报错信息根本没有PCL这方面的提示，自己根本就不会往这方面想。为了解决这个报错，我花了3天时间，就是解决不了这一个报错。心太累了，昨天已经决定今天重装系统了。天可怜见，还好今天不死心，想再最后挣扎一下。想到有一个代码库指定自己源码安装的OpenCV会报错，使用<code>find_package(cv_bridge)</code>就不会报错。其他代码库就没有这没问题。要不用ROS自带的OpenCV试试？那其他库ROS有没有自带的？都用ROS自带的试试？PCL的话ROS有没有自带？然后就刷到了这篇博客：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_42731705/article/details/129380907">Ubuntu18安装新版本PCL-1.13，并和ROS自带PCL-1.8共存</a>。完美解决！</p>
 <p>具体步骤：</p>
 <ol>
 <li>
