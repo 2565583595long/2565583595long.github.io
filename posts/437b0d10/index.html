@@ -288,7 +288,7 @@
                 
                 <p>本文主要解决了因为Hexo的语法和路径要求导致的，在本地和Hexo博客上不能同时加载出图片的问题。</p>
 <span id="more"></span>
-<h1>问题描述</h1>
+<h1 id="问题描述">问题描述</h1>
 <p>在本地使用Typora写Markdown文档时，设置了Typora会自动在文档的根目录下新建<code>./$&#123;filename&#125;</code>文件夹，从而可以方便地使用相对路径在文档中插入图片。例如：</p>
 <figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs markdown"><span class="hljs-section"># 文件路径</span><br>hexo-typora<br>├── apppicker.jpg<br>├── logo.png<br>└── rules.jpg<br>hexo-typora.md<br></code></pre></td></tr></table></figure>
 <img src="/posts/437b0d10/%E5%9B%BE1-Markdown%E6%8F%92%E5%85%A5%E5%9B%BE%E7%89%87%E7%9A%84%E8%AF%AD%E6%B3%95.png" srcset="/img/loading.gif" lazyload class="" title="图1-Markdown插入图片的语法">
@@ -301,7 +301,7 @@
 <figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs markdown">&#123;% asset<span class="hljs-emphasis">_img logo.png logo %&#125;</span><br></code></pre></td></tr></table></figure>
 <p>但是，这样的话，本地就加载不出图片了。两者不可兼得。如果在一篇Markdown文档同时使用<strong>图1所示的Markdown插入图片的语法</strong>和<code>&#123;% asset_img logo.png logo %&#125;</code>来引用同一张图片，那么在本地和博客上都会多出一条无效（占空）的语句，影响观感，不喜欢。</p>
 <p>我使用的是<a target="_blank" rel="noopener" href="https://hexo.fluid-dev.com/docs/">Hexo Fluid</a>主题，究其原因，在<a target="_blank" rel="noopener" href="https://hexo.fluid-dev.com/docs/guide/#%E6%96%87%E7%AB%A0%E5%9C%A8%E9%A6%96%E9%A1%B5%E7%9A%84%E5%B0%81%E9%9D%A2%E5%9B%BE">配置指南|Hexo Fluid 用户手册</a>中提到，图片需要存放在<code>.\Blog\node_modules\hexo-theme-fluid\source\</code>目录及其子目录下才能正确引用。那这样的就不能使用相对路径了，不方便管理，麻烦，需要寻找更好的解决办法。</p>
-<h1>解决方法</h1>
+<h1 id="解决方法">解决方法</h1>
 <p>在网上找到了一篇博主的博客<a target="_blank" rel="noopener" href="https://moeci.com/posts/hexo-typora/">Hexo + Typora + 开发Hexo插件 解决图片路径不一致 | yiyun's Blog</a>，前期准备和实现原理部分这里就不再赘述，可以阅读一下，加深对实现方法的理解，方便后面对相似的问题举一反三。</p>
 <p>根据博主GitHub仓库<a target="_blank" rel="noopener" href="https://github.com/yiyungent/hexo-asset-img">yiyungent/hexo-asset-img</a>的说明，通过在<code>.\Blog\</code>根目录鼠标右键打开<code>Git Bash</code>，输入以下命令可以安装<code>hexo-asset-img</code>插件。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">npm install hexo-asset-img --save<br><span class="hljs-comment"># or, Latest Dev</span><br>npm install git://github.com/yiyungent/hexo-asset-img.git<span class="hljs-comment">#main</span><br></code></pre></td></tr></table></figure>
@@ -313,7 +313,7 @@
 <p>打开插件所在的文件夹，即<code>.\Blog\node_modules\hexo-asset-img\</code>。打开<code>index.js</code>文件，在函数<code>action</code>中加一行代码：</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">function</span> <span class="hljs-title function_">action</span>(<span class="hljs-params">data</span>) &#123;<br>    <span class="hljs-keyword">var</span> reverseSource = data.<span class="hljs-property">source</span>.<span class="hljs-title function_">split</span>(<span class="hljs-string">&quot;&quot;</span>).<span class="hljs-title function_">reverse</span>().<span class="hljs-title function_">join</span>(<span class="hljs-string">&quot;&quot;</span>);<br>    <span class="hljs-keyword">var</span> fileName = reverseSource.<span class="hljs-title function_">substring</span>(<span class="hljs-number">3</span>, reverseSource.<span class="hljs-title function_">indexOf</span>(<span class="hljs-string">&quot;/&quot;</span>)).<span class="hljs-title function_">split</span>(<span class="hljs-string">&quot;&quot;</span>).<span class="hljs-title function_">reverse</span>().<span class="hljs-title function_">join</span>(<span class="hljs-string">&quot;&quot;</span>);<br>    <span class="hljs-comment">// 下面的替换操作通过查找所有的(并将其替换为(，从而去除相对路径符号。</span><br>    data.<span class="hljs-property">content</span> = data.<span class="hljs-property">content</span>.<span class="hljs-title function_">replace</span>(<span class="hljs-regexp">/\(\.\//g</span>, <span class="hljs-string">&#x27;(&#x27;</span>);  <span class="hljs-comment">// 添加的一行代码</span><br>    <span class="hljs-comment">// 其余函数部分保持原样，它将接着匹配更新后的内容并进行替换。</span><br></code></pre></td></tr></table></figure>
 <p>现在，通过改进后的<code>hexo-asset-img</code>插件，你引用加或不加相对路径的符号<code>./</code>的图片都不会出现问题了，实现了在本地和Hexo博客上同时加载出图片。</p>
-<h1>后话</h1>
+<h1 id="后话">后话</h1>
 <p>当你发现<code>hexo-asset-img</code>插件在特殊情况下还存在Bug时：</p>
 <ol>
 <li>
