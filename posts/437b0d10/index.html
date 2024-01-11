@@ -302,7 +302,7 @@
 <p>但是，这样的话，本地就加载不出图片了。两者不可兼得。如果在一篇Markdown文档同时使用<strong>图1所示的Markdown插入图片的语法</strong>和<code>&#123;% asset_img logo.png logo %&#125;</code>来引用同一张图片，那么在本地和博客上都会多出一条无效（占空）的语句，影响观感，不喜欢。</p>
 <p>我使用的是<a target="_blank" rel="noopener" href="https://hexo.fluid-dev.com/docs/">Hexo Fluid</a>主题，究其原因，在<a target="_blank" rel="noopener" href="https://hexo.fluid-dev.com/docs/guide/#%E6%96%87%E7%AB%A0%E5%9C%A8%E9%A6%96%E9%A1%B5%E7%9A%84%E5%B0%81%E9%9D%A2%E5%9B%BE">配置指南|Hexo Fluid 用户手册</a>中提到，图片需要存放在<code>.\Blog\node_modules\hexo-theme-fluid\source\</code>目录及其子目录下才能正确引用。那这样的就不能使用相对路径了，不方便管理，麻烦，需要寻找更好的解决办法。</p>
 <h1>解决方法</h1>
-<p>在网上找到了一篇博主的博客<a target="_blank" rel="noopener" href="https://moeci.com/posts/hexo-typora/">Hexo + Typora + 开发Hexo插件 解决图片路径不一致 | yiyun’s Blog</a>，前期准备和实现原理部分这里就不再赘述，可以阅读一下，加深对实现方法的理解，方便后面对相似的问题举一反三。</p>
+<p>在网上找到了一篇博主的博客<a target="_blank" rel="noopener" href="https://moeci.com/posts/hexo-typora/">Hexo + Typora + 开发Hexo插件 解决图片路径不一致 | yiyun's Blog</a>，前期准备和实现原理部分这里就不再赘述，可以阅读一下，加深对实现方法的理解，方便后面对相似的问题举一反三。</p>
 <p>根据博主GitHub仓库<a target="_blank" rel="noopener" href="https://github.com/yiyungent/hexo-asset-img">yiyungent/hexo-asset-img</a>的说明，通过在<code>.\Blog\</code>根目录鼠标右键打开<code>Git Bash</code>，输入以下命令可以安装<code>hexo-asset-img</code>插件。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">npm install hexo-asset-img --save<br><span class="hljs-comment"># or, Latest Dev</span><br>npm install git://github.com/yiyungent/hexo-asset-img.git<span class="hljs-comment">#main</span><br></code></pre></td></tr></table></figure>
 <p>再次测试，发现博客还是加载不出图片。究其原因，是博主的<code>hexo-asset-img</code>插件能够将下图（图2）所示的Markdown插入图片的语法在文章编译为html之前，</p>
@@ -325,7 +325,7 @@
 <p>在本地安装完善好的<code>hexo-asset-img</code>插件。</p>
 </li>
 <li>
-<p>你也可以像博客<a target="_blank" rel="noopener" href="https://moeci.com/posts/hexo-typora/">Hexo + Typora + 开发Hexo插件 解决图片路径不一致 | yiyun’s Blog</a>中那样，在本地手动引入插件。</p>
+<p>你也可以像博客<a target="_blank" rel="noopener" href="https://moeci.com/posts/hexo-typora/">Hexo + Typora + 开发Hexo插件 解决图片路径不一致 | yiyun's Blog</a>中那样，在本地手动引入插件。</p>
 <ol>
 <li>
 <p>在<code>.\Blog\node_modules\</code>目录下创建文件夹<code>hexo-asset-img</code>，初始化<code>npm</code>包。</p>
