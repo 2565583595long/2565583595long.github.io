@@ -1,0 +1,14 @@
+/* webkit, opera, IE9 （谷歌浏览器）*/
+p::selection { 
+    background:#ccc; 
+    color:#ff645d; 
+}
+p::-webkit-selection {
+    background:#ccc;
+    color:#ff645d;
+}
+/* mozilla firefox（火狐浏览器） */
+p::-moz-selection { 
+    background:#ccc; 
+    color:#ff645d; 
+}

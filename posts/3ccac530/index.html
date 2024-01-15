@@ -24,7 +24,7 @@
 <meta property="og:description" content="本文主要分享了自己在编译和运行论文《Event-Based Stereo Visual Odometry》（下面简称为ESVO）的代码时的调试记录。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-01-10T14:29:10.000Z">
-<meta property="article:modified_time" content="2024-01-12T07:22:20.949Z">
+<meta property="article:modified_time" content="2024-01-13T07:17:10.945Z">
 <meta property="article:author" content="龙泽雨">
 <meta name="twitter:card" content="summary_large_image">
   
@@ -71,6 +71,7 @@
 <link rel="stylesheet" href="/custom/live2d/font-awesome.min.css">
 <link rel="stylesheet" href="/custom/LoadingBar/pace-theme-corner-indicator.css">
 <link rel="stylesheet" href="/custom/ReadingProgress/ReadingProgress.css">
+<link rel="stylesheet" href="/custom/SelectBackgroundColor/SelectBackgroundColor.css">
 
 
 
@@ -226,7 +227,7 @@
         
         
         
-          42 分钟
+          43 分钟
         
       </span>
     
@@ -276,7 +277,7 @@
               <p id="updated-time" class="note note-info" style="">
                 
                   
-                    本文最后更新于 2024年1月12日 下午
+                    本文最后更新于 2024年1月13日 下午
                   
                 
               </p>
@@ -331,7 +332,7 @@
 <p>来防止cmake时使用没有cv_bridge的配置文件来指定OpenCV的版本，还是自行寻找使用的系统中其它的版本，从而产生报错。</p>
 </li>
 <li>
-<p>如果自己之前有源码安装的PCL，最好检查一下，不要安装到系统根目录下，也就是默认的<code>/usr/local/</code>下。如果安装到了<code>/usr/local/</code>下，最后链接PCL的库的时候会默认链接到这个路径下的库。但是绝大部分搭建在ROS上的工程都是使用ROS自带的pcl-1.8的，这个时候虽然编译可以通过，但是运行的时候会出错。血泪教训。具体说明见下文。</p>
+<p>如果自己之前有源码安装的PCL，最好检查一下，不要安装到系统根目录下，也就是默认的<code>/usr/local/</code>下。如果安装到了<code>/usr/local/</code>下，最后链接PCL的库的时候会默认链接到这个路径下的库。但是绝大部分搭建在ROS上的工程都是使用ROS自带的pcl-1.8的，这个时候虽然编译可以通过，但是运行的时候会出错，<strong>且报错信息不会有这方面的提示</strong>。血泪教训。具体说明见下文。</p>
 </li>
 <li>
 <p>如果终端是在conda环境下的话，最好提前退出conda环境，因为conda和ros有冲突：</p>
@@ -650,7 +651,7 @@ Initiating shutdown!</p>
 </li>
 </ul>
 <p>先说结论：</p>
-<p>我是因为PCL库的问题。具体来说，自己源码安装的PCL最好不要安装到系统根目录下，也就是默认的<code>/usr/local/</code>下，如果安装到了<code>/usr/local/</code>下，最后链接PCL的库的时候会默认链接到这个路径下的库。但是绝大部分搭建在ROS上的工程都是使用ROS自带的pcl-1.8的，这个时候虽然编译可以通过，但是运行的时候会出错。</p>
+<p>我是因为PCL库的问题。具体来说，自己源码安装的PCL最好不要安装到系统根目录下，也就是默认的<code>/usr/local/</code>下，如果安装到了<code>/usr/local/</code>下，最后链接PCL的库的时候会默认链接到这个路径下的库。但是绝大部分搭建在ROS上的工程都是使用ROS自带的pcl-1.8的，这个时候虽然编译可以通过，但是运行的时候会出错，<strong>且报错信息不会有这方面的提示</strong>。</p>
 <p>再说过程：</p>
 <p>报错信息根本没有PCL这方面的提示，自己根本就不会往这方面想。为了解决这个报错，我花了3天时间，就是解决不了这一个报错。心太累了，昨天已经决定今天重装系统了。天可怜见，还好今天不死心，想再最后挣扎一下。想到有一个代码库指定自己源码安装的OpenCV会报错，使用<code>find_package(cv_bridge)</code>就不会报错。其他代码库就没有这没问题。要不用ROS自带的OpenCV试试？那其他库ROS有没有自带的？都用ROS自带的试试？PCL的话ROS有没有自带？然后就刷到了这篇博客：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_42731705/article/details/129380907">Ubuntu18安装新版本PCL-1.13，并和ROS自带PCL-1.8共存</a>。完美解决！</p>
 <p>具体步骤：</p>
