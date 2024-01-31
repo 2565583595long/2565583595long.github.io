@@ -16,15 +16,15 @@
   <meta name="author" content="龙泽雨">
   <meta name="keywords" content="">
   
-    <meta name="description" content="本文主要总结整理了网上分享的ChatGPT的使用技巧，尽可能做到物尽其用，在使用ChatGPT时充分发挥出其优势和性能，以更好地解决问题。">
+    <meta name="description" content="本文主要总结整理了网上分享的ChatGPT、 GitHub Copilot等大模型及集成交互接口gpt_academic的使用技巧，尽可能做到物尽其用，在使用大模型时充分发挥出其优势和性能，以更好地解决问题。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="ChatGPT的使用技巧">
+<meta property="og:title" content="大模型的使用技巧">
 <meta property="og:url" content="http://zeyulong.com/posts/b0e52d60/index.html">
 <meta property="og:site_name" content="龙泽雨的博客">
-<meta property="og:description" content="本文主要总结整理了网上分享的ChatGPT的使用技巧，尽可能做到物尽其用，在使用ChatGPT时充分发挥出其优势和性能，以更好地解决问题。">
+<meta property="og:description" content="本文主要总结整理了网上分享的ChatGPT、 GitHub Copilot等大模型及集成交互接口gpt_academic的使用技巧，尽可能做到物尽其用，在使用大模型时充分发挥出其优势和性能，以更好地解决问题。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-01-03T09:59:29.000Z">
-<meta property="article:modified_time" content="2024-01-15T13:45:43.760Z">
+<meta property="article:modified_time" content="2024-01-25T08:34:27.233Z">
 <meta property="article:author" content="龙泽雨">
 <meta name="twitter:card" content="summary_large_image">
   
@@ -32,7 +32,7 @@
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>ChatGPT的使用技巧 - 龙泽雨的博客</title>
+  <title>大模型的使用技巧 - 龙泽雨的博客</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -188,7 +188,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle">ChatGPT的使用技巧</span>
+            <span id="subtitle">大模型的使用技巧</span>
           
         </div>
 
@@ -216,7 +216,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          7.9k 字
+          14k 字
         
       </span>
     
@@ -227,7 +227,7 @@
         
         
         
-          66 分钟
+          116 分钟
         
       </span>
     
@@ -272,12 +272,12 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">ChatGPT的使用技巧</h1>
+            <h1 id="seo-header">大模型的使用技巧</h1>
             
               <p id="updated-time" class="note note-info" style="">
                 
                   
-                    本文最后更新于 2024年1月15日 晚上
+                    本文最后更新于 2024年1月25日 下午
                   
                 
               </p>
@@ -285,7 +285,7 @@
             
               <div class="markdown-body">
                 
-                <p>本文主要总结整理了网上分享的ChatGPT的使用技巧，尽可能做到物尽其用，在使用ChatGPT时充分发挥出其优势和性能，以更好地解决问题。</p>
+                <p>本文主要总结整理了网上分享的ChatGPT、 GitHub Copilot等大模型及集成交互接口gpt_academic的使用技巧，尽可能做到物尽其用，在使用大模型时充分发挥出其优势和性能，以更好地解决问题。</p>
 <span id="more"></span>
 <h1 id="提问技巧">提问技巧</h1>
 <h2 id="总体提问流程">总体提问流程</h2>
@@ -606,24 +606,6 @@
 <figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs txt">I want you to act as an English translator, spelling corrector and improver. I will speak to you in any language and you will detect the language, translate it and answer in the corrected and improved version of my text, in English. I want you to replace my simplified A0-level words and sentences with more beautiful and elegant, upper level English words and sentences. Keep the meaning same, but make them more literary. I want you to only reply the correction, the improvements and nothing else, do not write explanations. My first sentence is “不要怀疑！我就是专家”.<br></code></pre></td></tr></table></figure>
 <figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs txt">用来rephrase (reword) 学术论文：<br>I want you to act as an academic journal editor. Please rephrase (reword) the paragraph from an academic angle based on the writting style of the Nature journal: (接要改写的论文段落)<br><br>向潜在导师套磁：<br>I am an undergraduate student.I want to write an email to a Professor in MITworking on large language models to sell my experience and ask him if he is willingto recruit me as a PhD student in next year.<br><br>给审稿人发邮件催促审稿：<br>I am a graduate student.I want to write an email to the reviewer of Naturejournal to ask him to accelerate the review process of my submitted paper.<br><br>给科研论文起标题和缩写：<br>I am writing a scientific paper.Can you help me think a good acronym of thefollowing topic:A New low power Implantable Wireless Brain Machine Interface.<br></code></pre></td></tr></table></figure>
 <h1 id="其他">其他</h1>
-<h2 id="小技巧">小技巧</h2>
-<h3 id="如何上传本地的文件（夹）">如何上传本地的文件（夹）</h3>
-<ol>
-<li>
-<p>在设置里启用ChatGPT4.0的代码解释器Code Interpreter（现在默认已启用？），聊天输入框内的左边出现了一个加号，点击它就可以打开本地电脑的文件浏览器了。</p>
-<p>支持格式众多。</p>
-<figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs txt">请从 PDF 中提取表格并将其另存为 Excel 文件。 让我们一步一步来。 完成任务后，请提供 Excel 文件的下载链接。<br><br>请在所提供的 ZIP 文件中找到的多个 PDF 的每个页面的中心添加对角线水印。 水印应缩放至目标页面大小的 75%。 水印内容应为“myaiforce.com”，以 Courier-Bold 字体书写，灰色，不透明度 50%。 任务完成后，请分享所有已处理 PDF 的下载链接。<br></code></pre></td></tr></table></figure>
-</li>
-<li>
-<p><code>AskYourPDF</code>ChatGPT4.0插件。</p>
-</li>
-<li>
-<p><a target="_blank" rel="noopener" href="https://chromewebstore.google.com/detail/becfinhbfclcgokjlobojlnldbfillpf?hl=en-US">ChatGPT Sidebar &amp; File Uploader</a>浏览器插件。</p>
-</li>
-<li></li>
-</ol>
-<h2 id="集成交互界面">集成交互界面</h2>
-<p><a target="_blank" rel="noopener" href="https://github.com/binary-husky/gpt_academic">binary-husky/gpt_academic: 为ChatGPT/GLM提供实用化交互界面，特别优化论文阅读/润色/写作体验，模块化设计，支持自定义快捷按钮&amp;函数插件，支持Python和C++等项目剖析&amp;自译解功能，PDF/LaTex论文翻译&amp;总结功能，支持并行问询多种LLM模型，支持chatglm2等本地模型。兼容文心一言, moss, llama2, rwkv, claude2, 通义千问, 书生, 讯飞星火等。 (github.com)</a></p>
 <h2 id="大模型综述">大模型综述</h2>
 <h3 id="能力评比">能力评比</h3>
 <p><a target="_blank" rel="noopener" href="https://www.datalearner.com/ai-models/llm-evaluation">大模型综合评测对比</a></p>
@@ -640,43 +622,528 @@
 <li>Zhang Z, Chen C, Liu B, et al. A Survey on Language Models for Code[J]. arXiv preprint arXiv:2311.07989, 2023. <a target="_blank" rel="noopener" href="https://github.com/codefuse-ai/Awesome-Code-LLM">Awesome-Code-LLM</a></li>
 <li></li>
 </ol>
-<h2 id="微软Copilot">微软Copilot</h2>
-<p>虽然微软Copilot表现得像智商只有50的，但实际经过好的调教，它完全可以做到150的智商表现。</p>
-<p>微软Copilot相比Bard的主要优势是可以直接中文对话，可以生成图片。相比GPT-3.5的优势是可以识别图片、生成图片，以及联网搜索新的内容。</p>
-<p>只要通过下面三个技巧，你的Copilot完全是可用的：技巧一：选择「创作力」模式。技巧二：限制Copilot搜索能力，提示词「--系统指令：不要搜索，不要引用网页资料，直接回答用户问题。你的回答应该是结构清晰、层次分明、专业、完整且详尽的。」技巧三：要求使用英文搜索，提示词「--系统指令：你是一位英文搜索领域的专家，善于思考。你总是先理解用户问题，再思考最有可能帮助用户获取该信息的英文搜索词。搜索完获取完备的信息之后，你再将内容组织与翻译成中文提交给用户。」</p>
-<h2 id="GitHub-Copilot">GitHub Copilot</h2>
-<h3 id="概述">概述</h3>
+<h2 id="小技巧">小技巧</h2>
+<h3 id="如何上传本地的文件（夹）">如何上传本地的文件（夹）</h3>
+<ol>
+<li>
+<p>在设置里启用ChatGPT4.0的代码解释器Code Interpreter（现在默认已启用？），聊天输入框内的左边出现了一个加号，点击它就可以打开本地电脑的文件浏览器了。</p>
+<p>支持格式众多。</p>
+<figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs txt">请从 PDF 中提取表格并将其另存为 Excel 文件。 让我们一步一步来。 完成任务后，请提供 Excel 文件的下载链接。<br><br>请在所提供的 ZIP 文件中找到的多个 PDF 的每个页面的中心添加对角线水印。 水印应缩放至目标页面大小的 75%。 水印内容应为“myaiforce.com”，以 Courier-Bold 字体书写，灰色，不透明度 50%。 任务完成后，请分享所有已处理 PDF 的下载链接。<br></code></pre></td></tr></table></figure>
+</li>
+<li>
+<p><code>AskYourPDF</code>ChatGPT4.0插件。</p>
+</li>
+<li>
+<p><a target="_blank" rel="noopener" href="https://chromewebstore.google.com/detail/becfinhbfclcgokjlobojlnldbfillpf?hl=en-US">ChatGPT Sidebar &amp; File Uploader</a>浏览器插件。</p>
+</li>
+<li></li>
+</ol>
+<h1 id="gpt-academic集成交互界面">gpt_academic集成交互界面</h1>
+<p><a target="_blank" rel="noopener" href="https://github.com/binary-husky/gpt_academic">binary-husky/gpt_academic</a></p>
+<p><a target="_blank" rel="noopener" href="https://space.bilibili.com/475312678/channel/collectiondetail?sid=1260148">chatgpt-academic的官方演示教程</a></p>
+<h2 id="概述">概述</h2>
+<p>为GPT/GLM等基座大语言模型提供实用化交互接口，特别优化论文阅读/润色/写作体验，模块化设计，支持自定义快捷按钮&amp;函数插件，支持Python和C++等项目剖析&amp;自译解功能，PDF/LaTex论文翻译&amp;总结功能，支持并行问询多种LLM模型，支持chatglm3等本地模型。接入通义千问, deepseekcoder, 讯飞星火, 文心一言, llama2, rwkv, claude2, moss等。</p>
+<p>优缺点分析：</p>
+<p>缺点：</p>
+<ul>
+<li>
+<p>项目本身少有缺点，不过项目只是为大模型提供交互接口，所以需要导入第三方大模型的API_KEY。而使用或者想要更好地第三方大模型的API_KEY一般是需要花钱的（使用API_KEY调用OpenAI的gpt-3.5-turbo等模型是<a target="_blank" rel="noopener" href="https://platform.openai.com/docs/guides/rate-limits/usage-tiers?context=tier-free">免费</a>的？）。</p>
+<blockquote>
+<p>如果本身没有复杂的需求，需要集成好的功能，而只需要与大模型进行对话等，使用ChatGPT-3.5等免费的大模型也许就可以了。</p>
+</blockquote>
+</li>
+<li>
+<p>与ChatGPT-4的使用次数限制（3小时40条消息）类似，调用OpenAI的大模型接口同样存在<a target="_blank" rel="noopener" href="https://platform.openai.com/docs/guides/rate-limits">速率限制</a>，具体为：速率限制以五种方式衡量：RPM（每分钟请求数）、RPD（每天请求数）、TPM（每分钟令牌数）、TPD（每天令牌数）和 IPM（每分钟图像数）。任何选项都可能达到速率限制，具体取决于首先发生的情况。其他大模型的限制没研究不清楚。</p>
+</li>
+</ul>
+<p>优点：</p>
+<ul>
+<li>项目本身开源，持续更新、兼容，不存在内购。</li>
+<li>支持市面上大部分的大模型，一键调用和切换。</li>
+<li>预制丰富功能，且可自定义。相当于ChatGPT-4的插件库，而ChatGPT-4的插件多有免费限制，存在内购行为。</li>
+<li>ChatGPT-4每月订阅20美元，如果没有经常使用的话，性价比其实不高。而购买使用第三方大模型的API_KEY，则是根据Token收费，用多少花多少。</li>
+</ul>
+<p>结论：</p>
+<ul>
+<li>按需选择。</li>
+</ul>
+<h2 id="购买OpenAI的API-KEY">购买OpenAI的API_KEY</h2>
+<ol>
+<li>
+<p><a target="_blank" rel="noopener" href="https://xn--111-ok4b9e.xn--jh1al63br2ca.com/auth/register?code=xtIg">使用VC喵开始外网代理</a>。</p>
+<ol>
+<li>订阅链接。自己用的VC喵，注册、购买套餐（支持支付宝、微信和信用卡）、使用即可，官网有详细教程，这里不再赘述。节点一般还是比较稳定的，延迟也还好，客服反馈和处理速度也可以。<a target="_blank" rel="noopener" href="https://www.vcmiao.com/">备用链接</a>。</li>
+<li>桌面端。VC喵的使用教程里使用的是clash dashboard，自己找到了一个<a target="_blank" rel="noopener" href="https://github.com/mapleafgo/clash-for-flutter">桌面端</a>，使用起来更方便些？这是一个 Clash 的多平台客户端，目前支持 windows、linux、macos、android。把从VC喵里获得的订阅链接填写进去就可以了。</li>
+<li>注意开启代理时模式选择为<code>全局</code>（有规则、全局和直连的选项），这样检测代理时才不会检测为还是中国（OpenAI检测到中国会被封号）。具体情况见下文所述。</li>
+</ol>
+</li>
+<li>
+<p><a target="_blank" rel="noopener" href="https://gpt.fomepay.com/#/pages/login/index?d=P21830">使用FOMEPay开通国外虚拟信用卡</a>。</p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/672506821">参考流程</a>。提示：</p>
+<ol>
+<li>有开卡费10美元和每次充值2%-5%的手续费。</li>
+<li>建议使用国外邮箱进行<a target="_blank" rel="noopener" href="https://gpt.fomepay.com/#/pages/login/index?d=P21830">注册</a>。</li>
+<li>需要使用同一网络（FOMEPay系统登录设备和支付宝登录设备同一WIFI或者同一热点，不然会白屏或者报错提示）。</li>
+</ol>
+</li>
+<li>
+<p>注册OpenaAI账号和绑定海外手机号。<a target="_blank" rel="noopener" href="https://juejin.cn/post/7216769618705809469">参考链接</a></p>
+<ol>
+<li>
+<p>使用浏览器打开<a target="_blank" rel="noopener" href="https://openai.com/">OpenaAI官网</a>，使用国外主流邮箱注册（如gmail和hotmail等）。</p>
+</li>
+<li>
+<p>申请临时海外手机号以使用OpenaAI的API_KEY。</p>
+<ol>
+<li>注册和登录<a target="_blank" rel="noopener" href="https://sms-activate.org/">手机号购买链接</a>。</li>
+<li>点击界面右上角，选择使用支付宝充值（至少2美元）。</li>
+<li>点击界面左侧-查找服务-搜索<code>OpenAI</code>-在结果列表中选择一个国家（如Indonesia印度尼西亚英文）-点击购物车标识进行购买-购买完成后界面中间跳转为<code>我的激活</code>，可查看当前购买的手机号（<strong>有效期20分钟</strong>），等待接收验证码。</li>
+</ol>
+</li>
+<li>
+<p>绑定手机号。进入OpenAI主界面-API keys-输入手机号-获取验证码-绑定手机号-获得自己账号的API keys。</p>
+</li>
+</ol>
+</li>
+<li>
+<p><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/639065136">给OpenAI的API_KEY充值</a>。登录<a target="_blank" rel="noopener" href="https://openai.com/">OpenAI官网</a>-Settings-billing-Start Payment Plan-Set up paid account-输入信用卡信息-充值-创建API_KEY-使用。</p>
+<p>提示：</p>
+<ol>
+<li>购买成功后，在第三方接口输入你自己的API_KEY，即可调用OpenAI的大模型。OpenAI的大模型有多种，有不同的<a target="_blank" rel="noopener" href="https://platform.openai.com/docs/models">特性</a>和<a target="_blank" rel="noopener" href="https://openai.com/pricing">价位</a>，按需选择。</li>
+<li>在OpenAI的首页-Usage查看使用、调用情况和花费。</li>
+</ol>
+</li>
+<li></li>
+</ol>
+<h2 id="安装运行">安装运行</h2>
+<h3 id="安装方法I：直接运行-Windows-Linux-or-MacOS">安装方法I：直接运行 (Windows, Linux or MacOS)</h3>
+<ol>
+<li>
+<p>下载项目</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs sh">git <span class="hljs-built_in">clone</span> --depth=1 https://github.com/binary-husky/gpt_academic.git<br><span class="hljs-built_in">cd</span> gpt_academic<br></code></pre></td></tr></table></figure>
+</li>
+<li>
+<p>配置API_KEY等变量</p>
+<p>在<code>config.py</code>中，配置API KEY等变量。<a target="_blank" rel="noopener" href="https://github.com/binary-husky/gpt_academic/issues/1">特殊网络环境设置方法</a>、<a target="_blank" rel="noopener" href="https://github.com/binary-husky/gpt_academic/wiki/%E9%A1%B9%E7%9B%AE%E9%85%8D%E7%BD%AE%E8%AF%B4%E6%98%8E">Wiki-项目配置说明</a>。</p>
+<p>「 程序会优先检查是否存在名为<code>config_private.py</code>的私密配置文件，并用其中的配置覆盖<code>config.py</code>的同名配置。如您能理解以上读取逻辑，我们强烈建议您在<code>config.py</code>同路径下创建一个名为<code>config_private.py</code>的新配置文件，并使用<code>config_private.py</code>配置项目，以确保更新或其他用户无法轻易查看您的私有配置 」。</p>
+<p>「 支持通过<code>环境变量</code>配置项目，环境变量的书写格式参考<code>docker-compose.yml</code>文件或者我们的<a target="_blank" rel="noopener" href="https://github.com/binary-husky/gpt_academic/wiki/%E9%A1%B9%E7%9B%AE%E9%85%8D%E7%BD%AE%E8%AF%B4%E6%98%8E">Wiki页面</a>。配置读取优先级: <code>环境变量</code> &gt; <code>config_private.py</code> &gt; <code>config.py</code> 」。</p>
+</li>
+<li>
+<p>安装依赖</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs sh"><span class="hljs-comment"># （选择I: 如熟悉python, python推荐版本 3.9 ~ 3.11）备注：使用官方pip源或者阿里pip源, 临时换源方法：python -m pip install -r requirements.txt -i https://mirrors.aliyun.com/pypi/simple/</span><br>python -m pip install -r requirements.txt<br><br><span class="hljs-comment"># （选择II: 使用Anaconda）步骤也是类似的 (https://www.bilibili.com/video/BV1rc411W7Dr)：</span><br>conda create -n gptac_venv python=3.11    <span class="hljs-comment"># 创建anaconda环境</span><br>conda activate gptac_venv                 <span class="hljs-comment"># 激活anaconda环境</span><br>python -m pip install -r requirements.txt <span class="hljs-comment"># 这个步骤和pip安装一样的步骤</span><br>pip install --upgrade nougat-ocr tiktoken  <span class="hljs-comment"># 可选，[插件-学术]精确翻译PDF论文(NOUGAT)需要。需好的网络环境和2G以上流量。</span><br></code></pre></td></tr></table></figure>
+</li>
+<li>
+<p>检查代理地址。配置完成后，你可以用以下命令测试proxy是否工作，如果一切正常，下面的代码将输出你的proxy服务器所在地：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">python check_proxy.py<br></code></pre></td></tr></table></figure>
+<blockquote>
+<p>一定要注意输出的代理位置一定不能是中国，因为OpenAI不支持中国。被检测到了会被封号。血泪教训。<a target="_blank" rel="noopener" href="https://platform.openai.com/docs/supported-countries">Supported countries and territories</a>。</p>
+</blockquote>
+<p>P.S. 别忘了把在第2步里把<code>config.py</code>里的USE_PROXY选项改成True。</p>
+<p>另外<a target="_blank" rel="noopener" href="https://whatismyiplookup.com/">网站</a>可以查询ip地址的Fraud Score和Malicious activity，检查您的proxy是否足够干净。<a target="_blank" rel="noopener" href="https://tool.lu/ip/">IP归属地查询</a>。</p>
+</li>
+<li>
+<p>运行主程序：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">python main.py<br></code></pre></td></tr></table></figure>
+</li>
+<li></li>
+</ol>
+<h3 id="安装方法II：使用Docker"><a target="_blank" rel="noopener" href="https://github.com/binary-husky/gpt_academic?tab=readme-ov-file#%E5%AE%89%E8%A3%85%E6%96%B9%E6%B3%95ii%E4%BD%BF%E7%94%A8docker">安装方法II：使用Docker</a></h3>
+<h3 id="安装方法III：其他部署方法"><a target="_blank" rel="noopener" href="https://github.com/binary-husky/gpt_academic?tab=readme-ov-file#%E5%AE%89%E8%A3%85%E6%96%B9%E6%B3%95iii%E5%85%B6%E4%BB%96%E9%83%A8%E7%BD%B2%E6%96%B9%E6%B3%95">安装方法III：其他部署方法</a></h3>
+<h3 id="附：申述邮件">附：申述邮件</h3>
+<ol>
+<li>
+<p>用英语写邮件到 <a href="mailto:support@openai.com">support@openai.com</a>。最好使用国外主流邮箱(gmail、hotmail等)。</p>
+</li>
+<li>
+<p>主题写”<strong>Deactivated User Appeal</strong>”（中文意思：被封禁用户的申诉）。</p>
+</li>
+<li>
+<p>写清楚理由申请恢复ChatGPT账号。</p>
+</li>
+<li>
+<p>邮件正文：</p>
+<blockquote>
+<p>今天，当我尝试登录我的OpenAI帐户时，我收到了一条消息，说我的帐户已被暂停。我非常喜欢使用ChatGPT，但我不确定我可能违反了哪些政策或法规，也不确定我在之前与该平台的对话中使用了哪些敏感语言。</p>
+<p>在探索ChatGPT时，我可能无意中提出了一些敏感话题，但我没有利用该平台从事任何非法活动。</p>
+<p>我恳请您帮助我恢复帐户正常运行。我向您保证，在未来使用ChatGPT时，我将严格遵守平台制定的政策和规定。</p>
+<p>我的账号是xxx@mail.com，我恳请管理员考虑我的申诉。</p>
+<p>非常感谢。</p>
+<p>Today, when I attempted to log in to my OpenAI account, I received a message that my account has been suspended. I am very fond of using ChatGPT, but I am unsure of the policies or regulations that I may have violated or the sensitive language that I used during my previous conversations with the platform.</p>
+<p>While exploring ChatGPT, I may have unintentionally raised some sensitive topics, but I did not use the platform to engage in any illegal activities.</p>
+<p>I kindly request your assistance in restoring my account to normal functioning. I assure you that I will strictly adhere to the policies and regulations set by the platform in my future use of ChatGPT.</p>
+<p>My account number is <a href="mailto:xxx@mail.com">xxx@mail.com</a> and I humbly request that the administrator consider my appeal.</p>
+<p>Thank you.</p>
+</blockquote>
+</li>
+<li>
+<p>参考链接：</p>
+<p><a target="_blank" rel="noopener" href="https://www.followchain.org/contact-chatgpt-openai-support/">How to Contact ChatGPT or OpenAI Support</a></p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/618610494">申述邮件参考</a></p>
+</li>
+</ol>
+<h2 id="配置使用">配置使用</h2>
+<h3 id="自定义快捷命令">自定义快捷命令</h3>
+<p>在<code>.bashrc</code>或<code>.zshrc</code>中写入：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">alias</span> gpt_academic=<span class="hljs-string">&quot;conda activate gptac_venv &amp;&amp; cd ~/gpt_academic &amp;&amp; python main.py&quot;</span><br></code></pre></td></tr></table></figure>
+<p>即可通过在终端输入命令<code>gpt_academic</code>直接打开交互界面。</p>
+<h3 id="使用">使用</h3>
+<ul>
+<li>普通对话使用说明: 1. 输入问题; 2. 点击提交。</li>
+<li>基础功能区使用说明: 1. 输入文本; 2. 点击任意基础功能区按钮。</li>
+<li>函数插件区使用说明: 1. 输入路径/问题, 或者上传文件; 2. 点击任意函数插件区按钮。</li>
+<li>虚空终端使用说明: 点击虚空终端, 然后根据提示输入指令, 再次点击虚空终端。</li>
+<li>输出文件保存路径：<code>./gpt_academic/gpt_log/default_user/shared</code>。</li>
+</ul>
+<h3 id="退出">退出</h3>
+<p><code>Ctrl+C</code>结束终端当前进程，关闭浏览器。</p>
+<h3 id="常用功能">常用功能</h3>
+<h4 id="程序解析">程序解析</h4>
+<ul>
+<li>
+<p>[基本功能区] 解释代码（预置Prompt）。</p>
+</li>
+<li>
+<p>[插件-智能体] <a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1Dh4y1a7sS/?vd_source=a281d7c33582a8ad4955267267da17fa">动态代码解释器</a>。上传文件，输入需求。对话框输出实现代码和结果。</p>
+</li>
+<li>
+<p>[插件-编程] <a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1cj411A7VW">程序剖析</a>。一键剖析整个Matlab、C<ins>项目头文件、C</ins>项目(.cpp/.hpp/.c/.h)、Go、Rust、Java、前端项目(js/ts/css等)、Lua、CSharp、Jupyter Notebook项目树和<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1cj411A7VW">gpt_academic项目自剖析</a>。相较于[插件-编程] 一键批量生成函数注释，整体细节更多。</p>
+<ul>
+<li>
+<p>解析整个C++项目头文件</p>
+<ul>
+<li>
+<p>prompt：</p>
+<figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs txt">接下来请你逐文件分析下面的工程[0/27] 请对下面的程序文件做一个概述: [文件路径]<br> 用一张Markdown表格简要描述以下文件的功能：<br></code></pre></td></tr></table></figure>
+</li>
+<li>
+<p>先后输出两个<code>.md</code>文件，第一个<code>.md</code>文件为对项目中每个<code>.h</code>文件的概述；第二个<code>.md</code>文件为对项目中每个<code>.h</code>文件的概述+对程序的整体功能和构架重新做出概括。</p>
+</li>
+<li>
+<p>使用gpt-4-1106-preview(Input: 0.01美元/1K tokens; Output: 0.03美元/1K tokens)解析ESVO（代码文件总大小为513.0KB）大概花费了2美元。</p>
+</li>
+</ul>
+</li>
+<li>
+<p>解析整个C++项目(.cpp/.hpp/.c/.h)</p>
+<ul>
+<li>
+<p>prompt：</p>
+<figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs txt">接下来请你逐文件分析下面的工程[0/51] 请对下面的程序文件做一个概述: [文件路径]<br>根据以上分析，对程序的整体功能和构架重新做出概括，由于输入长度限制，可能需要分组处理，本组文件为<br>请用一句话概括这些文件的整体功能<br></code></pre></td></tr></table></figure>
+</li>
+<li>
+<p>先后输出两个<code>.md</code>文件，第一个<code>.md</code>文件为对项目中每个<code>.cpp/.hpp/.c/.h</code>文件的概述；第二个<code>.md</code>文件为对项目中每个<code>.cpp/.hpp/.c/.h</code>文件的概述+对程序的整体功能和构架重新做出概括。</p>
+</li>
+<li>
+<p>使用gpt-4-1106-preview(Input: 0.01美元/1K tokens; Output: 0.03美元/1K tokens)解析ESVO（代码文件总大小为513.0KB）大概花费了2美元。</p>
+</li>
+</ul>
+<blockquote>
+<p>“解析整个C<ins>项目头文件”与“解析整个C</ins>项目(.cpp/.hpp/.c/.h)”对文件的概述不同，可进行综合。</p>
+</blockquote>
+</li>
+</ul>
+</li>
+<li>
+<p>[插件-编程] 解析项目源代码。对函数的解读没有[插件-编程] 一键批量生成函数注释和[插件-编程] <a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1cj411A7VW">程序剖析</a>细致，但是优势在能解读每一个项目文件，不限于<code>.h</code>和<code>.cpp</code>文件。</p>
+<ul>
+<li>
+<p>prompt：</p>
+<figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs txt">接下来请你逐文件分析下面的工程[0/110] 请对下面的程序文件做一个概述: [文件路径]<br>用一张Markdown表格简要描述以下文件的功能：[文件路径]<br></code></pre></td></tr></table></figure>
+</li>
+<li>
+<p>对项目所有做出概述（可手动指定和筛选源代码文件类型）。</p>
+</li>
+<li>
+<p>使用gpt-4-1106-preview(Input: 0.01美元/1K tokens; Output: 0.03美元/1K tokens)解析ESVO（文件夹总大小为783.8KB）大概花费了5.4美元。</p>
+</li>
+</ul>
+</li>
+<li>
+<p>[插件-编程] 一键批量生成函数注释。相较于[插件-编程] <a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1cj411A7VW">程序剖析</a>，函数总体功能概括更细致。</p>
+<ul>
+<li>
+<p>prompt：</p>
+<figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs txt">[0/24] 请对下面的程序文件做一个概述，并对文件中的所有函数生成注释: [文件路径]<br></code></pre></td></tr></table></figure>
+</li>
+<li>
+<p>对于C++项目，输出对项目中所有<code>.cpp</code>程序文件的概述，主要对文件中的所有函数的功能进行概括。</p>
+</li>
+<li>
+<p>使用gpt-4-1106-preview(Input: 0.01美元/1K tokens; Output: 0.03美元/1K tokens)解析ESVO（24个<code>.cpp</code>文件）大概花费了1.2美元。</p>
+</li>
+<li>
+<p>有些对话为英文，可对输出的<code>.md</code>文件使用[插件-编程] Markdown<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1yo4y157jV/">中英互译</a>翻译成中文。</p>
+</li>
+</ul>
+</li>
+<li>
+<p>……</p>
+</li>
+</ul>
+<h4 id="翻译校对润色">翻译校对润色</h4>
+<ul>
+<li>
+<p>[插件-学术] 读论文、<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1KT411x7Wn">翻译</a>论文。一键解读latex/pdf论文全文并生成摘要。</p>
+</li>
+<li>
+<p>[插件-学术] 精确翻译PDF论文(NOUGAT)。插件首次运行需1G流量来下载NOUGAT参数。翻译质量明显高于<code>[插件-学术]精确翻译PDF论文</code>。<strong>实测翻译的质量太高，狂喜。</strong></p>
+<p>输出文件：</p>
+<ul>
+<li><code>.mmd</code>：OCR识别后提交给大模型的的文件。</li>
+<li><code>translated_and_original.md</code>。</li>
+<li><code>translated_only.md</code>。</li>
+<li><code>.pdf.trans.html</code>：<code>.html</code>文件形式的原文和翻译对比。</li>
+</ul>
+</li>
+<li>
+<p>[插件-学术] <a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1KT411x7Wn">精确翻译PDF论文</a>。PDF论文提取题目&amp;摘要+翻译全文（多线程）。使用gpt-4-1106-preview(Input: 0.01美元/1K tokens; Output: 0.03美元/1K tokens)翻译一篇18页的PDF（实际翻译了15.5页，最后2.5页的参考文献等没有翻译）大概花费了0.8美元。</p>
+<p>输出文件：</p>
+<ul>
+<li><code>.json</code>：提交给大模型的文件。</li>
+<li><code>translated_and_original.md</code>。</li>
+<li><code>translated_only.md</code>。</li>
+<li><code>.pdf.trans.html</code>：<code>.html</code>文件形式的原文和翻译对比。</li>
+</ul>
+</li>
+<li>
+<p>[插件-学术] [需Latex] 一键<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1dz4y1v77A/">以超高质量翻译arxiv论文</a>，目前最好的论文翻译工具。<a target="_blank" rel="noopener" href="https://github.com/binary-husky/gpt_academic/wiki/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8Latex%E7%9B%B8%E5%85%B3%E6%8F%92%E4%BB%B6%EF%BC%88arxiv%E6%96%87%E7%AB%A0%E7%BF%BB%E8%AF%91%EF%BC%89">如何使用Latex相关插件（arxiv文章翻译）</a>。</p>
+<ul>
+<li>
+<p>[插件-学术] Arxiv论文精细翻译（输入arxivID）[需Latex]</p>
+</li>
+<li>
+<p>[插件-学术] 本地Latex论文精细翻译（上传Latex项目）[需Latex]</p>
+<blockquote>
+<p>每一次的翻译质量不同。还是[插件-学术] 精确翻译PDF论文(NOUGAT)的翻译效果最好？</p>
+</blockquote>
+</li>
+</ul>
+</li>
+<li>
+<p>[插件-编程] （批量）Markdown<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1yo4y157jV/">中英互译</a>（支持GitHub链接）及多种语言。</p>
+<ul>
+<li>[插件-编程] 翻译README或MD</li>
+<li>[插件-编程] 翻译Markdown或README（支持Github链接）</li>
+<li>[插件-编程] Markdown翻译（指定翻译成何种语言）。<strong>英译中的质量最好？</strong></li>
+<li>[插件-编程] 批量Markdown中译英（输入路径或上传压缩包）。暂未测试。</li>
+</ul>
+</li>
+<li>
+<p>[插件-学术] Latex全文<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1nk4y1Y7Js/">翻译</a>、<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1FT411H7c5/">润色</a>。一键翻译或润色、纠错中英文latex论文。</p>
+</li>
+<li>
+<p>[插件-学术] 仿Grammarly对Latex文章进行语法、拼写纠错+输出对照PDF。</p>
+</li>
+<li>
+<p>[基本功能区] 中译英（预置Prompt）。学术中英互译（预置Prompt）。</p>
+</li>
+<li>
+<p>[基本功能区] 英语学术润色（预置Prompt）。中文学术润色（预置Prompt）。</p>
+</li>
+<li>
+<p>[基本功能区] 查找语法错误（预置Prompt）。</p>
+</li>
+<li>
+<p>……</p>
+</li>
+</ul>
+<h4 id="学术科研-2">学术科研</h4>
+<ul>
+<li>
+<p>[插件-学术] <a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV19L411U7ia">谷歌学术统合小助手</a>。给定任意谷歌学术搜索页面URL，让gpt帮你<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1GP411U7Az/">写relatedworks</a>。</p>
+</li>
+<li>
+<p>[插件-学术] <a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1LM4y1279X">Arxiv小助手</a>。输入arxiv文章url即可一键翻译摘要+下载PDF。</p>
+</li>
+<li>
+<p>[插件-学术] 理解PDF文档内容（模仿ChatPDF）。</p>
+<ul>
+<li>
+<p>prompt</p>
+<figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs txt">首先你在英文语境下通读整篇论文。<br>[1/8] Read this section, recapitulate the content of this section with less than 512 words: <br>接下来，你是一名专业的学术教授，利用以上信息，使用中文回答我的问题。<br></code></pre></td></tr></table></figure>
+</li>
+<li></li>
+</ul>
+</li>
+<li>
+<p>[插件-学术] 读Tex论文写摘要。</p>
+</li>
+<li>
+<p>[插件-学术] 批量总结Word文档。批量总结PDF文档。</p>
+<ul>
+<li>
+<p>prompt</p>
+<figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><code class="hljs txt">首先你在中文语境下通读整篇论文。<br>[1/3] Read this section, recapitulate the content of this section with less than 955.0 Chinese characters: <br>开始最终总结。<br>Please conclude this paper discussed above。<br><br>## <br><br>1. Mark the title of the paper (with Chinese translation)<br>2. list all the authors&#x27; names (use English)<br>3. mark the first author&#x27;s affiliation (output Chinese translation only)<br>4. mark the keywords of this article (use English)<br>5. link to the paper, Github code link (if available, fill in Github:None if not)<br>6. summarize according to the following four points.Be sure to use Chinese answers (proper nouns need to be marked in English)<br>   - (1):What is the research background of this article?<br>   - (2):What are the past methods? What are the problems with them? Is the approach well motivated?<br>   - (3):What is the research methodology proposed in this paper?<br>   - (4):On what task and what performance is achieved by the methods in this paper? Can the performance support their goals?<br>     Follow the format of the output that follows:<br>1. Title: xxx<br>2. Authors: xxx<br>3. Affiliation: xxx<br>4. Keywords: xxx<br>5. Urls: xxx or xxx , xxx <br>6. Summary: <br>- (1):xxx;<br>- (2):xxx;<br>- (3):xxx;<br>- (4):xxx.<br>Be sure to use Chinese answers (proper nouns need to be marked in English), statements as concise and academic as possible,<br>do not have too much repetitive information, numerical values using the original numbers.<br></code></pre></td></tr></table></figure>
+</li>
+<li></li>
+</ul>
+</li>
+<li>
+<p>……</p>
+</li>
+</ul>
+<h4 id="大模型">大模型</h4>
+<ul>
+<li>[插件-对话] 互联网信息聚合+GPT。一键<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1om4y127ck">让GPT从互联网获取信息</a>回答问题，让信息永不过时。</li>
+<li>[插件-对话] 多种大语言模型混合调用（ChatGLM + OpenAI-GPT3.5 + GPT4）。<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1wT411p7yf">多LLM模型</a>支持。同时被GPT3.5、GPT4、<a target="_blank" rel="noopener" href="https://github.com/THUDM/ChatGLM2-6B">清华ChatGLM2</a>、<a target="_blank" rel="noopener" href="https://github.com/OpenLMLab/MOSS">复旦MOSS</a>伺候的感觉一定会很不错吧？</li>
+<li>[插件-对话] 构建知识库（先上传文件素材），知识库文件注入。</li>
+<li>[插件-智能体] AutoGen多智能体插件。借助微软AutoGen，探索多Agent的智能涌现可能！AutoGen能让大语言模型(LLM)在复杂工作流程启用多个角色代理来完成共同的目标。 AutoGen 的代理是可定制的，代理也就是让大语言模型扮演各种代理角色，如程序员、公司高管，设计师等角色甚至是它们的组合。通过代理之间交互对话来解决任务。</li>
+<li>……</li>
+</ul>
+<h4 id="图片音频">图片音频</h4>
+<ul>
+<li>[插件-对话] 支持mermaid图像渲染。支持让GPT生成<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV18c41147H9/">流程图</a>、状态转移图、甘特图、饼状图、GitGraph等等（3.7版本）。</li>
+<li>[基本功能区] 总结绘制脑图。</li>
+<li>[插件-对话] 数字动画生成(Manim)。</li>
+<li>[插件-对话] 交互功能模板Demo函数（查找wallhaven.cc的壁纸）</li>
+<li>[插件-对话] <a target="_blank" rel="noopener" href="https://github.com/binary-husky/gpt_academic/blob/master/docs/use_audio.md">实时语音对话输入</a>。异步<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1AV4y187Uy/">监听音频</a>，自动断句，自动寻找回答时机。</li>
+<li>[插件-对话] 批量总结音视频。</li>
+</ul>
+<h4 id="其他-2">其他</h4>
+<ul>
+<li>[插件] 虚空终端插件。从自然语言输入中，理解用户意图+自动调用其他插件。
+<ol>
+<li>输入 “ 请调用插件翻译PDF论文，地址为<a target="_blank" rel="noopener" href="https://openreview.net/pdf?id=rJl0r3R9KX">https://openreview.net/pdf?id=rJl0r3R9KX</a> ”。</li>
+<li>点击“虚空终端”。</li>
+</ol>
+</li>
+<li>[插件-对话] 对话保存功能。在函数插件区调用 <code>保存当前的对话</code> 即可将当前对话保存为可读+可复原的html文件， 另外在函数插件区（下拉菜单）调用 <code>载入对话历史存档</code> ，即可还原之前的会话。 Tip：不指定文件直接点击 <code>载入对话历史存档</code> 可以查看历史html存档缓存。</li>
+<li>……</li>
+</ul>
+<h2 id="高级代办">高级代办</h2>
+<ul>
+<li>[ ] <a target="_blank" rel="noopener" href="https://github.com/binary-husky/gpt_academic/wiki/%E5%87%BD%E6%95%B0%E6%8F%92%E4%BB%B6%E6%8C%87%E5%8D%97">自定义函数插件</a></li>
+<li>[ ] <a target="_blank" rel="noopener" href="https://github.com/binary-husky/gpt_academic?tab=readme-ov-file#i%E8%87%AA%E5%AE%9A%E4%B9%89%E6%96%B0%E7%9A%84%E4%BE%BF%E6%8D%B7%E6%8C%89%E9%92%AE%E5%AD%A6%E6%9C%AF%E5%BF%AB%E6%8D%B7%E9%94%AE">自定义预置Prompt</a></li>
+<li>[ ] 自定义完善各函数插件的Prompt</li>
+</ul>
+<h1 id="GitHub-Copilot">GitHub Copilot</h1>
+<h2 id="概述-2">概述</h2>
 <p><a target="_blank" rel="noopener" href="https://docs.github.com/zh/copilot">官方说明文档</a></p>
 <p>GitHub Copilot 是 AI 结对程序员。 可以使用 GitHub Copilot 在编辑器中获取整行或整个函数的建议。</p>
 <blockquote>
 <p>GitHub Copilot 扩展会经常更新，以修复 bug 并添加新功能。请务必使扩展保持最新状态，因为较旧版本的客户端无法与 GitHub Copilot 服务器通信。在安装了 GitHub Copilot 扩展的所有计算机上更新它。</p>
 </blockquote>
-<h3 id="GitHub-Copilot-2">GitHub Copilot</h3>
-<h4 id="安装配置">安装配置</h4>
+<h2 id="使用建议">使用建议</h2>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/phantom_111/article/details/132070931">使用 GitHub Copilot 进行 Prompt Engineering 的初学者指南（译）</a></p>
+<ol>
+<li>
+<p>官网提供的参考最好用英文，其他语言也支持，但是代码提示就没那么好了。</p>
+</li>
+<li>
+<p>当你提供具体详细的（注释）信息时，GitHub Copilot 将可以生成更准确的代码建议，示例：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-comment">// 写一个函数 downloadFileFn</span><br><span class="hljs-comment">// 输入参数: file, fileName</span><br><span class="hljs-comment">// 处理过程: 使用isImg判断file是否是图片类型, 如果是, 则下载. fileName是下载后的文件名</span><br><span class="hljs-comment">// 每行代码都写上中文注释</span><br><span class="hljs-comment">// 输出结果: 无</span><br></code></pre></td></tr></table></figure>
+</li>
+<li>
+<p>让 GitHub Copilot 在每一步之后生成代码，而不是要求它一次性生成一堆代码。一旦您将您的主要目标传达给人工智能结对程序员，请阐明实现该目标所需遵循的逻辑和步骤。当您分解事情时，GitHub Copilot 可以更好地理解您的目标。</p>
+</li>
+<li>
+<p>也可以在注释下提供示例。除了告诉 GitHub Copilot 想要它做什么之外，还可以提供你喜欢的编码风格的例子来向其展示希望它做什么。虽然 GitHub Copilot 使用的 AI 模型已经接受过大量数据的训练，但向 GitHub Copilot 提供示例可以帮助其理解特定代码片段的上下文和约束。</p>
+</li>
+<li>
+<p>迭代你的提示。如果初始提示返回了所需的响应，可以删除生成的代码建议，使用更多详细信息和示例编辑评论，然后重试。对于你和 GitHub Copilot 来说，这是一个学习过程。使用它的次数越多，与 GitHub Copilot 沟通的就越顺畅。</p>
+</li>
+<li>
+<p>在IDE中保持相关文件打开的选项卡。</p>
+</li>
+<li>
+<p>目前，GitHub Copilot 无法获取整个代码库的上下文。然而，它可以读取当前的文件以及在 IDE 中打开的任何文件。我发现保留希望 GitHub Copilot 引用的相关文件的选项卡是很有帮助的。例如，当我写一个依赖其他文件变量的函数，我将在 IDE 中保持该文件打开。这将有助于 GitHub Copilot 提供更准确的建议。</p>
+</li>
+<li>
+<p>给你的 AI 助手一个身份。它有助于控制用户收到的响应类型。在 Leila 的案例中，她要求 ChatGPT 表现的像一名高级的 IOS 工程师。她说：「这帮助她减少了语法和 linting 的问题」。</p>
+</li>
+<li>
+<p>对描述其用途的变量和函数使用一致的、特定的命名约束。</p>
+</li>
+<li>
+<p>声明变量或函数时，使用指定用于变量用途的名称。这将帮助 GitHub Copilot 了解变量的上下文并生成更多相关建议。例如，不要使用「value」等通用变量名称，而应使用「input_string」或 「output_file」。GitHub Copilot 还将使用在代码中使用的命名约定。例如，如果使用驼峰式命名变量，GitHub Copilot 将建议驼峰式命名变量。如果你使用 snake_case 作为变量，GitHub Copilot 将建议 snake_case 变量。</p>
+</li>
+<li></li>
+</ol>
+<h2 id="GitHub-Copilot-2">GitHub Copilot</h2>
+<h3 id="安装配置">安装配置</h3>
 <p><a target="_blank" rel="noopener" href="https://docs.github.com/zh/copilot/using-github-copilot/getting-started-with-github-copilot">开始使用 GitHub Copilot</a></p>
 <p><a target="_blank" rel="noopener" href="https://docs.github.com/zh/copilot/configuring-github-copilot/configuring-github-copilot-in-your-environment">在环境中配置 GitHub Copilot</a></p>
 <p><a target="_blank" rel="noopener" href="https://docs.github.com/zh/copilot/configuring-github-copilot/configuring-network-settings-for-github-copilot">为 GitHub Copilot 配置网络设置</a></p>
-<h4 id="使用">使用</h4>
+<p><a target="_blank" rel="noopener" href="https://juejin.cn/post/7315347551687147539">其他使用方法参考</a></p>
+<h3 id="使用-2">使用</h3>
 <ol>
-<li>将注释转换为代码。GitHub Copilot可以帮你完成注释。我们首先让它完成我们的注释，然后，一行一行，我们tab遍历代码，完成我们刚才说的英语注释。</li>
-<li>创建单元测试。GitHub Copilot的一个重要用例是免去编写单元测试的一些繁琐工作。下面，我们已经实现了一个计算最大公约数的函数，我们想要测试它。要做到这一点，我们只需开始编写我们想要测试的内容。从那时起，一切都是一帆风顺的，我们通过tab浏览建议来接受测试用例。</li>
-<li>每个开发人员都需要时不时地编写SQL，对吧？每次都会出现同样的问题。这个查询的正确语法是什么？GitHub Copilot可以回答这个问题，只需将schema显示为CREATE TABLE语句即可。然后，它很好地编写了一个工作的SQL查询。</li>
-<li></li>
+<li>
+<p>基于上下文的自动补全建议。</p>
+</li>
+<li>
+<p>在代码行后输入注释符号，如<code>//</code>，自动生成对该行的注释。在函数头上输入注释符号，自动生成对该函数的注释。</p>
+</li>
+<li>
+<p>将注释转换为代码。GitHub Copilot可以帮你完成注释。我们首先让它完成我们的注释，然后，一行一行，我们<code>Tab</code>遍历代码，完成我们刚才说的英语注释。</p>
+<blockquote>
+<p>如果快捷键无效，可能是快捷键发生冲突。找到发生冲突的快捷键来源，修改来源的快捷键或修改GitHub Copilot的快捷键。</p>
+</blockquote>
+<ul>
+<li>按下<code>Alt+\(editor.action.inlineSuggest.trigger)</code>来手动触发内联建议。</li>
+<li>按下<code>Alt+Enter</code>来打开 GitHub Copilot（单独窗格中的其他建议）。</li>
+<li>查看第一个建议。GitHub Copilot 将自动以灰色文本建议正文，要接受建议，请按<code>Tab(editor.action.inlineSuggest.commit)</code>。若要拒绝所有建议，请按<code>Esc(editor.action.inlineSuggest.hide)</code>。</li>
+<li>部分接受建议。按下<code>Ctrl+向右箭头</code>接受下一个字词，按下<code>Ctrl+Alt+向右箭头</code>接受下一行。或者，可以将鼠标悬停在建议上方，查看 GitHub Copilot 命令面板以选择建议。</li>
+<li>查看替代建议。如果有其他建议，可以选择查看，按下<code>Alt+](editor.action.inlineSuggest.showNext)</code>查看下一个建议，按下<code>Alt+[(editor.action.inlineSuggest.showPrevious)</code>查看下一个建议。</li>
+<li>在新选项卡中查看多个建议。你可能不想获得 GitHub Copilot 提供的任何初始建议。 可以使用键盘快捷方式来提示 GitHub Copilot 在新选项卡中显示多个建议。按 <code>Ctrl+Enter(github.copilot.generate)</code>，然后单击“打开 GitHub Copilot”。若要接受建议，请在建议上方单击“接受解决方案”。 若要拒绝所有建议，请关闭选项卡。相对于<code>Alt+]</code>，更推荐这种方法。</li>
+<li>打开/关闭 GitHub Copilot(github.copilot.toggleCopilot)，没有默认快捷方式。</li>
+</ul>
+</li>
+<li>
+<p>行内操作。选中代码段，按住<code>Ctrl+I</code>这个时候会当前光标所在的行展示一个输入框，在输入框可以提问，也可以输入<code>/explain</code>、<code>/tests</code>等等。有时候对自动生成的代码不满意，可以选中代码，对它提要求，可以在行内操作完成。</p>
+</li>
+<li>
+<p>q/a对话。在任意代码文件中输入注释符号，然后输入<code>q:</code> 后跟一个问题,比如<code>// q: xx问题</code>， 在下一行中输入<code>// a: </code>。copilot会提供最简短的回答内容。</p>
+</li>
+<li>
+<p>创建单元测试。GitHub Copilot的一个重要用例是免去编写单元测试的一些繁琐工作。下面，我们已经实现了一个计算最大公约数的函数，我们想要测试它。要做到这一点，我们只需开始编写我们想要测试的内容。从那时起，一切都是一帆风顺的，我们通过tab浏览建议来接受测试用例。</p>
+</li>
+<li>
+<p>每个开发人员都需要时不时地编写SQL，对吧？每次都会出现同样的问题。这个查询的正确语法是什么？GitHub Copilot可以回答这个问题，只需将schema显示为CREATE TABLE语句即可。然后，它很好地编写了一个工作的SQL查询。</p>
+</li>
 </ol>
-<h3 id="GitHub-Copilot-Chat">GitHub Copilot Chat</h3>
+<h2 id="GitHub-Copilot-Chat">GitHub Copilot Chat</h2>
 <p><a target="_blank" rel="noopener" href="https://docs.github.com/zh/copilot/github-copilot-chat/using-github-copilot-chat-in-your-ide">在 IDE 中使用 GitHub Copilot Chat</a></p>
 <p>GitHub Copilot Chat 是一个聊天界面，可让你与 GitHub Copilot 进行交互，直接从 <a target="_blank" rel="noopener" href="http://GitHub.com">GitHub.com</a> 和受支持的 IDE 中询问编码相关问题并接收答案。GitHub Copilot Chat 可以回答与编码相关的各种主题问题，包括语法、编程概念、测试用例、调试等。</p>
 <p>GitHub Copilot Chat 可以在各种场景中提供编码帮助：</p>
 <ol>
-<li>生成单元测试用例：Copilot Chat 可以根据编辑器中打开的代码或编辑器中突出显示的代码片段生成代码片段，从而帮助编写单元测试用例。</li>
-<li>说明代码和建议改进：Copilot Chat 可以通过生成代码功能和用途的自然语言说明来帮助解释所选代码。例如，如果你在代码编辑器中选择函数或代码块，Copilot Chat 可以生成代码功能以及代码如何适应整个系统的自然语言说明。 这可能包括函数的输入和输出参数、其依赖项及其在较大应用程序中的用途等信息。Copilot Chat 还可以建议对所选代码的潜在改进，例如改进错误和边缘案例的处理，或者更改逻辑流以使代码更易于阅读。</li>
+<li>输入<code>/</code>可以看到内置的4个提示词：<code>/doc</code>、<code>/explain</code>、<code>/fix</code>、<code>/tests</code>。</li>
+<li>说明代码和建议改进：Copilot Chat 可以通过生成代码功能和用途的自然语言说明来帮助解释所选代码。例如，如果你在代码编辑器中选择函数或代码块，Copilot Chat 可以生成代码功能以及代码如何适应整个系统的自然语言说明。 这可能包括函数的输入和输出参数、其依赖项及其在较大应用程序中的用途等信息。Copilot Chat 还可以建议对所选代码的潜在改进，例如改进错误和边缘案例的处理，或者更改逻辑流以使代码更易于阅读。
+<ul>
+<li>方法一：选中要解释的代码,在chat聊天框中输入<code>/explain</code> 如果要按照中文解释，多写一些字比如：<code>/explain 用中文解释</code>。</li>
+<li>方法二：选中要解释代码,右键<code>copilot &gt; explain this</code>。PS：比较快捷，但是默认输出方式是英文。</li>
+</ul>
+</li>
+<li>生成单元测试用例：Copilot Chat 可以根据编辑器中打开的代码或编辑器中突出显示的代码片段生成代码片段，从而帮助编写单元测试用例。
+<ul>
+<li>前面的解释代码的方式一、方式二，换成<code>/tests</code> <code>generate tests</code>即可。</li>
+</ul>
+</li>
 <li>建议代码修复：Copilot Chat 可以通过根据错误或问题的上下文建议代码片段和解决方案来为代码中的 bug 建议修复。</li>
 <li>回答编码问题：你可以向 Copilot Chat 寻求有关特定编码问题的帮助或澄清，并以自然语言格式或代码片段格式接收响应。</li>
 </ol>
-<h3 id="GitHub-Copilot（CLI-版）">GitHub Copilot（CLI 版）</h3>
+<p>向 GitHub Copilot Chat 询问有关已打开文件的问题。 例如：</p>
+<ul>
+<li>若要生成文件用途的说明，请询问类似于 <code>What does this file do?</code> 的问题。</li>
+<li>若要为文件生成单元测试，请键入类似于 <code>Write a unit test for this file</code> 的请求。 或者，突出显示要为其生成单元测试的代码，然后询问类似于 <code>Write a unit test for this code</code> 的问题。</li>
+<li>若要为文件中的 bug 生成修复，请键入类似于 <code>Fix this bug</code> 的请求。</li>
+</ul>
+<h2 id="GitHub-Copilot（CLI-版）">GitHub Copilot（CLI 版）</h2>
 <p><a target="_blank" rel="noopener" href="https://docs.github.com/zh/copilot/github-copilot-in-the-cli/about-github-copilot-in-the-cli">关于 GitHub Copilot（CLI 版）</a></p>
 <p>GitHub Copilot in the CLI 在终端中提供类似聊天的界面，可用于询问有关命令行的问题。 可以要求 GitHub Copilot 提供命令建议或给定命令的说明。</p>
-<h2 id="其他大模型">其他大模型</h2>
+<h2 id="其他-3">其他</h2>
+<p>当前，GitHub Copilot 是最流行的 IDE 中的提供的扩展插件。还有 GitHub Copilot Labs，这是一个可通过 GitHub Copilot 访问的单独实验性扩展。Copilot Labs 可以帮助翻译、调试、测试、记录和重构代码。此外，还推出了 Copilot X，这是一套可以提高 IDE 之外的开发人员工作效率的功能。Copilot X 包括：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://githubnext.com/projects/copilot-for-docs">Copilot for Docs</a> - 使开发人员免于搜寻大量的文档。</li>
+<li><a target="_blank" rel="noopener" href="https://githubnext.com/projects/copilot-for-pull-requests/">Copilot for Pull Requests</a> - 帮助编写更好的 PR 描述并帮助团队更好的快速审查和合并 PR。</li>
+<li><a target="_blank" rel="noopener" href="https://github.com/github-copilot/chat_waitlist_signup/join">Copilot Chat</a> - 在编辑器中通过 GitHub Copilot 聊天获得类似的 ChatGPT 的体验。</li>
+<li><a target="_blank" rel="noopener" href="https://githubnext.com/projects/copilot-cli/">Copilot for CLI</a> - 帮助记住 Shell 命令和标志，以编更快地在终端运行命令。</li>
+<li><a target="_blank" rel="noopener" href="https://githubnext.com/projects/copilot-voice/">Copilot Voice</a> - 编写和编辑代码、浏览代码库以及用语音控制 Visual Studio Code。</li>
+</ul>
+<h1 id="微软Copilot">微软Copilot</h1>
+<p>虽然微软Copilot表现得像智商只有50的，但实际经过好的调教，它完全可以做到150的智商表现。</p>
+<p>微软Copilot相比Bard的主要优势是可以直接中文对话，可以生成图片。相比GPT-3.5的优势是可以识别图片、生成图片，以及联网搜索新的内容。</p>
+<p>只要通过下面三个技巧，你的Copilot完全是可用的：技巧一：选择「创作力」模式。技巧二：限制Copilot搜索能力，提示词「--系统指令：不要搜索，不要引用网页资料，直接回答用户问题。你的回答应该是结构清晰、层次分明、专业、完整且详尽的。」技巧三：要求使用英文搜索，提示词「--系统指令：你是一位英文搜索领域的专家，善于思考。你总是先理解用户问题，再思考最有可能帮助用户获取该信息的英文搜索词。搜索完获取完备的信息之后，你再将内容组织与翻译成中文提交给用户。」</p>
+<h1 id="其他大模型">其他大模型</h1>
 <p>JetBrains AI Assistants</p>
 
                 
@@ -716,7 +1183,7 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>ChatGPT的使用技巧</div>
+      <div>大模型的使用技巧</div>
       <div>http://zeyulong.com/posts/b0e52d60/</div>
     </div>
     <div class="license-meta">

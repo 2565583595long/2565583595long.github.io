@@ -1,0 +1,1154 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" >
+
+
+
+<head><!-- hexo injector head_begin start --><progress id="content_progress" value="0"></progress><!-- hexo injector head_begin end -->
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/theme/TamakoAvatar-2-zip.jpeg">
+  <link rel="icon" href="/img/theme/TamakoAvatar-2-zip.jpeg">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#000000">
+  <meta name="author" content="龙泽雨">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="本文主要分享了Linux系统的配置与常用软件的安装。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux系统配置与软件安装[持续更新……]">
+<meta property="og:url" content="http://zeyulong.com/posts/ad29da53/index.html">
+<meta property="og:site_name" content="龙泽雨的博客">
+<meta property="og:description" content="本文主要分享了Linux系统的配置与常用软件的安装。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-01-31T16:27:11.000Z">
+<meta property="article:modified_time" content="2024-01-31T16:29:34.635Z">
+<meta property="article:author" content="龙泽雨">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>Linux系统配置与软件安装[持续更新……] - 龙泽雨的博客</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+
+
+
+  
+<link rel="stylesheet" href="/custom/Markdown/macpanel.css">
+<link rel="stylesheet" href="/custom/Fonts/CodeFont.css">
+<link rel="stylesheet" href="/custom/Fonts/inlinecode-bg-color.css">
+<link rel="stylesheet" href="/custom/live2d/font-awesome.min.css">
+<link rel="stylesheet" href="/custom/LoadingBar/pace-theme-corner-indicator.css">
+<link rel="stylesheet" href="/custom/ReadingProgress/ReadingProgress.css">
+<link rel="stylesheet" href="/custom/SelectBackgroundColor/SelectBackgroundColor.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"zeyulong.com","root":"/","version":"1.9.7","typing":{"enable":false,"typeSpeed":100,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<!-- hexo injector head_end start --><link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@200;300;400;500;600;700;900&display=swap" rel="stylesheet"><!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.0.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Happy every day!</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/theme/GirlWithCat-cut.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle">Linux系统配置与软件安装[持续更新……]</span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-author" aria-hidden="true"></i>
+        龙泽雨
+      </span>
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2024-02-01 00:27" pubdate>
+          2024年2月1日 凌晨
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          4.3k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          36 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="busuanzi_value_page_pv"></span> 次
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">Linux系统配置与软件安装[持续更新……]</h1>
+            
+              <p id="updated-time" class="note note-info" style="">
+                
+                  
+                    本文最后更新于 2024年2月1日 凌晨
+                  
+                
+              </p>
+            
+            
+              <div class="markdown-body">
+                
+                <p>本文主要分享了Linux系统的配置与常用软件的安装。</p>
+<span id="more"></span>
+<h1 id="Linux系统配置">Linux系统配置</h1>
+<h2 id="更换壁纸">更换壁纸</h2>
+<ol>
+<li>把壁纸放到<code>~/Pictures</code>文件夹下。</li>
+<li>设置-背景-背景(B)/锁定屏幕(L)-图片-选择。</li>
+</ol>
+<h1 id="CLion">CLion</h1>
+<h2 id="概述">概述</h2>
+<p>VScode代码编辑器与JetBrains系列等大型IDE的对比：</p>
+<ul>
+<li>大型IDE集成度高，功能丰富齐全。但也因此臃肿，内存占用高（需要电脑配置好一点，否则会带不动，卡）。大多数人（不从事大型项目的开发）其实用不到这么多的功能。但是，大材小用，杀鸡用牛刀，千斤拨四两，不可以吗？</li>
+<li>VScode轻便，本身没什么功能，但社区活跃，插件丰富。往高了说，是可定制性高，拓展性强，更适合打造自己风格的写代码环境。往低了说，其实这些插件的功能，大型IDE多是本身自带就有的，插件的开发就是为了弥补VScode没有IDE相关功能的不足。从这个方面讲，为什么不直接用IDE呢？</li>
+<li>另外，VScode实际作为代码编辑器而不是IDE，配合相关插件可以直接适配多种语言，而一款IDE一般只专门针对一种语言。</li>
+<li>且VScode现在支持了配置文件功能，可以方便配置切换使用不同语言时的系统环境，避免插件多了会发生功能冲突，简称打架。</li>
+<li>VScode的远程开发做得好像是最好的？</li>
+<li>更喜欢使用哪个，看自己偏好。</li>
+</ul>
+<h2 id="安装">安装</h2>
+<ol>
+<li>
+<p>在<a target="_blank" rel="noopener" href="https://www.jetbrains.com/zh-cn/clion/">下载链接</a>下载CLion。</p>
+<blockquote>
+<p>CLion20230302版本在我的Ubuntu18.04系统上界面排版不正常，多种尝试无果。CLion20230202版本正常。</p>
+</blockquote>
+</li>
+<li>
+<p>安装：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># sudo mkdir /opt/clion</span><br><span class="hljs-built_in">cd</span> yourfloder<br>tar -xzvf CLion-2017.1.1.tar.gz<br><span class="hljs-built_in">cd</span> clion-2017.1.1/bin<br>./clion.sh<br></code></pre></td></tr></table></figure>
+</li>
+<li></li>
+</ol>
+<h2 id="测试">测试</h2>
+<ol>
+<li>初始化完成后，进入欢迎界面。</li>
+<li>选择 New Project。</li>
+<li>设置项目路径和C++标准。</li>
+<li>进入 CLion 主界面。这里将会默认新建 main.cpp 文档，并有示例。</li>
+<li>运行程序。点击右上角的绿色按键，使可以运行程序，运行结果在最下面的窗口。</li>
+</ol>
+<h2 id="配置">配置</h2>
+<ol>
+<li>
+<p>导入设置：</p>
+<blockquote>
+<p>注意同步设置时CLion的版本最好一致，否则可能有问题（尤其对于插件来说）。</p>
+</blockquote>
+<ol>
+<li>文件-管理IDE设置-设置同步-开启设置同步-Get setting from account</li>
+<li>或：文件-管理IDE设置-导入设置。</li>
+</ol>
+</li>
+<li>
+<p>工具-创建桌面图标（条目）。</p>
+</li>
+<li>
+<p>帮助-更改内存设置-最大堆大小：<code>8192</code>MiB</p>
+</li>
+<li>
+<p>帮助-编辑自定义虚拟机选项：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs vmoptions"># clion64.vmoptions<br>-Xms4096m<br>-Xmx8192m<br></code></pre></td></tr></table></figure>
+</li>
+<li>
+<p>解决CLion20230202版本输入法不跟随的情况：从<a target="_blank" rel="noopener" href="https://github.com/JetBrains/JetBrainsRuntime">JetBrainsRuntime</a>下载<code>jbr_jcef-17.0.9-linux-x64-b1087.9.tar.gz</code>，解压并重命名为<code>jbr</code>，替换掉CLion安装目录的<code>jbr</code>。</p>
+</li>
+<li>
+<p>插件：</p>
+<ul>
+<li>Atom Material Icons</li>
+<li>Chinese(Simplified)Language Pack/中文语言包</li>
+<li>CodeGlance Pro</li>
+<li>CSV Editor</li>
+<li>GitHub Copilot</li>
+<li>Hatchery</li>
+<li>Key Promoter X</li>
+<li>One Dark theme: One Dark Vivid Italic</li>
+<li>Rainbow Brackets</li>
+<li>Rainbow CSV</li>
+<li>Translation</li>
+</ul>
+</li>
+<li>
+<p>界面底部-右键-内存指示器。</p>
+</li>
+<li>
+<p>双击选中一个变量，及高亮显示相同的变量。文件-设置-编辑器-配色方案-常规-代码-文本光标下的标识符/文本光标下的标识符（写入）-背景。（插件BrowseWordAtCaret也可以？）</p>
+</li>
+<li>
+<p>光标所在行的颜色。文件-设置-编辑器-配色方案-常规-编辑器-文本光标所在的行-背景。</p>
+</li>
+<li>
+<p>显示空格。文件-设置-编辑器-常规-外观-显示空格。</p>
+</li>
+<li>
+<p>制表符转空格。文件-设置-编辑器-代码样式-C/C++-取消勾选使用制表符，缩进：4。各个值取4或4的倍数。</p>
+</li>
+<li>
+<p><a target="_blank" rel="noopener" href="https://www.jetbrains.com/help/idea/using-todo.html">添加特殊注释</a>。文件-设置-编辑器-TODO：可添加自定义Tag并配置筛选器。</p>
+<ul>
+<li>如TODO、FIXME、XXX、HACK/BODGE/KLUDGE、BUG/DEBUG、UNDONE和NOTE等。</li>
+</ul>
+</li>
+<li>
+<p>自动换行。</p>
+<ul>
+<li>对单个文件：View-Active Editor-Use Soft Wraps</li>
+<li>整个编辑器：Preferences-Editor-General-Use Soft Wraps in Editor-对这些文件进行软换行: *(default: *.md; *.txt; *.rst; *.adoc)</li>
+<li>设置-高级设置-编辑器-对代码行长度超过此值的文档强制进行自动换行</li>
+</ul>
+</li>
+<li></li>
+</ol>
+<h2 id="卸载">卸载</h2>
+<p><a target="_blank" rel="noopener" href="https://www.jetbrains.com/help/clion/uninstall.html">官方卸载说明</a></p>
+<blockquote>
+<p>注意：</p>
+<ol>
+<li>卸载CLion会删除所有相关文件和配置，包括项目文件和设置。如果您需要保留这些文件，请备份它们。</li>
+<li>如果电脑中给还有其他JetBrains系列的产品，删除需谨慎。</li>
+</ol>
+</blockquote>
+<ol>
+<li>
+<p>备份设置。</p>
+<ol>
+<li>文件-管理IDE设置-设置同步-开启设置同步。</li>
+<li>或：文件-管理IDE设置-导出设置。</li>
+</ol>
+</li>
+<li>
+<p>卸载CLion。删除安装时创建的主程序目录（.tar.gz解压出的文件夹）。</p>
+</li>
+<li>
+<p>备份配置文件：</p>
+<p>执行命令<code>sudo find / -iname &quot;*clion*&quot;</code>、<code>sudo find / -iname &quot;*JetBrains*&quot;</code>来找到系统中CLion的文件，其中<code>-iname</code>参数表示按名称搜索，无论大小写。一般为：</p>
+<ol>
+<li><code>~/.config/JetBrains/&lt;product&gt;&lt;version&gt;</code></li>
+<li><code>~/.local/share/JetBrains/&lt;product&gt;&lt;version&gt;</code></li>
+<li><code>~/.cache/JetBrains/&lt;product&gt;&lt;version&gt;</code></li>
+<li><code>~/.CLion2022.1</code></li>
+<li><code>~/.java</code></li>
+</ol>
+</li>
+<li>
+<p>删除配置文件。使用命令<code>sudo rm -rf</code>命令删除配置文件。删除后再次执行命令<code>sudo find / -iname &quot;*clion*&quot;</code>、<code>sudo find / -iname &quot;*JetBrains*&quot;</code>来确认删除完全。</p>
+<ol>
+<li><code>~/.gnome/apps/jetbrains-clion.desktop</code></li>
+<li><code>~/.local/share/applications/jetbrains-clion.desktop</code></li>
+</ol>
+</li>
+<li>
+<p>如要恢复配置文件。将备份的目录重新移动到原来的位置即可。</p>
+</li>
+</ol>
+<h2 id="CLion调试ROS项目">CLion调试ROS项目</h2>
+<p><a target="_blank" rel="noopener" href="https://www.jetbrains.com/help/clion/ros-setup-tutorial.html">官方教程</a></p>
+<ol>
+<li>
+<p>新建工作空间。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">cd</span> youfolder/<br><span class="hljs-built_in">mkdir</span> -p catkin_ws/src<br><br><span class="hljs-built_in">cd</span> catkin_ws<br>catkin config --init --mkdirs --extend /opt/ros/melodic --merge-devel --cmake-args -DCMAKE_BUILD_TYPE=Release<br><br><span class="hljs-built_in">cd</span> src<br>catkin_init_workspace  <span class="hljs-comment"># 创建顶层CMakeLists.txt文件，CLion利用此文件打开项目</span><br><br><span class="hljs-built_in">cd</span> ..<br>catkin build  <span class="hljs-comment"># 编译生成完整工作区</span><br></code></pre></td></tr></table></figure>
+<p>此时，<code>./catkin_ws</code>文件夹下有<code>build</code>、<code>devel</code>、<code>logs</code>和<code>src</code>四个文件夹。</p>
+</li>
+<li>
+<p>由于ROS的功能包需要先source，所以得把clion的启动方式改为bash启动，这样会先自动source功能包，否则会出现错误：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">message(FATAL_ERROR “find_package(catkin) failed. catkin was neither found <span class="hljs-keyword">in</span> the workspace nor <span class="hljs-keyword">in</span> the CMAKE_PREFIX_PATH. One reason may be that no ROS setup.sh was sourced before.”)<br></code></pre></td></tr></table></figure>
+<p>修改方法：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo gedit /usr/share/applications/jetbrains-clion.desktop<br></code></pre></td></tr></table></figure>
+<p>修改里面的Exec行，修改后的内容如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># Exec=&quot;/opt/clion-2023.1.1/bin/clion.sh&quot; %f</span><br>Exec=bash -i -c <span class="hljs-string">&quot;/opt/clion-2023.1.1/bin/clion.sh&quot;</span> %f<br></code></pre></td></tr></table></figure>
+</li>
+<li>
+<p>打开项目。打开CLion，文件-打开-选择<code>./catkin_ws/src</code>文件夹下的顶层<code>CMakeLists.txt</code>文件（不要选择子功能包里面的）-作为项目打开。</p>
+</li>
+<li>
+<p>配置项目。文件-设置-构建、执行、部署-CMake：</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs cmake"><span class="hljs-comment"># CMake选项：</span><br>-DCATKIN_DEVEL_PREFIX=../devel<br><span class="hljs-comment"># 构建目录：</span><br>../build<br></code></pre></td></tr></table></figure>
+</li>
+<li>
+<p>选中<code>./catkin_ws/src</code>文件夹下的顶层<code>CMakeLists.txt</code>文件作为要加载的<code>CMakeLists.txt</code>文件，鼠标右键-<code>加载CMake项目</code>。CLion会自动开始编译项目，等待编译成功即可。之后如果想要重新编译，可以右键左侧的项目树，选择<code>重新加载Cmake项目</code>；或点击界面底部的<code>Cmake</code>，后点击弹出界面左上角的<code>刷新</code>符号。</p>
+<blockquote>
+<p>项目树会变成：</p>
+<p>src</p>
+<p>├── googletest /usr/scr/googletest</p>
+<p>└── src /youfolder/catkin_ws/src</p>
+</blockquote>
+<blockquote>
+<p>如果之前已经自动创建了<code>cmake-build-debug</code>文件夹，直接删了就好。</p>
+</blockquote>
+</li>
+<li>
+<p>调试ROS节点程序。</p>
+<ol>
+<li>
+<p>编译成功后，Clion会自动加载该ROS项目的全部节点，显示在界面右上角。选择好要调试的节点，可以通过<code>选择节点-编辑配置-程序实参</code>来配置参数。</p>
+</li>
+<li>
+<p>选择好节点后，点击节点旁边的小锤子符号来重新构建程序。</p>
+</li>
+<li>
+<p>构建成功后，可以点击节点附近小虫子符号来启动调试，如打断点等。</p>
+<blockquote>
+<p>调试的时候可能需要终端启动roscore。</p>
+</blockquote>
+</li>
+<li></li>
+</ol>
+</li>
+<li></li>
+</ol>
+<p>参考链接：</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_37416258/article/details/117082293">（入门篇）在Clion下进行ROS开发</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/caiqidong321/article/details/130126200">Ubuntu下安装Clion</a></p>
+<h1 id="git">git</h1>
+<h2 id="配置-2">配置</h2>
+<h3 id="git-clone超时问题">git clone超时问题</h3>
+<p>根据<a target="_blank" rel="noopener" href="https://blog.csdn.net/u_hcy2000/article/details/123052677">关于在ubuntu中git clone超时的问题</a>的说明：</p>
+<ol>
+<li>
+<p>配置了科学上网。首先确保浏览器能够访问谷歌，能访问<a target="_blank" rel="noopener" href="https://github.com">GitHub</a>。</p>
+</li>
+<li>
+<p>查看命令窗口的git配置。git是否设置了代理：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">git config --global --get http.proxy<br>git config --global --get https.proxy<br></code></pre></td></tr></table></figure>
+<p>如果什么都没有显示，说明没有配置代理。</p>
+</li>
+<li>
+<p>为git设置代理。在linux的设置，网络中查看代理的地址，例如设置如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">git config --global http.proxy <span class="hljs-string">&#x27;127.0.0.1:1080&#x27;</span><br>git config --global https.proxy <span class="hljs-string">&#x27;127.0.0.1:1080&#x27;</span><br></code></pre></td></tr></table></figure>
+<p>这时候再次查看应该有代理内容输出，此时在git应该是可行的。</p>
+</li>
+<li>
+<p>（可选）git移除代理。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">git config --global --<span class="hljs-built_in">unset</span> http.proxy<br>git config --global --<span class="hljs-built_in">unset</span> https.proxy<br></code></pre></td></tr></table></figure>
+</li>
+<li></li>
+</ol>
+<h1 id="QQ-Linux版">QQ Linux版</h1>
+<h2 id="下载安装">下载安装</h2>
+<p><a target="_blank" rel="noopener" href="https://im.qq.com/linuxqq/download.html">官方下载地址和安装及卸载帮助</a></p>
+<h3 id="如何选择安装包？">如何选择安装包？</h3>
+<p>QQ Linux版 目前支持x64（x86_64、amd64）、arm64（aarch64）、mips64（mips64el）三种架构，每种架构支持Debian系、红帽系、Arch Linux系、其它发行版中的一种或几种（未来可能继续扩充）。每一次发布均会提供架构和发行版的若干种组合支持的安装包，可按下面所述的规则进行选择。</p>
+<p>每一个安装包会按照形如如下的格式命名：</p>
+<figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs txt">linuxqq_1.0.1-b1-100_x86_64.rpm<br>[-产品名-][---版本---][-架构-][格式]<br></code></pre></td></tr></table></figure>
+<ol>
+<li>
+<p>选择架构：</p>
+<p>根据你所使用的机器硬件架构选择相应的兼容架构类型（可通过uname -a查看）x64（x86_64、amd64）、arm64（aarch64）、mips64（mips64el）</p>
+</li>
+<li>
+<p>根据你所使用的linux发行版选择格式：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">后缀名</th>
+<th style="text-align:center">安装包管理器</th>
+<th style="text-align:center">支持发行版</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">.rpm</td>
+<td style="text-align:center">rpm/yum</td>
+<td style="text-align:center">红帽系（如redhat、fedora、centos）</td>
+</tr>
+<tr>
+<td style="text-align:center">.deb</td>
+<td style="text-align:center">dpkg/apt</td>
+<td style="text-align:center">debian系（如debian、ubuntu、银河麒麟）</td>
+</tr>
+<tr>
+<td style="text-align:center">.pkg.tar.xz</td>
+<td style="text-align:center">pacman</td>
+<td style="text-align:center">arch系（如Arch Linux、manjaro）</td>
+</tr>
+<tr>
+<td style="text-align:center">.sh</td>
+<td style="text-align:center">bash</td>
+<td style="text-align:center">任意支持bash的发行版</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li></li>
+</ol>
+<h3 id="如何安装？">如何安装？</h3>
+<p>当前版本的QQ Linux版依赖gtk2.0，安装QQ Linux版前请确保你的系统已安装gtk2.0。以下是一些使用命令行安装gtk2.0的例子：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo apt install libgtk2.0-0 <span class="hljs-comment"># Ubuntu</span><br>sudo yum install gtk2.x86_64 <span class="hljs-comment"># centos</span><br></code></pre></td></tr></table></figure>
+<p>请参考你所使用的系统安装包管理器的使用说明来安装你所选择的QQ Linux版安装程序，注意你需要root权限才能完成安装。在一些发行版中你可以通过双击文件管理器中的安装程序完成安装。以下是一些使用命令行来安装的例子：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo ./linuxqq_1.0.1-b1-100_x86_64.sh<br>sudo rpm -ivh linuxqq_1.0.1-b1-100_mips64el.rpm<br>sudo dpkg -i linuxqq_1.0.1-b1-100_armhf.deb<br>sudo apt install -y /path/to/linuxqq_1.0.1-b1-100_amd64.deb<br>sudo pacman -U linuxqq_1.0.1-ci-94_x86_64.pkg.tar.xz<br></code></pre></td></tr></table></figure>
+<p>如果版本更新后登录出现闪退情况，请删除 <code>~/.config/tencent-qq/#你的QQ号#</code> 目录后重新登录。</p>
+<h3 id="如何卸载？">如何卸载？</h3>
+<p>请尽量使用你安装时使用的对应方式来卸载QQ Linux版（参考你所使用的系统安装包管理器说明）。同样需要root权限才能完成卸载。以下是一些例子：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo rpm -e linuxqq<br>sudo dpkg -r linuxqq<br></code></pre></td></tr></table></figure>
+<h2 id="更新">更新</h2>
+<p>下载最新版的安装包，如<code>.deb</code>，双击安装即可覆盖。</p>
+<h1 id="Texlive">Texlive</h1>
+<h2 id="安装配置">安装配置</h2>
+<ol>
+<li>
+<p>获取Texlive的iso镜像文件。可以访问以下网站下载texlive的iso文件：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="http://ftp.math.purdue.edu/mirrors/ctan.org/systems/texlive/Images/">美国普渡大学镜像资源库</a></li>
+<li><a target="_blank" rel="noopener" href="https://mirrors.tuna.tsinghua.edu.cn/CTAN/systems/texlive/Images/">清华大学开源软件镜像站</a></li>
+</ul>
+</li>
+<li>
+<p>安装Texlive。</p>
+<ol>
+<li>
+<p>为了使用图形化界面进行安装texlive，需要安装perl-tk：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo apt-get install perl-tk<br>sudo apt install tk<br></code></pre></td></tr></table></figure>
+</li>
+<li>
+<p>挂载iso镜像文件：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 进入到你下载好的iso文件所在目录下</span><br>sudo mount -o loop texlive2023-20230313.iso /mnt  <span class="hljs-comment"># 将iso文件挂载（解压？）到mnt文件夹下，要挂载到哪个文件夹可以自己指定  </span><br><span class="hljs-built_in">cd</span> /mnt  <span class="hljs-comment"># 进入到到挂载后的文件夹下，才会找到install.tl文件</span><br>sudo ./install-tl -gui  <span class="hljs-comment"># 执行install.tl这个文件，-gui使用图形界面开始安装</span><br><span class="hljs-comment"># 如果是命令行安装根据提示，输入i进行安装</span><br><span class="hljs-comment"># 安装完成，界面输出：Welcome to Tex Live!</span><br></code></pre></td></tr></table></figure>
+<p>报错：mount: /mnt: WARNING: device write-protected, mounted read-only.</p>
+<p>解决：需要挂载的文件夹，以及挂载到的文件夹都要全部关闭。</p>
+</li>
+<li></li>
+</ol>
+</li>
+<li>
+<p>环境配置。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo gedit ~/.bashrc  <span class="hljs-comment"># sudo gedit ~/.zshrc</span><br><span class="hljs-comment"># 写入</span><br><span class="hljs-comment"># 依据实际安装路径</span><br><span class="hljs-comment"># 根据操作系统位数不同，64位的是x86_64-linux，如果是32位的则是 i386-linux </span><br><span class="hljs-built_in">export</span> PATH=/usr/local/texlive/2023/bin/x86_64-linux:<span class="hljs-variable">$PATH</span><br><span class="hljs-built_in">export</span> MANPATH=/usr/local/texlive/2023/texmf-dist/doc/man:<span class="hljs-variable">$MANPATH</span><br><span class="hljs-built_in">export</span> INFOPATH=/usr/local/texlive/2023/texmf-dist/doc/info:<span class="hljs-variable">$INFOPATH</span><br><span class="hljs-built_in">source</span> ~/.bashrc  <span class="hljs-comment"># source ~/.zshrc</span><br></code></pre></td></tr></table></figure>
+</li>
+<li>
+<p>测试是否安装成功。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">tex --version  <span class="hljs-comment"># tex -v</span><br></code></pre></td></tr></table></figure>
+<p>如果返回的结果是<code>command not found</code>而非版本和版权信息，或者显示了旧版本的信息，很有可能是因为你没有把正确的bin子目录添加到PATH中。</p>
+</li>
+<li>
+<p>安装完成后卸载挂载的文件不让它占用空间 (mnt文件夹指的是挂载镜像文件的文件夹)。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo umount /mnt<br></code></pre></td></tr></table></figure>
+</li>
+<li>
+<p>更新字体信息。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo <span class="hljs-built_in">cp</span> /usr/local/texlive/2023/texmf-var/fonts/conf/texlive-fontconfig.conf /etc/fonts/conf.d/09-texlive.conf<br><span class="hljs-built_in">cd</span> /etc/fonts/conf.d/<br>sudo fc-cache -fsv  <span class="hljs-comment"># 执行失败就再执行此命令一次</span><br></code></pre></td></tr></table></figure>
+</li>
+<li>
+<p>更新配置源到清华大学。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo tlmgr option repository https://mirrors.tuna.tsinghua.edu.cn/CTAN/systems/texlive/tlnet<br></code></pre></td></tr></table></figure>
+<p>此步如果出现 sudo;找不到命令 tlmgr，意味着执行时环境变量不对：</p>
+<ol>
+<li>
+<p>尝试：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo <span class="hljs-built_in">env</span> PATH=<span class="hljs-variable">$PATH</span> tlmgr option repository https://mirrors.tuna.tsinghua.edu.cn/CTAN/systems/texlive/tlnet<br></code></pre></td></tr></table></figure>
+<p>如果还不行，继续尝试：</p>
+</li>
+<li>
+<p>请打开<code>/etc/sudoers</code>，将<code>Defaults env_reset</code>改为<code>Defaults !env_reset</code>。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo gedit /etc/sudoers<br><span class="hljs-comment"># 将Defaults env_reset改为Defaults !env_reset</span><br></code></pre></td></tr></table></figure>
+</li>
+<li>
+<pre><code class="language-bash">sudo gedit ~/.bashrc  # sudo gedit ~/.zshrc
+# 写入
+alias sudo='sudo env PATH=$PATH'
+source ~/.bashrc  # source ~/.zshrc
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs awk"><br><span class="hljs-number">4</span>. ```bash<br>   sudo tlmgr option repository https:<span class="hljs-regexp">//mi</span>rrors.tuna.tsinghua.edu.cn<span class="hljs-regexp">/CTAN/</span>systems<span class="hljs-regexp">/texlive/</span>tlnet<br></code></pre></td></tr></table></figure>
+
+</code></pre>
+</li>
+<li></li>
+</ol>
+</li>
+<li>
+<p>更新宏包。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo tlmgr update --self --all<br><span class="hljs-comment"># sudo env PATH=$PATH tlmgr update --self --all</span><br></code></pre></td></tr></table></figure>
+</li>
+<li>
+<p>为 Context 更新缓存。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">context --generate<br></code></pre></td></tr></table></figure>
+</li>
+<li>
+<p>把windows下的字体拷贝过来，这个中文字体种类就比较多了。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 创建一个winfonts文件夹用于存放所有字体</span><br>sudo <span class="hljs-built_in">mkdir</span> /usr/share/fonts/winfonts<br><br><span class="hljs-comment"># 将字体从Fonts文件中拷贝到winfonts中</span><br>sudo <span class="hljs-built_in">cp</span> ~/Fonts/* /usr/share/fonts/winfonts/<br><br><span class="hljs-comment"># 进入到字体文件夹</span><br><span class="hljs-built_in">cd</span> /usr/share/fonts/winfonts/<br><br><span class="hljs-comment"># 修改字体访问权限</span><br>sudo <span class="hljs-built_in">chmod</span> 744 *<br><br><span class="hljs-comment"># 回到主目录</span><br><span class="hljs-built_in">cd</span> ~<br><br><span class="hljs-comment"># 更新字体信息，使其生效</span><br>sudo mkfontscale<br>sudo mkfontdir<br>sudo fc-cache -fv<br></code></pre></td></tr></table></figure>
+<p>至此更多的字体都设置到Ubuntu系统中了，并且可以使用了。</p>
+<p>可通过 <code>fc-list :lang=zh-cn</code> 查看中文字体及字体在系统中的具体名字。</p>
+<p>如果有需要使用自定义的字体，方法也是重走第二中方案即可。例如：我想使用思源黑体，将下载好的字体文件放到winfonts文件夹下，修改权限，更新字体信息，就可以了。</p>
+</li>
+<li></li>
+</ol>
+<h2 id="测试-2">测试</h2>
+<ol>
+<li>
+<p>新建测试文件夹，在此文件夹下打开终端，输入：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">touch</span> main.tex<br></code></pre></td></tr></table></figure>
+<p>新建一个<code>.tex</code>文件。</p>
+</li>
+<li>
+<p>用编辑器打开这个文件，在里面写入代码：</p>
+<figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs latex"><span class="hljs-keyword">\documentclass</span>&#123;ctexart&#125;<br><span class="hljs-keyword">\usepackage</span>&#123;amsmath&#125;<br><span class="hljs-keyword">\title</span>&#123;Welcome to <span class="hljs-keyword">\LaTeX</span>&#125;<br><span class="hljs-keyword">\author</span>&#123;ljguo&#125;<br><span class="hljs-keyword">\date</span>&#123;<span class="hljs-keyword">\today</span>&#125;<br><span class="hljs-keyword">\begin</span>&#123;document&#125;<br><span class="hljs-keyword">\maketitle</span><br><br>hello  <span class="hljs-keyword">\LaTeX</span>&#123;&#125;!<br>你好  <span class="hljs-keyword">\LaTeX</span>&#123;&#125;!<br><br>这是勾股定理<br><span class="hljs-keyword">\[</span><br>   a<span class="hljs-built_in">^</span>&#123;2&#125;+b<span class="hljs-built_in">^</span>&#123;2&#125;=c<span class="hljs-built_in">^</span>&#123;2&#125;    <br><span class="hljs-keyword">\]</span><br><span class="hljs-keyword">\end</span>&#123;document&#125;<br></code></pre></td></tr></table></figure>
+</li>
+<li>
+<p>保存，然后命令行执行：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">xelatex main.tex<br></code></pre></td></tr></table></figure>
+</li>
+<li>
+<p>文件下新增<code>main.pdf</code>文件及<code>main.aux</code>、<code>main.log</code>。</p>
+</li>
+</ol>
+<h2 id="提示">提示</h2>
+<ol>
+<li>
+<p>在文档中使用新配置的中文字体。例如我想在文档中使用新配置的思源黑体：</p>
+<figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs latex"><span class="hljs-keyword">\documentclass</span>&#123;ctexart&#125;<br><br><span class="hljs-keyword">\setCJKfamilyfont</span>&#123;syht&#125;&#123;Source Han Sans CN&#125;<br><span class="hljs-keyword">\newcommand</span>&#123;<span class="hljs-keyword">\siyuanheiti</span>&#125;&#123;<span class="hljs-keyword">\CJKfamily</span>&#123;syht&#125;&#125;<br><br><span class="hljs-keyword">\begin</span>&#123;document&#125;<br>    &#123;<span class="hljs-keyword">\siyuanheiti</span> 这是用思源黑体写的内容&#125;<br><span class="hljs-keyword">\end</span>&#123;document&#125;<br></code></pre></td></tr></table></figure>
+<p>值得注意的是对于字体设定的这个语法，</p>
+<figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs latex"><span class="hljs-keyword">\setCJKfamilyfont</span>&#123;syht&#125;&#123;Source Han Sans CN&#125;<br><span class="hljs-keyword">\newcommand</span>&#123;<span class="hljs-keyword">\siyuanheiti</span>&#125;&#123;<span class="hljs-keyword">\CJKfamily</span>&#123;syht&#125;&#125;<br></code></pre></td></tr></table></figure>
+<p>可以在<code>ctex-xecjk-winfonts.def</code>文件里添加设定，在文档中直接使用即可，就不用每次都在文档中对字体进行设定了。</p>
+</li>
+<li></li>
+</ol>
+<h2 id="参考链接">参考链接</h2>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/524165545">Linux 下自定义安装 Texlive2023</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_44375591/article/details/103953590">在Linux环境下安装texlive</a></p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/431846297">记录在Linux/Unbuntu下安装latex</a></p>
+<h1 id="Zotero">Zotero</h1>
+<h2 id="下载安装-2">下载安装</h2>
+<p><a target="_blank" rel="noopener" href="https://www.zotero.org/"> Zotero官网</a></p>
+<h2 id="插件">插件</h2>
+<h3 id="插件推荐">插件推荐</h3>
+<p>当前自己使用Zotero主要是为了在Linux系统下阅读英文文献。<a href="https://zeyulong.com/posts/ecc362f9/">Linux、Ubuntu下英文文献翻译软件、工具推荐</a></p>
+<blockquote>
+<p>README.txt里附有安装说明。</p>
+</blockquote>
+<ul>
+<li>
+<p><a target="_blank" rel="noopener" href="https://github.com/zotero/zotero-libreoffice-integration">Zotero LibreOffice Integration</a></p>
+</li>
+<li>
+<p><a target="_blank" rel="noopener" href="https://github.com/windingwind/zotero-pdf-preview">Zotero PDF Preview</a></p>
+</li>
+<li>
+<p><a target="_blank" rel="noopener" href="https://github.com/windingwind/zotero-pdf-translate">Zotero PDF Translate</a></p>
+<ul>
+<li>
+<p>对于编辑-首选项-翻译-翻译服务：GPT-配置-温度参数的解释：</p>
+<p>极富创造力的参数-temperature：介于 0 和 2 之间。较高的值（如 0.8）将使输出更加随机，而较低的值（如 0.2）将使其更加集中和确定性。temperature 越高，文章内容随机性越强，创造力越好。</p>
+</li>
+</ul>
+</li>
+<li>
+<p><a target="_blank" rel="noopener" href="https://github.com/MuiseDestiny/zotero-reference">Zotero Reference</a></p>
+</li>
+</ul>
+<h3 id="安装插件">安装插件</h3>
+<ol>
+<li>下载最新版本（.xpi 文件）。注意，如果您使用 Firefox 作为浏览器，请右键单击<code>.xpi</code>并选择“另存为”。</li>
+<li>在Zotero中，单击顶部菜单栏，然后单击<code>Tools-Addons</code>。</li>
+<li>转到“扩展”页面，然后单击右上角的齿轮图标。</li>
+<li>选择<code>Install Add-on from file</code>。</li>
+<li>浏览到<code>.xpi</code>文件的下载位置并选择它。</li>
+<li>通过单击扩展列表<code>restart now</code>，重新启动Zotero。</li>
+</ol>
+<blockquote>
+<p>插件及其更新的<code>.xpi</code>源文件会备份在<code>~/.zotero/zotero/xxx.default/extensions</code>目录下。</p>
+</blockquote>
+<h3 id="配置插件">配置插件</h3>
+<p>编辑-首选项</p>
+<h2 id="更新-2">更新</h2>
+<h3 id="更新Zotero">更新Zotero</h3>
+<p><a target="_blank" rel="noopener" href="https://mlog.club/article/2872394">参考链接</a></p>
+<p>帮助-检查更新-自动更新。</p>
+<p>报错：</p>
+<figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs txt">A recommended update is available,but you do not have permission to install it.To update automatically,modify the Zotero program directory to be writeable by your user account.<br></code></pre></td></tr></table></figure>
+<p>解决：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># Linux chown（英文全拼：change owner）命令用于设置文件所有者和文件关联组的命令。</span><br><span class="hljs-comment"># -R : 处理指定目录以及其子目录下的所有文件</span><br><span class="hljs-comment"># 你自己系统的Zotero安装路径。</span><br>sudo <span class="hljs-built_in">chown</span> -R <span class="hljs-variable">$USER</span>:<span class="hljs-variable">$USER</span> /usr/bin/zotero<br>sudo <span class="hljs-built_in">chown</span> -R <span class="hljs-variable">$USER</span>:<span class="hljs-variable">$USER</span> /opt/zotero<br></code></pre></td></tr></table></figure>
+<p>如果不想在软件启动时看见这个报错，可以删除Zotero安装文件夹下的<code>updates</code>文件夹。</p>
+<p>报错：</p>
+<figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs txt">The update could not be installed. Please make sure there are no other copies of Zotero running on your computer, and then restart Zotero to try again.<br></code></pre></td></tr></table></figure>
+<p>解决：</p>
+<blockquote>
+<p>您似乎正在以root用户身份运行Zotero。这是不安全的，可能阻止Zotero从用户帐户启动时无法正常运行。如果您想安装自动更新，请修改Zotero程序用户帐户可写的目录。</p>
+</blockquote>
+<p>当我使用<code>ls -l</code>命令查看Zotero安装目录下各文件（夹）的读写权限时，发现除<code>updates</code>文件夹的所有者是当前账户外，其他的文件（夹）都是root账户。因此，我使用下面的命令将Zotero安装目录下各文件（夹）的读写权限的所有者统一设置为当前账户后，报错就解决了（把<code>updates</code>文件夹的所有者升级为root账户也行？没试过）。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># Linux chown（英文全拼：change owner）命令用于设置文件所有者和文件关联组的命令。</span><br><span class="hljs-comment"># -R : 处理指定目录以及其子目录下的所有文件</span><br><span class="hljs-comment"># 你自己系统的Zotero安装路径。</span><br>sudo <span class="hljs-built_in">chown</span> -R <span class="hljs-variable">$USER</span>:<span class="hljs-variable">$USER</span> /usr/bin/zotero<br>sudo <span class="hljs-built_in">chown</span> -R <span class="hljs-variable">$USER</span>:<span class="hljs-variable">$USER</span> /opt/zotero<br></code></pre></td></tr></table></figure>
+<h3 id="更新插件">更新插件</h3>
+<p>工具-附加组件-右上角设置符号-Check for Updates</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E5%85%B7%E5%BA%93/" class="category-chain-item">软件工具库</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>Linux系统配置与软件安装[持续更新……]</div>
+      <div>http://zeyulong.com/posts/ad29da53/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>龙泽雨</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2024年2月1日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/posts/26eed968/" title="找论文和找代码的步骤总结">
+                        <span class="hidden-mobile">找论文和找代码的步骤总结</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+  <div id="waline"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#waline', function() {
+      Fluid.utils.createCssLink('https://cdn.staticfile.org/waline/2.15.5/waline.min.css')
+      Fluid.utils.createScript('https://cdn.staticfile.org/waline/2.15.5/waline.min.js', function() {
+        var options = Object.assign(
+          {"serverURL":"https://www.zeyulong.cn/","path":"window.location.pathname","meta":["nick","mail","link"],"requiredMeta":["nick"],"lang":"zh-CN","emoji":["https://cdn.jsdelivr.net/gh/walinejs/emojis/weibo"],"dark":"html[data-user-color-scheme=\"dark\"]","wordLimit":0,"pageSize":10,"reaction":true,"locale":{"placeholder":"花径不曾缘客扫，蓬门今始为君开。"}},
+          {
+            el: '#waline',
+            path: window.location.pathname
+          }
+        )
+        Waline.init(options);
+        Fluid.utils.waitElementVisible('#waline .vcontent', () => {
+          var imgSelector = '#waline .vcontent img:not(.vemoji)';
+          Fluid.plugins.imageCaption(imgSelector);
+          Fluid.plugins.fancyBox(imgSelector);
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  
+<script src="/custom/live2d/live2d-widget/autoload.js"></script>
+<script src="/custom/live2d/jquery.min.js"></script>
+<script src="/custom/LabelPage/LabelPage.js"></script>
+<script src="/custom/LoadingBar/pace.min.js"></script>
+<script src="/custom/ReadingProgress/ReadingProgress.js"></script>
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  <canvas
+    class="fireworks"
+    style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: 32767"
+></canvas>
+<script type="text/javascript" src="/custom/fireworks/anime.min.js"></script> 
+<script type="text/javascript" src="/custom/fireworks/fireworks.js"></script>
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
