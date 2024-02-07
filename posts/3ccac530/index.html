@@ -16,17 +16,19 @@
   <meta name="author" content="龙泽雨">
   <meta name="keywords" content="">
   
-    <meta name="description" content="本文主要分享了自己在编译和运行论文《Event-Based Stereo Visual Odometry》（下面简称为ESVO）的代码时的调试记录。">
+    <meta name="description" content="本文主要分享了自己在编译和运行论文《Event-Based Stereo Visual Odometry》（下面简称为ESVO）的代码时的调试记录，另附基于ESVO的拓展代码SEVIO和ESVO_extension的编译运行过程。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ESVO编译运行调试记录">
 <meta property="og:url" content="http://zeyulong.com/posts/3ccac530/index.html">
 <meta property="og:site_name" content="龙泽雨的博客">
-<meta property="og:description" content="本文主要分享了自己在编译和运行论文《Event-Based Stereo Visual Odometry》（下面简称为ESVO）的代码时的调试记录。">
+<meta property="og:description" content="本文主要分享了自己在编译和运行论文《Event-Based Stereo Visual Odometry》（下面简称为ESVO）的代码时的调试记录，另附基于ESVO的拓展代码SEVIO和ESVO_extension的编译运行过程。">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://zeyulong.com/posts/3ccac530/ESVO%E6%96%87%E4%BB%B6%E8%B0%83%E7%94%A8%E7%BB%93%E6%9E%84.jpg">
 <meta property="article:published_time" content="2024-01-10T14:29:10.000Z">
-<meta property="article:modified_time" content="2024-01-27T14:09:39.543Z">
+<meta property="article:modified_time" content="2024-02-07T03:24:10.679Z">
 <meta property="article:author" content="龙泽雨">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://zeyulong.com/posts/3ccac530/ESVO%E6%96%87%E4%BB%B6%E8%B0%83%E7%94%A8%E7%BB%93%E6%9E%84.jpg">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
@@ -216,7 +218,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          5.3k 字
+          9.2k 字
         
       </span>
     
@@ -227,7 +229,7 @@
         
         
         
-          45 分钟
+          77 分钟
         
       </span>
     
@@ -277,7 +279,7 @@
               <p id="updated-time" class="note note-info" style="">
                 
                   
-                    本文最后更新于 2024年1月27日 晚上
+                    本文最后更新于 2024年2月7日 上午
                   
                 
               </p>
@@ -285,7 +287,7 @@
             
               <div class="markdown-body">
                 
-                <p>本文主要分享了自己在编译和运行论文《Event-Based Stereo Visual Odometry》（下面简称为ESVO）的代码时的调试记录。</p>
+                <p>本文主要分享了自己在编译和运行论文《Event-Based Stereo Visual Odometry》（下面简称为ESVO）的代码时的调试记录，另附基于ESVO的拓展代码SEVIO和ESVO_extension的编译运行过程。</p>
 <span id="more"></span>
 <h1 id="ESVO简介">ESVO简介</h1>
 <p>ESVO 是一种利用双目事件相机实现实时视觉里程计的新型策略。提出的建图方法和跟踪方法都利用了统一的事件表示(时间表面) ，因此，它可以看作是一种“直接”的，以原始事件为输入的几何方法。</p>
@@ -296,6 +298,87 @@
 <li><strong><a target="_blank" rel="noopener" href="https://arxiv.org/abs/1807.07429">Semi-dense 3D Reconstruction with a Stereo Event Camera</a></strong>, <em>Yi Zhou, Guillermo Gallego, Henri Rebecq, Laurent Kneip, Hongdong Li, Davide Scaramuzza</em>, ECCV 2018.</li>
 </ul>
 <p><a target="_blank" rel="noopener" href="https://github.com/HKUST-Aerial-Robotics/ESVO">Source Code</a></p>
+<h1 id="项目文件解读">项目文件解读</h1>
+<img src="/posts/3ccac530/ESVO%E6%96%87%E4%BB%B6%E8%B0%83%E7%94%A8%E7%BB%93%E6%9E%84.jpg" srcset="/img/loading.gif" lazyload class="" title="ESVO文件调用结构">
+<ol>
+<li><code>./ESVO/esvo_core/include/</code>：
+<ul>
+<li><code>./container</code>: 包含数据结构和数据容器类。</li>
+<li><code>./core</code>: 标识了它属于核心功能的一部分。</li>
+<li><code>./optimization</code>: 定义了一个模板结构体 <code>OptimizationFunctor</code>，用作 Eigen 非线性优化工具箱的通用基类（functor）。</li>
+<li><code>./tools</code>: 包含实用程序和算法工具。</li>
+</ul>
+</li>
+<li><code>./ESVO/dependencies.yaml</code>
+<ul>
+<li>该<code>dependencies.yaml</code>文件列出了一个源代码项目在构建和运行时所依赖的外部库。这些库通过<code>catkin</code>构建系统进行管理，通常用于ROS（Robot Operating System）项目。每一个依赖项提供了三个关键信息：类型、URL和版本。在这个文件中，所有依赖项都是从Git仓库中获取的，且均指定为<code>master</code>分支。</li>
+<li>这个文件主要用于配置项目的依赖管理系统，确保所有所需的外部库均能被正确拉取并集成到项目中。这对于确保代码的一致性和可复现性是非常重要的。</li>
+</ul>
+</li>
+<li><mark><code>.launch</code></mark>
+<ul>
+<li>这是一个ROS（Robot Operating System）的启动配置文件，用于启动ROS节点。</li>
+<li><code>./ESVO/esvo_time_surface/launch/rosbag_launcher/xxx/(xxx_)calib_info.launch</code>：相机的内参矩阵 <code>K</code>（焦距和主点坐标）、畸变系数 <code>D</code>、旋转矩阵 <code>R</code> 和投影矩阵 <code>P</code>。</li>
+<li><code>./ESVO/esvo_time_surface/launch/stereo_time_surface.launch</code>: 启动<code>esvo_time_surface</code>ROS节点（用于构造时间表面）。</li>
+<li><code>./ESVO/esvo_time_surface/launch/rosbag_launcher/xxx/rosbag.launch</code>: 启动<code>esvo_time_surface</code>ROS节点（播放rosbag包）。</li>
+<li><code>./ESVO/esvo_core/launch/system/system_xxx.launch</code>: 启动<code>esvo_core</code>ROS节点（用于跟踪）。</li>
+<li><code>./ESVO/esvo_core/launch/mvstereo/mvstereo_xxx.launch</code>: 启动<code>esvo_core</code>ROS节点（用于MVS建图）。</li>
+</ul>
+</li>
+<li><code>./ESVO/xxx/package.xml</code>
+<ul>
+<li>此文件是一个ROS（Robot Operating System）软件包的清单文件，用于定义包的基本信息和依赖关系。</li>
+<li>这个文件主要被ROS用来理解如何构建和维护程序包，并且定义了必要的信息，使得包可以在ROS生态中被正确找到和编译。</li>
+</ul>
+</li>
+<li><code>./ESVO/esvo_core/calib/xxx/(left/right).yaml</code>
+<ul>
+<li>一个YAML格式的文件，它包含了特定相机的标定参数。</li>
+<li>这些参数包括图像尺寸、相机内参矩阵、畸变模型和畸变系数、校正矩阵、投影矩阵以及右相机相对于左相机的变换矩阵。</li>
+<li>这种文件通常用于机器视觉和机器人系统，用来纠正相机拍摄图像的畸变，并将图像坐标转换为实际世界坐标。</li>
+</ul>
+</li>
+<li><code>./ESVO/esvo_core/cfg/DVS_MappingStereo.cfg</code>
+<ul>
+<li>该程序文件名为 <code>DVS_MappingStereo.cfg</code> 是一个配置脚本，它属于一个名叫 <code>esvo_core</code> 的包，并且这个项目与源代码项目 <code>ESVO</code>（Event-based Stereo Visual Odometry）相关。这个脚本使用 <code>dynamic_reconfigure</code> 功能，来允许实时修改运行中ROS节点的参数。</li>
+<li>在最后，脚本执行 <code>generate</code> 函数来创建一个用于动态配置的服务，该服务可以在ROS运行时动态调整上述参数。</li>
+</ul>
+</li>
+<li><code>./ESVO/esvo_core/cfg/tracking/tracking_xxx.yaml</code>
+<ul>
+<li>该文件<code>tracking_xxx.yaml</code>是一个配置文件，用于设置ESVO（Event-based Stereo Visual Odometry，基于事件的双目视觉里程计）的核心跟踪算法参数。该文件以YAML（YAML Ain't Markup Language）格式组织，它包含一系列键值对，用于控制视觉里程计跟踪流程中的不同方面。</li>
+<li>需要注意的是，<code>PATH_TO_SAVE_TRAJECTORY</code>的值可能需要根据实际环境进行修改。</li>
+</ul>
+</li>
+<li><code>./ESVO/esvo_core/cfg/time_surface/ts_parameters.yaml</code>
+<ul>
+<li>这个<code>ts_parameters.yaml</code>文件是一个配置文件，用于设定时间表面(Time Surface)参数。在事件相机数据处理中，时间表面是一种将事件信息编码成易于分析的形式。</li>
+</ul>
+</li>
+<li><code>./ESVO/esvo_core/cfg/mvstereo/mvstereo_xxx.yaml</code>
+<ul>
+<li>配置文件包含各种参数设置，这些参数影响了多视角双目视觉系统（Multi-View Stereo, MVStereo）的行为和性能。</li>
+</ul>
+</li>
+<li><code>./ESVO/esvo_core/cfg/mapping/mapping_xxx.yaml</code></li>
+</ol>
+<ul>
+<li>此文件包含用于调整 ESVO (Event-based Stereo Visual Odometry) 系统建图部分参数的配置文件。</li>
+</ul>
+<ol start="11">
+<li><code>./ESVO/xxx/.perspective</code>
+<ul>
+<li>这是一个JSON格式的配置文件，用于定义一个名为<code>ESVO</code>的软件项目中的<code>esvo_time_surface</code>插件的窗口布局和行为。基于文档结构，这看起来像是为图形用户界面（GUI），如<code>rqt</code>插件制定的配置。<code>rqt</code>是一个基于Qt的软件框架，它使得为机器人操作系统（ROS）创建丰富的图形界面变得简单。</li>
+<li>总的来说，这个配置文件为ESVO项目中的<code>esvo_time_surface.perspective</code>插件提供了窗口布局、插件状态和用户界面元素的详细信息。</li>
+</ul>
+</li>
+<li><code>./ESVO/esvo_core/.rviz</code>
+<ul>
+<li><code>.rviz</code>文件是一个用于配置 ROS (Robot Operating System) 可视化工具 RViz 的视图配置文件。RViz 是一个用来对机器人传感器数据、导航状态以及其他信息进行三维可视化的工具。这个文件定义了RViz中的一系列面板、显示项、视图以及工具的属性和设置。</li>
+</ul>
+</li>
+<li></li>
+</ol>
 <h1 id="数据集下载">数据集下载</h1>
 <h2 id="原始数据集">原始数据集</h2>
 <p><a target="_blank" rel="noopener" href="http://rpg.ifi.uzh.ch/ECCV18_stereo_davis.html">rpg (University of Zurich)</a></p>
@@ -734,6 +817,193 @@ Initiating shutdown!</p>
 <h1 id="评估">评估</h1>
 <p><a target="_blank" rel="noopener" href="https://github.com/HKUST-Aerial-Robotics/ESVO/issues/29">https://github.com/HKUST-Aerial-Robotics/ESVO/issues/29</a></p>
 <p>[待更新……]</p>
+<h1 id="参数动态配置">参数动态配置</h1>
+<p>提供了用于时间表面，建图和跟踪的参数配置说明，借助(dynamic reconfigure)动态配置进行调整。</p>
+<h2 id="时间表面">时间表面</h2>
+<ul>
+<li><code>use_sim_time </code>：将此设置为<code>True</code>用于所有离线实验，这些实验使用模拟时间。</li>
+<li><code>ignore_polarity </code>：将此设置为<code>True</code>因为在所提出方法中不使用极性信息。</li>
+<li><code>time_surface_mode </code>：时间表面渲染方式（0：向后；1：向前）。0表示使用标准方式刷新时间表面。有关更多详细信息，请参阅实现。</li>
+<li><code>decay_ms </code>：恒定指数衰减参数（单位：毫秒）。</li>
+<li><code>median_blur_kernel_size </code>：决定用于降噪时间表面的内核大小。</li>
+<li><code>max_event_queue_len </code>：决定在每个坐标下维护的事件队列长度。</li>
+</ul>
+<h2 id="建图">建图</h2>
+<p><strong>事件匹配</strong></p>
+<ul>
+<li><code>EM_Slice_Thickness</code>：决定时间切片的厚度（单位：秒）。</li>
+<li><code>EM_Time_THRESHOLD</code>：时间同时性阈值。</li>
+<li><code>EM_EPIPOLAR_THRESHOLD</code>：极线约束阈值。</li>
+<li><code>EM_TS_NCC_THRESHOLD</code>：运动一致性阈值。</li>
+<li><code>EM_NUM_EVENT_MATCHING</code>：事件匹配的最大事件数。</li>
+</ul>
+<p><strong>块匹配</strong></p>
+<ul>
+<li><code>BM_half_slice_thickness</code>：决定时间切片的厚度（单位：秒）。</li>
+<li><code>BM_min_disparity</code>：极线匹配的最小搜索距离。</li>
+<li><code>BM_max_disparity</code>：极线匹配的最大搜索距离。</li>
+<li><code>BM_step</code>：极线搜索间隔。</li>
+<li><code>BM_ZNCC_Threshold</code>：基于ZNCC的匹配阈值。</li>
+<li><code>BM_bUpDownConfiguration</code>：一个标志，指示立体基线的方向（True：上下；False：左右）。</li>
+<li><code>bSmoothTimeSurface</code>：是否平滑时间表面。</li>
+</ul>
+<p><strong>非线性优化参数</strong></p>
+<ul>
+<li><code>invDepth_min_range</code>：结果反深度的下限。</li>
+<li><code>invDepth_max_range</code>：结果反深度的上限。</li>
+<li><code>residual_vis_threshold</code>：反深度估计的时间残差阈值。</li>
+<li><code>stdVar_vis_threshold</code>：反深度估计的不确定性阈值。</li>
+<li><code>age_vis_threshold</code>：融合操作次数（反深度估计）的阈值。</li>
+<li><code>age_max_range</code>：年龄的上限（仅用于可视化）。</li>
+<li><code>fusion_radius</code>：决定参与深度融合的像素数。</li>
+<li><code>FUSION_STRATEGY</code>：融合策略。（使用CONST_FRAMES或CONST_POINTS）</li>
+<li><code>maxNumFusionFrames</code>：决定有多少帧（观测值）融合到当前时间。（在CONST_FRAMES模式下使用）</li>
+<li><code>maxNumFusionPoints</code>：决定有多少点融合到当前时间。（在CONST_POINTS模式下使用）</li>
+<li><code>Denoising</code>：此操作有助于去除由VICON反射引起的事件噪声。设置为<code>True</code>以使用。</li>
+<li><code>Regularization</code>：对结果反深度图进行正则化处理。</li>
+<li><code>PROCESS_EVENT_NUM</code>：每次观察时执行的最大深度估计数量。</li>
+<li><code>TS_HISTORY_LENGTH</code>：维持的时间表面数量。</li>
+<li><code>INIT_SGM_DP_NUM_THRESHOLD</code>：SGM初始化需要的最小深度点数。</li>
+<li><code>mapping_rate_hz</code>：映射节点的更新率。</li>
+<li><code>patch_size_X</code>：时间表面上补丁的大小（x维度）。</li>
+<li><code>patch_size_Y</code>：时间表面上补丁的大小（y维度）。</li>
+<li><code>LSnorm</code>：最小二乘法选择（使用l2或Tdist）。</li>
+<li><code>Tdist_nu</code>：应用学生t分布的参数。</li>
+<li><code>Tdist_scale</code>：应用学生t分布的参数。</li>
+<li><code>Tdist_stdvar</code>：应用学生t分布的参数。</li>
+<li><code>bVisualizeGlobalPC</code>：设置为<code>True</code>以可视化全局点云。</li>
+<li><code>visualizeGPC_interval</code>：将新点推送到全局点云的时间间隔。</li>
+<li><code>NumGPC_added_oper_refresh</code>：推送到全局点云的点数。</li>
+</ul>
+<h2 id="跟踪">跟踪</h2>
+<ul>
+<li><code>invDepth_min_range</code>：输入点云的深度下界。（仅用于可视化）。</li>
+<li><code>invDepth_max_range</code>：输入点云的深度上界。（仅用于可视化）。</li>
+<li><code>TS_HISTORY_LENGTH</code>：保持的时间表面数量。</li>
+<li><code>REF_HISTORY_LENGTH</code>：维护的参考局部地图数量。</li>
+<li><code>tracking_rate_hz</code>：追踪节点的更新率。</li>
+<li><code>patch_size_X</code>：时间表面上补丁的尺寸（x维度）。</li>
+<li><code>patch_size_Y</code>：时间表面上补丁的尺寸（y维度）。</li>
+<li><code>kernelSize</code>：用于平滑负时间表面的内核大小。</li>
+<li><code>MAX_REGISTRATION_POINTS</code>：参与3D-2D配准的最大3D点数。</li>
+<li><code>BATCH_SIZE</code>：每次迭代中使用的3D点的数量。</li>
+<li><code>MAX_ITERATION</code>：最大迭代次数。</li>
+<li><code>LSnorm</code>：最小二乘法的选择。（使用Huber或l2）</li>
+<li><code>huber_threshold</code>：Huber范数参数。</li>
+<li><code>MIN_NUM_EVENTS</code>：自上次观测以来发生的事件数量门槛。这个用于检查事件相机是否感知到足够的刺激。</li>
+<li><code>RegProblemType</code>：雅克比计算方式（<code>0</code> 数值； <code>1</code> 分析）。</li>
+<li><code>SAVE_TRAJECTORY</code>：设置<code>True</code>保存轨迹。</li>
+<li><code>SEQUENCE_NAME</code>：保存轨迹时分配。</li>
+<li><code>VISUALIZE_TRAJECTORY</code>：设置<code>True</code>以可视化路径。</li>
+</ul>
+<h1 id="SEVIO">SEVIO</h1>
+<h2 id="概览">概览</h2>
+<p>SEVIO 是一种用于双目事件相机的新型视觉惯性里程计。我们的可视化模块遵循工作<a target="_blank" rel="noopener" href="https://github.com/HKUST-Aerial-Robotics/ESVO">ESVO</a>，融合模块基于ESKF。</p>
+<p><a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=IclaeypKIPc">Video</a></p>
+<p><a target="_blank" rel="noopener" href="https://arxiv.org/abs/2303.05086">Paper</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/wkunfeng/sevio">Source Code</a></p>
+<h2 id="数据集下载-2">数据集下载</h2>
+<p>我们测试的数据集可以从<a target="_blank" rel="noopener" href="https://drive.google.com/drive/folders/10HZ-sf0k96WDxMqyBHkDM14BgsFZoF45?usp=share_link">sequences</a>中下载。</p>
+<h2 id="编译">编译</h2>
+<p>我们已经使用以下配置在机器上测试了 SEVIO：</p>
+<ul>
+<li>Ubuntu 18.04.5 LTS + ROS melodic + OpenCV 3.2</li>
+</ul>
+<p>编译过程与ESVO一致。这里只提供关键步骤：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">cd</span> yourfolder/catkin_ws/src<br>git <span class="hljs-built_in">clone</span> https://github.com/jbeder/yaml-cpp.git<br><span class="hljs-built_in">cd</span> yaml-cpp<br><span class="hljs-built_in">mkdir</span> build &amp;&amp; <span class="hljs-built_in">cd</span> build &amp;&amp; cmake -DYAML_BUILD_SHARED_LIBS=ON ..<br>make -j8<br><br>catkin build dvs_ros_driver davis_ros_driver dvxplorer_ros_driver dvs_renderer<br><br>catkin build esvo_time_surface esvo_core<br><br><span class="hljs-built_in">source</span> ./devel/setup.zsh<br></code></pre></td></tr></table></figure>
+<h2 id="运行-3">运行</h2>
+<h3 id="time-surface">time_surface</h3>
+<p>这个包实现了一个不断更新立体时间图(即时间表面)的节点。要单独启动它，打开一个终端并运行命令:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">source</span> ./devel/setup.zsh &amp;&amp; roslaunch esvo_time_surface stereo_time_surface.launch<br><span class="hljs-comment"># source ./devel/setup.zsh &amp;&amp; roslaunch esvo_time_surface stereo_time_surface_VECtor.launch</span><br><span class="hljs-comment"># source ./devel/setup.zsh &amp;&amp; roslaunch esvo_time_surface stereo_time_surface_mvsec.launch</span><br></code></pre></td></tr></table></figure>
+<p>要播放一个bag包，请转到<code>sevio_time_surface/launch/rosbag_launcher</code>，并根据您的bag包文件下载的位置修改<code>[bag_name].launch</code>中的路径。然后执行：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">source</span> ./devel/setup.zsh &amp;&amp; roslaunch esvo_time_surface [bag_name].launch<br><span class="hljs-comment"># VECtor</span><br><span class="hljs-comment"># source ./devel/setup.zsh &amp;&amp; roslaunch esvo_time_surface corridors_dolly.launch</span><br><span class="hljs-comment"># source ./devel/setup.zsh &amp;&amp; roslaunch esvo_time_surface school_dolly.launch</span><br><span class="hljs-comment"># source ./devel/setup.zsh &amp;&amp; roslaunch esvo_time_surface school_scooter.launch</span><br><br><span class="hljs-comment"># mvsec</span><br><span class="hljs-comment"># source ./devel/setup.zsh &amp;&amp; roslaunch esvo_time_surface indoor_flying1.launch</span><br><span class="hljs-comment"># source ./devel/setup.zsh &amp;&amp; roslaunch esvo_time_surface indoor_flying3.launch</span><br></code></pre></td></tr></table></figure>
+<h3 id="full-system">full system</h3>
+<p>启动系统：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">source</span> ./devel/setup.zsh &amp;&amp; roslaunch esvo_core system_xxx.launch<br><span class="hljs-comment"># source ./devel/setup.zsh &amp;&amp; roslaunch esvo_core system_VECtor.launch</span><br><span class="hljs-comment"># source ./devel/setup.zsh &amp;&amp; roslaunch esvo_core system_mvsec.launch</span><br><span class="hljs-comment"># source ./devel/setup.zsh &amp;&amp; roslaunch esvo_core system_upenn.launch</span><br></code></pre></td></tr></table></figure>
+<p>这将同时启动两个<code>esvo_time_surface</code>节点（分别用于左右事件相机）。然后播放运行输入的包文件：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">source</span> ./devel/setup.zsh &amp;&amp; roslaunch esvo_time_surface [bag_name].launch<br><span class="hljs-comment"># VECtor</span><br><span class="hljs-comment"># source ./devel/setup.zsh &amp;&amp; roslaunch esvo_time_surface corridors_dolly.launch</span><br><span class="hljs-comment"># source ./devel/setup.zsh &amp;&amp; roslaunch esvo_time_surface school_dolly.launch</span><br><span class="hljs-comment"># source ./devel/setup.zsh &amp;&amp; roslaunch esvo_time_surface school_scooter.launch</span><br><br><span class="hljs-comment"># mvsec</span><br><span class="hljs-comment"># source ./devel/setup.zsh &amp;&amp; roslaunch esvo_time_surface indoor_flying1.launch</span><br><span class="hljs-comment"># source ./devel/setup.zsh &amp;&amp; roslaunch esvo_time_surface indoor_flying3.launch</span><br></code></pre></td></tr></table></figure>
+<h1 id="ESVO-extension">ESVO_extension</h1>
+<h2 id="概览-2">概览</h2>
+<p>我们将<a target="_blank" rel="noopener" href="https://github.com/HKUST-Aerial-Robotics/ESVO">ESVO</a>框架扩展到其他三个模块：</p>
+<ul>
+<li>基于多视角单目事件相机的建图(给定地面真值) ；</li>
+<li>基于单目事件相机的跟踪与建图；</li>
+<li>基于多事件表示的事件相机跟踪。</li>
+</ul>
+<p>论文：</p>
+<ul>
+<li>Jiao J, Huang H, Li L, et al. Comparing representations in tracking for event camera-based slam[C]//Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition. 2021: 1369-1376.</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="https://github.com/gogojjh/ESVO_extension">Source Code</a></p>
+<h2 id="仿真数据集">仿真数据集</h2>
+<p>我们使用基于事件相机的模拟器：<a target="_blank" rel="noopener" href="https://github.com/uzh-rpg/rpg_esim">ESIM</a>来收集几个模拟的双目事件相机序列。双目事件相机在具有不同背景的墙壁前执行平面或6DoF运动：简单形状、棋盘和办公室。这些序列可用于算法验证。可以在<a target="_blank" rel="noopener" href="http://gofile.me/4jm56/pPihl95L2">这里</a>下载（无需连接外网下载）。</p>
+<h2 id="编译-2">编译</h2>
+<p>编译过程与ESVO一致。这里只提供关键步骤：</p>
+<ol>
+<li>
+<p>使用的代码文件为<code>ESVO_extension-multi_rep_tracking-default.zip</code>。</p>
+</li>
+<li>
+<p>从<a target="_blank" rel="noopener" href="https://github.com/uzh-rpg/cnpy_catkin">下载链接</a>下载<code>cnpy_catkin</code>到<code>./catkin_ws/src</code>文件夹。</p>
+</li>
+<li>
+<p>（可选）从<a target="_blank" rel="noopener" href="https://github.com/rogersce/cnpy/archive/4e8810b1a8637695171ed346ce68f6984e585ef4.zip">下载链接</a>下载并重命名文件为<code>cnpy.zip</code>，修改<code>./catkin_ws/src/cnpy_catkin/CMakeLists.txt</code>：</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs cmake"><span class="hljs-comment"># URL https://github.com/rogersce/cnpy/archive/4e8810b1a8637695171ed346ce68f6984e585ef4.zip</span><br>URL <span class="hljs-string">&quot;/yourfolder/cnpy.zip&quot;</span><br></code></pre></td></tr></table></figure>
+</li>
+<li>
+<p>编译运行。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">cd</span> yourfolder/catkin_ws/src<br>git <span class="hljs-built_in">clone</span> https://github.com/jbeder/yaml-cpp.git<br><span class="hljs-built_in">cd</span> yaml-cpp<br><span class="hljs-built_in">mkdir</span> build &amp;&amp; <span class="hljs-built_in">cd</span> build &amp;&amp; cmake -DYAML_BUILD_SHARED_LIBS=ON ..<br>make -j8<br><br>catkin build dvs_ros_driver davis_ros_driver dvxplorer_ros_driver dvs_renderer<br><br>catkin build esvo_time_surface esvo_core<br><br><span class="hljs-built_in">source</span> ./devel/setup.zsh<br></code></pre></td></tr></table></figure>
+<p>报错：/usr/include/pcl-1.8/pcl/kdtree/kdtree_flann.h:230:29: error: field ‘param_k_’ has incomplete type ‘flann::SearchParams’</p>
+<p>原因：同时使用PCL和OpenCV时发生冲突，在PCL和OpenCV中都有一个叫：flann的namespace。</p>
+<p>解决方法：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo gedit /usr/include/pcl-1.8/pcl/kdtree/kdtree_flann.h<br><span class="hljs-comment"># 230行</span><br>::flann::SearchParams param_k_;<br><span class="hljs-comment"># 改为</span><br>::flann::SearchParams *param_k_;<br><br><span class="hljs-comment"># 233行</span><br>::flann::SearchParams param_radius_;<br><span class="hljs-comment"># 改为</span><br>::flann::SearchParams *param_radius_;<br></code></pre></td></tr></table></figure>
+<p>参考链接：</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/AI_future/article/details/118737300">pcl 和opencv冲突问题</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/strands-project/strands_3d_mapping/issues/67">GitHub Issues</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_41698305/article/details/120651431">PCL-OpenCV冲突的解决方案</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/u011418173/article/details/52614617">同时使用PCL和OpenCV时的种种坑爹的情况及其解决办法</a></p>
+</li>
+<li></li>
+</ol>
+<h2 id="运行-4">运行</h2>
+<blockquote>
+<p>问：如何运行这个代码与我自己的单目事件相机数据集？因为我看到的<code>system_rpg.launch</code>和<code>system_sim.launch</code>都需要两个相机topic(left&amp;right) ，但我自己的数据集只有一个相机topic。</p>
+<p>答：请检查这个<code>launch</code>文件，它只需要一个相机topic：</p>
+<p><code>./ESVO_extension/blob/multi_rep_tracking/esvo_core/launch/monosystem/monosystem_simu.launch</code></p>
+<p>问：当我运行<code>monosystem_simu.launch</code>时，出现了一个错误。但是我<code>catkin build</code>成功，可以成功地运行<code>system_rpg_stereo.launch</code>。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">ERROR: cannot launch node of <span class="hljs-built_in">type</span> [esvo_core/esvo_MonoTracking]: Cannot locate node of <span class="hljs-built_in">type</span> [esvo_MonoTracking] <span class="hljs-keyword">in</span> package [esvo_core]. Make sure file exists <span class="hljs-keyword">in</span> package path and permission is <span class="hljs-built_in">set</span> to executable (<span class="hljs-built_in">chmod</span> +x)<br></code></pre></td></tr></table></figure>
+<p>答：请运行这个<code>launch</code>文件，您可以检查<code>README.md</code>来使用<code>1.1 esvo_MVSMono.cpp</code>。</p>
+<p><code>./ESVO_extension/blob/multi_rep_tracking/esvo_core/launch/mvsmono/mvsmono_rpg_mono.launch</code></p>
+<p>问：但是<code>esvo_MVSMono.cpp</code>只是单目建图，没有单目跟踪。如何使用单目事件相机运行<code>esvo_Tracking.cpp</code>？如果我想运行单目事件相机SLAM (有单目建图和单目跟踪) ，我应该运行哪个<code>launch</code>文件？</p>
+<p>答：单目跟踪没有很好地完成和支持。</p>
+</blockquote>
+<h3 id="esvo-MVSMono-cpp">esvo_MVSMono.cpp</h3>
+<p>提前修改好<code>.launch</code>文件中数据集的路径。</p>
+<p>我们在<a target="_blank" rel="noopener" href="https://github.com/HKUST-Aerial-Robotics/ESVO">ESVO</a>框架下修改了<a target="_blank" rel="noopener" href="https://github.com/uzh-rpg/rpg_emvs">EMVS</a>单目多视单目映射(给定地面真值)，要启动建图器，请运行：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">source</span> ./devel/setup.zsh &amp;&amp; roslaunch esvo_core mvsmono_xxx.launch<br><br><span class="hljs-comment"># source ./devel/setup.zsh &amp;&amp; roslaunch esvo_core mvsmono_rpg_mono.launch</span><br><span class="hljs-comment"># source ./devel/setup.zsh &amp;&amp; roslaunch esvo_core mvsmono_rpg_slider.launch</span><br><span class="hljs-comment"># source ./devel/setup.zsh &amp;&amp; roslaunch esvo_core mvsmono_simu.launch</span><br></code></pre></td></tr></table></figure>
+<p>（取消掉<code>.lanuch</code>文件<code>&lt;!-- Visualization --&gt;</code>模块的注释来在程序运行时进行可视化）</p>
+<p>这将同时启动一个<code>esvo_time_surface</code>节点(用于左事件摄像头)和建图节点。建图器中不使用时间曲面，而是用于与原始<a target="_blank" rel="noopener" href="https://github.com/HKUST-Aerial-Robotics/ESVO">ESVO</a>兼容的API。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">source</span> ./devel/setup.zsh &amp;&amp; roslaunch esvo_time_surface xxx.launch<br><span class="hljs-comment"># rpg_stereo</span><br><span class="hljs-comment"># source ./devel/setup.zsh &amp;&amp; roslaunch esvo_time_surface rpg_stereo_bin.launch</span><br><span class="hljs-comment"># source ./devel/setup.zsh &amp;&amp; roslaunch esvo_time_surface rpg_stereo_boxes.launch</span><br><span class="hljs-comment"># source ./devel/setup.zsh &amp;&amp; roslaunch esvo_time_surface rpg_stereo_desk.launch</span><br><span class="hljs-comment"># source ./devel/setup.zsh &amp;&amp; roslaunch esvo_time_surface rpg_stereo_monitor.launch</span><br><br><span class="hljs-comment"># rpg_simu</span><br><span class="hljs-comment"># source ./devel/setup.zsh &amp;&amp; roslaunch esvo_time_surface rpg_checkerboard_6dof.launch</span><br><span class="hljs-comment"># source ./devel/setup.zsh &amp;&amp; roslaunch esvo_time_surface rpg_office_6dof.launch</span><br><span class="hljs-comment"># source ./devel/setup.zsh &amp;&amp; roslaunch esvo_time_surface rpg_shapes_poster_6dof.launch</span><br><br><span class="hljs-comment"># upenn</span><br><span class="hljs-comment"># source ./devel/setup.zsh &amp;&amp; roslaunch esvo_time_surface upenn_indoor_flying1.launch</span><br><span class="hljs-comment"># source ./devel/setup.zsh &amp;&amp; roslaunch esvo_time_surface upenn_indoor_flying3.launch</span><br></code></pre></td></tr></table></figure>
+<p>按下<code>空格</code>开始播放<code>.bag</code>文件。</p>
+<h3 id="esvo-MonoMapping-cpp-and-esvo-MonoTracking-cpp">esvo_MonoMapping.cpp and esvo_MonoTracking.cpp</h3>
+<p>我们遵循<a target="_blank" rel="noopener" href="https://www.cvlibs.net/projects/autonomous_vision_survey/literature/Rebecq2016RAL.pdf">EVO</a>将单目建图器与基于时间表面的跟踪器集成在一起，用于基于单目事件的视觉里程计。给出了初步结果。要启动建图器，请运行：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">source</span> ./devel/setup.zsh &amp;&amp; roslaunch esvo_core monosystem_xxx.launch<br><br><span class="hljs-comment"># source ./devel/setup.zsh &amp;&amp; roslaunch esvo_core monosystem_rpg_stereo.launch</span><br><span class="hljs-comment"># source ./devel/setup.zsh &amp;&amp; roslaunch esvo_core monosystem_simu.launch</span><br><br><span class="hljs-comment"># 报错缺失文件：./catkin_ws/src/ESVO_extension-multi_rep_tracking/esvo_core/cfg/time_surface/ts_parameters_rpg_simu.yaml]</span><br></code></pre></td></tr></table></figure>
+<p>启动<code>esvo_time_surface</code>节点：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">source</span> ./devel/setup.zsh &amp;&amp; roslaunch esvo_time_surface xxx.launch<br><span class="hljs-comment"># rpg_stereo</span><br><span class="hljs-comment"># source ./devel/setup.zsh &amp;&amp; roslaunch esvo_time_surface rpg_stereo_bin.launch</span><br><span class="hljs-comment"># source ./devel/setup.zsh &amp;&amp; roslaunch esvo_time_surface rpg_stereo_boxes.launch</span><br><span class="hljs-comment"># source ./devel/setup.zsh &amp;&amp; roslaunch esvo_time_surface rpg_stereo_desk.launch</span><br><span class="hljs-comment"># source ./devel/setup.zsh &amp;&amp; roslaunch esvo_time_surface rpg_stereo_monitor.launch</span><br><br><span class="hljs-comment"># rpg_simu</span><br><span class="hljs-comment"># source ./devel/setup.zsh &amp;&amp; roslaunch esvo_time_surface rpg_checkerboard_6dof.launch</span><br><span class="hljs-comment"># source ./devel/setup.zsh &amp;&amp; roslaunch esvo_time_surface rpg_office_6dof.launch</span><br><span class="hljs-comment"># source ./devel/setup.zsh &amp;&amp; roslaunch esvo_time_surface rpg_shapes_poster_6dof.launch</span><br><br><span class="hljs-comment"># upenn</span><br><span class="hljs-comment"># source ./devel/setup.zsh &amp;&amp; roslaunch esvo_time_surface upenn_indoor_flying1.launch</span><br><span class="hljs-comment"># source ./devel/setup.zsh &amp;&amp; roslaunch esvo_time_surface upenn_indoor_flying3.launch</span><br></code></pre></td></tr></table></figure>
+<p>按下<code>空格</code>开始播放<code>.bag</code>文件。</p>
+<h3 id="Tracking-cpp">Tracking.cpp</h3>
+<p>ESVO使用时间曲面(TS)来跟踪跟踪问题，而EVO使用二元事件映射(EM)来跟踪问题。该模块还实现了基于EM的跟踪器，用于比较评估。完整的实验结果将发表。</p>
+<h2 id="评估-2">评估</h2>
+<p>我们编写一个脚本来执行批处理测试和评估。在不同的事件表示上运行带有跟踪器的ESVO：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ python run_esvo.py -dataset=rpg_stereo -sequence=rpg_bin -representation=TS,EM,TSEM -eventnum=2000,3000,4000 -trials=1 -program=run,<span class="hljs-built_in">eval</span>,load_result<br></code></pre></td></tr></table></figure>
+<p>我们使用这个包：<a target="_blank" rel="noopener" href="https://github.com/uzh-rpg/rpg_trajectory_evaluation">rpg_trajectory_evaluation</a>来计算RMSE和RPE。</p>
+<blockquote>
+<p>问：你能分享一下<code>analyze_trajectory_single_vo.py</code>文件吗？</p>
+<p>答：很抱歉这个文件不能公开。如果你想评估轨迹，请使用这个原始库：<a target="_blank" rel="noopener" href="https://github.com/uzh-rpg/rpg_trajectory_evaluation">https://github.com/uzh-rpg/rpg_trajectory_evaluation</a></p>
+</blockquote>
+<blockquote>
+<p><code>./ESVO_extension/esvo_core/src/initial/</code>中的代码只是我使用对比度最大化初始化地图的尝试。但是我发现使用平面假设直接初始化地图更可靠。所以这个代码没有在<code>Tracking.cpp</code>中使用。</p>
+</blockquote>
 
                 
               </div>
@@ -752,7 +1022,7 @@ Initiating shutdown!</p>
     
       <span class="category-chain">
         
-  <a href="/categories/%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB/" class="category-chain-item">技术分享</a>
+  <a href="/categories/%E4%BA%8B%E4%BB%B6%E7%9B%B8%E6%9C%BA/" class="category-chain-item">事件相机</a>
   
   
 
