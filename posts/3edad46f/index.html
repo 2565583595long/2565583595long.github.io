@@ -29,7 +29,7 @@
 <meta property="og:image" content="http://zeyulong.com/posts/3edad46f/%E8%8E%B7%E5%8F%96%E5%AD%97%E4%BD%93%E9%93%BE%E6%8E%A5.png">
 <meta property="og:image" content="http://zeyulong.com/posts/3edad46f/Vercel%E9%85%8D%E7%BD%AE%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F.png">
 <meta property="article:published_time" content="2023-12-24T15:52:40.000Z">
-<meta property="article:modified_time" content="2024-02-09T03:52:44.502Z">
+<meta property="article:modified_time" content="2024-02-09T10:19:51.960Z">
 <meta property="article:author" content="龙泽雨">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="http://zeyulong.com/posts/3edad46f/%E9%BC%A0%E6%A0%87%E7%82%B9%E5%87%BB%E7%89%B9%E6%95%88-1.gif">
@@ -278,7 +278,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          16k 字
+          17k 字
         
       </span>
     
@@ -289,7 +289,7 @@
         
         
         
-          134 分钟
+          138 分钟
         
       </span>
     
@@ -339,7 +339,7 @@
               <p id="updated-time" class="note note-info" style="">
                 
                   
-                    本文最后更新于 2024年2月9日 中午
+                    本文最后更新于 2024年2月9日 晚上
                   
                 
               </p>
@@ -898,6 +898,73 @@
 </li>
 <li>
 <p>完成，部署博客即可。</p>
+</li>
+</ol>
+<h1 id="添加博客小游戏">添加博客小游戏</h1>
+<p><a target="_blank" rel="noopener" href="https://zwxo.github.io/articles/36588/">添加博客小游戏的参考链接</a></p>
+<ol>
+<li>
+<p>获取游戏资源。</p>
+<ul>
+<li>魔方: <a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1xHHmYlqWNpxf-6b6TVvmTA?pwd=uneu">https://pan.baidu.com/s/1xHHmYlqWNpxf-6b6TVvmTA?pwd=uneu</a></li>
+<li>扫雷: <a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1r_NGhNsYdfn_3qZOO4WhPQ?pwd=nfp5">https://pan.baidu.com/s/1r_NGhNsYdfn_3qZOO4WhPQ?pwd=nfp5</a></li>
+<li>2048: <a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1oC_xbeGRM3EDOGTCFa1xeg?pwd=zjjw">https://pan.baidu.com/s/1oC_xbeGRM3EDOGTCFa1xeg?pwd=zjjw</a></li>
+<li>五子棋: <a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1eFrMLNJWZHnzJt78pyzkeA?pwd=wuap">https://pan.baidu.com/s/1eFrMLNJWZHnzJt78pyzkeA?pwd=wuap</a></li>
+<li>推箱子: <a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1enPereRgMfVGBEAFgBTa5g?pwd=cp6n">https://pan.baidu.com/s/1enPereRgMfVGBEAFgBTa5g?pwd=cp6n</a></li>
+</ul>
+<blockquote>
+<ul>
+<li>下载下来后可以直接使用浏览器打开游戏文件夹内的<code>index.html</code>文件进行预览。</li>
+</ul>
+</blockquote>
+</li>
+<li>
+<p>部署游戏。</p>
+<ol>
+<li>
+<p>新建页面<code>game</code>：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">hexo new page game<br></code></pre></td></tr></table></figure>
+</li>
+<li>
+<p>将下载的游戏文件上传至<code>./Blog/source/game/</code>目录。</p>
+</li>
+<li>
+<p>（可选）修改游戏文件夹根目录的<code>index.html</code>文件内容，如<code>title</code>等。</p>
+</li>
+</ol>
+</li>
+<li>
+<p>博客配置。</p>
+<ol>
+<li>
+<p>跳过编译。如果你直接生成静态文件，会发现游戏项目内的<code>.html</code>文件被重新编译了，无法玩。所以打开中<code>./Blog/_config.yml</code>文件找到<code>skip_render</code>项，配置如下：</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs yml"><span class="hljs-attr">skip_render:</span> <br>  <span class="hljs-bullet">-</span> <span class="hljs-string">&#x27;game/*/**&#x27;</span><br></code></pre></td></tr></table></figure>
+<p>这样使<code>./Blog/source/game/</code>目录下所有目录当中的文件不被编译。你也可以根据实际情况更改，如果只想<code>.html</code>文件不被编译，可以配置为：</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs yml"><span class="hljs-attr">skip_render:</span> <br>  <span class="hljs-bullet">-</span> <span class="hljs-string">&#x27;game/*/*.html&#x27;</span><br></code></pre></td></tr></table></figure>
+</li>
+<li>
+<p>导航菜单。</p>
+<ul>
+<li>
+<p><a target="_blank" rel="noopener" href="https://hexo.fluid-dev.com/docs/">Fluid</a>主题可打开<code>./Blog/_config.fluid.yml</code>文件，配置如下：</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs yml"><span class="hljs-attr">menu:</span><br>  <span class="hljs-bullet">-</span> &#123;<br>    <span class="hljs-attr">key:</span> <span class="hljs-string">&#x27;小游戏&#x27;</span>,<br>    <span class="hljs-attr">link:</span> <span class="hljs-string">&#x27;/game&#x27;</span>, <br>    <span class="hljs-attr">icon:</span> <span class="hljs-string">&#x27;iconfont icon-steam&#x27;</span>,<br>    <span class="hljs-attr">submenu:</span> [<br>      &#123; <span class="hljs-attr">key:</span> <span class="hljs-string">&#x27;魔方&#x27;</span>, <span class="hljs-attr">link:</span> <span class="hljs-string">&#x27;/game/mf&#x27;</span> &#125;,<br>      &#123; <span class="hljs-attr">key:</span> <span class="hljs-string">&#x27;扫雷&#x27;</span>, <span class="hljs-attr">link:</span> <span class="hljs-string">&#x27;/game/sl&#x27;</span> &#125;,<br>      &#123; <span class="hljs-attr">key:</span> <span class="hljs-string">&#x27;2048&#x27;</span>, <span class="hljs-attr">link:</span> <span class="hljs-string">&#x27;/game/2048&#x27;</span> &#125;,<br>      &#123; <span class="hljs-attr">key:</span> <span class="hljs-string">&#x27;五子棋&#x27;</span>, <span class="hljs-attr">link:</span> <span class="hljs-string">&#x27;/game/wzq&#x27;</span> &#125;,<br>      &#123; <span class="hljs-attr">key:</span> <span class="hljs-string">&#x27;推箱子&#x27;</span>, <span class="hljs-attr">link:</span> <span class="hljs-string">&#x27;/game/txz&#x27;</span> &#125;<br>    ]<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>其中：</p>
+<ul>
+<li><code>key</code>用来关联<code>./Blog/node_modules/hexo-theme-fluid/languages/*.yml</code>，如不存在关联则显示<code>key</code>本身的值；<code>icon</code>是 <code>css class</code>，可以省略；增加 <code>name</code> 可以强制显示指定名称。</li>
+<li>有关导航菜单的更多说明，可以参见<a target="_blank" rel="noopener" href="https://hexo.fluid-dev.com/docs/guide/#%E5%AF%BC%E8%88%AA%E8%8F%9C%E5%8D%95">Fluid用户手册-导航菜单</a></li>
+<li>有关图标使用的更多说明，可以参见<a target="_blank" rel="noopener" href="https://hexo.fluid-dev.com/docs/icon/#%E5%86%85%E7%BD%AE%E7%A4%BE%E4%BA%A4%E5%9B%BE%E6%A0%87">Fluid用户手册-图标</a></li>
+</ul>
+</li>
+<li>
+<p><code>Matery</code>主题部分菜单导航配置如下：</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs yml"><span class="hljs-attr">menu:</span><br>  <span class="hljs-attr">Index:</span><br>    <span class="hljs-attr">url:</span> <span class="hljs-string">/</span><br>    <span class="hljs-attr">icon:</span> <span class="hljs-string">fas</span> <span class="hljs-string">fa-home</span><br>  <span class="hljs-attr">Game:</span><br>    <span class="hljs-attr">icon:</span> <span class="hljs-string">fa-solid</span> <span class="hljs-string">fa-gamepad</span><br>    <span class="hljs-attr">url:</span> <span class="hljs-string">/game</span><br>    <span class="hljs-attr">children:</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-attr">name:</span> <span class="hljs-string">魔方</span><br>        <span class="hljs-attr">url:</span> <span class="hljs-string">/game/mf</span><br>        <span class="hljs-attr">icon:</span> <span class="hljs-string">fa-solid</span> <span class="hljs-string">fa-cube</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-attr">name:</span> <span class="hljs-string">扫雷</span><br>        <span class="hljs-attr">url:</span> <span class="hljs-string">/game/sl</span><br>        <span class="hljs-attr">icon:</span> <span class="hljs-string">fa-brands</span> <span class="hljs-string">fa-galactic-republic</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-attr">name:</span> <span class="hljs-number">2048</span><br>        <span class="hljs-attr">url:</span> <span class="hljs-string">/game/2048</span><br>        <span class="hljs-attr">icon:</span> <span class="hljs-string">fa-brands</span> <span class="hljs-string">fa-pix</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-attr">name:</span> <span class="hljs-string">五子棋</span><br>        <span class="hljs-attr">url:</span> <span class="hljs-string">/game/wzq</span><br>        <span class="hljs-attr">icon:</span> <span class="hljs-string">fa-solid</span> <span class="hljs-string">fa-chess-board</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-attr">name:</span> <span class="hljs-string">推箱子</span><br>        <span class="hljs-attr">url:</span> <span class="hljs-string">/game/txz</span><br>        <span class="hljs-attr">icon:</span> <span class="hljs-string">fa-solid</span> <span class="hljs-string">fa-box</span><br></code></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ol>
+</li>
+<li>
+<p>完成，部署即可。</p>
 </li>
 </ol>
 
