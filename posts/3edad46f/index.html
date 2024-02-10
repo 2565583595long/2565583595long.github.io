@@ -29,7 +29,7 @@
 <meta property="og:image" content="http://zeyulong.com/posts/3edad46f/%E8%8E%B7%E5%8F%96%E5%AD%97%E4%BD%93%E9%93%BE%E6%8E%A5.png">
 <meta property="og:image" content="http://zeyulong.com/posts/3edad46f/Vercel%E9%85%8D%E7%BD%AE%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F.png">
 <meta property="article:published_time" content="2023-12-24T15:52:40.000Z">
-<meta property="article:modified_time" content="2024-02-09T13:15:40.935Z">
+<meta property="article:modified_time" content="2024-02-10T10:40:56.254Z">
 <meta property="article:author" content="龙泽雨">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="http://zeyulong.com/posts/3edad46f/%E9%BC%A0%E6%A0%87%E7%82%B9%E5%87%BB%E7%89%B9%E6%95%88-1.gif">
@@ -313,7 +313,7 @@
         
         
         
-          139 分钟
+          140 分钟
         
       </span>
     
@@ -363,7 +363,7 @@
               <p id="updated-time" class="note note-info" style="">
                 
                   
-                    本文最后更新于 2024年2月9日 晚上
+                    本文最后更新于 2024年2月10日 晚上
                   
                 
               </p>
@@ -633,7 +633,7 @@
 <p>在<code>live2d-widget</code>文件夹中，可进行的操作：</p>
 <ol>
 <li>
-<p>想修改看板娘大小、位置、格式、文本内容等，可查看并修改 <code>waifu-tips.js</code> 、 <code>waifu-tips.json</code> 和 <code>waifu.css</code>。</p>
+<p>想修改看板娘大小、位置、格式、文本内容等，可查看并修改<code>waifu.css</code>、<code>waifu-tips.js</code>和<code>waifu-tips.json</code>等。</p>
 <ol>
 <li>
 <p>修改首次加载的模型。修改<code>live2d-widget\src\index.js</code>文件：</p>
@@ -897,7 +897,7 @@
 <h2 id="前言">前言</h2>
 <p>根据<a target="_blank" rel="noopener" href="https://hexo.fluid-dev.com/docs/guide/#%E8%AF%84%E8%AE%BA">Hexo Fluid</a>主题的推荐，国内用户推荐使用<a target="_blank" rel="noopener" href="https://valine.js.org/">Valine</a>、<a target="_blank" rel="noopener" href="https://waline.js.org/">Waline</a>或者<a target="_blank" rel="noopener" href="https://twikoo.js.org/">twikoo</a>。</p>
 <p><a target="_blank" rel="noopener" href="https://valine.js.org/">Valine</a>基于LeanCloud，简洁，但因为自身设计的限制，貌似存在安全问题。自己尝试了<a target="_blank" rel="noopener" href="https://valine.js.org/">Valine</a>，但现在应该是因为DNS污染的问题，部署在博客的评论发不出来。</p>
-<p><a target="_blank" rel="noopener" href="https://waline.js.org/">Waline</a>从<a target="_blank" rel="noopener" href="https://valine.js.org/">Valine</a>衍生而来，额外增加了服务端和多种功能，安全性得到了更好地保障。不过同样因为DNS污染的问题，直接部署在博客的评论发不出来。但是，<a target="_blank" rel="noopener" href="https://waline.js.org/">Waline</a>可以通过使用自己的域名进行解析的方式来避开这个问题。在自己使用注册的域名进行解析后，成功在博客上部署了<a target="_blank" rel="noopener" href="https://waline.js.org/">Waline</a>。所以，现在正在使用的就是它。</p>
+<p><a target="_blank" rel="noopener" href="https://waline.js.org/">Waline</a>从<a target="_blank" rel="noopener" href="https://valine.js.org/">Valine</a>衍生而来，额外增加了服务端和多种功能，安全性得到了更好地保障。不过同样因为DNS污染的问题，直接部署在博客的评论发不出来。但是，<a target="_blank" rel="noopener" href="https://waline.js.org/">Waline</a>可以通过使用自己的域名进行解析的方式来避开这个问题。在自己使用注册的域名进行解析后，成功在博客上部署了<a target="_blank" rel="noopener" href="https://waline.js.org/">Waline</a>。所以，现在正在使用的就是它。<a target="_blank" rel="noopener" href="https://waline.js.org/advanced/design.html">Waline设计目标及与Valine的对比</a></p>
 <p><a target="_blank" rel="noopener" href="https://twikoo.js.org/">twikoo</a>在<a target="_blank" rel="noopener" href="https://waline.js.org/">Waline</a>部署成功后就没有进行尝试。</p>
 <h2 id="部署Waline评论系统">部署Waline评论系统</h2>
 <p>关于<a target="_blank" rel="noopener" href="https://waline.js.org/">Waline</a>的部署，在它的官网上已经讲得很清楚了，一步一步跟着做就可以。这里就不再赘述，只做几点补充说明（自己在部署过程中踩的坑）：</p>
@@ -961,6 +961,9 @@
 <li>
 <p>（可选）修改游戏文件夹根目录的<code>index.html</code>文件内容，如<code>title</code>等。</p>
 </li>
+<li>
+<p>（可选）修改游戏文件内链接的<code>http</code>等网址为本地地址。</p>
+</li>
 </ol>
 </li>
 <li>
@@ -999,6 +1002,11 @@
 <p>完成，部署即可。</p>
 </li>
 </ol>
+<h1 id="配置404页">配置404页</h1>
+<p>404-好巧，竟然在这里遇到你！</p>
+<blockquote>
+<p>主题包含默认的404页面，你也可以将自定义的 <code>404.html</code> 放置在博客的 <code>source</code> 目录下。</p>
+</blockquote>
 
                 
               </div>

@@ -24,7 +24,7 @@
 <meta property="og:description" content="本文主要分享了Linux系统的配置与常用软件的安装。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-01-31T16:27:11.000Z">
-<meta property="article:modified_time" content="2024-01-31T16:30:16.637Z">
+<meta property="article:modified_time" content="2024-02-10T00:56:51.491Z">
 <meta property="article:author" content="龙泽雨">
 <meta name="twitter:card" content="summary_large_image">
   
@@ -296,7 +296,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          4.3k 字
+          5k 字
         
       </span>
     
@@ -307,7 +307,7 @@
         
         
         
-          36 分钟
+          42 分钟
         
       </span>
     
@@ -357,7 +357,7 @@
               <p id="updated-time" class="note note-info" style="">
                 
                   
-                    本文最后更新于 2024年2月1日 凌晨
+                    本文最后更新于 2024年2月10日 早上
                   
                 
               </p>
@@ -368,6 +368,58 @@
                 <p>本文主要分享了Linux系统的配置与常用软件的安装。</p>
 <span id="more"></span>
 <h1 id="Linux系统配置">Linux系统配置</h1>
+<h2 id="安装WiFi驱动">安装WiFi驱动</h2>
+<p>在Windows下新装的双系统Linux Ubuntu18.04无法连接WiFi（桌面右上角下拉菜单里没有WiFi设置参数选项，设置里WiFi模块提示找不到WiFi适配器），尝试了各种方法（附在最后），无果。最终，发现是网卡驱动与系统内核版本的问题。</p>
+<h3 id="实现步骤">实现步骤</h3>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_44503950/article/details/123945874">参考链接-1</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/m0_68158707/article/details/130720017">参考链接-2</a></li>
+</ul>
+<ol>
+<li>
+<p>查看网卡驱动版本：切换到Windows系统-设备管理器-网络适配器-Intel(R)Wi-Fi 6E AX211 160MHz（我自己的）</p>
+</li>
+<li>
+<p>切换回Linux系统。给电脑连接有线网：如果有网线的话可以直接给电脑插网线联网；没有的话将手机通过数据线连接到电脑上，在手机上打开设置-无线和网络-移动网络共享-打开USB共享网络（华为手机，其他品牌手机类似），可以看到Ubuntu界面右上角出现了一个品字形的有线网络连接图标。</p>
+</li>
+<li>
+<p>更新软件列表：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo apt-get update<br></code></pre></td></tr></table></figure>
+</li>
+<li>
+<p>安装依赖包：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo apt install flex bison<br></code></pre></td></tr></table></figure>
+</li>
+<li>
+<p>克隆、编译和安装<code>backport-iwlwifi</code>：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 克隆</span><br>git <span class="hljs-built_in">clone</span> https://github.com/intel/backport-iwlwifi.git<br><span class="hljs-comment"># 注意backport-iwlwifi文件夹下载后就放在/home目录下，不然sudo make defconfig-iwlwifi-public会报错？</span><br><span class="hljs-built_in">cd</span> backport-iwlwifi<br><span class="hljs-built_in">cd</span> iwlwifi-stack-dev<br><span class="hljs-comment"># 编译和安装</span><br>sudo make defconfig-iwlwifi-public<br>sudo make<br>sudo make install<br></code></pre></td></tr></table></figure>
+<p>报错：执行<code>sudo make defconfig-iwlwifi-public</code>命令时，提示<code>make: *** 没有规则可制作目标“defconfig-iwlwifi-public”。 停止。</code></p>
+<p>原因：<code>make menuconfig</code>命令需要进入内核源码目录才能使用，否则会提示以上错误。</p>
+<p>解决：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_44503950/article/details/123945294">参考链接</a></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo apt-get install linux-source  <span class="hljs-comment"># 按照提示下载最新版本的内核源码</span><br><span class="hljs-built_in">cd</span> /usr/src/  <span class="hljs-comment"># 下载的源码在/usr/src目录中，进入该目录</span><br><span class="hljs-comment"># 将文件解压到/home/kernel目录下</span><br>sudo tar xvjf linux-source-4.15.0.tar.bz2 -C /home/kernel<br><span class="hljs-comment"># 如果提示没有该文件夹，执行以下命令直接新建kernel文件夹</span><br><span class="hljs-built_in">cd</span> /home<br>sudo <span class="hljs-built_in">mkdir</span> kernel<br><span class="hljs-comment"># 进入 /home/kernel/linux-source-4.15.0文件夹</span><br><span class="hljs-built_in">cd</span> /home/kernel/linux-source-4.15.0<br>sudo make menuconfig<br><span class="hljs-comment"># esc退出保存即可</span><br></code></pre></td></tr></table></figure>
+</li>
+<li>
+<p>下载驱动程序。</p>
+<p>终端执行以下命令下载AX210 WIFI驱动程序：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">git <span class="hljs-built_in">clone</span> git://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git  <span class="hljs-comment"># 下载的文件数目较多，有900多M，时间较长，请耐心等待。</span><br><span class="hljs-built_in">cd</span> linux-firmware/<br>sudo <span class="hljs-built_in">cp</span> iwlwifi-* /lib/firmware/<br></code></pre></td></tr></table></figure>
+<p>也可直接从<a target="_blank" rel="noopener" href="https://www.intel.com/content/www/us/en/support/articles/000005511/wireless.html">Intel Linux WiFi驱动官网</a>下载驱动程序，解压后将ucode文件复制在<code>/lib/firmware</code>下。</p>
+</li>
+<li>
+<p>重启系统，重要文件请提前保存。</p>
+</li>
+<li>
+<p>重启后可以看到Ubuntu18.04桌面右上角下拉菜单出现Wi-Fi连接图标，正常连接即可。</p>
+</li>
+</ol>
+<h3 id="其他参考链接">其他参考链接</h3>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_44717317/article/details/104580560">Ubuntu18.04未发现WiFi适配器解决方案汇总</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/gigidawang/article/details/118080789">Ubuntu18.04找不到wifi适配器解决办法以及怎么上网</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/github_33678609/article/details/86502916">ubuntu18.04系统安装完之后显示未发现WiFi适配器（屡试不爽）</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_42257666/article/details/118684372">Ubuntu18.04没有WiFi怎么解决?</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/shaozuo133/article/details/79060536">nmcli 命令行方式连接wifi及删除连接操作</a></li>
+<li><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/565455268?utm_id=0">如何使用 Nmcli 通过 Linux 终端连接到 Wi-Fi</a></li>
+</ul>
 <h2 id="更换壁纸">更换壁纸</h2>
 <ol>
 <li>把壁纸放到<code>~/Pictures</code>文件夹下。</li>
