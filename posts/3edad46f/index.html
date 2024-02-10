@@ -29,7 +29,7 @@
 <meta property="og:image" content="http://zeyulong.com/posts/3edad46f/%E8%8E%B7%E5%8F%96%E5%AD%97%E4%BD%93%E9%93%BE%E6%8E%A5.png">
 <meta property="og:image" content="http://zeyulong.com/posts/3edad46f/Vercel%E9%85%8D%E7%BD%AE%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F.png">
 <meta property="article:published_time" content="2023-12-24T15:52:40.000Z">
-<meta property="article:modified_time" content="2024-02-10T12:30:52.432Z">
+<meta property="article:modified_time" content="2024-02-10T14:59:32.141Z">
 <meta property="article:author" content="龙泽雨">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="http://zeyulong.com/posts/3edad46f/%E9%BC%A0%E6%A0%87%E7%82%B9%E5%87%BB%E7%89%B9%E6%95%88-1.gif">
@@ -314,7 +314,7 @@
         
         
         
-          141 分钟
+          143 分钟
         
       </span>
     
@@ -920,6 +920,23 @@
 <p>然后接在配置文件中的<code>waline</code>部分就可以了，例如，我的配置如下：</p>
 <figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs yml"><span class="hljs-attr">waline:</span><br>  <span class="hljs-attr">serverURL:</span> <span class="hljs-string">&#x27;你自己注册的域名&#x27;</span><br>  <span class="hljs-attr">path:</span> <span class="hljs-string">window.location.pathname</span><br>  <span class="hljs-attr">meta:</span> [<span class="hljs-string">&#x27;nick&#x27;</span>, <span class="hljs-string">&#x27;mail&#x27;</span>, <span class="hljs-string">&#x27;link&#x27;</span>]<br>  <span class="hljs-attr">requiredMeta:</span> [<span class="hljs-string">&#x27;nick&#x27;</span>]<br>  <span class="hljs-attr">lang:</span> <span class="hljs-string">&#x27;zh-CN&#x27;</span><br>  <span class="hljs-attr">emoji:</span> [<span class="hljs-string">&#x27;https://cdn.jsdelivr.net/gh/walinejs/emojis/weibo&#x27;</span>]<br>  <span class="hljs-attr">dark:</span> <span class="hljs-string">&#x27;html[data-user-color-scheme=&quot;dark&quot;]&#x27;</span><br>  <span class="hljs-attr">wordLimit:</span> <span class="hljs-number">0</span><br>  <span class="hljs-attr">pageSize:</span> <span class="hljs-number">10</span><br>  <span class="hljs-attr">reaction:</span> <span class="hljs-literal">true</span><br>  <span class="hljs-attr">locale:</span> <br>    <span class="hljs-attr">placeholder:</span> <span class="hljs-string">&#x27;花径不曾缘客扫，蓬门今始为君开。&#x27;</span><br></code></pre></td></tr></table></figure>
 <p>跳过Waline快速上手中HTML引入（客户端）这一步就可以了。当然，其它的Hexo主题可能也同样预设了Waline等评论系统的位置，这就需要各自分析了。</p>
+</li>
+<li>
+<p>（可选）添加图片为输入区域背景。<a target="_blank" rel="noopener" href="https://github.com/orgs/walinejs/discussions/1210">Waline没有提供背景图的配置，需要自行自定义CSS来实现</a>。根据<a target="_blank" rel="noopener" href="https://blog.fufu.ink/2023/04/walinedecoration.html">添加图片为输入区域背景的参考链接</a>的说明：</p>
+<ol>
+<li>
+<p>选择一张你喜欢的图片，放在<code>.\Blog\GitHubBlog\node_modules\hexo-theme-fluid\source\img</code>目录下，例如，重命名为<a target="_blank" rel="noopener" href="https://github.com/2565583595long/2565583595long.github.io/blob/main/img/valinebg.webp">walinebg.webp</a>。</p>
+</li>
+<li>
+<p>在<code>.\Blog\GitHubBlog\node_modules\hexo-theme-fluid\source\custom</code>目录下新建文件夹<code>waline</code>，在<code>waline</code>文件夹下新建文件<code>gif.css</code>并写入以下内容：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-comment">/* 添加图片为输入区域背景 */</span><br><span class="hljs-selector-id">#wl-edit</span> &#123;<br>    <span class="hljs-attribute">background</span>: <span class="hljs-built_in">url</span>(<span class="hljs-string">&quot;/img/walinebg.webp&quot;</span>) <span class="hljs-number">100%</span> <span class="hljs-number">100%</span> no-repeat;<br>    <span class="hljs-attribute">background-size</span>: contain <span class="hljs-meta">!important</span>;<br>    <span class="hljs-attribute">background-repeat</span>: no-repeat <span class="hljs-meta">!important</span>;<br>    <span class="hljs-attribute">background-position</span>: right bottom <span class="hljs-meta">!important</span>; <br>&#125;<br><br><span class="hljs-selector-id">#waline-wrap</span> <span class="hljs-selector-tag">textarea</span><span class="hljs-selector-pseudo">:focus</span> &#123;<br>    <span class="hljs-attribute">background</span>: <span class="hljs-built_in">url</span>(<span class="hljs-string">&quot;/img/walinebg.webp&quot;</span>) <span class="hljs-number">100%</span> <span class="hljs-number">100%</span> no-repeat;<br>    <span class="hljs-attribute">background-position</span>-y: <span class="hljs-number">78px</span> <span class="hljs-meta">!important</span>;<br>    <span class="hljs-attribute">transition</span>: all <span class="hljs-number">0.25s</span> ease-in-out <span class="hljs-number">0s</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+</li>
+<li>
+<p>在<code>./Blog/_config.fluid.yml</code>文件中引入新建的<code>.css</code>文件：</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs yml"><span class="hljs-comment"># 指定自定义 .css 文件路径，用法和 custom_js 相同</span><br><span class="hljs-comment"># The usage is the same as custom_js</span><br><span class="hljs-attr">custom_css:</span><br>  <span class="hljs-bullet">-</span> <span class="hljs-string">/custom/waline/gif.css</span><br></code></pre></td></tr></table></figure>
+</li>
+<li></li>
+</ol>
 </li>
 <li>
 <p>完成，部署博客即可。</p>
