@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() {
-    const targetInputSelectors = ['input', 'textarea']; // 你希望触发效果的输入框选择器
+    const targetInputSelectors = ['input', 'textarea', '.wl-comment']; // 你希望触发效果的输入框选择器
     const bodyDarkenClass = 'body-darken'; // 当输入框聚焦时，给body添加的class
 
     // 功能：为页面体添加一个遮罩层的样式
