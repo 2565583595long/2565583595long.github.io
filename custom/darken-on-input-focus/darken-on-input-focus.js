@@ -1,24 +1,24 @@
 document.addEventListener('DOMContentLoaded', function() {
-    const bodyDarkenClass = 'body-darken'; 
+    // 创建遮罩层元素并添加到body
+    const overlay = document.createElement('div');
+    overlay.className = 'overlay-darken';
+    document.body.appendChild(overlay);
 
-    function toggleBodyDarken(on) {
-        if (on) {
-            document.body.classList.add(bodyDarkenClass);
-        } else {
-            document.body.classList.remove(bodyDarkenClass);
-        }
+    const commentsContainer = document.getElementById('comments');
+
+    // 显示或隐藏遮罩层的功能
+    function toggleOverlay(on) {
+        overlay.style.display = on ? 'block' : 'none';
     }
 
-    // 使用事件委托
-    document.getElementById('comments').addEventListener('focusin', function(event) {
+    // 为评论输入区域添加事件委托
+    commentsContainer.addEventListener('focusin', function(event) {
         if (event.target.matches('#wl-nick, #wl-mail, #wl-link, #wl-edit')) {
-            toggleBodyDarken(true);
+            toggleOverlay(true);
         }
     });
 
-    document.getElementById('comments').addEventListener('focusout', function(event) {
-        if (event.target.matches('#wl-nick, #wl-mail, #wl-link, #wl-edit')) {
-            toggleBodyDarken(false);
-        }
+    commentsContainer.addEventListener('focusout', function(event) {
+        toggleOverlay(false);
     });
 });
