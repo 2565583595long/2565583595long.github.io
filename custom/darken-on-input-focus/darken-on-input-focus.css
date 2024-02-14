@@ -1,17 +1,10 @@
-/* 遮罩层样式 */
-.overlay-darken {
+#overlay-darken {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.5); /* 半透明遮罩 */
-    z-index: 10; 
+    background-color: rgba(0, 0, 0, 0.6); /* 调整透明度 */
+    z-index: 999; /* 高于页面大部分元素，但低于弹出层或提示 */
     display: none; /* 默认不显示 */
-}
-
-/* 评论区域和评论输入框的容器的样式，确保其 z-index 比遮罩层高 */
-#comments, #waline {
-    position: relative; 
-    z-index: 11; 
 }

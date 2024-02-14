@@ -1,18 +1,19 @@
-document.addEventListener('DOMContentLoaded', function() {
-    // 检查页面上是否已经存在遮罩层，否则创建它
-    let overlay = document.querySelector('.overlay-darken');
-    if (!overlay) {
-        overlay = document.createElement('div');
-        overlay.className = 'overlay-darken';
-        document.body.appendChild(overlay);
-    }
-
-    // 为评论输入框添加 focusin 和 focusout 事件监听器
+document.addEventListener('DOMContentLoaded', function () {
+    const overlay = document.getElementById('overlay-darken');
     const commentsContainer = document.getElementById('comments');
-    function toggleOverlay(display) { 
-        overlay.style.display = display ? 'block' : 'none'; // 显示或隐藏遮罩层
+
+    // 显示或隐藏遮罩层
+    function toggleOverlay(display) {
+        overlay.style.display = display ? 'block' : 'none';
     }
 
-    commentsContainer.addEventListener('focusin', () => toggleOverlay(true));
-    commentsContainer.addEventListener('focusout', () => toggleOverlay(false));
+    // 监听评论区内的聚焦事件
+    commentsContainer.addEventListener('focusin', function (event) {
+        toggleOverlay(true);
+    });
+
+    // 监听评论区内的失焦事件
+    commentsContainer.addEventListener('focusout', function (event) {
+        toggleOverlay(false);
+    });
 });
