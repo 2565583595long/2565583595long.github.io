@@ -5,11 +5,11 @@
     width: 100%;
     height: 100%;
     background: rgba(0, 0, 0, 0.5);
-    z-index: 98; /* 确保这个值低于评论框的z-index */
+    z-index: 1126; /* 确保这个值低于评论框的z-index */
     display: none; /* 默认隐藏 */
 }
 
 #comments, #waline {
-    z-index: 99; /* 高于.overlay-darken，确保在遮罩层之上 */
+    z-index: 1136; /* 高于.overlay-darken，确保在遮罩层之上 */
     position: relative; /* 如果它们还没有定位属性，需添加这个 */
 }
