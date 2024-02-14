@@ -1,24 +1,22 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // 创建遮罩层元素并添加到body
     const overlay = document.createElement('div');
     overlay.className = 'overlay-darken';
     document.body.appendChild(overlay);
 
     const commentsContainer = document.getElementById('comments');
 
-    // 显示或隐藏遮罩层的功能
     function toggleOverlay(on) {
         overlay.style.display = on ? 'block' : 'none';
     }
 
-    // 为评论输入区域添加事件委托
     commentsContainer.addEventListener('focusin', function(event) {
+        // 检查事件的目标是否为我们关心的输入框
         if (event.target.matches('#wl-nick, #wl-mail, #wl-link, #wl-edit')) {
-            toggleOverlay(true);
+            toggleOverlay(true); // 显示遮罩层
         }
     });
 
     commentsContainer.addEventListener('focusout', function(event) {
-        toggleOverlay(false);
+        toggleOverlay(false); // 隐藏遮罩层
     });
 });
