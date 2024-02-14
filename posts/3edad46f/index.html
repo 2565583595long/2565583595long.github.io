@@ -29,7 +29,7 @@
 <meta property="og:image" content="http://zeyulong.com/posts/3edad46f/%E8%8E%B7%E5%8F%96%E5%AD%97%E4%BD%93%E9%93%BE%E6%8E%A5.png">
 <meta property="og:image" content="http://zeyulong.com/posts/3edad46f/Vercel%E9%85%8D%E7%BD%AE%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F.png">
 <meta property="article:published_time" content="2023-12-24T15:52:40.000Z">
-<meta property="article:modified_time" content="2024-02-10T14:59:32.141Z">
+<meta property="article:modified_time" content="2024-02-14T04:29:31.747Z">
 <meta property="article:author" content="龙泽雨">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="http://zeyulong.com/posts/3edad46f/%E9%BC%A0%E6%A0%87%E7%82%B9%E5%87%BB%E7%89%B9%E6%95%88-1.gif">
@@ -330,7 +330,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          17k 字
+          18k 字
         
       </span>
     
@@ -341,7 +341,7 @@
         
         
         
-          143 分钟
+          151 分钟
         
       </span>
     
@@ -391,7 +391,7 @@
               <p id="updated-time" class="note note-info" style="">
                 
                   
-                    本文最后更新于 2024年2月10日 晚上
+                    本文最后更新于 2024年2月14日 中午
                   
                 
               </p>
@@ -931,6 +931,9 @@
 <p>关于<a target="_blank" rel="noopener" href="https://waline.js.org/">Waline</a>的部署，在它的官网上已经讲得很清楚了，一步一步跟着做就可以。这里就不再赘述，只做几点补充说明（自己在部署过程中踩的坑）：</p>
 <ol>
 <li>
+<p>由于<a target="_blank" rel="noopener" href="https://www.leancloud.cn/">LeanCloud国内版</a>需要为应用额外绑定<strong>已备案</strong>的域名，同时购买独立IP并完成备案接入。因此建议使用<a target="_blank" rel="noopener" href="https://leancloud.app/">LeanCloud国际版（推荐）</a>。</p>
+</li>
+<li>
 <p>借用<a target="_blank" rel="noopener" href="https://blog.kevinchu.top/2023/07/17/vercel-deploy-waline">Vercel部署Waline评论系统</a>中的一张图，在<code>Vercel-Settings-Environment Variables</code>中配置环境变量时，”配置三个环境变量 <code>LEAN_ID</code>, <code>LEAN_KEY</code> 和 <code>LEAN_MASTER_KEY</code> ，它们的值分别对应上一步在 LeanCloud 中获得的 <code>APP ID</code>, <code>APP KEY</code>, <code>Master Key</code>“这句话是这个意思：</p>
 <img src="/posts/3edad46f/Vercel%E9%85%8D%E7%BD%AE%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F.png" srcset="/img/loading.gif" lazyload class="" title="Vercel配置环境变量">
 <p>最开始自己尝试半天，就两个空怎么填这些信息？</p>
@@ -969,6 +972,14 @@
 <p>完成，部署博客即可。</p>
 </li>
 </ol>
+<h2 id="后台管理">后台管理</h2>
+<ol>
+<li>登录<a target="_blank" rel="noopener" href="https://www.leancloud.cn/">LeanCloud国内版</a>或<a target="_blank" rel="noopener" href="https://leancloud.app/">LeanCloud国际版（推荐）</a>。</li>
+<li>进入应用界面-数据存储-结构化数据-在Comment表中可以看到在博客中的留言信息，在Users表中可以看到所有注册过的用户信息。</li>
+</ol>
+<blockquote>
+<p>当使用评论的登录功能时，第一个注册的用户默认为评论管理系统的管理员。因此用户配置评论系统后需及时申请管理员账号。</p>
+</blockquote>
 <h1 id="添加博客小游戏">添加博客小游戏</h1>
 <p><a target="_blank" rel="noopener" href="https://zwxo.github.io/articles/36588/">添加博客小游戏的参考链接</a></p>
 <ol>
@@ -1068,6 +1079,67 @@
 <p>部署即可。可以通过链接 <a target="_blank" rel="noopener" href="http://localhost:4000/404/">http://localhost:4000/404/</a> 来查看 404 页面的显示效果。</p>
 </li>
 </ol>
+<h1 id="访问量统计">访问量统计</h1>
+<p>基于LeanCloud统计博客页面访问次数与访问人数及文章阅读次数。</p>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://hexo.fluid-dev.com/docs/">Hexo Fluid</a>主题目前支持两种数据来源：<a target="_blank" rel="noopener" href="https://www.leancloud.cn/">LeanCloud</a>与 <a target="_blank" rel="noopener" href="http://busuanzi.ibruce.info/">不蒜子</a>。</p>
+<p>不蒜子不需要申请账号，直接开启即可，但有时候会响应缓慢拖慢整个页面加载。因此选择使用LeanCloud进行访问量统计。</p>
+</blockquote>
+<p><a target="_blank" rel="noopener" href="http://minghuijia.cn/2022/03/14/Hexo-fluid%E4%B8%BB%E9%A2%98%E8%AE%BE%E7%BD%AE%E7%BB%9F%E8%AE%A1%E5%8D%9A%E5%AE%A2%E9%98%85%E8%AF%BB%E9%87%8F/">访问量统计的参考链接</a></p>
+<h2 id="实现步骤-2">实现步骤</h2>
+<ol>
+<li>
+<p>配置LeanCloud。</p>
+<ol>
+<li>
+<p>进入<a target="_blank" rel="noopener" href="https://www.leancloud.cn/">LeanCloud国内版</a>或<a target="_blank" rel="noopener" href="https://leancloud.app/">LeanCloud国际版（推荐）</a> ，注册账号并完成实名认证和邮箱验证。</p>
+<blockquote>
+<p>由于<a target="_blank" rel="noopener" href="https://www.leancloud.cn/">LeanCloud国内版</a>需要为应用额外绑定<strong>已备案</strong>的域名，同时购买独立IP并完成备案接入。因此建议使用<a target="_blank" rel="noopener" href="https://leancloud.app/">LeanCloud国际版（推荐）</a>。</p>
+</blockquote>
+</li>
+<li>
+<p>首页-创建应用-应用名称（自定义）-应用描述（自定义）-创建。</p>
+</li>
+<li>
+<p>进入应用界面-数据存储-结构化数据-创建Class-Class名称：Counter-ACL权限：无限制-创建。</p>
+</li>
+<li>
+<p>进入应用界面-设置-应用凭证-获取AppID与AppKey。</p>
+</li>
+</ol>
+</li>
+<li>
+<p>配置博客。修改<code>./Blog/_config.fluid.yml</code>文件：</p>
+<ol>
+<li>
+<p>网页统计。</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs yml"><span class="hljs-comment"># 网页访问统计</span><br><span class="hljs-comment"># Analysis of website visitors</span><br><span class="hljs-attr">web_analytics:</span>  <span class="hljs-comment"># 网页访问统计</span><br>  <span class="hljs-attr">enable:</span> <span class="hljs-literal">true</span><br>  <span class="hljs-string">.</span><br>  <span class="hljs-string">.</span><br>  <span class="hljs-string">.</span><br>  <span class="hljs-comment"># LeanCloud 计数统计，可用于 PV UV 展示，如果 `web_analytics: enable` 没有开启，PV UV 展示只会查询不会增加</span><br>  <span class="hljs-comment"># LeanCloud count statistics, which can be used for PV UV display. If `web_analytics: enable` is false, PV UV display will only query and not increase</span><br>  <span class="hljs-attr">leancloud:</span><br>    <span class="hljs-attr">app_id:</span> <span class="hljs-string">xxx</span><br>    <span class="hljs-attr">app_key:</span> <span class="hljs-string">xxx</span><br>    <span class="hljs-comment"># REST API 服务器地址，国际版不填</span><br>    <span class="hljs-comment"># Only the Chinese mainland users need to set</span><br>    <span class="hljs-attr">server_url:</span><br>    <span class="hljs-comment"># 统计页面时获取路径的属性</span><br>    <span class="hljs-comment"># Get the attribute of the page path during statistics</span><br>    <span class="hljs-attr">path:</span> <span class="hljs-string">window.location.pathname</span><br>    <span class="hljs-comment"># 开启后不统计本地路径( localhost 与 127.0.0.1 )</span><br>    <span class="hljs-comment"># If true, ignore localhost &amp; 127.0.0.1</span><br>    <span class="hljs-attr">ignore_local:</span> <span class="hljs-literal">false</span><br></code></pre></td></tr></table></figure>
+</li>
+<li>
+<p>页脚展示 PV 与 UV 统计。</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs yml"><span class="hljs-comment"># 展示网站的 PV、UV 统计数</span><br><span class="hljs-comment"># Display website PV and UV statistics</span><br><span class="hljs-attr">statistics:</span><br>  <span class="hljs-attr">enable:</span> <span class="hljs-literal">true</span><br>      <br>  <span class="hljs-comment"># 统计数据来源，使用 leancloud 需要设置 `web_analytics: leancloud` 中的参数；使用 busuanzi 不需要额外设置，但是有时不稳定，另外本地运行时 busuanzi 显示统计数据很大属于正常现象，部署后会正常</span><br>  <span class="hljs-comment"># Data source. If use leancloud, you need to set the parameter in `web_analytics: leancloud`</span><br>  <span class="hljs-comment"># Options: busuanzi | leancloud</span><br>  <span class="hljs-attr">source:</span> <span class="hljs-string">&quot;leancloud&quot;</span><br></code></pre></td></tr></table></figure>
+<p>这样在博客页面最下面就可以看到访问人数与访问次数。</p>
+</li>
+<li>
+<p>显示在文章页大标题下的文章信息。</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs yml"><span class="hljs-attr">post:</span><br>  <span class="hljs-string">.</span><br>  <span class="hljs-string">.</span><br>  <span class="hljs-string">.</span><br>  <span class="hljs-comment"># 文章标题下方的元信息</span><br>  <span class="hljs-comment"># Meta information below title</span><br>  <span class="hljs-attr">meta:</span><br>    <span class="hljs-string">.</span><br>    <span class="hljs-string">.</span><br>    <span class="hljs-string">.</span><br>    <span class="hljs-comment"># 浏览量计数</span><br>    <span class="hljs-comment"># Number of visits</span><br>    <span class="hljs-attr">views:</span><br>      <span class="hljs-attr">enable:</span> <span class="hljs-literal">true</span><br>      <span class="hljs-comment"># 统计数据来源</span><br>      <span class="hljs-comment"># Data Source</span><br>      <span class="hljs-comment"># Options: busuanzi | leancloud</span><br>      <span class="hljs-attr">source:</span> <span class="hljs-string">&quot;leancloud&quot;</span><br></code></pre></td></tr></table></figure>
+<p>实现对每篇博客的访问次数进行统计。</p>
+</li>
+</ol>
+</li>
+<li>
+<p>部署即可。</p>
+</li>
+</ol>
+<blockquote>
+<p>如果参数填写错误或者接口异常，不会显示数据，请在浏览器控制台排查具体原因。</p>
+</blockquote>
+<h2 id="后台管理-2">后台管理</h2>
+<p>登录<a target="_blank" rel="noopener" href="https://www.leancloud.cn/">LeanCloud国内版</a>或<a target="_blank" rel="noopener" href="https://leancloud.app/">LeanCloud国际版（推荐）</a>，进入应用界面-数据存储-结构化数据-点击创建的Class名称（Counter），即可看到创建了每篇文章阅读的次数以及用户访问博客的次数及人数。</p>
+<blockquote>
+<p>记录文章访问量的唯一标识符是文章的发布日期和文章的标题，因此要确保这两个数值组合的唯一性，如果你更改了这两个数值，会造成文章阅读数值的清零重计。</p>
+<p>time字段的数值表示某一篇文章的访问量，其他字段的具体作用可以查阅LeanCloud官方文档，最好不要随意修改。</p>
+</blockquote>
 
                 
               </div>
@@ -1294,42 +1366,37 @@
   </main>
 
   <footer>
-    <div class="footer-inner">
-  
-    <div class="footer-content">
-       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
-    </div>
-  
-  
-    <div class="statistics">
-  
-  
-
-  
-    
-      <span id="leancloud-site-pv-container" style="display: none">
-        总访问量 
-        <span id="leancloud-site-pv"></span>
-         次
-      </span>
-    
-    
-      <span id="leancloud-site-uv-container" style="display: none">
-        总访客数 
-        <span id="leancloud-site-uv"></span>
-         人
-      </span>
-    
-    
-
-  
+    <div>
+  <span id="timeDate">载入天数...</span>
+  <span id="times">载入时分秒...</span>
+  <script>
+  var now = new Date();
+  function createtime(){
+      var grt= new Date("07/02/2020 00:00:00");//此处修改你的建站时间或者网站上线时间
+      now.setTime(now.getTime()+250);
+      days = (now - grt ) / 1000 / 60 / 60 / 24;
+      dnum = Math.floor(days);
+      hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum);
+      hnum = Math.floor(hours);
+      if(String(hnum).length ==1 ){
+          hnum = "0" + hnum;
+      }
+      minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum);
+      mnum = Math.floor(minutes);
+      if(String(mnum).length ==1 ){
+                mnum = "0" + mnum;
+      }
+      seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+      snum = Math.round(seconds);
+      if(String(snum).length ==1 ){
+                snum = "0" + snum;
+      }
+      document.getElementById("timeDate").innerHTML = "🚀 for&nbsp"+dnum+"&nbspdays";  //此次自定义显示内容
+      document.getElementById("times").innerHTML = hnum + "&nbsphr&nbsp" + mnum + "&nbspmin&nbsp" + snum + "&nbspsec";
+  }  //此次自定义显示内容
+  setInterval("createtime()",250);
+  </script>
 </div>
-
-  
-  
-  
-</div>
-
   </footer>
 
   <!-- Scripts -->
