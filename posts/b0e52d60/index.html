@@ -24,7 +24,7 @@
 <meta property="og:description" content="本文主要总结整理了网上分享的ChatGPT、 GitHub Copilot等大模型及集成交互接口gpt_academic的使用技巧，尽可能做到物尽其用，在使用大模型时充分发挥出其优势和性能，以更好地解决问题。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-01-03T09:59:29.000Z">
-<meta property="article:modified_time" content="2024-02-14T02:29:22.401Z">
+<meta property="article:modified_time" content="2024-02-16T05:08:56.371Z">
 <meta property="article:author" content="龙泽雨">
 <meta name="twitter:card" content="summary_large_image">
   
@@ -335,7 +335,7 @@
         
         
         
-          117 分钟
+          119 分钟
         
       </span>
     
@@ -385,7 +385,7 @@
               <p id="updated-time" class="note note-info" style="">
                 
                   
-                    本文最后更新于 2024年2月14日 上午
+                    本文最后更新于 2024年2月16日 下午
                   
                 
               </p>
@@ -395,6 +395,13 @@
                 
                 <p>本文主要总结整理了网上分享的ChatGPT、 GitHub Copilot等大模型及集成交互接口gpt_academic的使用技巧，尽可能做到物尽其用，在使用大模型时充分发挥出其优势和性能，以更好地解决问题。</p>
 <span id="more"></span>
+<blockquote>
+<p>登录OpenAI或ChatGPT：</p>
+<ol>
+<li>全局代理 + 浏览器无痕模式。</li>
+<li>全局代理 + 浏览器无痕模式 + 更换IP失败次数超过3-5次，不建议继续尝试。据网友反馈，这种情况可以考虑更换ChatGPT账号 + 无痕 + 更换梯子重新订阅试试。</li>
+</ol>
+</blockquote>
 <h1 id="提问技巧">提问技巧</h1>
 <h2 id="总体提问流程">总体提问流程</h2>
 <p>结合BRTR原则和提问技巧：</p>
@@ -787,6 +794,9 @@
 </li>
 <li>
 <p><a target="_blank" rel="noopener" href="https://gpt.fomepay.com/#/pages/login/index?d=P21830">使用FOMEPay开通国外虚拟信用卡</a>。</p>
+<blockquote>
+<p>虚拟信用卡容易被风控（卡段被 ban 了）？！换 app 内购吧，之前被封号前几天官方回复了说是：We’ve confirmed this action was associated with suspicious payment activity.</p>
+</blockquote>
 <p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/672506821">参考流程</a>。提示：</p>
 <ol>
 <li>有开卡费10美元和每次充值2%-5%的手续费。</li>
@@ -803,9 +813,21 @@
 <li>
 <p>申请临时海外手机号以使用OpenaAI的API_KEY。</p>
 <ol>
-<li>注册和登录<a target="_blank" rel="noopener" href="https://sms-activate.org/">手机号购买链接</a>。</li>
-<li>点击界面右上角，选择使用支付宝充值（至少2美元）。</li>
-<li>点击界面左侧-查找服务-搜索<code>OpenAI</code>-在结果列表中选择一个国家（如Indonesia印度尼西亚英文）-点击购物车标识进行购买-购买完成后界面中间跳转为<code>我的激活</code>，可查看当前购买的手机号（<strong>有效期20分钟</strong>），等待接收验证码。</li>
+<li>
+<p>注册和登录<a target="_blank" rel="noopener" href="https://sms-activate.org/">手机号购买链接</a>。</p>
+</li>
+<li>
+<p>点击界面右上角，选择使用支付宝充值（至少2美元）。</p>
+</li>
+<li>
+<p>点击界面左侧-查找服务-搜索<code>OpenAI</code>-在结果列表中选择一个国家（如Indonesia印度尼西亚英文）-点击购物车标识进行购买-购买完成后界面中间跳转为<code>我的激活</code>，可查看当前购买的手机号（<strong>有效期20分钟</strong>），等待接收验证码。</p>
+<blockquote>
+<ol>
+<li>在OpenAI手机号验证不成功，可点击SMS中间激活页面手机号栏右侧的刷新按钮换一个手机号。</li>
+<li>如果出于某种原因代码未在 20 分钟内到达，款项将自动退还至您的余额中。</li>
+</ol>
+</blockquote>
+</li>
 </ol>
 </li>
 <li>
@@ -858,6 +880,7 @@
 <ol>
 <li>一定要注意输出的代理位置一定不能是中国，因为OpenAI不支持中国。被检测到了会被封号。血泪教训。<a target="_blank" rel="noopener" href="https://platform.openai.com/docs/supported-countries">Supported countries and territories</a>。</li>
 <li>在外网代理流量不多时避免过度使用gpt_academic，如果在使用过程中外网代理流量中断，也有可能被检测到代理位置不正确。</li>
+<li>梯子地区不能换，可以在一个国家内换，但不能现在 a 国，下一秒 b 国，秒封。</li>
 </ol>
 </blockquote>
 <p>P.S. 别忘了把在第2步里把<code>config.py</code>里的USE_PROXY选项改成True。</p>
@@ -920,6 +943,9 @@
 <p><code>Ctrl+C</code>结束终端当前进程，关闭浏览器。</p>
 <h3 id="常用功能">常用功能</h3>
 <h4 id="程序解析">程序解析</h4>
+<blockquote>
+<p>解析整个项目的时候可以将项目分部分打包、分批次、重建对话给gpt进行解读，因为一次解读太多文件会使用太多token，很容易达到<a target="_blank" rel="noopener" href="https://platform.openai.com/docs/guides/rate-limits">速率限制</a>。</p>
+</blockquote>
 <ul>
 <li>
 <p>[基本功能区] 解释代码（预置Prompt）。</p>
