@@ -24,7 +24,7 @@
 <meta property="og:description" content="本文主要分享了Linux系统的配置与常用软件的安装。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-01-31T16:27:11.000Z">
-<meta property="article:modified_time" content="2024-02-10T00:56:51.491Z">
+<meta property="article:modified_time" content="2024-03-04T12:07:30.908Z">
 <meta property="article:author" content="龙泽雨">
 <meta name="twitter:card" content="summary_large_image">
   
@@ -204,6 +204,22 @@
                   
                   
                   
+                  <a class="dropdown-item" href="/game/bcbk/1" target="_self">
+                    
+                    <span>别踩白块-1</span>
+                  </a>
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/game/bcbk/2" target="_self">
+                    
+                    <span>别踩白块-2</span>
+                  </a>
+                
+                  
+                  
+                  
                   <a class="dropdown-item" href="/game/dblk" target="_self">
                     
                     <span>躲避绿块</span>
@@ -324,7 +340,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          5k 字
+          5.3k 字
         
       </span>
     
@@ -335,7 +351,7 @@
         
         
         
-          42 分钟
+          45 分钟
         
       </span>
     
@@ -385,7 +401,7 @@
               <p id="updated-time" class="note note-info" style="">
                 
                   
-                    本文最后更新于 2024年2月10日 早上
+                    本文最后更新于 2024年3月4日 晚上
                   
                 
               </p>
@@ -524,6 +540,7 @@
 <li>One Dark theme: One Dark Vivid Italic</li>
 <li>Rainbow Brackets</li>
 <li>Rainbow CSV</li>
+<li>String Manipulation</li>
 <li>Translation</li>
 </ul>
 </li>
@@ -556,7 +573,38 @@
 <li>设置-高级设置-编辑器-对代码行长度超过此值的文档强制进行自动换行</li>
 </ul>
 </li>
-<li></li>
+<li>
+<p>定义实时模板（自定义自动补全的语句）。例如，自动替换中文输入法下的<code>、、</code>转化为<code>//</code>：</p>
+<ol>
+<li>文件-设置-编辑器-实时模板。</li>
+<li>选中中间C/C++选项下的任意条目。点击左上角的<code>+</code>号。</li>
+<li>设置下面的信息：
+<ul>
+<li>缩写：、、</li>
+<li>描述：单行注释</li>
+<li>模板文本：<code>//+空格</code></li>
+<li>适用于：全选</li>
+<li>选项-展开方式-空格。</li>
+</ul>
+</li>
+<li>确定设置。</li>
+<li>这样，在编辑器中输入<code>、、</code>再按下空格后，<code>、、</code>就会自动被替换为<code>//</code>了。</li>
+</ol>
+<blockquote>
+<p>输入“for”，按下默认快捷键Tab键选中。按下m，把i修改成m。再按一下Tab，光标位置变了。输入内容之后再按一下Tab之后就进入了for的{}内。</p>
+</blockquote>
+</li>
+<li>
+<p>自定义文件头。</p>
+<p>文件-设置-编辑器-文件和代码模板-C File Header，示例：</p>
+<blockquote>
+<p>Google推荐一行最多80个字符，所以模板中使用了80个 * 。</p>
+</blockquote>
+<figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs txt">/********************************************************************************<br>* @author: Song Jiahao<br>* @email: songjiahao@whu.edu.cn<br>* @date: $&#123;DATE&#125; $&#123;TIME&#125;<br>* @version: 1.0<br>* @description: <br>********************************************************************************/<br><br><br></code></pre></td></tr></table></figure>
+<p>默认：</p>
+<figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs txt">#if ($HEADER_COMMENTS)<br>//<br>// Created by $USER_NAME on $&#123;DATE&#125;.<br>#if ($ORGANIZATION_NAME &amp;&amp; $ORGANIZATION_NAME != &quot;&quot;)<br>// Copyright (c) $YEAR $&#123;ORGANIZATION_NAME&#125;#if (!$ORGANIZATION_NAME.endsWith(&quot;.&quot;)).#end All rights reserved.<br>#end<br>//<br>#end<br><br><br></code></pre></td></tr></table></figure>
+<p>创建新的文件时，会自动生成自定义的文件头。</p>
+</li>
 </ol>
 <h2 id="卸载">卸载</h2>
 <p><a target="_blank" rel="noopener" href="https://www.jetbrains.com/help/clion/uninstall.html">官方卸载说明</a></p>
@@ -634,6 +682,18 @@
 <blockquote>
 <p>如果之前已经自动创建了<code>cmake-build-debug</code>文件夹，直接删了就好。</p>
 </blockquote>
+<p>报错：</p>
+<ol>
+<li>
+<p>CMake Error at /opt/ros/kinetic/share/catkin/cmake/catkin_workspace.cmake:95 (message):</p>
+<p>This workspace contains non-catkin packages in it, and catkin cannot build</p>
+<p>a non-homogeneous workspace without isolation. Try the</p>
+<p>'catkin_make_isolated' command instead.</p>
+<p>Call Stack (most recent call first):</p>
+<p>CMakeLists.txt:68 (catkin_workspace)</p>
+<p>解决：使用‘catkin_make_isolated’代替‘catkin_make’进行编译或移除非catkin类型的package。</p>
+</li>
+</ol>
 </li>
 <li>
 <p>调试ROS节点程序。</p>
