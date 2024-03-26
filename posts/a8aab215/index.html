@@ -24,7 +24,7 @@
 <meta property="og:description" content="本文主要分享了自己在使用Linux系统过程中常用的命令及快捷键。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-03-05T14:33:19.000Z">
-<meta property="article:modified_time" content="2024-03-20T03:31:49.729Z">
+<meta property="article:modified_time" content="2024-03-26T07:57:49.326Z">
 <meta property="article:author" content="龙泽雨">
 <meta name="twitter:card" content="summary_large_image">
   
@@ -348,7 +348,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          15k 字
+          16k 字
         
       </span>
     
@@ -359,7 +359,7 @@
         
         
         
-          129 分钟
+          131 分钟
         
       </span>
     
@@ -409,7 +409,7 @@
               <p id="updated-time" class="note note-info" style="">
                 
                   
-                    本文最后更新于 2024年3月20日 中午
+                    本文最后更新于 2024年3月26日 下午
                   
                 
               </p>
@@ -721,6 +721,7 @@
 <p><code>chmod 4755</code>与<code>chmod 755</code> 的区别在于开头多了一位，这个4表示其他用户执行文件时，具有与所有者相当的权限。具有root的权限。</p>
 <p><code>chmod a=rwx file</code> 和<code>chmod 777 file</code>效果相同。</p>
 <p><code>chmod ug=rwx,o=x file</code>和<code>chmod 771 file</code>效果相同。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 查看文件权限</span><br>ll<br></code></pre></td></tr></table></figure>
 <h3 id="代码、编译">代码、编译</h3>
 <h4 id="本地库编译">本地库编译</h4>
 <ol>
@@ -948,8 +949,13 @@
 </li>
 <li>
 <p>报错：<code>SyntaxError: Non-ASCII character '\xe5'</code></p>
+<p>原因：Python默认是以ASCII作为编码方式的，如果在自己的Python源码中包含了中文（或者其他非英语系的语言），此时即使你把自己编写的Python源文件以UTF-8格式保存了，但实际上，这依然是不行的。</p>
 <p>解决：在源代码的第一行加入：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># -*- coding: UTF-8 -*-</span><br></code></pre></td></tr></table></figure>
+</li>
+<li>
+<p>python引入本地字体：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> matplotlib.font_manager <span class="hljs-keyword">as</span> fm<br>fm.fontManager.addfont(<span class="hljs-string">&#x27;/usr/share/fonts/truetype/Times-New-Roman/times.ttf&#x27;</span>)<br>fm.fontManager.addfont(<span class="hljs-string">&#x27;/usr/share/fonts/truetype/simsun/simsun.ttc&#x27;</span>)<br><br>plt.title(<span class="hljs-string">&#x27;层次聚类树形图&#x27;</span>, fontname=<span class="hljs-string">&quot;simsun&quot;</span>, fontsize=<span class="hljs-number">30</span>)<br>plt.xticks(fontname=<span class="hljs-string">&quot;Times New Roman&quot;</span>, fontsize=<span class="hljs-number">26</span>)<br><br>colorbar = plt.colorbar()<br>colorbar.ax.tick_params(labelsize=<span class="hljs-number">24</span>)  <span class="hljs-comment"># 设置坐标轴标签的字体大小</span><br><span class="hljs-keyword">for</span> l <span class="hljs-keyword">in</span> colorbar.ax.yaxis.get_ticklabels():<br>    l.set_family(<span class="hljs-string">&#x27;simsun&#x27;</span>)<br></code></pre></td></tr></table></figure>
 </li>
 <li></li>
 </ol>
@@ -1079,7 +1085,7 @@
 <blockquote>
 <p>直接将 文件管理器 中的文件拖到 GNOME终端 中就可以在终端中得到完整的路径名。</p>
 </blockquote>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo apt upgrade  <span class="hljs-comment"># 安装可用的软件包更新</span><br>```高亮```<br><span class="hljs-comment">#! 执行</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo apt upgrade  <span class="hljs-comment"># 安装可用的软件包更新</span><br>`高亮`<br>```高亮```<br><span class="hljs-comment">#! 执行</span><br></code></pre></td></tr></table></figure>
 <h3 id="Terminator">Terminator</h3>
 <p>更方便的终端，区别于默认GNOME终端。</p>
 <h4 id="快捷键-2">快捷键</h4>
@@ -1744,6 +1750,10 @@
 <tr>
 <td style="text-align:center">Ctrl+Shift+L</td>
 <td style="text-align:center">显示/隐藏边栏</td>
+</tr>
+<tr>
+<td style="text-align:center">Ctrl+K</td>
+<td style="text-align:center">复制链接，在Typora中选中要建立超链接的文字，按下<code>Ctrl+K</code>，Typora会自动读取剪切板来创建超链接。</td>
 </tr>
 </tbody>
 </table>

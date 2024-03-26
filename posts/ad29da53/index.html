@@ -24,7 +24,7 @@
 <meta property="og:description" content="本文主要分享了Linux系统的配置与常用软件的安装。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-01-31T16:27:11.000Z">
-<meta property="article:modified_time" content="2024-03-07T14:16:35.294Z">
+<meta property="article:modified_time" content="2024-03-22T09:51:04.535Z">
 <meta property="article:author" content="龙泽雨">
 <meta name="twitter:card" content="summary_large_image">
   
@@ -348,7 +348,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          5.4k 字
+          5.7k 字
         
       </span>
     
@@ -359,7 +359,7 @@
         
         
         
-          45 分钟
+          48 分钟
         
       </span>
     
@@ -409,7 +409,7 @@
               <p id="updated-time" class="note note-info" style="">
                 
                   
-                    本文最后更新于 2024年3月7日 晚上
+                    本文最后更新于 2024年3月22日 下午
                   
                 
               </p>
@@ -538,20 +538,20 @@
 <li>
 <p>插件：</p>
 <ul>
-<li>Atom Material Icons</li>
+<li>Atom Material Icons：图标美化</li>
 <li>Chinese(Simplified)Language Pack/中文语言包</li>
-<li>CodeGlance Pro</li>
-<li>CSV Editor</li>
-<li>GitHub Copilot</li>
-<li>Hatchery</li>
-<li>Key Promoter X</li>
-<li>Nyan Progress Bar</li>
+<li>CodeGlance Pro：文件预览条</li>
+<li>CSV Editor：CSV文件编辑器</li>
+<li>GitHub Copilot：大模型辅助</li>
+<li>Hatchery：支持ROS</li>
+<li>Key Promoter X：快捷键提示</li>
+<li>Nyan Progress Bar：（彩虹猫）进度条美化</li>
 <li>One Dark theme: One Dark Vivid Italic</li>
-<li>Rainbow Brackets</li>
-<li>Rainbow CSV</li>
-<li>SequenceDiagram</li>
-<li>String Manipulation</li>
-<li>Translation</li>
+<li>Rainbow Brackets：彩虹括号</li>
+<li>Rainbow CSV：美化CSV文件</li>
+<li>SequenceDiagram：时序图</li>
+<li>String Manipulation：字符串处理</li>
+<li>Translation：IDE内翻译插件</li>
 </ul>
 </li>
 <li>
@@ -573,6 +573,7 @@
 <p><a target="_blank" rel="noopener" href="https://www.jetbrains.com/help/idea/using-todo.html">添加特殊注释</a>。文件-设置-编辑器-TODO：可添加自定义Tag并配置筛选器。</p>
 <ul>
 <li>如TODO、FIXME、XXX、HACK/BODGE/KLUDGE、BUG/DEBUG、UNDONE和NOTE等。</li>
+<li>勾选：将以下行中的缩进文本视为同一TODO的一部分，后，在特殊注释的下面一行注释后加一个空格再注释，该行会被视为上一行特殊注释的一部分。</li>
 </ul>
 </li>
 <li>
@@ -587,7 +588,7 @@
 <p>定义实时模板（自定义自动补全的语句）。例如，自动替换中文输入法下的<code>、、</code>转化为<code>//</code>：</p>
 <ol>
 <li>文件-设置-编辑器-实时模板。</li>
-<li>选中中间C/C++选项下的任意条目。点击左上角的<code>+</code>号。</li>
+<li>选中中间C/C++选项下的任意条目。点击左上角的<code>+</code>号-实时模板。</li>
 <li>设置下面的信息：
 <ul>
 <li>缩写：、、</li>
@@ -603,6 +604,7 @@
 <blockquote>
 <p>输入“for”，按下默认快捷键Tab键选中。按下m，把i修改成m。再按一下Tab，光标位置变了。输入内容之后再按一下Tab之后就进入了for的{}内。</p>
 </blockquote>
+<p>类似的，可以为特殊注释配置实时模板，例如：<code>// todo</code>（空格触发）-&gt;<code>// TODO-LLL25655: </code>。</p>
 </li>
 <li>
 <p>自定义文件头。</p>
@@ -614,6 +616,9 @@
 <p>默认：</p>
 <figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs txt">#if ($HEADER_COMMENTS)<br>//<br>// Created by $USER_NAME on $&#123;DATE&#125;.<br>#if ($ORGANIZATION_NAME &amp;&amp; $ORGANIZATION_NAME != &quot;&quot;)<br>// Copyright (c) $YEAR $&#123;ORGANIZATION_NAME&#125;#if (!$ORGANIZATION_NAME.endsWith(&quot;.&quot;)).#end All rights reserved.<br>#end<br>//<br>#end<br><br><br></code></pre></td></tr></table></figure>
 <p>创建新的文件时，会自动生成自定义的文件头。</p>
+</li>
+<li>
+<p>关联文件类型：设置-编辑器-文件类型-识别的文件类型：XML-文件名模式-添加-<code>*.launch</code>-确定；YAML-文件名模式-添加-<code>*.rviz</code>-确定。</p>
 </li>
 </ol>
 <h2 id="使用">使用</h2>
@@ -808,6 +813,7 @@
 <p>请参考你所使用的系统安装包管理器的使用说明来安装你所选择的QQ Linux版安装程序，注意你需要root权限才能完成安装。在一些发行版中你可以通过双击文件管理器中的安装程序完成安装。以下是一些使用命令行来安装的例子：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo ./linuxqq_1.0.1-b1-100_x86_64.sh<br>sudo rpm -ivh linuxqq_1.0.1-b1-100_mips64el.rpm<br>sudo dpkg -i linuxqq_1.0.1-b1-100_armhf.deb<br>sudo apt install -y /path/to/linuxqq_1.0.1-b1-100_amd64.deb<br>sudo pacman -U linuxqq_1.0.1-ci-94_x86_64.pkg.tar.xz<br></code></pre></td></tr></table></figure>
 <p>如果版本更新后登录出现闪退情况，请删除 <code>~/.config/tencent-qq/#你的QQ号#</code> 目录后重新登录。</p>
+<p>默认安装位置：<code>/opt/QQ</code></p>
 <h3 id="如何卸载？">如何卸载？</h3>
 <p>请尽量使用你安装时使用的对应方式来卸载QQ Linux版（参考你所使用的系统安装包管理器说明）。同样需要root权限才能完成卸载。以下是一些例子：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo rpm -e linuxqq<br>sudo dpkg -r linuxqq<br></code></pre></td></tr></table></figure>
@@ -933,8 +939,14 @@ source ~/.bashrc  # source ~/.zshrc
 <p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/524165545">Linux 下自定义安装 Texlive2023</a></p>
 <p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_44375591/article/details/103953590">在Linux环境下安装texlive</a></p>
 <p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/431846297">记录在Linux/Unbuntu下安装latex</a></p>
-<h1 id="Zotero">Zotero</h1>
+<h1 id="ToDesk">ToDesk</h1>
 <h2 id="下载安装-2">下载安装</h2>
+<p><a target="_blank" rel="noopener" href="https://www.todesk.com/linux.html">下载链接</a></p>
+<p>（覆盖旧版安装后，临时密码将会变更）</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 安装命令：</span><br>sudo apt-get install ./todesk-v4.7.2.0-amd64.deb<br><span class="hljs-comment"># 启动命令：</span><br>todesk<br><span class="hljs-comment"># 删除服务设置配置:</span><br>sudo <span class="hljs-built_in">rm</span> /opt/todesk/config/config.ini<br><span class="hljs-comment"># 卸载:</span><br>sudo apt-get remove --purge todesk<br><br><span class="hljs-comment"># 如不能正常使用,请执行以下命令初始化.</span><br>sudo systemctl stop todeskd.service<br>sudo <span class="hljs-built_in">mv</span> /opt/todesk/config/config.ini /opt/todesk/config/config.ini.bak<br>sudo systemctl start todeskd.service<br><br><span class="hljs-comment"># 排查错误可执行以下命令看日志:</span><br><span class="hljs-comment"># 查看服务日志：（例如:xxxx_xx_xx.log为2022_08_03.log）</span><br><span class="hljs-built_in">tail</span> -f /var/log/todesk/service_xxxx_xx_xx.log<br><span class="hljs-comment"># 查看客户端日志：（例如:xxxx_xx_xx.log为2022_08_03.log）</span><br><span class="hljs-built_in">tail</span> -f ~/.local/share/todesk/Logs/client_xxxx_xx_xx.log<br></code></pre></td></tr></table></figure>
+<p>默认安装位置：<code>/opt/todesk</code></p>
+<h1 id="Zotero">Zotero</h1>
+<h2 id="下载安装-3">下载安装</h2>
 <p><a target="_blank" rel="noopener" href="https://www.zotero.org/"> Zotero官网</a></p>
 <h2 id="插件">插件</h2>
 <h3 id="插件推荐">插件推荐</h3>
