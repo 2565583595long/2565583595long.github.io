@@ -24,7 +24,7 @@
 <meta property="og:description" content="本文主要分享了自己在使用Linux系统过程中常用的命令及快捷键。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-03-05T14:33:19.000Z">
-<meta property="article:modified_time" content="2024-03-26T07:57:49.326Z">
+<meta property="article:modified_time" content="2024-04-10T07:29:55.623Z">
 <meta property="article:author" content="龙泽雨">
 <meta name="twitter:card" content="summary_large_image">
   
@@ -348,7 +348,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          16k 字
+          17k 字
         
       </span>
     
@@ -359,7 +359,7 @@
         
         
         
-          131 分钟
+          141 分钟
         
       </span>
     
@@ -409,7 +409,7 @@
               <p id="updated-time" class="note note-info" style="">
                 
                   
-                    本文最后更新于 2024年3月26日 下午
+                    本文最后更新于 2024年4月10日 下午
                   
                 
               </p>
@@ -543,6 +543,14 @@
 <td style="text-align:center">Alt+空格（自定）</td>
 <td style="text-align:center">激活窗口菜单（内含置顶选项，也适用于没有系统标题栏的应用）</td>
 </tr>
+<tr>
+<td style="text-align:center">Win+Shift+向上/下翻页</td>
+<td style="text-align:center">将窗口上/下移一个工作区</td>
+</tr>
+<tr>
+<td style="text-align:center">Win+Shift+上/下/左/右箭头</td>
+<td style="text-align:center">将窗口上/下/左/右移一个显示器</td>
+</tr>
 </tbody>
 </table>
 <h3 id="目录">目录</h3>
@@ -578,7 +586,12 @@
 <li>工作区里的小窗口可以在不同工作区内拖拉，即移动到另一个工作区的功能。</li>
 <li>按住 <code>Shift</code> 拖动窗口可以吸附上下边缘的移动。</li>
 <li>水平滚动文件，请在按住 <code>Shift</code> 的同时转动鼠标滚轮。</li>
-<li></li>
+<li>双击选中词，三击选中整句。</li>
+<li>按住Alt，鼠标可以选中带链接的内容（而不打开链接）。</li>
+<li>按住Shift，鼠标在开头和结尾点击，可以选中全文（不用拖动了）。</li>
+<li>拖动选中可直接完成复制粘贴的操作（对于某些禁止复制粘贴的网站）。</li>
+<li>在Win11，按住Shift，点击鼠标右键，呼出旧版菜单。</li>
+<li>鼠标中间有快捷关闭的功能。</li>
 </ol>
 <h2 id="路径">路径</h2>
 <ol>
@@ -833,6 +846,12 @@
 </li>
 </ol>
 <p><a href="https://zeyulong.com/posts/c4541b88/#%E8%BF%9B%E9%98%B6%E4%BD%BF%E7%94%A8">进阶使用</a></p>
+<blockquote>
+<p><code>shell</code>脚本在语句报错后默认仍会继续向下执行，解决方法为：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-meta">#!/bin/bash</span><br><span class="hljs-comment"># 增加语句</span><br><span class="hljs-built_in">set</span> -e<br><span class="hljs-comment"># 或，二选一即可</span><br><span class="hljs-built_in">set</span> -o errexit<br><span class="hljs-comment"># 或，使用逻辑与</span><br>python3 main.py &amp;&amp;<br>python3 do.py<br></code></pre></td></tr></table></figure>
+<p>默认情况下，脚本执行后，屏幕只显示运行结果，没有其他内容。如果多个命令连续执行，它们的运行结果就会连续输出。有时会分不清，某一段内容是什么命令产生的。</p>
+<p><code>set -x</code>用来在运行结果之前，先输出执行的那一行命令。执行<code>echo bar</code>之前，该命令会先打印出来，行首以<code>+</code>表示。这对于调试复杂的脚本是很有用的。</p>
+</blockquote>
 <h4 id="C-中输出函数的选择">C++中输出函数的选择</h4>
 <ol>
 <li>
@@ -936,7 +955,9 @@
 <p>综上所述，选择哪一种取决于你的具体需求和开发习惯。在ROS开发中，<code>ROS_INFO</code>和<code>ROS_INFO_STREAM</code>因为其与ROS系统的集成，通常会是首选。</p>
 <p><a href="https://zeyulong.com/posts/c4541b88/">ROS消息打印</a></p>
 </li>
-<li></li>
+<li>
+<p><code>if</code>语句和<code>switch</code>语句的选择：多个等值判断选择<code>switch</code>，其它情况（区间范围等）选择<code>if</code>。</p>
+</li>
 </ol>
 <h4 id="其它">其它</h4>
 <ol>
@@ -956,6 +977,14 @@
 <li>
 <p>python引入本地字体：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> matplotlib.font_manager <span class="hljs-keyword">as</span> fm<br>fm.fontManager.addfont(<span class="hljs-string">&#x27;/usr/share/fonts/truetype/Times-New-Roman/times.ttf&#x27;</span>)<br>fm.fontManager.addfont(<span class="hljs-string">&#x27;/usr/share/fonts/truetype/simsun/simsun.ttc&#x27;</span>)<br><br>plt.title(<span class="hljs-string">&#x27;层次聚类树形图&#x27;</span>, fontname=<span class="hljs-string">&quot;simsun&quot;</span>, fontsize=<span class="hljs-number">30</span>)<br>plt.xticks(fontname=<span class="hljs-string">&quot;Times New Roman&quot;</span>, fontsize=<span class="hljs-number">26</span>)<br><br>colorbar = plt.colorbar()<br>colorbar.ax.tick_params(labelsize=<span class="hljs-number">24</span>)  <span class="hljs-comment"># 设置坐标轴标签的字体大小</span><br><span class="hljs-keyword">for</span> l <span class="hljs-keyword">in</span> colorbar.ax.yaxis.get_ticklabels():<br>    l.set_family(<span class="hljs-string">&#x27;simsun&#x27;</span>)<br></code></pre></td></tr></table></figure>
+</li>
+<li>
+<p>idea错误提示File was loaded in the wrong encoding: ‘UTF-8‘解决方法：</p>
+<ol>
+<li>打开乱码文件，在软件右下角将当前页面的编码格式改为GB2312，弹出的提示消息中选择Reload；</li>
+<li>在软件右下角将当前页面的编码格式改为utf-8，弹出的提示消息中选择Convert；</li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/nuyoahso/article/details/114974906">参考链接</a></li>
+</ol>
 </li>
 <li></li>
 </ol>
@@ -1222,6 +1251,52 @@
 <li></li>
 </ol>
 <h1 id="Windows">Windows</h1>
+<h2 id="快捷键-3">快捷键</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">快捷键</th>
+<th style="text-align:center">作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">Ctrl+Win+&lt;-/-&gt;</td>
+<td style="text-align:center">切换桌面</td>
+</tr>
+<tr>
+<td style="text-align:center"><mark>窗口</mark></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">Ctrl+N</td>
+<td style="text-align:center">新建当前窗口</td>
+</tr>
+<tr>
+<td style="text-align:center">Ctrl+Shift+N</td>
+<td style="text-align:center">新建文件夹</td>
+</tr>
+<tr>
+<td style="text-align:center">Win+ D</td>
+<td style="text-align:center">将所有打开的窗口最小化，并转到桌面，再次按下即刻恢复所有内容</td>
+</tr>
+<tr>
+<td style="text-align:center">Win+&lt;-/-&gt;</td>
+<td style="text-align:center">可以自动将应用窗口完全贴靠到屏幕两侧</td>
+</tr>
+<tr>
+<td style="text-align:center">Win+ ↑</td>
+<td style="text-align:center">可以将应用窗口最大化</td>
+</tr>
+<tr>
+<td style="text-align:center">Win+ ↓</td>
+<td style="text-align:center">可以将应用窗口最小化。若是当前窗口处于最大化状态，则按住 Win 键不放，连续按两下 ↓ 键即可将窗口最小化。</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>一些可参考<a href="#%E5%85%A8%E5%B1%80">Linux快捷键</a>。</p>
+</blockquote>
 <h2 id="Powershell">Powershell</h2>
 <ol>
 <li>
@@ -1267,6 +1342,11 @@
 </li>
 </ol>
 </li>
+<li>
+<p>将cmd/powershell中的打印信息输出保存为txt文本文件：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">ping www.baidu.com &gt;D:/log.txt<br></code></pre></td></tr></table></figure>
+<p>保存界面上已经执行过的输出内容：点击powershell左上角的下三角形，或直接<code>Ctrl+Shift+P</code>打开命令面板，找到“导出文本”选项，确认保存位置。</p>
+</li>
 <li></li>
 </ol>
 <h2 id="小贴士-3">小贴士</h2>
@@ -1293,6 +1373,22 @@
 <li>指定网站：关键词 site:网站地址。注意：“site:”后面跟的站点域名，不要带“http://”。site:和站点名之间，不要带空格。示例： 编程教程 site:blog.csdn.net</li>
 <li>排除指定网站：关键词 -site:网站地址。示例：编程教程 -site:blog.csdn.net</li>
 </ul>
+<h3 id="设置-重映射快捷键">设置/重映射快捷键</h3>
+<ol>
+<li>
+<p><a target="_blank" rel="noopener" href="https://learn.microsoft.com/zh-cn/windows/powertoys">PowerToys</a>的<a target="_blank" rel="noopener" href="https://learn.microsoft.com/zh-cn/windows/powertoys/keyboard-manager">Keyboard Manager</a>工具。</p>
+</li>
+<li>
+<p>添加快捷方式，右键快捷方式-属性-快捷键。<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/280725870">参考链接</a></p>
+<blockquote>
+<p>解决快捷键反应延迟问题：</p>
+<ul>
+<li>Win10：win+s搜索后台应用-打开后台应用，将“设置“一栏关闭即可。<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_44275286/article/details/103988806">参考链接</a></li>
+<li>Win11：按下<code>Win</code>键打开开始菜单-所有应用-找到“设置”-右键-更多-应用设置-后台组件权限：从不（默认为电源已优化（推荐））。<a target="_blank" rel="noopener" href="https://blog.csdn.net/m0_67168336/article/details/126240582">参考链接</a></li>
+</ul>
+</blockquote>
+</li>
+</ol>
 <h3 id="其它-3">其它</h3>
 <ol>
 <li>
@@ -1318,7 +1414,7 @@
 </ol>
 <h1 id="软件">软件</h1>
 <h2 id="CLion">CLion</h2>
-<h3 id="快捷键-3">快捷键</h3>
+<h3 id="快捷键-4">快捷键</h3>
 <p>自定义快捷键：设置-按键映射</p>
 <table>
 <thead>
@@ -1357,6 +1453,14 @@
 <td style="text-align:center">在当前窗口替换文本</td>
 </tr>
 <tr>
+<td style="text-align:center">Ctrl+E</td>
+<td style="text-align:center">最近的文件</td>
+</tr>
+<tr>
+<td style="text-align:center">Ctrl+Shift+E</td>
+<td style="text-align:center">最近的位置，支持键盘直接输入模糊搜索。</td>
+</tr>
+<tr>
 <td style="text-align:center"><mark>文本编辑</mark></td>
 <td style="text-align:center"></td>
 </tr>
@@ -1366,7 +1470,23 @@
 </tr>
 <tr>
 <td style="text-align:center">Alt+M</td>
-<td style="text-align:center">String Manipulation</td>
+<td style="text-align:center">String Manipulation（插件）</td>
+</tr>
+<tr>
+<td style="text-align:center">Ctrl+C/X</td>
+<td style="text-align:center">复制/剪切整行</td>
+</tr>
+<tr>
+<td style="text-align:center">Ctrl+Alt+Enter</td>
+<td style="text-align:center">在上一行插入空行</td>
+</tr>
+<tr>
+<td style="text-align:center">Ctrl+D</td>
+<td style="text-align:center">重复行或选区</td>
+</tr>
+<tr>
+<td style="text-align:center">Ctrl+Shift+上/下箭头</td>
+<td style="text-align:center">向上/下移动语句</td>
 </tr>
 <tr>
 <td style="text-align:center"><mark>移动定位</mark></td>
@@ -1397,6 +1517,10 @@
 <td style="text-align:center">光标跳转到第一行或最后一行下</td>
 </tr>
 <tr>
+<td style="text-align:center">Alt+←/→</td>
+<td style="text-align:center">上/下一个标签页</td>
+</tr>
+<tr>
 <td style="text-align:center"><mark>结构</mark></td>
 <td style="text-align:center">工具栏-导航</td>
 </tr>
@@ -1411,6 +1535,10 @@
 <tr>
 <td style="text-align:center">Ctrl+Alt+Shift+2</td>
 <td style="text-align:center">在资源管理器里打开文件所在的特定上级文件夹</td>
+</tr>
+<tr>
+<td style="text-align:center">Ctrl+NumPad-/NumPad+</td>
+<td style="text-align:center">折叠/展开代码/文件夹</td>
 </tr>
 <tr>
 <td style="text-align:center"><mark>撤回</mark></td>
@@ -1470,7 +1598,7 @@
 </tr>
 <tr>
 <td style="text-align:center">Ctrl+D</td>
-<td style="text-align:center">比较文件差异</td>
+<td style="text-align:center">比较文件差异。按F4跳转到源文件。直接点击&lt;&lt;是在同行直接接受，Ctrl+点击是换行插入。</td>
 </tr>
 <tr>
 <td style="text-align:center">F7</td>
@@ -1576,7 +1704,9 @@
 </li>
 </ul>
 </li>
-<li></li>
+<li>
+<p>右键标签页-向下拆分/向右拆分：方便看大型内容。</p>
+</li>
 </ol>
 <h2 id="Conda">Conda</h2>
 <blockquote>
@@ -1687,6 +1817,38 @@
 <p>每日/周/月排行：点击GitHub首页左上角<code>三道杠</code>-<code>Explore</code>-<code>Trending</code>。</p>
 </li>
 </ol>
+<h2 id="Google-Colab">Google Colab</h2>
+<ol>
+<li>
+<p>Google上传和解压：</p>
+<p>选中谷歌云端硬盘里的文件，右键-共享-共享-设置访问权限：知道链接的任何人。共享-复制链接：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># https://drive.google.com/file/d/xxx/view?usp=drive_link</span><br>!gdown --<span class="hljs-built_in">id</span> <span class="hljs-string">&#x27;xxx&#x27;</span> --output file.<span class="hljs-built_in">zip</span><br>!unzip file.<span class="hljs-built_in">zip</span> -d /content/file<br>%cd /content/file<br>!pwd<br>!ls<br></code></pre></td></tr></table></figure>
+</li>
+<li>
+<p>查看硬件信息：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;============查看GPU信息================&quot;</span>)<br><span class="hljs-comment"># 查看GPU信息。注意提前把代码执行程序改为GPU。</span><br>!/opt/<span class="hljs-built_in">bin</span>/nvidia-smi<br><span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;==============查看pytorch版本==============&quot;</span>)<br><span class="hljs-comment"># 查看pytorch版本</span><br><span class="hljs-keyword">import</span> torch<br><span class="hljs-built_in">print</span>(torch.__version__)<br><span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;============查看虚拟机硬盘容量================&quot;</span>)<br><span class="hljs-comment"># 查看虚拟机硬盘容量</span><br>!df -h<br>!df -lh<br><span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;============查看cpu配置================&quot;</span>)<br><span class="hljs-comment"># 查看cpu配置</span><br>!cat /proc/cpuinfo<br><span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;=============查看内存容量===============&quot;</span>)<br><span class="hljs-comment"># 查看内存容量</span><br>!cat /proc/meminfo<br></code></pre></td></tr></table></figure>
+</li>
+<li></li>
+</ol>
+<h2 id="浏览器">浏览器</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">快捷键</th>
+<th style="text-align:center">作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">Ctrl+N</td>
+<td style="text-align:center">新建窗口</td>
+</tr>
+<tr>
+<td style="text-align:center">Ctrl+Shift+N</td>
+<td style="text-align:center">新建无痕窗口</td>
+</tr>
+</tbody>
+</table>
 <h2 id="Okular">Okular</h2>
 <table>
 <thead>
@@ -1726,7 +1888,7 @@
 </li>
 <li></li>
 </ol>
-<h3 id="快捷键-4">快捷键</h3>
+<h3 id="快捷键-5">快捷键</h3>
 <table>
 <thead>
 <tr>
@@ -1754,6 +1916,10 @@
 <tr>
 <td style="text-align:center">Ctrl+K</td>
 <td style="text-align:center">复制链接，在Typora中选中要建立超链接的文字，按下<code>Ctrl+K</code>，Typora会自动读取剪切板来创建超链接。</td>
+</tr>
+<tr>
+<td style="text-align:center">Ctrl+Shift+`</td>
+<td style="text-align:center">生成代码格式，也就是使用``进行包围</td>
 </tr>
 </tbody>
 </table>
