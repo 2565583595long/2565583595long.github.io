@@ -24,7 +24,7 @@
 <meta property="og:description" content="本文主要分享了自己在使用Linux系统过程中常用的命令及快捷键。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-03-05T14:33:19.000Z">
-<meta property="article:modified_time" content="2024-04-10T07:29:55.623Z">
+<meta property="article:modified_time" content="2024-04-13T08:30:50.154Z">
 <meta property="article:author" content="龙泽雨">
 <meta name="twitter:card" content="summary_large_image">
   
@@ -359,7 +359,7 @@
         
         
         
-          141 分钟
+          146 分钟
         
       </span>
     
@@ -409,7 +409,7 @@
               <p id="updated-time" class="note note-info" style="">
                 
                   
-                    本文最后更新于 2024年4月10日 下午
+                    本文最后更新于 2024年4月13日 下午
                   
                 
               </p>
@@ -644,7 +644,7 @@
 <h1 id="终端Terminal">终端Terminal</h1>
 <h2 id="Linux命令">Linux命令</h2>
 <h3 id="软件、库的安装、卸载和升级">软件、库的安装、卸载和升级</h3>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 安装</span><br>sudo apt update	<span class="hljs-comment"># 先更新软件包列表，检查可用的软件包更新</span><br><span class="hljs-comment"># 查看可选的安装版本</span><br>apt-cache search exact_package_name  <span class="hljs-comment"># 你可以使用一个正则表达式来搜索本地 APT 缓存中的包。</span><br>apt-cache policy exact_package_name  <span class="hljs-comment"># 如果你指定了软件包的名称，它将显示该软件包是否已经安装，在哪个版本的仓库中可用，以及它的优先级。</span><br>sudo apt install exact_package_name[=xxx]	<span class="hljs-comment"># 安装软件</span><br><br><span class="hljs-comment"># 卸载（不知名的软件）</span><br>apt list --installed | grep -i possible_package_name  <span class="hljs-comment"># 模糊搜索</span><br>sudo apt remove exact_package_name  <span class="hljs-comment"># 卸载软件</span><br>sudo apt-get purge exact_package_name  <span class="hljs-comment"># 清除配置</span><br><br><span class="hljs-comment"># 升级</span><br><span class="hljs-comment"># apt 可以看作 apt-get 和 apt-cache 命令的子集, 可以为包管理提供必要的命令选项。apt-get 虽然没被弃用，但作为普通用户，还是应该首先使用 apt。</span><br>sudo apt update  <span class="hljs-comment"># 更新软件包列表，检查可用的软件包更新</span><br>sudo apt upgrade  <span class="hljs-comment"># 安装可用的软件包更新</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 安装</span><br>sudo apt update	<span class="hljs-comment"># 先更新软件包列表，检查可用的软件包更新</span><br><span class="hljs-comment"># 查看可选的安装版本</span><br>apt-cache search exact_package_name  <span class="hljs-comment"># 你可以使用一个正则表达式来搜索本地 APT 缓存中的包。</span><br>apt-cache policy exact_package_name  <span class="hljs-comment"># 如果你指定了软件包的名称，它将显示该软件包是否已经安装，在哪个版本的仓库中可用，以及它的优先级。</span><br>sudo apt install exact_package_name[=xxx]	<span class="hljs-comment"># 安装软件，例如：sudo apt install libc6-dev=2.27-3ubuntu1.6</span><br><br><span class="hljs-comment"># 卸载（不知名的软件）</span><br>apt list --installed | grep -i possible_package_name  <span class="hljs-comment"># 模糊搜索</span><br>sudo apt remove exact_package_name  <span class="hljs-comment"># 卸载软件</span><br>sudo apt-get purge exact_package_name  <span class="hljs-comment"># 清除配置</span><br><br><span class="hljs-comment"># 升级</span><br><span class="hljs-comment"># apt 可以看作 apt-get 和 apt-cache 命令的子集, 可以为包管理提供必要的命令选项。apt-get 虽然没被弃用，但作为普通用户，还是应该首先使用 apt。</span><br>sudo apt update  <span class="hljs-comment"># 更新软件包列表，检查可用的软件包更新</span><br>sudo apt upgrade  <span class="hljs-comment"># 安装可用的软件包更新</span><br></code></pre></td></tr></table></figure>
 <p>优先级：</p>
 <ul>
 <li><strong>&lt; 0</strong>：永远不会安装，</li>
@@ -714,6 +714,7 @@
 <li><code>w</code>：表示可写入。</li>
 <li><code>x</code>：表示可执行。</li>
 <li><code>X</code>：表示只有当该档案是个子目录或者该档案已经被设定过为可执行。</li>
+<li><code>R</code>：对目前目录下的所有文件与子目录进行相同的权限变更(即以递归的方式逐个变更)</li>
 </ul>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 将档案 file1.txt 设为所有人皆可读取</span><br><span class="hljs-built_in">chmod</span> ugo+r file1.txt  <span class="hljs-comment"># 或</span><br><span class="hljs-built_in">chmod</span> a+r file1.txt<br><span class="hljs-comment"># 将档案 file1.txt 与 file2.txt 设为该档案拥有者，与其所属同一个群体者可写入，但其他以外的人则不可写入</span><br><span class="hljs-built_in">chmod</span> ug+w,o-w file1.txt file2.txt<br><span class="hljs-comment"># 将目前目录下的所有档案与子目录皆设为任何人可读取</span><br><span class="hljs-built_in">chmod</span> -R a+r *<br></code></pre></td></tr></table></figure>
 <p>此外<code>chmod</code>也可以用数字来表示权限，语法为：<code>chmod abc file</code>，其中a,b,c各为一个数字，分别表示User、Group、及Other的权限。</p>
@@ -959,6 +960,11 @@
 <p><code>if</code>语句和<code>switch</code>语句的选择：多个等值判断选择<code>switch</code>，其它情况（区间范围等）选择<code>if</code>。</p>
 </li>
 </ol>
+<h4 id="命名空间">命名空间</h4>
+<p>在C++中， <code>using namespace std;</code>  这条语句的作用是将 <code>std</code> 命名空间中的所有名称导入到当前作用域中，使得我们可以直接使用 <code>std</code> 命名空间中的类型和函数，而无需每次都完整地书写它们的命名空间。</p>
+<p>然而，这种做法也有其缺点。首先，它会导致命名空间污染，即同一个作用域中可能存在多个同名的类型或函数，导致编译器无法区分它们。其次，这种做法可能会导致程序效率降低，因为导入的命名空间中的类型和函数可能会增加编译时间和运行时间。</p>
+<p>因此，有些开发者会选择显式地书写类型和函数的完整名称，例如 <code>std::cout</code> ，而不是使用 <code>using namespace std</code>; 。这种做法可以避免命名空间污染，并且可以确保编译器能够准确地解析类型和函数的名称。同时，这种做法也可以提高程序的可读性，使得代码更加清晰易懂。</p>
+<p>总的来说，是否使用 <code>using namespace std;</code> ，以及是否显式地书写类型和函数的完整名称，取决于开发者的个人喜好和编程习惯。但是，在编写大型项目时，为了避免命名空间污染和保证程序的效率，建议尽量少使用 <code>using namespace std;</code> ，而是显式地书写类型和函数的完整名称。</p>
 <h4 id="其它">其它</h4>
 <ol>
 <li>
@@ -1211,7 +1217,7 @@
 <ol>
 <li>色彩高亮：不同的颜色表明当前命令的类型，并且路径有无下划线表示路径是否存在。</li>
 <li>智能补全：在使用cd切换路径时（要先cd后加一个路径，按Tab可后续补充），按下tab会列出当前目录下的目录和文件，如果是bash，它会提示你手动输入，但是zsh中你可以继续按一下tab进入选择模式，继续使用tab选择，或者使用方向键选择目标目录而不需手动输入。</li>
-<li>按键盘右方向键确定补全提示。</li>
+<li>按键盘右方向键<code>-&gt;</code>直接确定整个补全提示。<code>Ctrl+-&gt;</code>按整词顺序依次确定。</li>
 <li><code>d</code>命令“回车”后，会列出我们最近进入的目录历史，并且会给这些目录加上序号，只需要输入对应目录的序号，即可重新进入该目录。</li>
 </ol>
 </li>
@@ -1470,7 +1476,7 @@
 </tr>
 <tr>
 <td style="text-align:center">Alt+M</td>
-<td style="text-align:center">String Manipulation（插件）</td>
+<td style="text-align:center">String Manipulation（插件，字符串编辑）</td>
 </tr>
 <tr>
 <td style="text-align:center">Ctrl+C/X</td>
@@ -1487,6 +1493,18 @@
 <tr>
 <td style="text-align:center">Ctrl+Shift+上/下箭头</td>
 <td style="text-align:center">向上/下移动语句</td>
+</tr>
+<tr>
+<td style="text-align:center">Ctrl+Shift+U</td>
+<td style="text-align:center">切换大小写</td>
+</tr>
+<tr>
+<td style="text-align:center">Shift+Alt+U</td>
+<td style="text-align:center">CamelCase（插件，一键转化变量为驼峰命名或下划线命名）</td>
+</tr>
+<tr>
+<td style="text-align:center">Ctrl+Shift+J</td>
+<td style="text-align:center">合并行</td>
 </tr>
 <tr>
 <td style="text-align:center"><mark>移动定位</mark></td>
@@ -1617,9 +1635,9 @@
 <h3 id="小技巧">小技巧</h3>
 <ol>
 <li>
-<p>查找用法。查找函数被调用的位置。</p>
-<p>函数名-右键-查找用法(Alt+Shift+7)</p>
-<p>函数名-右键-转到-声明或用例(Ctrl+B)</p>
+<p>查找用法。查找函数被调用的位置：</p>
+<p>函数名-右键-查找用法(<code>Alt+Shift+7</code>)。分为读取值（变量被赋值/数组被<code>push/pop</code>的地方）和声明或预声明（变量被用到的地方）。</p>
+<p>函数名-右键-转到-声明或用例(<code>Ctrl+B</code>)/<code>Ctrl</code>+鼠标左键点击。</p>
 </li>
 <li>
 <p>“重命名”重构。您可以轻松重命名类、函数、变量和文件，同时在所有引用中实现自动纠正。为此，将文本光标放在所需符号上，然后按Shift+F6(重构|重命名)。开始输入新名称并在准备好后按 Enter。</p>
@@ -1675,13 +1693,13 @@
 <li>
 <p>书签（快捷跳转）：</p>
 <ul>
-<li>添加无名行书签：在编辑器中，将光标定位在一行代码上，然后按下 F11 键。或者，右键单击要添加书签的代码行旁边的装订线，然后选择“添加书签”。</li>
-<li>添加助记符行书签：在编辑器中，将光标定位在一行代码上，然后按下 Ctrl+F11 键。或者，右键单击要添加书签的代码行旁边的装订线，然后选择“添加助记符书签”。在打开的弹出窗口中，选择一个数字或字母作为此书签的标识符。</li>
-<li>书签文件和文件夹：在项目工具窗口（Alt+1）中，右键单击要添加书签的项目，然后选择“书签” | “添加书签” (F11) 或 “添加助记符书签” (Ctrl+F11)。要为多个项目添加书签，请在工具窗口中选择它们，右键单击其中一个，然后选择“书签” | “添加书签” (F11)。对于助记符书签，选择一个数字或字母作为此书签的标识符。按 Enter 键或再次单击所选的字母或数字以保存书签。</li>
-<li>删除书签。再次按下F11。</li>
+<li>添加无名行书签：在编辑器中，将光标定位在一行代码上，然后按下 <code>F11</code> 键。或者，右键单击要添加书签的代码行旁边的装订线，然后选择“添加书签”。</li>
+<li>添加助记符行书签：在编辑器中，将光标定位在一行代码上，然后按下 <code>Ctrl+F11</code> 键。或者，右键单击要添加书签的代码行旁边的装订线，然后选择“添加助记符书签”。在打开的弹出窗口中，选择一个数字或字母作为此书签的标识符。</li>
+<li>书签文件和文件夹：在项目工具窗口（<code>Alt+1</code>）中，右键单击要添加书签的项目，然后选择“书签” | “添加书签” (<code>F11</code>) 或 “添加助记符书签” (<code>Ctrl+F11</code>)。要为多个项目添加书签，请在工具窗口中选择它们，右键单击其中一个，然后选择“书签” | “添加书签” (<code>F11</code>)。对于助记符书签，选择一个数字或字母作为此书签的标识符。按 <code>Enter</code> 键或再次单击所选的字母或数字以保存书签。</li>
+<li>删除书签。再次按下<code>F11</code>。</li>
 <li>重命名书签：在装订线上单击书签图标，然后提供新的描述。</li>
-<li>书签跳转。按住 Ctrl 键，然后按键盘上的数字助记符。按下 Shift+F11 键，或者从主菜单中选择“编辑” | “书签” | “显示行书签”。转到下一个或上一个书签：“编辑” | “书签” | “上/下一行书签”。</li>
-<li>所有的书签都分组在“书签”工具窗口中的列表中，您可以通过从主菜单选择“视图 | 工具窗口 | 书签”或按下 Alt+2 来打开它。您可以快速添加所有打开的文件的书签，并将这些书签添加到新列表中。</li>
+<li>书签跳转。按住 <code>Ctrl</code> 键，然后按键盘上的数字助记符。或，按下 <code>Shift+F11</code> 键，或者从主菜单中选择“编辑” | “书签” | “显示行书签”。或，转到下一个或上一个书签：“编辑” | “书签” | “上/下一行书签”。</li>
+<li>所有的书签都分组在“书签”工具窗口中的列表中，您可以通过从主菜单选择“视图 | 工具窗口 | 书签”或按下 <code>Alt+2</code> 来打开它。您可以快速添加所有打开的文件的书签，并将这些书签添加到新列表中。</li>
 </ul>
 </li>
 <li>
@@ -1706,6 +1724,9 @@
 </li>
 <li>
 <p>右键标签页-向下拆分/向右拆分：方便看大型内容。</p>
+</li>
+<li>
+<p>从索引中排除：CLion为项目文件建立索引，以启用诸如搜索，导航，代码完成，代码生成和重构之类的功能。但是，您的项目可能包含不需要这些功能的文件，例如日志，二进制文件或导入的库。在这种情况下，为了减少索引时间，可以将文件标记为纯文本 ，将目录标记为排除或库。</p>
 </li>
 </ol>
 <h2 id="Conda">Conda</h2>
