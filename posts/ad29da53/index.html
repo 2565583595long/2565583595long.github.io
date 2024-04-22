@@ -24,7 +24,7 @@
 <meta property="og:description" content="本文主要分享了Linux系统的配置与常用软件的安装。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-01-31T16:27:11.000Z">
-<meta property="article:modified_time" content="2024-04-13T02:08:55.453Z">
+<meta property="article:modified_time" content="2024-04-20T01:47:09.572Z">
 <meta property="article:author" content="龙泽雨">
 <meta name="twitter:card" content="summary_large_image">
   
@@ -348,7 +348,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          6k 字
+          7.1k 字
         
       </span>
     
@@ -359,7 +359,7 @@
         
         
         
-          51 分钟
+          60 分钟
         
       </span>
     
@@ -409,7 +409,7 @@
               <p id="updated-time" class="note note-info" style="">
                 
                   
-                    本文最后更新于 2024年4月13日 上午
+                    本文最后更新于 2024年4月20日 上午
                   
                 
               </p>
@@ -477,6 +477,44 @@
 <li>把壁纸放到<code>~/Pictures</code>文件夹下。</li>
 <li>设置-背景-背景(B)/锁定屏幕(L)-图片-选择。</li>
 </ol>
+<h2 id="新建快捷键">新建快捷键</h2>
+<p>设置-设备-键盘-翻到底部：添加</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">名称</th>
+<th style="text-align:center">命令</th>
+<th style="text-align:center">快捷键</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">control-center</td>
+<td style="text-align:center"><code>gnome-control-center</code></td>
+<td style="text-align:center">Win+I</td>
+</tr>
+<tr>
+<td style="text-align:center">打开文件夹</td>
+<td style="text-align:center"><code>nautilus /home/lll25655/</code></td>
+<td style="text-align:center">Win+E</td>
+</tr>
+<tr>
+<td style="text-align:center">fsearch</td>
+<td style="text-align:center"><code>fsearch</code></td>
+<td style="text-align:center">Ctrl+Alt+F</td>
+</tr>
+<tr>
+<td style="text-align:center">flameshot</td>
+<td style="text-align:center"><code>flameshot gui</code></td>
+<td style="text-align:center">Ctrl+Alt+A</td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+</tbody>
+</table>
 <h1 id="CLion">CLion</h1>
 <h2 id="概述">概述</h2>
 <p>VScode代码编辑器与JetBrains系列等大型IDE的对比：</p>
@@ -637,6 +675,17 @@
 <li>
 <p>关联文件类型：设置-编辑器-文件类型-识别的文件类型：XML-文件名模式-添加-<code>*.launch</code>-确定；YAML-文件名模式-添加-<code>*.rviz</code>-确定。</p>
 </li>
+<li>
+<p>取消<code>Ctrl+/</code>注释顶格：</p>
+<p>文件-设置-编辑器-代码样式-C/C++-常规：</p>
+<ul>
+<li>取消勾选“行注释在第一列”</li>
+<li>勾选“在行注释开始处添加空格”</li>
+<li>取消勾选“注释快在第一列”</li>
+<li>勾选“在块注释中缩进新行”</li>
+</ul>
+</li>
+<li></li>
 </ol>
 <h2 id="使用">使用</h2>
 <p><a href="https://zeyulong.com/posts/a8aab215/">Linux系统下常用的命令及快捷键</a></p>
@@ -781,6 +830,91 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">git config --global --<span class="hljs-built_in">unset</span> http.proxy<br>git config --global --<span class="hljs-built_in">unset</span> https.proxy<br></code></pre></td></tr></table></figure>
 </li>
 <li></li>
+</ol>
+<h1 id="Mission-Center">Mission Center</h1>
+<p>类似于Windows的任务管理器。</p>
+<p><a target="_blank" rel="noopener" href="https://missioncenter.io/">Mission Center官网</a></p>
+<h2 id="安装-2">安装</h2>
+<p><a target="_blank" rel="noopener" href="https://flathub.org/setup/Ubuntu">flathub官方安装教程</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/jiexijihe945/article/details/137559859">Mission Center安装参考链接</a></p>
+<ol>
+<li>
+<p>安装Flatpak</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 要在 Ubuntu 18.10 (Cosmic Cuttlefish) 或更高版本上安装 Flatpak，只需运行：</span><br>sudo apt install flatpak<br><span class="hljs-comment"># 对于较旧的 Ubuntu 版本，推荐使用官方 Flatpak PPA 来安装 Flatpak。要安装它，请在终端中运行以下命令：</span><br>sudo add-apt-repository ppa:flatpak/stable<br>sudo apt update<br>sudo apt install flatpak<br></code></pre></td></tr></table></figure>
+</li>
+<li>
+<p>安装软件 Flatpak 插件。软件应用程序的 Flatpak 插件使得无需命令行即可安装应用程序。要安装，请运行：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo apt install gnome-software-plugin-flatpak<br></code></pre></td></tr></table></figure>
+<p>注意：自 Ubuntu 20.04 起，该软件应用程序以 Snap 形式分发，并且不支持 Flatpak 应用程序的图形安装。安装 Flatpak 插件还将安装 deb 版本的软件，并导致同时安装两个软件应用程序。</p>
+<p>安装完flatbub生成一个应用商店（图标由矩形、圆和三角形组成）。</p>
+</li>
+<li>
+<p>添加 Flathub 存储库。Flathub 是获取 Flatpak 应用程序的最佳地点。要启用它，请运行：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo<br></code></pre></td></tr></table></figure>
+</li>
+<li>
+<p>重启。要完成设置，请重新启动系统。现在您所要做的就是安装一些应用程序！</p>
+</li>
+<li>
+<p>安装MissionCenter。</p>
+<ul>
+<li>
+<p>命令行安装：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo flatpak install flathub io.missioncenter.MissionCenter<br></code></pre></td></tr></table></figure>
+</li>
+<li>
+<p>商店安装：安装完flatbub生成一个应用商店（图标由矩形、圆和三角形组成），用法和snap商店一样，搜索mission center然后安装即可。</p>
+</li>
+</ul>
+</li>
+<li>
+<p>安装完成后会生成一个软件图标（名叫“任务中心”）。</p>
+</li>
+</ol>
+<h2 id="运行">运行</h2>
+<ul>
+<li>
+<p>命令行运行：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">flatpak run io.missioncenter.MissionCenter<br></code></pre></td></tr></table></figure>
+</li>
+<li>
+<p>图标运行：安装完成后会生成一个软件图标（名叫“任务中心”），应用列表点击图标即可。</p>
+</li>
+</ul>
+<h1 id="Okular">Okular</h1>
+<p>Linux下使用的PDF阅读器。</p>
+<p><a target="_blank" rel="noopener" href="https://okular.kde.org/">Okular官网</a></p>
+<h2 id="安装-3">安装</h2>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 首先，通过运行以下命令确保所有系统包都是最新的 apt 终端中的命令。</span><br>sudo apt update<br>sudo apt upgrade<br><span class="hljs-comment"># 默认情况下，Okular 在 Ubuntu 20.04 基础存储库中不可用。 现在运行以下命令以在您的 Ubuntu 系统上启用 Universe 存储库。</span><br>sudo add-apt-repository universe<br><span class="hljs-comment"># 运行以下命令更新包索引并安装 Okular PDF 查看器。</span><br>sudo apt update <br>sudo apt install okular<br><br><span class="hljs-comment"># 或，通过 Snap 安装 Okular</span><br><span class="hljs-comment"># 如果尚未安装 Snapd 软件包，则可以通过运行以下命令来安装它</span><br>sudo apt update<br>sudo apt install snapd<br><span class="hljs-comment"># 要安装 Okular，只需使用以下命令</span><br>sudo snap install okular<br><br><span class="hljs-comment"># 或，在软件中心搜索okular，点击install。</span><br></code></pre></td></tr></table></figure>
+<h2 id="中文配置">中文配置</h2>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_34626094/article/details/112647745">参考链接</a></p>
+<p>如果安装完成后中文显示有问题的话，可按如下试试，如果没有问题可跳过。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 在终端输入: </span><br>sudo apt-get install poppler-data<br><span class="hljs-comment"># 如果还不行，则再次输入: </span><br>sudo apt-get install poppler-utils<br></code></pre></td></tr></table></figure>
+<p>如果依然不行，则可能是因为某些 pdf 文件没有明确指明字体，系统就会默认用英文字体来显示，于是导致中文字体显示失败。解决办法是：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo gedit /etc/fonts/conf.d/49-sansserif.conf<br></code></pre></td></tr></table></figure>
+<p>把</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">edit</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;family&quot;</span> <span class="hljs-attr">mode</span>=<span class="hljs-string">&quot;append_last&quot;</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">string</span>&gt;</span>sans-serif<span class="hljs-tag">&lt;/<span class="hljs-name">string</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">edit</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<p>改为</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">edit</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;family&quot;</span> <span class="hljs-attr">mode</span>=<span class="hljs-string">&quot;append_last&quot;</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">string</span>&gt;</span>monospace<span class="hljs-tag">&lt;/<span class="hljs-name">string</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">edit</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<p>如果修改后的字体 monospace 依然不能显示，则可以改为 <strong>宋体</strong> 来显示。</p>
+<h2 id="运行-2">运行</h2>
+<p>安装成功后，在桌面上运行以下路径打开路径： <code>Activities -&gt; Show Applications -&gt; Okular</code> 或使用如下所示的命令通过终端启动它</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">okular<br></code></pre></td></tr></table></figure>
+<p>报错：无法找到 Okular 组件︰ 共享库没有被找到。</p>
+<p>原因：我找到了谜团的答案。它位于我的<code>.bashrc</code>文件中，其中包含一行：<code>export LD_LIBRARY_PATH=/usr/local/Qt/5.10.1/gcc_64/lib:$LD_LIBRARY_PATH</code>，它导致了其他应用程序(例如<code>kile</code>)出现类似的奇怪问题。这是在升级后出现的，因为该行以前是无害的。最后，我必须指出，我的安装中存在引用的库目录(即，这个问题并不是因为缺少目录而引起的)。</p>
+<p>解决：</p>
+<ol>
+<li>
+<p>从应用程序菜单中运行okular。</p>
+</li>
+<li>
+<pre><code class="language-bash">sudo okular
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs csharp"><br><span class="hljs-number">3.</span> 卸载重装Okular。<br><br><span class="hljs-meta">## 使用</span><br><br>[<span class="hljs-meta">Okular常用快捷键</span>](https:<span class="hljs-comment">//zeyulong.com/posts/a8aab215/#Okular)</span><br><br><span class="hljs-meta">## 卸载</span><br><br>```bash<br>apt list --installed | grep -i okular  <span class="hljs-meta"># 模糊搜索</span><br>sudo apt <span class="hljs-keyword">remove</span> okular  <span class="hljs-meta"># 卸载软件</span><br>sudo apt-<span class="hljs-keyword">get</span> purge okular  <span class="hljs-meta"># 清除配置</span><br></code></pre></td></tr></table></figure>
+
+
+
+</code></pre>
+</li>
 </ol>
 <h1 id="QQ-Linux版">QQ Linux版</h1>
 <h2 id="下载安装">下载安装</h2>
