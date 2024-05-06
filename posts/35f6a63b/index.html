@@ -23,13 +23,13 @@
 <meta property="og:site_name" content="龙泽雨的博客">
 <meta property="og:description" content="本文主要分享了用于评估里程计和SLAM的Python工具包evo的安装与使用。">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://zeyulong.com/posts/null/%E5%AF%B9%E9%BD%90%E7%B1%BB%E5%9E%8B.png">
-<meta property="og:image" content="http://zeyulong.com/posts/null/%E4%BD%8D%E5%A7%BF%E6%8A%95%E5%BD%B1.png">
+<meta property="og:image" content="http://zeyulong.com/posts/35f6a63b/%E5%AF%B9%E9%BD%90%E7%B1%BB%E5%9E%8B.png">
+<meta property="og:image" content="http://zeyulong.com/posts/35f6a63b/%E4%BD%8D%E5%A7%BF%E6%8A%95%E5%BD%B1.png">
 <meta property="article:published_time" content="2024-04-29T13:00:10.000Z">
-<meta property="article:modified_time" content="2024-05-04T08:56:36.688Z">
+<meta property="article:modified_time" content="2024-05-06T02:58:34.051Z">
 <meta property="article:author" content="龙泽雨">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://zeyulong.com/posts/null/%E5%AF%B9%E9%BD%90%E7%B1%BB%E5%9E%8B.png">
+<meta name="twitter:image" content="http://zeyulong.com/posts/35f6a63b/%E5%AF%B9%E9%BD%90%E7%B1%BB%E5%9E%8B.png">
   
   
   
@@ -412,7 +412,7 @@
               <p id="updated-time" class="note note-info" style="">
                 
                   
-                    本文最后更新于 2024年5月4日 下午
+                    本文最后更新于 2024年5月6日 上午
                   
                 
               </p>
@@ -422,9 +422,6 @@
                 
                 <p>本文主要分享了用于评估里程计和SLAM的Python工具包evo的安装与使用。</p>
 <span id="more"></span>
-<blockquote>
-<p>卸载</p>
-</blockquote>
 <h1 id="概述">概述</h1>
 <p><a target="_blank" rel="noopener" href="https://github.com/MichaelGrupp/evo">GitHub存储库</a></p>
 <p>该软件包提供了可执行文件和一个小型库，用于处理、评估和比较里程计和 SLAM 算法的轨迹输出。</p>
@@ -599,7 +596,7 @@
 <li><code>--align --correct_scale</code> 或 <code>-as</code> = Sim(3) Umeyama 对齐（旋转、平移、缩放）</li>
 <li><code>--correct_scale</code> 或 <code>-s</code> = 仅比例校正。不加<code>-s</code>表示默认尺度对齐参数为1.0，即不进行尺度对齐。</li>
 </ul>
-<img src="/posts/null/%E5%AF%B9%E9%BD%90%E7%B1%BB%E5%9E%8B.png" srcset="/img/loading.gif" lazyload class="" title="对齐类型">
+<img src="/posts/35f6a63b/%E5%AF%B9%E9%BD%90%E7%B1%BB%E5%9E%8B.png" srcset="/img/loading.gif" lazyload class="" title="对齐类型">
 <blockquote>
 <p>v1.5.0 以来的新功能： <code>--align_origin</code> 提供了可用于漂移/闭环评估的简单原点对齐。这不是基于 Umeyama 算法。</p>
 </blockquote>
@@ -612,7 +609,7 @@
 <p>所有几何对齐方法（ <code>--align</code> 、 <code>--correct_scale</code> ）都会自动执行此操作以进行点配准。您还可以仅同步轨迹的时间戳，而无需与 <code>--sync</code> 进行任何几何对齐。</p>
 <h3 id="投影变换">投影变换</h3>
 <p>您可以将位姿投影到具有 <code>--project_to_plane</code> 和所需平面（xy、xz 或 yz）的平面中。例如， <code>--project_to_plane xy</code> ：</p>
-<img src="/posts/null/%E4%BD%8D%E5%A7%BF%E6%8A%95%E5%BD%B1.png" srcset="/img/loading.gif" lazyload class="" title="位姿投影">
+<img src="/posts/35f6a63b/%E4%BD%8D%E5%A7%BF%E6%8A%95%E5%BD%B1.png" srcset="/img/loading.gif" lazyload class="" title="位姿投影">
 <blockquote>
 <p>注意：投影是在任何潜在的<a href="#%E5%87%A0%E4%BD%95%E5%AF%B9%E9%BD%90">几何对齐</a>之前完成的。</p>
 </blockquote>
