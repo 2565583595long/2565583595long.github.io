@@ -23,10 +23,18 @@
 <meta property="og:site_name" content="龙泽雨的博客">
 <meta property="og:description" content="本文主要整理了一些常用的Latex语法。">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://upload.wikimedia.org/math/e/5/0/e505263bc9c94f673c580f3a36a7f08a.png">
+<meta property="og:image" content="http://upload.wikimedia.org/math/d/a/8/da8c1d9effa4501fd80c054e59ad917d.png">
+<meta property="og:image" content="http://upload.wikimedia.org/math/6/9/2/692d4bffca8e84ffb45cf9d5facf31d6.png">
+<meta property="og:image" content="http://upload.wikimedia.org/math/b/5/a/b5ade5d5393fd7727bf77fa44ec8b564.png">
+<meta property="og:image" content="http://upload.wikimedia.org/math/7/b/e/7bea99aed60ba5e1fe8a134ab43fa85f.png">
+<meta property="og:image" content="http://upload.wikimedia.org/math/b/6/b/b6bd9dba2ebfca24731ae6dc3913e625.png">
+<meta property="og:image" content="http://upload.wikimedia.org/math/0/f/b/0fbcad5fadb912e8afa6d113a75c83e4.png">
 <meta property="article:published_time" content="2024-05-11T01:46:38.000Z">
-<meta property="article:modified_time" content="2024-05-11T01:47:19.273Z">
+<meta property="article:modified_time" content="2024-05-11T07:22:29.549Z">
 <meta property="article:author" content="龙泽雨">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://upload.wikimedia.org/math/e/5/0/e505263bc9c94f673c580f3a36a7f08a.png">
   
   
   
@@ -348,7 +356,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          15 字
+          1.7k 字
         
       </span>
     
@@ -359,7 +367,7 @@
         
         
         
-          1 分钟
+          14 分钟
         
       </span>
     
@@ -409,7 +417,7 @@
               <p id="updated-time" class="note note-info" style="">
                 
                   
-                    本文最后更新于 2024年5月11日 上午
+                    本文最后更新于 2024年5月11日 下午
                   
                 
               </p>
@@ -419,6 +427,152 @@
                 
                 <p>本文主要整理了一些常用的Latex语法。</p>
 <span id="more"></span>
+<h1 id="整体架构">整体架构</h1>
+<figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs latex"><span class="hljs-comment">% 导言区，英文文献用article</span><br><span class="hljs-comment">%\documentclass&#123;article&#125;   %英文文献</span><br><span class="hljs-keyword">\documentclass</span>[utf-8]&#123;ctexart&#125;   <span class="hljs-comment">%中文用这个</span><br><br><span class="hljs-comment">% 导包都在\begin&#123;document&#125; 前面进行导入</span><br><span class="hljs-comment">% 导入中文包</span><br><span class="hljs-keyword">\usepackage</span>&#123;ctex&#125;<br><br><span class="hljs-keyword">\begin</span>&#123;document&#125;  <span class="hljs-comment">% 文献所有内容都要在document里面</span><br>	<span class="hljs-keyword">\title</span>&#123;<span class="hljs-keyword">\heiti</span> 题目&#125;<br>	<span class="hljs-keyword">\author</span>&#123;<span class="hljs-keyword">\kaishu</span> 作者&#125;<br>	<span class="hljs-keyword">\date</span>&#123;<span class="hljs-keyword">\today</span>&#125;  <span class="hljs-comment">% 显示当天时间</span><br>	<span class="hljs-keyword">\maketitle</span>     <span class="hljs-comment">% 显示题目</span><br>	<br>	<span class="hljs-comment">% 正文区域</span><br>	<span class="hljs-keyword">\begin</span>&#123;abstract&#125;<br>		摘要<br>	<span class="hljs-keyword">\end</span>&#123;abstract&#125;<br>	<br>	<span class="hljs-keyword">\section</span>&#123;一级标题&#125;<br>	<br>	<span class="hljs-keyword">\subsection</span>&#123;二级标题&#125;<br>	<br>	<span class="hljs-keyword">\subsubsection</span>&#123;三级标题&#125;<br><span class="hljs-keyword">\end</span>&#123;document&#125;<br></code></pre></td></tr></table></figure>
+<h1 id="导入模板">导入模板</h1>
+<ol>
+<li><code>*.cls</code>模板文件放在与<code>*.tex</code>同一个路径下。</li>
+<li>导入包，<code>\documentclass&#123;cls文件名&#125;</code>，与<code>*.cls</code>文件名字保持一致，运行就行了。</li>
+</ol>
+<h1 id="换行-分段-换页-空格">换行&amp;分段&amp;换页&amp;空格</h1>
+<h2 id="换行">换行</h2>
+<ul>
+<li>在LaTeX中，一个回车表示一个空格，两个回车表示一个分段。多个连续的空行，只会被看成一个空行。</li>
+<li>在段落模式下，<code>\newline</code> 命令相当于双反斜杠（<code>\\</code>）。</li>
+</ul>
+<h2 id="分段">分段</h2>
+<ul>
+<li><code>\par</code></li>
+</ul>
+<h2 id="换页">换页</h2>
+<ul>
+<li><code>\newpage</code></li>
+</ul>
+<h2 id="空格">空格</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">要求</th>
+<th style="text-align:center">Latex语法</th>
+<th style="text-align:center">可视化</th>
+<th style="text-align:center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">两个quad空格</td>
+<td style="text-align:center"><code>a \qquad b</code></td>
+<td style="text-align:center"><img src="http://upload.wikimedia.org/math/e/5/0/e505263bc9c94f673c580f3a36a7f08a.png" srcset="/img/loading.gif" lazyload alt="a quad b"></td>
+<td style="text-align:center">两个<em>m</em>的宽度</td>
+</tr>
+<tr>
+<td style="text-align:center">quad空格</td>
+<td style="text-align:center"><code>a \quad b</code></td>
+<td style="text-align:center"><img src="http://upload.wikimedia.org/math/d/a/8/da8c1d9effa4501fd80c054e59ad917d.png" srcset="/img/loading.gif" lazyload alt="a uad b"></td>
+<td style="text-align:center">一个<em>m</em>的宽度</td>
+</tr>
+<tr>
+<td style="text-align:center">大空格</td>
+<td style="text-align:center"><code>a\ b</code></td>
+<td style="text-align:center"><img src="http://upload.wikimedia.org/math/6/9/2/692d4bffca8e84ffb45cf9d5facf31d6.png" srcset="/img/loading.gif" lazyload alt="ab"></td>
+<td style="text-align:center">1/3<em>m</em>宽度</td>
+</tr>
+<tr>
+<td style="text-align:center">中等空格</td>
+<td style="text-align:center"><code>a\;b</code></td>
+<td style="text-align:center"><img src="http://upload.wikimedia.org/math/b/5/a/b5ade5d5393fd7727bf77fa44ec8b564.png" srcset="/img/loading.gif" lazyload alt="ab"></td>
+<td style="text-align:center">2/7<em>m</em>宽度</td>
+</tr>
+<tr>
+<td style="text-align:center">小空格</td>
+<td style="text-align:center"><code>a\,b</code></td>
+<td style="text-align:center"><img src="http://upload.wikimedia.org/math/7/b/e/7bea99aed60ba5e1fe8a134ab43fa85f.png" srcset="/img/loading.gif" lazyload alt="ab"></td>
+<td style="text-align:center">1/6<em>m</em>宽度</td>
+</tr>
+<tr>
+<td style="text-align:center">没有空格</td>
+<td style="text-align:center"><code>ab</code></td>
+<td style="text-align:center"><img src="http://upload.wikimedia.org/math/b/6/b/b6bd9dba2ebfca24731ae6dc3913e625.png" srcset="/img/loading.gif" lazyload alt="ab"></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">紧贴</td>
+<td style="text-align:center"><code>a\!b</code></td>
+<td style="text-align:center"><img src="http://upload.wikimedia.org/math/0/f/b/0fbcad5fadb912e8afa6d113a75c83e4.png" srcset="/img/loading.gif" lazyload alt="ab"></td>
+<td style="text-align:center">缩进1/6<em>m</em>宽度</td>
+</tr>
+</tbody>
+</table>
+<p><code>\quad</code>、<code>1em</code>、<code>em</code>、<code>m</code>代表当前字体下接近字符<code>M</code>的宽度。</p>
+<h1 id="数学公式">数学公式</h1>
+<h2 id="基本语法">基本语法</h2>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/LCCFlccf/article/details/89643585">LaTeX数学符号大全</a></p>
+<figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs latex"><span class="hljs-built_in">$</span> 行内公式 <span class="hljs-built_in">$</span>  <span class="hljs-comment">% 数学公式的前后要加上$或\，比如：$f(x) = 3x + 7$和\(f(x) = 3x + 7) \效果是一样的</span><br><span class="hljs-built_in">$</span><span class="hljs-built_in">$</span> 行间公式 <span class="hljs-built_in">$</span><span class="hljs-built_in">$</span>  <span class="hljs-comment">% 如果用\\公式，或者使用$$公式 ，则该公式独占一行</span><br></code></pre></td></tr></table></figure>
+<blockquote>
+<p>涉及到上下标的公式就算是一个变量前后也要加<code>$</code>,不然会编译失败</p>
+</blockquote>
+<figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs latex">A<span class="hljs-built_in">^</span>&#123;bc&#125;  上标<br>A<span class="hljs-built_in">_</span>&#123;bc&#125;  下标<br></code></pre></td></tr></table></figure>
+<h2 id="向量表示">向量表示</h2>
+<figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs latex"><span class="hljs-comment">% 有两种形式</span><br><span class="hljs-keyword">\boldsymbol</span>   <span class="hljs-comment">% 加粗</span><br><span class="hljs-keyword">\vec</span>          <span class="hljs-comment">% 上面加横向箭头</span><br></code></pre></td></tr></table></figure>
+<h2 id="单行公式">单行公式</h2>
+<p>如果用<code> \begin&#123;equation&#125;</code>和 <code>\end&#123;equation&#125;</code>，则公式除了独占一行还会自动被添加序号。</p>
+<p>如何公式不想编号则使用 <code>\begin&#123;equation*&#125; </code>和 <code>\end&#123;equation*&#125;</code>。</p>
+<figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs latex"><span class="hljs-comment">% 公式插入</span><br><span class="hljs-keyword">\begin</span>&#123;equation&#125;<br>	a<span class="hljs-built_in">^</span>&#123;2&#125;+b<span class="hljs-built_in">^</span>&#123;2&#125;=c<span class="hljs-built_in">^</span>&#123;2&#125;<br><span class="hljs-keyword">\end</span>&#123;equation&#125;<br></code></pre></td></tr></table></figure>
+<h2 id="多行公式">多行公式</h2>
+<p>导包：<code>\usepackage&#123;amsmath&#125;</code></p>
+<figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs latex"><span class="hljs-comment">% 系统自动编号，允许公式按等号或其他关系符对齐，在关系符前加 &amp;表示对齐；</span><br><span class="hljs-keyword">\begin</span>&#123;equation&#125;<br><span class="hljs-keyword">\begin</span>&#123;aligned&#125;<br>	aa <span class="hljs-keyword">\\</span><br>	bb <br><span class="hljs-keyword">\end</span>&#123;aligned&#125;<br><span class="hljs-keyword">\end</span>&#123;equation&#125;<br></code></pre></td></tr></table></figure>
+<figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs latex"><span class="hljs-comment">% 自己手动编号</span><br><span class="hljs-keyword">\begin</span>&#123;gather&#125;<br>	公式1 <span class="hljs-keyword">\\</span> <span class="hljs-keyword">\tag</span>&#123;公式编号&#125; <br>	公式2 <span class="hljs-keyword">\tag</span>&#123;公式编号&#125;<br><span class="hljs-keyword">\end</span>&#123;gather&#125;<br></code></pre></td></tr></table></figure>
+<h2 id="插入矩阵">插入矩阵</h2>
+<figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs latex"><span class="hljs-comment">% &amp; 分割元素，\\ 换行</span><br><span class="hljs-built_in">$</span><span class="hljs-built_in">$</span><br><span class="hljs-keyword">\left</span>[<br><span class="hljs-keyword">\begin</span>&#123;matrix&#125;<br>    d<span class="hljs-built_in">_</span>&#123;10&#125;(t) <span class="hljs-built_in">&amp;</span> d<span class="hljs-built_in">_</span>&#123;11&#125;(t) <span class="hljs-built_in">&amp;</span> ... <span class="hljs-built_in">&amp;</span> d<span class="hljs-built_in">_</span>&#123;1n&#125;(t) <span class="hljs-keyword">\\</span><br>    d<span class="hljs-built_in">_</span>&#123;20&#125;(t) <span class="hljs-built_in">&amp;</span> d<span class="hljs-built_in">_</span>&#123;21&#125;(t) <span class="hljs-built_in">&amp;</span> ... <span class="hljs-built_in">&amp;</span> d<span class="hljs-built_in">_</span>&#123;2n&#125;(t) <span class="hljs-keyword">\\</span><br>    <span class="hljs-keyword">\vdots</span> <span class="hljs-built_in">&amp;</span> <span class="hljs-keyword">\vdots</span> <span class="hljs-built_in">&amp;</span> ... <span class="hljs-built_in">&amp;</span> <span class="hljs-keyword">\vdots</span> <span class="hljs-keyword">\\</span><br>    d<span class="hljs-built_in">_</span>&#123;n0&#125;(t) <span class="hljs-built_in">&amp;</span> d<span class="hljs-built_in">_</span>&#123;n1&#125;(t) <span class="hljs-built_in">&amp;</span> ... <span class="hljs-built_in">&amp;</span> d<span class="hljs-built_in">_</span>&#123;nn&#125;(t) <span class="hljs-keyword">\\</span><br><span class="hljs-keyword">\end</span>&#123;matrix&#125;<br><span class="hljs-keyword">\right</span>]<br><span class="hljs-built_in">$</span><span class="hljs-built_in">$</span><br></code></pre></td></tr></table></figure>
+<h1 id="插入图片">插入图片</h1>
+<ol>
+<li>
+<p>导入图片包<code>\usepackage&#123;graphicx&#125;</code>。</p>
+</li>
+<li>
+<p>把图片跟<code>*.tex</code>文件放在同一路径下，可以直接导入，如果不是同一路径就使用绝对路径。</p>
+<figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs latex"><span class="hljs-comment">% 一张图片占一栏</span><br><span class="hljs-keyword">\begin</span>&#123;figure&#125;[h]<br>	<span class="hljs-keyword">\centering</span><br>	<span class="hljs-keyword">\includegraphics</span>[scale=0.35]&#123;system<span class="hljs-built_in">_</span>model.png&#125;<br>	<span class="hljs-keyword">\caption</span>&#123;system model&#125;<br><span class="hljs-keyword">\end</span>&#123;figure&#125;<br><span class="hljs-comment">% 一张图片占双栏</span><br><span class="hljs-keyword">\begin</span>&#123;figure*&#125;[h]<br>	<span class="hljs-keyword">\centering</span><br>	<span class="hljs-keyword">\includegraphics</span>[scale=0.35]&#123;system<span class="hljs-built_in">_</span>model.png&#125;<br>	<span class="hljs-keyword">\caption</span>&#123;system model&#125;<br><span class="hljs-keyword">\end</span>&#123;figure*&#125;<br></code></pre></td></tr></table></figure>
+<p>其中，</p>
+<figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs latex">figure参数：h 此处（here）t 页顶（top）b 页底（bottom）p 独立一页（page）<br>figure* 双栏排版可加入通栏图片<br><span class="hljs-keyword">\centering</span>表示的是里面紧跟的内容都居中<br><span class="hljs-keyword">\includegraphics</span>[缩放比例]&#123;图片途径&#125;<br><span class="hljs-keyword">\caption</span>添加标题<br></code></pre></td></tr></table></figure>
+</li>
+<li>
+<p>插入并排图片:</p>
+<figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs latex"><span class="hljs-comment">% 导包</span><br><span class="hljs-keyword">\usepackage</span>&#123;geometry&#125;<span class="hljs-comment">%页面设置</span><br><span class="hljs-keyword">\usepackage</span>&#123;graphicx&#125;<span class="hljs-comment">%图片设置</span><br><span class="hljs-keyword">\usepackage</span>&#123;subfig&#125;<span class="hljs-comment">%多个子图</span><br><span class="hljs-keyword">\usepackage</span>&#123;caption&#125;<span class="hljs-comment">%注释设置	</span><br><br><span class="hljs-keyword">\begin</span>&#123;figure*&#125;[htp]  <span class="hljs-comment">%[htbp]中的h是浮动的意思</span><br>		<span class="hljs-keyword">\centering</span>    <span class="hljs-comment">%居中</span><br>		<span class="hljs-keyword">\subfloat</span>[子图1名称] <span class="hljs-comment">%第一张子图</span><br>		&#123;<br>			<span class="hljs-keyword">\begin</span>&#123;minipage&#125;[t]&#123;0.5<span class="hljs-keyword">\textwidth</span>&#125;<br>				<span class="hljs-keyword">\centering</span>          <span class="hljs-comment">%子图居中</span><br>				<span class="hljs-keyword">\includegraphics</span>[scale=0.5]&#123;paper<span class="hljs-built_in">_</span>img/ave<span class="hljs-built_in">_</span>delay.png&#125;  <br>			<span class="hljs-keyword">\end</span>&#123;minipage&#125;<span class="hljs-comment">%</span><br>		&#125;<span class="hljs-comment">%注意这里不能回车空行，否则两张图会上下排列，而不是并排排列</span><br>		<span class="hljs-keyword">\subfloat</span>[子图2名称] <span class="hljs-comment">%第二张子图</span><br>		&#123;<br>			<span class="hljs-keyword">\begin</span>&#123;minipage&#125;[t]&#123;0.5<span class="hljs-keyword">\textwidth</span>&#125;<br>				<span class="hljs-keyword">\centering</span>      <span class="hljs-comment">%子图居中</span><br>				<span class="hljs-keyword">\includegraphics</span>[scale=0.5]&#123;paper<span class="hljs-built_in">_</span>img/all<span class="hljs-built_in">_</span>delay.png&#125;   <span class="hljs-comment">%以行宽的0.5倍大小显示</span><br>			<span class="hljs-keyword">\end</span>&#123;minipage&#125;<br>		&#125;<span class="hljs-comment">%</span><br>		<span class="hljs-keyword">\caption</span>&#123;大图名称&#125; <span class="hljs-comment">%  %大图名称</span><br>		<span class="hljs-keyword">\label</span>&#123;fig2&#125;  <span class="hljs-comment">%图片引用标记</span><br><span class="hljs-keyword">\end</span>&#123;figure*&#125;<br></code></pre></td></tr></table></figure>
+</li>
+</ol>
+<h1 id="导入参考文献">导入参考文献</h1>
+<ol>
+<li>
+<p>创建<code>*.bib</code>文件。在TexStudio中新建文件，然后保存的时候选择保存为<code>*.bib</code>文件，即创建了一个BibTex参考文献库，如创建的BibTex库的名字为：<code>ref.bib</code>。</p>
+</li>
+<li>
+<p>添加引用文章的内容，复制文献的BibTex引用格式，粘贴到<code>ref.bib</code>里。例如：</p>
+<figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs latex">@article&#123;mur2017orb,<br>  title=&#123;Orb-slam2: An open-source slam system for monocular, stereo, and rgb-d cameras&#125;,<br>  author=&#123;Mur-Artal, Raul and Tard&#123;<span class="hljs-keyword">\&#x27;</span>o&#125;s, Juan D&#125;,<br>  journal=&#123;IEEE transactions on robotics&#125;,<br>  volume=&#123;33&#125;,<br>  number=&#123;5&#125;,<br>  pages=&#123;1255--1262&#125;,<br>  year=&#123;2017&#125;,<br>  publisher=&#123;IEEE&#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+</li>
+<li>
+<p>在<code>*.tex</code>文章开头，<code>\begin&#123;document&#125;</code>前加入<code>\usepackage&#123;cite&#125;</code>。</p>
+</li>
+<li>
+<p>添加引用配置，可选的引用格式包括：</p>
+<figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs latex">1. plain，按字母的顺序排列，比较次序为作者、年度和标题<br>2. unsrt，样式同plain，只是按照引用的先后排序<br>3. alpha，用作者名首字母+年份后两位作标号，以字母顺序排序<br>4. abbrv，类似plain，将月份全拼改为缩写，更显紧凑<br>5. ieeetr，国际电气电子工程师协会期刊样式<br>6. acm，美国计算机学会期刊样式<br>7. siam，美国工业和应用数学学会期刊样式<br>8. apalike，美国心理学学会期刊样式<br></code></pre></td></tr></table></figure>
+<p>例如，如果想按照cite顺序自动排序文献编号，则把<code>\bibliographystyle&#123;unsrt&#125;</code>放在<code>\begin&#123;document&#125;</code>后面，<code>\bibliography&#123;ref（这里是管理参考文献.bib文件的文件名）&#125;</code>放在<code>\end&#123;document&#125;</code>前面。</p>
+</li>
+<li>
+<p>添加引用，在文中添加引用，引用格式如下：<code>\cite&#123;mur2017orb&#125;</code>，括号里面填ARTICLE后面的代号就行了，此时引用序号为正文字体大小。使用<code>\upcite&#123;&#125;</code>，此时引用序号为上标。</p>
+</li>
+<li>
+<p>点击Tools-Bibliography先把<code>*.bib</code>文件编译一下，然后编译两次<code>*.tex</code>文件就行成看到引用的文献啦。</p>
+<blockquote>
+<p>将参考文献在正文中进行引用后，再进行编译。如果不引用，该参考文献将不会出现在参考文献列表中。</p>
+</blockquote>
+</li>
+<li></li>
+</ol>
+<h1 id="参考链接">参考链接</h1>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/dogfat/article/details/106962966">TexStudio的安装及简单使用（持续更新）</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/seaskying/article/details/51316607">Latex中的空格</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/adreammaker/article/details/123934243">TexStudio的安装与使用教程（包括参考文献的引用）Latex教程</a></p>
+<p><a target="_blank" rel="noopener" href="https://sirlis.cn/posts/Latex-TexStudio/">LaTeX+TexStudio环境配置</a></p>
 
                 
               </div>

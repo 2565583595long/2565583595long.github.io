@@ -24,7 +24,7 @@
 <meta property="og:description" content="本文主要分享了自己在使用Linux和Windows系统及各种软件过程中常用的命令及快捷键。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-03-05T14:33:19.000Z">
-<meta property="article:modified_time" content="2024-05-11T01:44:33.649Z">
+<meta property="article:modified_time" content="2024-05-11T07:20:24.805Z">
 <meta property="article:author" content="龙泽雨">
 <meta name="twitter:card" content="summary_large_image">
   
@@ -348,7 +348,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          21k 字
+          20k 字
         
       </span>
     
@@ -359,7 +359,7 @@
         
         
         
-          172 分钟
+          165 分钟
         
       </span>
     
@@ -409,7 +409,7 @@
               <p id="updated-time" class="note note-info" style="">
                 
                   
-                    本文最后更新于 2024年5月11日 上午
+                    本文最后更新于 2024年5月11日 下午
                   
                 
               </p>
@@ -995,7 +995,7 @@
 <h4 id="其它">其它</h4>
 <ol>
 <li>
-<p>Python 并没有强制要求你用 <code>Tab</code> 缩进或者用空格缩进，但在PEP8中，建议使用4个空格来缩进。对于任何一个编辑器或者IDE，一般都有配置选项，可以设置把 <code>TAB</code> 键展开为4个空格。</p>
+<p>Python 并没有强制要求你用 <code>Tab</code> 缩进或者用空格缩进，但在PEP8中，建议使用4个空格来缩进。对于任何一个编辑器或者IDE，一般都有配置选项，可以设置把 <code>TAB</code> 键展开为4个空格，以保证代码的兼容性。</p>
 </li>
 <li>
 <p>命令行使用<code>\</code>实现换行：</p>
@@ -1976,7 +1976,6 @@
 </tbody>
 </table>
 <h2 id="TeXstudio">TeXstudio</h2>
-<h3 id="快捷键-5">快捷键</h3>
 <table>
 <thead>
 <tr>
@@ -1985,6 +1984,14 @@
 </tr>
 </thead>
 <tbody>
+<tr>
+<td style="text-align:center">F5</td>
+<td style="text-align:center">编译并预览</td>
+</tr>
+<tr>
+<td style="text-align:center">F6</td>
+<td style="text-align:center">编译</td>
+</tr>
 <tr>
 <td style="text-align:center">Ctrl + F</td>
 <td style="text-align:center">可对源码或者PDF查看器的内容进行搜索定位</td>
@@ -2007,48 +2014,9 @@
 </tr>
 </tbody>
 </table>
-<h3 id="整体架构">整体架构</h3>
-<figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs latex"><span class="hljs-comment">% 导言区，英文文献用article</span><br><span class="hljs-comment">%\documentclass&#123;article&#125;   %英文文献</span><br><span class="hljs-keyword">\documentclass</span>[utf-8]&#123;ctexart&#125;   <span class="hljs-comment">%中文用这个</span><br><br><span class="hljs-comment">% 导入中文包</span><br><span class="hljs-keyword">\usepackage</span>&#123;ctex&#125;<br><br><span class="hljs-keyword">\begin</span>&#123;document&#125;  <span class="hljs-comment">% 文献所有内容都要在document里面</span><br>	<span class="hljs-keyword">\title</span>&#123;<span class="hljs-keyword">\heiti</span> 题目&#125;<br>	<span class="hljs-keyword">\author</span>&#123;<span class="hljs-keyword">\kaishu</span> 作者&#125;<br>	<span class="hljs-keyword">\date</span>&#123;<span class="hljs-keyword">\today</span>&#125;  <span class="hljs-comment">% 显示当天时间</span><br>	<span class="hljs-keyword">\maketitle</span>     <span class="hljs-comment">% 显示题目</span><br>	<br>	<span class="hljs-comment">% 正文区域</span><br>	<span class="hljs-keyword">\begin</span>&#123;abstract&#125;<br>		摘要<br>	<span class="hljs-keyword">\end</span>&#123;abstract&#125;<br>	<br>	<span class="hljs-keyword">\section</span>&#123;一级标题&#125;<br>	<br>	<span class="hljs-keyword">\subsection</span>&#123;二级标题&#125;<br>	<br>	<span class="hljs-keyword">\subsubsection</span>&#123;三级标题&#125;<br><span class="hljs-keyword">\end</span>&#123;document&#125;<br></code></pre></td></tr></table></figure>
-<h3 id="导入参考文献">导入参考文献</h3>
+<p>其他配置：</p>
 <ol>
-<li>
-<p>创建<code>*.bib</code>文件。在TexStudio中新建文件，然后保存的时候选择保存为<code>*.bib</code>文件，即创建了一个BibTex参考文献库，如创建的BibTex库的名字为：<code>ref.bib</code>。</p>
-</li>
-<li>
-<p>添加引用文章的内容，复制文献的BibTex引用格式，粘贴到<code>ref.bib</code>里。例如：</p>
-<figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs latex">   ```<br><br>   <br><br>3. 在`*.tex`文章开头，`<span class="hljs-keyword">\begin</span>&#123;document&#125;`前加入`<span class="hljs-keyword">\usepackage</span>&#123;cite&#125;`。<br><br>4. 添加引用配置，可选的引用格式包括：<br><br>   ```latex<br>   1. plain，按字母的顺序排列，比较次序为作者、年度和标题<br>   2. unsrt，样式同plain，只是按照引用的先后排序<br>   3. alpha，用作者名首字母+年份后两位作标号，以字母顺序排序<br>   4. abbrv，类似plain，将月份全拼改为缩写，更显紧凑<br>   5. ieeetr，国际电气电子工程师协会期刊样式<br>   6. acm，美国计算机学会期刊样式<br>   7. siam，美国工业和应用数学学会期刊样式<br>   8. apalike，美国心理学学会期刊样式<br></code></pre></td></tr></table></figure>
-<p>例如，如果想按照cite顺序自动排序文献编号，则把<code>\bibliographystyle&#123;unsrt&#125;</code>放在<code>\begin&#123;document&#125;</code>后面，<code>\bibliography&#123;ref&#125;</code>放在<code>\end&#123;document&#125;</code>前面。</p>
-</li>
-<li>
-<p>添加引用，在文中添加引用，引用格式如下：<code>\cite&#123;5277454&#125;</code>，括号里面填ARTICLE后面的代号就行了。</p>
-</li>
-<li>
-<p>点击Tools-Bibliography先把<code>*.bib</code>文件编译一下，然后编译两次<code>*.tex</code>文件就行成看到引用的文献啦。</p>
-</li>
-</ol>
-<h3 id="插入图片">插入图片</h3>
-<ol>
-<li>
-<p>导入图片包<code>\usepackage&#123;graphicx&#125;</code>。</p>
-</li>
-<li>
-<p>把图片跟<code>*.tex</code>文件放在同一路径下，可以直接导入，如果不是同一路径就使用绝对路径。</p>
-<figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs latex"><span class="hljs-comment">% 一张图片占一栏</span><br><span class="hljs-keyword">\begin</span>&#123;figure&#125;[h]<br>	<span class="hljs-keyword">\centering</span><br>	<span class="hljs-keyword">\includegraphics</span>[scale=0.35]&#123;system<span class="hljs-built_in">_</span>model.png&#125;<br>	<span class="hljs-keyword">\caption</span>&#123;system model&#125;<br><span class="hljs-keyword">\end</span>&#123;figure&#125;<br><span class="hljs-comment">% 一张图片占双栏</span><br><span class="hljs-keyword">\begin</span>&#123;figure*&#125;[h]<br>	<span class="hljs-keyword">\centering</span><br>	<span class="hljs-keyword">\includegraphics</span>[scale=0.35]&#123;system<span class="hljs-built_in">_</span>model.png&#125;<br>	<span class="hljs-keyword">\caption</span>&#123;system model&#125;<br><span class="hljs-keyword">\end</span>&#123;figure*&#125;<br></code></pre></td></tr></table></figure>
-<p>其中，</p>
-<figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs latex">figure参数：h 此处（here）t 页顶（top）b 页底（bottom）p 独立一页（page）<br>figure* 双栏排版可加入通栏图片<br><span class="hljs-keyword">\centering</span>表示的是里面紧跟的内容都居中<br><span class="hljs-keyword">\includegraphics</span>[缩放比例]&#123;图片途径&#125;<br><span class="hljs-keyword">\caption</span>添加标题<br></code></pre></td></tr></table></figure>
-</li>
-<li>
-<p>插入并排图片:</p>
-<figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs latex"><span class="hljs-comment">% 导包</span><br><span class="hljs-keyword">\usepackage</span>&#123;geometry&#125;<span class="hljs-comment">%页面设置</span><br><span class="hljs-keyword">\usepackage</span>&#123;graphicx&#125;<span class="hljs-comment">%图片设置</span><br><span class="hljs-keyword">\usepackage</span>&#123;subfig&#125;<span class="hljs-comment">%多个子图</span><br><span class="hljs-keyword">\usepackage</span>&#123;caption&#125;<span class="hljs-comment">%注释设置	</span><br><br><span class="hljs-keyword">\begin</span>&#123;figure*&#125;[htp]  <span class="hljs-comment">%[htbp]中的h是浮动的意思</span><br>		<span class="hljs-keyword">\centering</span>    <span class="hljs-comment">%居中</span><br>		<span class="hljs-keyword">\subfloat</span>[子图1名称] <span class="hljs-comment">%第一张子图</span><br>		&#123;<br>			<span class="hljs-keyword">\begin</span>&#123;minipage&#125;[t]&#123;0.5<span class="hljs-keyword">\textwidth</span>&#125;<br>				<span class="hljs-keyword">\centering</span>          <span class="hljs-comment">%子图居中</span><br>				<span class="hljs-keyword">\includegraphics</span>[scale=0.5]&#123;paper<span class="hljs-built_in">_</span>img/ave<span class="hljs-built_in">_</span>delay.png&#125;  <br>			<span class="hljs-keyword">\end</span>&#123;minipage&#125;<span class="hljs-comment">%</span><br>		&#125;<span class="hljs-comment">%注意这里不能回车空行，否则两张图会上下排列，而不是并排排列</span><br>		<span class="hljs-keyword">\subfloat</span>[子图2名称] <span class="hljs-comment">%第二张子图</span><br>		&#123;<br>			<span class="hljs-keyword">\begin</span>&#123;minipage&#125;[t]&#123;0.5<span class="hljs-keyword">\textwidth</span>&#125;<br>				<span class="hljs-keyword">\centering</span>      <span class="hljs-comment">%子图居中</span><br>				<span class="hljs-keyword">\includegraphics</span>[scale=0.5]&#123;paper<span class="hljs-built_in">_</span>img/all<span class="hljs-built_in">_</span>delay.png&#125;   <span class="hljs-comment">%以行宽的0.5倍大小显示</span><br>			<span class="hljs-keyword">\end</span>&#123;minipage&#125;<br>		&#125;<span class="hljs-comment">%</span><br>		<span class="hljs-keyword">\caption</span>&#123;大图名称&#125; <span class="hljs-comment">%  %大图名称</span><br>		<span class="hljs-keyword">\label</span>&#123;fig2&#125;  <span class="hljs-comment">%图片引用标记</span><br><span class="hljs-keyword">\end</span>&#123;figure*&#125;<br></code></pre></td></tr></table></figure>
-</li>
-</ol>
-<h3 id="换行-换段-空格">换行&amp;换段&amp;空格</h3>
-<ol>
-<li>换行。
-<ul>
-<li>在LaTeX中，一个回车表示一个空格，两个回车表示一个分段。</li>
-</ul>
-</li>
+<li>选项-设置-构建：若写中文论文，则需修改默认编译器为XelaTeX；若为英文，则用PdfLaTex。</li>
 </ol>
 <h2 id="Typora">Typora</h2>
 <h3 id="Markdown语法">Markdown语法</h3>
@@ -2066,7 +2034,7 @@
 </li>
 <li></li>
 </ol>
-<h3 id="快捷键-6">快捷键</h3>
+<h3 id="快捷键-5">快捷键</h3>
 <table>
 <thead>
 <tr>
