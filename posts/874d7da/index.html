@@ -31,7 +31,7 @@
 <meta property="og:image" content="http://upload.wikimedia.org/math/b/6/b/b6bd9dba2ebfca24731ae6dc3913e625.png">
 <meta property="og:image" content="http://upload.wikimedia.org/math/0/f/b/0fbcad5fadb912e8afa6d113a75c83e4.png">
 <meta property="article:published_time" content="2024-05-11T01:46:38.000Z">
-<meta property="article:modified_time" content="2024-05-11T07:22:29.549Z">
+<meta property="article:modified_time" content="2024-05-13T09:09:11.628Z">
 <meta property="article:author" content="龙泽雨">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="http://upload.wikimedia.org/math/e/5/0/e505263bc9c94f673c580f3a36a7f08a.png">
@@ -356,7 +356,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.7k 字
+          2.3k 字
         
       </span>
     
@@ -367,7 +367,7 @@
         
         
         
-          14 分钟
+          20 分钟
         
       </span>
     
@@ -417,7 +417,7 @@
               <p id="updated-time" class="note note-info" style="">
                 
                   
-                    本文最后更新于 2024年5月11日 下午
+                    本文最后更新于 2024年5月13日 下午
                   
                 
               </p>
@@ -540,6 +540,32 @@
 <figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs latex"><span class="hljs-comment">% 导包</span><br><span class="hljs-keyword">\usepackage</span>&#123;geometry&#125;<span class="hljs-comment">%页面设置</span><br><span class="hljs-keyword">\usepackage</span>&#123;graphicx&#125;<span class="hljs-comment">%图片设置</span><br><span class="hljs-keyword">\usepackage</span>&#123;subfig&#125;<span class="hljs-comment">%多个子图</span><br><span class="hljs-keyword">\usepackage</span>&#123;caption&#125;<span class="hljs-comment">%注释设置	</span><br><br><span class="hljs-keyword">\begin</span>&#123;figure*&#125;[htp]  <span class="hljs-comment">%[htbp]中的h是浮动的意思</span><br>		<span class="hljs-keyword">\centering</span>    <span class="hljs-comment">%居中</span><br>		<span class="hljs-keyword">\subfloat</span>[子图1名称] <span class="hljs-comment">%第一张子图</span><br>		&#123;<br>			<span class="hljs-keyword">\begin</span>&#123;minipage&#125;[t]&#123;0.5<span class="hljs-keyword">\textwidth</span>&#125;<br>				<span class="hljs-keyword">\centering</span>          <span class="hljs-comment">%子图居中</span><br>				<span class="hljs-keyword">\includegraphics</span>[scale=0.5]&#123;paper<span class="hljs-built_in">_</span>img/ave<span class="hljs-built_in">_</span>delay.png&#125;  <br>			<span class="hljs-keyword">\end</span>&#123;minipage&#125;<span class="hljs-comment">%</span><br>		&#125;<span class="hljs-comment">%注意这里不能回车空行，否则两张图会上下排列，而不是并排排列</span><br>		<span class="hljs-keyword">\subfloat</span>[子图2名称] <span class="hljs-comment">%第二张子图</span><br>		&#123;<br>			<span class="hljs-keyword">\begin</span>&#123;minipage&#125;[t]&#123;0.5<span class="hljs-keyword">\textwidth</span>&#125;<br>				<span class="hljs-keyword">\centering</span>      <span class="hljs-comment">%子图居中</span><br>				<span class="hljs-keyword">\includegraphics</span>[scale=0.5]&#123;paper<span class="hljs-built_in">_</span>img/all<span class="hljs-built_in">_</span>delay.png&#125;   <span class="hljs-comment">%以行宽的0.5倍大小显示</span><br>			<span class="hljs-keyword">\end</span>&#123;minipage&#125;<br>		&#125;<span class="hljs-comment">%</span><br>		<span class="hljs-keyword">\caption</span>&#123;大图名称&#125; <span class="hljs-comment">%  %大图名称</span><br>		<span class="hljs-keyword">\label</span>&#123;fig2&#125;  <span class="hljs-comment">%图片引用标记</span><br><span class="hljs-keyword">\end</span>&#123;figure*&#125;<br></code></pre></td></tr></table></figure>
 </li>
 </ol>
+<h1 id="插入表格">插入表格</h1>
+<h2 id="小技巧">小技巧</h2>
+<h3 id="控制表格标题位置">控制表格标题位置</h3>
+<p>现有一个表格，若要把表格标题放在表格下面，则把<code>\caption&#123;***&#125;</code>这一行代码放在下面，如下所示：</p>
+<figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs latex"><span class="hljs-keyword">\begin</span>&#123;table&#125;[H]<br>	<span class="hljs-keyword">\renewcommand</span>&#123;<span class="hljs-keyword">\arraystretch</span>&#125;&#123;1.3&#125;<br>	<span class="hljs-keyword">\centering</span><br>	<span class="hljs-keyword">\begin</span>&#123;tabular&#125;&#123;c|cc|cc&#125;<br>		<span class="hljs-keyword">\hline</span><br>		<span class="hljs-keyword">\hline</span><br>	<span class="hljs-keyword">\end</span>&#123;tabular&#125;<br>	<span class="hljs-keyword">\caption</span>&#123;***&#125;<br>	<span class="hljs-keyword">\label</span>&#123;tab1&#125;<br><span class="hljs-keyword">\end</span>&#123;table&#125;<br></code></pre></td></tr></table></figure>
+<p>若要把表格标题放在表格上面，则把<code>\caption&#123;***&#125;</code>这一行代码放在上面，如下所示：</p>
+<figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs latex"><span class="hljs-keyword">\begin</span>&#123;table&#125;[H]<br>	<span class="hljs-keyword">\renewcommand</span>&#123;<span class="hljs-keyword">\arraystretch</span>&#125;&#123;1.3&#125;<br>        <span class="hljs-keyword">\caption</span>&#123;***&#125;<br>	<span class="hljs-keyword">\label</span>&#123;tab1&#125;<br>	<span class="hljs-keyword">\centering</span><br>	<span class="hljs-keyword">\begin</span>&#123;tabular&#125;&#123;c|cc|cc&#125;<br>		<span class="hljs-keyword">\hline</span><br>		<span class="hljs-keyword">\hline</span><br>	<span class="hljs-keyword">\end</span>&#123;tabular&#125;<br><span class="hljs-keyword">\end</span>&#123;table&#125;<br></code></pre></td></tr></table></figure>
+<blockquote>
+<p><code>\label&#123;tab1&#125;</code>一定要放在<code>\caption&#123;***&#125;</code>后面。（<code>\label</code>即标记，用于<code>\ref</code>即引用）</p>
+</blockquote>
+<h1 id="控制浮动体的位置">控制浮动体的位置</h1>
+<p>在LaTeX中，<code>table</code>和<code>figure</code>等环境都是浮动体。当我们在这些环境后面添加<code>[htbp!]</code>等参数时，如<code>\begin&#123;figure&#125;[h]</code>，我们实际上在告诉LaTeX我们希望浮动体出现在何处。</p>
+<p><code>[htbp!]</code>中的每个字母代表一个特定的位置：</p>
+<ul>
+<li><code>h</code>（here）：就在当前位置。</li>
+<li><code>t</code>（top）：在当前页面的顶部。</li>
+<li><code>b</code>（bottom）：在当前页面的底部。</li>
+<li><code>p</code>（page）：在一个特殊的浮动体页面，该页面除了浮动体和它们的标题外不包含任何其他内容。</li>
+<li><code>!</code>：这是一个特殊的标记，它告诉LaTeX忽视大部分对浮动体位置的内建限制，尽可能地满足我们的位置需求。</li>
+</ul>
+<p>要使用<code>[htbp!]</code>，只需将其作为参数添加到浮动体环境后面即可。例如：</p>
+<figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs latex"><span class="hljs-keyword">\begin</span>&#123;figure&#125;[h]<br>  <span class="hljs-keyword">\includegraphics</span>&#123;figure.jpg&#125;<br>  <span class="hljs-keyword">\caption</span>&#123;This is a figure.&#125;<br><span class="hljs-keyword">\end</span>&#123;figure&#125;<br><br><span class="hljs-keyword">\begin</span>&#123;table&#125;[ht]<br>  <span class="hljs-keyword">\centering</span><br>  <span class="hljs-keyword">\begin</span>&#123;tabular&#125;&#123;c c&#125;<br>    <span class="hljs-comment">% Your table here.</span><br>  <span class="hljs-keyword">\end</span>&#123;tabular&#125;<br>  <span class="hljs-keyword">\caption</span>&#123;This is a table.&#125;<br><span class="hljs-keyword">\end</span>&#123;table&#125;<br></code></pre></td></tr></table></figure>
+<p>在上面的例子中，<code>figure</code>环境的参数是<code>[h]</code>，这告诉LaTeX我们希望图像就在当前位置。<code>table</code>环境的参数是<code>[ht]</code>，这告诉LaTeX我们优先希望表格在当前位置，如果这不可能，那么就放在页面顶部。</p>
+<blockquote>
+<p>虽然<code>[htbp!]</code>能够让我们对浮动体的位置有更多的控制，但它们并不总是能够完全满足我们的期望。LaTeX的排版算法有其内在的逻辑和限制，它旨在使整个文档的排版看起来整齐和美观。因此，即使我们使用了<code>[htbp!]</code>，LaTeX也可能不会完全按照我们的期望来放置浮动体。</p>
+</blockquote>
 <h1 id="导入参考文献">导入参考文献</h1>
 <ol>
 <li>
@@ -573,6 +599,8 @@
 <p><a target="_blank" rel="noopener" href="https://blog.csdn.net/seaskying/article/details/51316607">Latex中的空格</a></p>
 <p><a target="_blank" rel="noopener" href="https://blog.csdn.net/adreammaker/article/details/123934243">TexStudio的安装与使用教程（包括参考文献的引用）Latex教程</a></p>
 <p><a target="_blank" rel="noopener" href="https://sirlis.cn/posts/Latex-TexStudio/">LaTeX+TexStudio环境配置</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qazwsxrx/article/details/133208134">LaTeX中的[htbp!]选项：控制浮动体的位置</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_38314865/article/details/103422898">LaTeX的表格标题位置</a></p>
 
                 
               </div>
