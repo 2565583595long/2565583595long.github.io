@@ -39,7 +39,7 @@
 <meta property="og:image" content="http://zeyulong.com/posts/9d7fd48f/IMU%E6%96%B9%E5%90%91%E5%AE%9A%E4%B9%89.png">
 <meta property="og:image" content="http://zeyulong.com/posts/9d7fd48f/record-ui.png">
 <meta property="article:published_time" content="2024-04-20T02:22:09.000Z">
-<meta property="article:modified_time" content="2024-05-17T00:17:33.403Z">
+<meta property="article:modified_time" content="2024-05-17T01:09:41.848Z">
 <meta property="article:author" content="龙泽雨">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="http://zeyulong.com/posts/9d7fd48f/%E4%BA%A7%E5%93%81%E7%BB%86%E8%8A%82-1.png">
@@ -425,7 +425,7 @@
               <p id="updated-time" class="note note-info" style="">
                 
                   
-                    本文最后更新于 2024年5月17日 早上
+                    本文最后更新于 2024年5月17日 上午
                   
                 
               </p>
@@ -556,22 +556,22 @@
 <img src="/posts/9d7fd48f/%E4%BA%A7%E5%93%81%E7%BB%86%E8%8A%82-2.png" srcset="/img/loading.gif" lazyload class="" title="产品细节-2">
 <blockquote>
 <ol>
-<li>官方报价是在<a target="_blank" rel="noopener" href="https://shop.inivation.com/collections%E4%B8%8B%E6%89%BE%E5%88%B0%E7%9A%84%E5%AD%A6%E6%9C%AF%E4%BB%B7%E6%A0%BC%EF%BC%88%E6%88%AA%E6%AD%A22024%E5%B9%B45%E6%9C%8814%E6%97%A5%EF%BC%89%E3%80%82">https://shop.inivation.com/collections下找到的学术价格（截止2024年5月14日）。</a></li>
+<li>官方报价是在 <a target="_blank" rel="noopener" href="https://shop.inivation.com/collections">https://shop.inivation.com/collections</a> 下找到的学术价格（截止2024年5月14日）。</li>
 <li>人民币和欧元汇率按照7.81 : 1计算。实际大陆报价还要含超过10%税。</li>
-<li>大陆的报价不知道方不方便给出，就不在这里给出了。可以在<a target="_blank" rel="noopener" href="https://inivation.cn/?list=24%E4%B8%8B%E5%8A%A0%E5%BE%AE%E4%BF%A1%E5%92%A8%E8%AF%A2%E4%B8%AD%E5%9B%BD%E7%BB%8F%E9%94%80%E5%95%86%E3%80%82">https://inivation.cn/?list=24下加微信咨询中国经销商。</a></li>
+<li>大陆的报价不知道方不方便给出，就不在这里给出了。可以在 <a target="_blank" rel="noopener" href="https://inivation.cn/?list=24">https://inivation.cn/?list=24</a> 下加微信咨询中国经销商。</li>
 <li>双目版本就是两个单目相机通过支架连在一起。双目的价格是单目的2倍。</li>
 </ol>
 </blockquote>
 <h2 id="售后">售后</h2>
 <p>经销商给出的回答是：</p>
 <ol>
-<li>国内有工程师，使用问题可以咨询。</li>
+<li>国内有工程师，使用问题可以咨询我们。</li>
 <li>如果有深入问题，我们会联系国外工程师提供解答。</li>
 </ol>
 <h1 id="驱动安装及相机可视化">驱动安装及相机可视化</h1>
 <p>实验室购进的两台DAVIS346 Color到了，可以先安装一下驱动来简单查看一下相机的可视化效果。</p>
 <blockquote>
-<p>如果相机可视化全是噪点，旋转下两个镜头试试。</p>
+<p>如果相机可视化全是噪点，旋转下三个镜头试试，尤其是中间的光圈。</p>
 </blockquote>
 <h2 id="支持文档">支持文档</h2>
 <p><a target="_blank" rel="noopener" href="https://docs.inivation.com/">官方支持文档</a></p>
@@ -658,7 +658,9 @@
 <li>
 <pre><code class="language-bash"># 查看当前版本：
 gedit /usr/include/eigen3/Eigen/src/Core/util/Macros.h
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs markdown"><br><span class="hljs-bullet">*</span> gcc/g++ &gt;= 5.5.0<br><br><span class="hljs-bullet">  *</span> [<span class="hljs-string">gcc、g++的安装与版本管理</span>](<span class="hljs-link">https://zeyulong.com/posts/6dba0521/</span>)<br><br><span class="hljs-bullet">  *</span> <span class="hljs-code">```bash</span><br><span class="hljs-code">    # 查看当前版本：</span><br><span class="hljs-code">    gcc -v</span><br><span class="hljs-code">    g++ -v</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs markdown"><span class="hljs-code">    </span><br><span class="hljs-code">    </span><br><span class="hljs-code"></span><br><span class="hljs-bullet">*</span> gcc/g++ &gt;= 5.5.0<br><br><span class="hljs-bullet">  *</span> [<span class="hljs-string">gcc、g++的安装与版本管理</span>](<span class="hljs-link">https://zeyulong.com/posts/6dba0521/</span>)<br><br><span class="hljs-bullet">  *</span> <span class="hljs-code">```bash</span><br><span class="hljs-code">    # 查看当前版本：</span><br><span class="hljs-code">    gcc -v</span><br><span class="hljs-code">    g++ -v</span><br></code></pre></td></tr></table></figure>
+
+
 
 </code></pre>
 </li>
@@ -676,7 +678,7 @@ pkg-config --modversion opencv  # 查询版本
 pkg-config --cflags opencv  # 得到opencv的安装路径
 # -&gt; -I/usr/local/include/opencv -I/usr/local/include
 pkg-config --cflags opencv4  # 附加：得到opencv4的安装路径
-<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs csharp"><br><span class="hljs-meta">### DV软件库</span><br><br>[<span class="hljs-meta">ROS的安装与卸载</span>](https:<span class="hljs-comment">//zeyulong.com/posts/84f91530/)</span><br><br>&gt; 将下面提到的ROS版本替换为你自己的版本。<br><br><span class="hljs-number">1.</span> 安装ROS依赖项：<br><br>   ```bash<br>   <span class="hljs-meta"># melodic/kinetic/Noetic</span><br>   sudo apt-<span class="hljs-keyword">get</span> install ros-melodic-camera-info-manager<br>   sudo apt-<span class="hljs-keyword">get</span> install ros-melodic-image-view<br></code></pre></td></tr></table></figure>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs csharp">    <br>    <br><br><span class="hljs-meta">### DV软件库</span><br><br>[<span class="hljs-meta">ROS的安装与卸载</span>](https:<span class="hljs-comment">//zeyulong.com/posts/84f91530/)</span><br><br>&gt; 将下面提到的ROS版本替换为你自己的版本。<br><br><span class="hljs-number">1.</span> 安装ROS依赖项：<br><br>   ```bash<br>   <span class="hljs-meta"># melodic/kinetic/Noetic</span><br>   sudo apt-<span class="hljs-keyword">get</span> install ros-melodic-camera-info-manager<br>   sudo apt-<span class="hljs-keyword">get</span> install ros-melodic-image-view<br></code></pre></td></tr></table></figure>
 
 </code></pre>
 </li>
@@ -825,7 +827,9 @@ pkg-config --cflags opencv4  # 附加：得到opencv4的安装路径
 <li>
 <pre><code class="language-bash"># 查看当前版本：
 gedit /usr/include/eigen3/Eigen/src/Core/util/Macros.h
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs markdown"><br><span class="hljs-bullet">*</span> gcc/g++ &gt;= 10.0.0<br><br><span class="hljs-bullet">  *</span> [<span class="hljs-string">gcc、g++的安装与版本管理</span>](<span class="hljs-link">https://zeyulong.com/posts/6dba0521/</span>)<br><br><span class="hljs-bullet">  *</span> <span class="hljs-code">```bash</span><br><span class="hljs-code">    # 查看当前版本：</span><br><span class="hljs-code">    gcc -v</span><br><span class="hljs-code">    g++ -v</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs markdown"><span class="hljs-code">    </span><br><span class="hljs-code">    </span><br><span class="hljs-code"></span><br><span class="hljs-bullet">*</span> gcc/g++ &gt;= 10.0.0<br><br><span class="hljs-bullet">  *</span> [<span class="hljs-string">gcc、g++的安装与版本管理</span>](<span class="hljs-link">https://zeyulong.com/posts/6dba0521/</span>)<br><br><span class="hljs-bullet">  *</span> <span class="hljs-code">```bash</span><br><span class="hljs-code">    # 查看当前版本：</span><br><span class="hljs-code">    gcc -v</span><br><span class="hljs-code">    g++ -v</span><br></code></pre></td></tr></table></figure>
+
+
 
 </code></pre>
 </li>
@@ -843,7 +847,7 @@ pkg-config --modversion opencv  # 查询版本
 pkg-config --cflags opencv  # 得到opencv的安装路径
 # -&gt; -I/usr/local/include/opencv -I/usr/local/include
 pkg-config --cflags opencv4  # 附加：得到opencv4的安装路径
-<figure class="highlight smali"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs smali"><br>  * &gt; 这里不需要把系统指定的OpenCV的版本指定为4.2.0及以上的版本，可以保持OpenCV3的版本。只要保证将OpenCV4安装好就可以了，后续可以在编译dv_ros时指定其使用到的OpenCV版本（路径）。<br><br><span class="hljs-comment">### DV软件库</span><br><br>该代码依赖于DV软件库，需要安装这些库以便ROS节点进行编译。根据您的 Ubuntu 发行版启用适当的 iniVation PPA：<br><br>* Ubuntu 18.04:<br><br>  ```bash<br>  sudo<span class="hljs-built_in"> add-apt-repository </span>ppa:ubuntu-toolchain-r/test<br>  sudo<span class="hljs-built_in"> add-apt-repository </span>ppa:inivation-ppa/inivation-bionic<br>  sudo apt update<br>  sudo apt install dv-processing dv-runtime-dev gcc-10 g++-10<br></code></pre></td></tr></table></figure>
+<figure class="highlight smali"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs smali">    <br>    <br><br>  * &gt; 这里不需要把系统指定的OpenCV的版本指定为4.2.0及以上的版本，可以保持OpenCV3的版本。只要保证将OpenCV4安装好就可以了，后续可以在编译dv_ros时指定其使用到的OpenCV版本（路径）。<br><br><br><br><span class="hljs-comment">### DV软件库</span><br><br>该代码依赖于DV软件库，需要安装这些库以便ROS节点进行编译。根据您的 Ubuntu 发行版启用适当的 iniVation PPA：<br><br>* Ubuntu 18.04:<br><br>  ```bash<br>  sudo<span class="hljs-built_in"> add-apt-repository </span>ppa:ubuntu-toolchain-r/test<br>  sudo<span class="hljs-built_in"> add-apt-repository </span>ppa:inivation-ppa/inivation-bionic<br>  sudo apt update<br>  sudo apt install dv-processing dv-runtime-dev gcc-10 g++-10<br></code></pre></td></tr></table></figure>
 
 
 
