@@ -58,8 +58,9 @@
 <meta property="og:image" content="http://zeyulong.com/posts/9d7fd48f/kalibr_accel_err.png">
 <meta property="og:image" content="http://zeyulong.com/posts/9d7fd48f/%E9%87%8D%E6%8A%95%E5%BD%B1%E8%AF%AF%E5%B7%AE%E7%A4%BA%E4%BE%8B.png">
 <meta property="og:image" content="http://zeyulong.com/posts/9d7fd48f/record-ui.png">
+<meta property="og:image" content="http://zeyulong.com/posts/9d7fd48f/%E5%8F%8C%E7%9B%AE%E7%A1%AC%E4%BB%B6%E8%BF%9E%E6%8E%A5.jpg">
 <meta property="article:published_time" content="2024-04-20T02:22:09.000Z">
-<meta property="article:modified_time" content="2024-05-22T12:12:42.428Z">
+<meta property="article:modified_time" content="2024-05-27T07:48:01.367Z">
 <meta property="article:author" content="龙泽雨">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="http://zeyulong.com/posts/9d7fd48f/%E4%BA%A7%E5%93%81%E7%BB%86%E8%8A%82-1.png">
@@ -384,7 +385,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          18k 字
+          19k 字
         
       </span>
     
@@ -395,7 +396,7 @@
         
         
         
-          152 分钟
+          156 分钟
         
       </span>
     
@@ -445,7 +446,7 @@
               <p id="updated-time" class="note note-info" style="">
                 
                   
-                    本文最后更新于 2024年5月22日 晚上
+                    本文最后更新于 2024年5月27日 下午
                   
                 
               </p>
@@ -666,7 +667,7 @@
 <li>在 <code>DV</code> 的左侧，有 <code>Project Bar</code> ，您可以在其中选择现有或已保存的项目。这些项目是 <code>.xml</code> 文件，用于存储“输出”选项卡和“结构”选项卡的状态。</li>
 <li>“DAVIS”实际上代表“动态和主动像素视觉传感器” - 换句话说，它是 DVS 和 APS 电路的融合，能够使用相同的光电二极管产生动态事件和拍照。“APS”代表“主动像素传感器”。这是标准 CMOS 图像传感器的术语，其中像素中的晶体管主动传输与曝光期间读取的光强度相关的值。</li>
 <li><a target="_blank" rel="noopener" href="https://docs.inivation.com/software/dv/modules/index.html">DV Modules</a>：<code>DV</code> 中的 <code>modules</code> 是设计用于对某些数据执行特定操作的逻辑块。在<code>dv-gui</code>，点击中间上面的<code>Structure</code>选项，选中模块，点击上面的<code>Remove module</code>可以删除模块；点击<code>Add module</code>可以增加模块；使用鼠标可以在两个模块之间进行连线。</li>
-<li><a href="#%E5%BD%95%E5%88%B6%E3%80%81%E5%9B%9E%E6%94%BE%E4%B8%8E%E8%BD%AC%E4%B8%BAbag%E5%8C%85%E6%A0%BC%E5%BC%8F">录制与回放</a></li>
+<li><a href="#%E4%BD%BF%E7%94%A8dv-gui%E8%BF%9B%E8%A1%8C%E5%BD%95%E5%88%B6%E4%B8%8E%E5%9B%9E%E6%94%BE">录制与回放</a>。</li>
 </ol>
 <h2 id="rpg-dvs-ros">rpg_dvs_ros</h2>
 <p><a target="_blank" rel="noopener" href="https://github.com/uzh-rpg/rpg_dvs_ros">项目地址</a></p>
@@ -787,7 +788,7 @@
 <ul>
 <li>
 <p>启动实机：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">cd</span> yourfolder/catkin_ws<br><span class="hljs-built_in">source</span> ./devel/setup.bash &amp;&amp; roslaunch dvs_renderer dvs_mono.launch  <span class="hljs-comment"># if you are using the DVS128</span><br><span class="hljs-built_in">source</span> ./devel/setup.bash &amp;&amp; roslaunch dvs_renderer davis_mono.launch  <span class="hljs-comment"># if you are using the DAVIS</span><br><span class="hljs-built_in">source</span> ./devel/setup.bash &amp;&amp; roslaunch dvs_renderer dvxplorer_mono.launch  <span class="hljs-comment"># if you are using the DVXplorer</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">cd</span> yourfolder/catkin_ws<br><span class="hljs-built_in">source</span> ./devel/setup.bash &amp;&amp; roslaunch dvs_renderer dvs_mono.launch  <span class="hljs-comment"># if you are using the DVS128</span><br><br><span class="hljs-built_in">source</span> ./devel/setup.bash &amp;&amp; roslaunch dvs_renderer davis_mono.launch  <span class="hljs-comment"># if you are using the DAVIS</span><br><span class="hljs-built_in">source</span> ./devel/setup.bash &amp;&amp; roslaunch dvs_renderer davis_color.launch<br><br><span class="hljs-built_in">source</span> ./devel/setup.bash &amp;&amp; roslaunch dvs_renderer dvxplorer_mono.launch  <span class="hljs-comment"># if you are using the DVXplorer</span><br></code></pre></td></tr></table></figure>
 <p>得到实时可视化结果。效果如下：</p>
 <img src="/posts/9d7fd48f/rpg_dvs_ros%E5%8F%AF%E8%A7%86%E5%8C%96.png" srcset="/img/loading.gif" lazyload class="" title="rpg_dvs_ros可视化">
 <blockquote>
@@ -1141,22 +1142,9 @@
 <p><strong>拔下并重新插入相机</strong></p>
 </li>
 </ol>
-<h2 id="外部输入触发">外部输入触发</h2>
-<p>此功能允许使用 INPUT_SIGNAL 和 OUTPUT_SIGNAL 端口与第三方摄像机和系统进行有限形式的交互。</p>
-<p>INPUT_SIGNAL 端口可以配置为检测来自另一个相机或电子系统的上升沿、下降沿和脉冲，当它检测到这种情况时，一个特殊的数据点会插入到来自 iniVation 相机的数据流中，精确的时间戳，允许将来自相机的数据与外部发生的事件相关联。</p>
-<p>此功能可以检测理论最大频率为 1 MHz 的信号。对于方波输入，我们建议仅检测上升沿，频率不要超过 100 KHz，以获得可靠的结果。不尝试去抖或信号清除。</p>
-<p>最好的情况是在外部摄像头捕获帧时仅发送脉冲，以便您可以将两者关联起来。许多机器视觉相机都支持这种触发器，例如外部 LED 灯闪烁。</p>
-<p>这不会改变 iniVation 摄像机本身的操作方式，因此无法使用此功能在 DAVIS 上启动/停止录制、配置摄像机或触发帧捕获。</p>
-<p>默认情况下，OUTPUT_SIGNAL 端口仅中继 INPUT_SIGNAL 端口，从而允许以菊花链方式连接此检测功能。一些 iniVation 相机还支持在此端口上生成类似 PWM 的信号作为可配置选项。</p>
-<p>信号输出与相机操作没有直接关系；它不会发出相机状态变化的信号，例如开始/停止记录或数据采集。下表列出了支持此额外功能的所有相机。</p>
-<p>所有这些都必须使用我们的软件进行配置和启用，这些选项通常称为“外部输入检测器”（用于 INPUT_SIGNAL 端口上的检测部分）和“外部输入发生器”（用于在 OUTPUT_SIGNAL 端口上生成可选 PWM 信号）。</p>
-<h2 id="时钟同步">时钟同步</h2>
-<p>时钟同步功能允许多个连接的摄像机使用 INPUT_CLOCK 和 OUTPUT_CLOCK 端口保持微秒精度时间戳彼此同步。</p>
-<p>摄像机以菊花链方式连接，一旦通过电缆建立物理连接，它们就会自动同步。该系列中的第一台相机（INPUT_CLOCK 上没有信号的相机）称为主相机，并且其主 LED 会打开。其他摄像机的 LED 灯将关闭。还可以在我们的软件中检查同步状态，其中“deviceIsMaster”选项通常会通知用户相机的状态。</p>
-<p>所有摄像机硬件同步后，您只需重置主摄像机的时间戳，然后主摄像机也会重置所有下游设备，确保所有摄像机具有相同的开始时间点。这是通过软件完成的，可以通过选择“重置时间戳”选项手动完成，也可以使用 dv-processing 的 Stereo 类自动完成此操作。</p>
 <h1 id="（单目）校准-标定">（单目）校准/标定</h1>
 <blockquote>
-<p>我最终标定使用的是<a href="#%E4%BD%BF%E7%94%A8Kalibr%E6%A0%87%E5%AE%9A%E7%9B%B8%E6%9C%BA%E5%86%85%E5%8F%82">使用Kalibr标定相机内参</a>得到的相机内参和<a href="#%E4%BD%BF%E7%94%A8imu_utils%E6%A0%87%E5%AE%9AIMU">使用imu_utils标定IMU</a>后放大5-10倍的IMU参数来<a href="#%E4%BD%BF%E7%94%A8Kalibr%E8%BF%9B%E8%A1%8C%E8%A7%86%E6%83%AF%E8%81%94%E5%90%88%E6%A0%87%E5%AE%9A">使用Kalibr进行视惯联合标定</a>得到的相机-IMU参数，因此，整合到VINS-Mono配置文件里的参数要与这几个参数相对应，例如，而不使用<a href="#%E4%BD%BF%E7%94%A8DV%E6%A0%87%E5%AE%9A%E7%9B%B8%E6%9C%BA%E5%86%85%E5%8F%82">使用DV标定相机内参</a>得到的相机内参。</p>
+<p>我最终标定使用的是<a href="#%E4%BD%BF%E7%94%A8Kalibr%E6%A0%87%E5%AE%9A%E7%9B%B8%E6%9C%BA%E5%86%85%E5%8F%82">使用Kalibr标定相机内参</a>得到的相机内参和<a href="#%E4%BD%BF%E7%94%A8imu_utils%E6%A0%87%E5%AE%9AIMU">使用imu_utils标定IMU</a>后放大5-10倍的IMU参数来<a href="#%E4%BD%BF%E7%94%A8Kalibr%E8%BF%9B%E8%A1%8C%E8%A7%86%E6%83%AF%E8%81%94%E5%90%88%E6%A0%87%E5%AE%9A">使用Kalibr进行视惯联合标定</a>得到的相机-IMU参数。因此，整合到VINS-Mono配置文件里的参数要与这几个参数相对应，例如，而不使用<a href="#%E4%BD%BF%E7%94%A8DV%E6%A0%87%E5%AE%9A%E7%9B%B8%E6%9C%BA%E5%86%85%E5%8F%82">使用DV标定相机内参</a>得到的相机内参。</p>
 <p>简单来说，最后看<a href="#%E4%BD%BF%E7%94%A8Kalibr%E8%BF%9B%E8%A1%8C%E8%A7%86%E6%83%AF%E8%81%94%E5%90%88%E6%A0%87%E5%AE%9A">使用Kalibr进行视惯联合标定</a>的结果文件<code>*.yaml</code>就可以了。</p>
 </blockquote>
 <h2 id="相机参数">相机参数</h2>
@@ -1389,14 +1377,14 @@
 </ol>
 </li>
 <li>
-<p>录制rosbag包。使用<code>dv-gui</code><a href="#%E5%BD%95%E5%88%B6">录制</a>生成<code>*.aedat4</code>文件，然后将其<a href="#%E8%BD%AC%E4%B8%BAbag%E5%8C%85%E6%A0%BC%E5%BC%8F">转化</a>为<code>*.bag</code>文件。</p>
+<p>录制rosbag包。使用<code>dv-gui</code><a href="#%E5%BD%95%E5%88%B6">录制</a>生成<code>*.aedat4</code>文件，然后将其<a href="#%E8%BD%AC%E4%B8%BAbag%E5%8C%85%E6%A0%BC%E5%BC%8F">转化</a>为<code>*.bag</code>文件；也可以直接<a href="#%E4%BD%BF%E7%94%A8ROS%E5%91%BD%E4%BB%A4%E8%BF%9B%E8%A1%8C%E5%BD%95%E5%88%B6">使用ROS命令进行录制</a>。</p>
 <blockquote>
 <p>该录制的bag包同样可以供<a href="#%E4%BD%BF%E7%94%A8Kalibr%E8%BF%9B%E8%A1%8C%E8%A7%86%E6%83%AF%E8%81%94%E5%90%88%E6%A0%87%E5%AE%9A">使用Kalibr进行视惯联合标定</a>过程使用。</p>
 </blockquote>
 <p>录制要求：</p>
 <ul>
 <li>
-<p>建议在捕获校准数据时将相机流的频率降低至 4 Hz 左右（使用ROS命令修改）。这减少了数据集中的冗余信息，从而缩短了校准的运行时间。</p>
+<p>建议在捕获校准数据时将相机流的频率降低至 4 Hz 左右。这减少了数据集中的冗余信息，从而缩短了校准的运行时间。</p>
 <blockquote>
 <p><a target="_blank" rel="noopener" href="https://www.youtube.com/watch?app=desktop&amp;v=puNXsnrYWTY">官方视频教程-1</a>中图像帧帧率20Hz，IMU帧率200Hz，没有做降频处理，直接运行的标定命令。</p>
 <p><a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=BtzmsuJemgI">官方视频教程-2</a>中图像帧的频率是30Hz（通过<code>rosbag info</code>命令得到bag的录制时间是35.4s，期间一共有1024个图像消息），在下面执行标定命令时指定参数<code>--bag-freq 10.0</code>。</p>
@@ -1404,6 +1392,9 @@
 </blockquote>
 <blockquote>
 <p>当然，bag包主题的频率也可以使用<a href="https://zeyulong.com/posts/c4541b88/#rosbag">ROS命令</a>进行修改。</p>
+</blockquote>
+<blockquote>
+<p>实测这两种降频结果差距不大？主要还是标定过程录制的bag包质量要尽可能高。</p>
 </blockquote>
 </li>
 <li>
@@ -1426,6 +1417,12 @@
 </li>
 <li>
 <p>使用倾斜视图和到校准目标的不同距离。</p>
+</li>
+<li>
+<p>相机不能离标定板太远，太远执行标定过程中就检测不到角点了。</p>
+</li>
+<li>
+<p>运动幅度尽量大一点，保证激励IMU。</p>
 </li>
 </ul>
 <p>实施步骤：</p>
@@ -1451,21 +1448,21 @@
 <p>必选参数：</p>
 <ul>
 <li>
-<p>--bag filename.bag：包含图像数据的 ROS 包</p>
+<p><code>--bag filename.bag</code>：包含图像数据的 ROS 包</p>
 </li>
 <li>
-<p>-topics TOPIC_0 ... TOPIC_N：包中所有相机主题的列表。匹配 --models 的顺序</p>
+<p><code>-topics TOPIC_0 ... TOPIC_N</code>：包中所有相机主题的列表。匹配 <code>--models</code> 的顺序</p>
 </li>
 <li>
-<p>--models MODEL_0 ... MODEL_N：要安装的相机/畸变模型列表。与 --topics 的顺序匹配（请参阅<a target="_blank" rel="noopener" href="https://github.com/ethz-asl/kalibr/wiki/supported-models">支持的型号</a>）</p>
+<p><code>--models MODEL_0 ... MODEL_N</code>：要安装的相机/畸变模型列表。与 <code>--topics</code> 的顺序匹配（请参阅<a target="_blank" rel="noopener" href="https://github.com/ethz-asl/kalibr/wiki/supported-models">支持的型号</a>）</p>
 </li>
 <li>
-<p>--target target.yaml：标定目标（板）的配置文件</p>
+<p><code>--target target.yaml</code>：标定目标（板）的配置文件</p>
 </li>
 </ul>
 <p>可选参数：</p>
 <ul>
-<li>--show-extraction：可视化校准目标提取过程。这可能有助于发现目标配置和提取的问题。</li>
+<li><code>--show-extraction</code>：可视化校准目标提取过程。这可能有助于发现目标配置和提取的问题。</li>
 </ul>
 <p>运行示例：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># kalibr_calibrate_cameras --bag [filename.bag] --topics [TOPIC_0 ... TOPIC_N] --models [MODEL_0 ... MODEL_N] --target [target.yaml] --show-extraction</span><br><br><span class="hljs-built_in">cd</span> yourfloder/kalibr_workspace<br>roscore<br><span class="hljs-built_in">source</span> ./devel/setup.bash &amp;&amp; rosrun kalibr kalibr_calibrate_cameras \<br> 	--target april_6x6.yaml \<br> 	--models pinhole-radtan pinhole-radtan \<br> 	--topics /cam0/image_raw /cam1/image_raw \<br> 	--bag cam_april.bag \<br> 	--bag-freq 10.0 \  <span class="hljs-comment"># 提取特征的频率/Hz。根据指定频率向下采样，删除多余的图片。</span><br> 	--bag-from-to 10 100 \  <span class="hljs-comment"># 处理bag中10-100秒的数据</span><br> 	--show-extraction<br></code></pre></td></tr></table></figure>
@@ -1575,6 +1572,9 @@ TypeError: an integer is required</p>
 <ol>
 <li>
 <p>首先需要静止放置IMU持续两个小时以上，并在此期间记录IMU的数据。</p>
+<blockquote>
+<p>也可以直接<a href="#%E4%BD%BF%E7%94%A8ROS%E5%91%BD%E4%BB%A4%E8%BF%9B%E8%A1%8C%E5%BD%95%E5%88%B6">使用ROS命令进行录制</a>。</p>
+</blockquote>
 <ol>
 <li>
 <p>打开<code>dv-gui</code>，使用其录制功能，具体录制步骤如<a href="#%E5%BD%95%E5%88%B6">录制</a>小节所述。这里使用到的Structure为：</p>
@@ -1640,7 +1640,7 @@ TypeError: an integer is required</p>
 <blockquote>
 <p>直接在 <a target="_blank" rel="noopener" href="https://www.google.com">https://www.google.com</a> 输入 “4.3575299381088319e-02 * 5” 即可进行计算。</p>
 </blockquote>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><code class="hljs yaml">      <span class="hljs-comment">#Accelerometers</span><br>      <span class="hljs-attr">accelerometer_noise_density:</span> <span class="hljs-number">0.2178764969</span>   <span class="hljs-comment">#Noise density (continuous-time) * 5</span><br>      <span class="hljs-attr">accelerometer_random_walk:</span>   <span class="hljs-number">6.5383798561067846e-03</span>   <span class="hljs-comment">#Bias random walk * 10</span><br>      <br>      <span class="hljs-comment">#Gyroscopes</span><br>      <span class="hljs-attr">gyroscope_noise_density:</span>     <span class="hljs-number">0.01769226014</span>   <span class="hljs-comment">#Noise density (continuous-time) * 5</span><br>      <span class="hljs-attr">gyroscope_random_walk:</span>       <span class="hljs-number">4.0272140518453810e-04</span>   <span class="hljs-comment">#Bias random walk * 10</span><br>      <br>      <span class="hljs-attr">rostopic:</span>                    <span class="hljs-string">/DAVIS346/imu</span>      <span class="hljs-comment">#the IMU ROS topic</span><br>      <span class="hljs-attr">update_rate:</span>                 <span class="hljs-number">1000.0</span>      <span class="hljs-comment">#Hz (for discretization of the values above) 后续根据实际ROS包的速率进行修改</span><br>   <br>   <span class="hljs-number">6</span><span class="hljs-string">.</span> <br><br><span class="hljs-comment">## 视惯联合标定</span><br><br><span class="hljs-comment">### 使用Kalibr进行视惯联合标定</span><br><br><span class="hljs-string">&gt;</span> <span class="hljs-string">在视觉惯性联合标定之前，需要先标定相机[内参](#使用Kalibr标定相机内参)和[IMU](#使用imu_utils标定IMU)。</span><br><br>[<span class="hljs-string">官方视频教程-1</span>]<span class="hljs-string">(https://www.youtube.com/watch?app=desktop&amp;v=puNXsnrYWTY)：图像帧帧率20Hz，IMU帧率200Hz。相机实操+程序运行。</span><br><br>[<span class="hljs-string">官方视频教程-2</span>]<span class="hljs-string">(https://www.youtube.com/watch?v=BtzmsuJemgI)：图像帧帧率30Hz，IMU帧率400Hz。原理讲解+程序运行。</span><br><br>[<span class="hljs-string">官方视频教程-3</span>]<span class="hljs-string">(https://www.youtube.com/watch?v=rBT5O5TEOV4)：图像帧帧率30Hz，IMU帧率200Hz。原理讲解+相机实操+程序运行。</span><br><br><span class="hljs-number">1</span><span class="hljs-string">.</span> <span class="hljs-string">准备标定板。推荐使用[Aprilgrid</span> <span class="hljs-string">6x6</span> <span class="hljs-number">0.</span><span class="hljs-string">8x0.8</span> <span class="hljs-string">m</span> <span class="hljs-string">(A0</span> <span class="hljs-string">page)](https://github.com/ethz-asl/kalibr/wiki/downloads)，配置文件[下载链接](https://github.com/ethz-asl/kalibr/wiki/downloads)。</span><br><br>   <span class="hljs-string">&gt;</span> <span class="hljs-string">如果您使用具有对称性的校准目标（棋盘格、圆网格），则必须避免可能导致目标姿态估计翻转的移动。建议使用</span> <span class="hljs-string">Aprilgrid</span> <span class="hljs-string">来完全避免此问题。</span><br><br>   <span class="hljs-number">1</span><span class="hljs-string">.</span> <span class="hljs-string">使用A0纸打印Aprilgrid，如果没有A0大小的纸，将标定板缩放到A4大小打印出来也行？</span><br><br>      <span class="hljs-string">&gt;</span> <span class="hljs-string">在最小校准目标周围保留白色边框，一个网格元素的大小（否则在某些光照条件下检测可能不成功）。</span><br><br>   <span class="hljs-number">2</span><span class="hljs-string">.</span> <span class="hljs-string">编写标定板的配置文件，内容示例：</span><br><br>      <span class="hljs-string">`april_A0.yaml`：</span><br><br>      &#123;<span class="hljs-string">%</span> <span class="hljs-string">asset_img</span> <span class="hljs-string">测量标定板的tagSize.png</span> <span class="hljs-string">测量标定板的tagSize</span> <span class="hljs-string">%</span>&#125;<br>      <br>      <span class="hljs-string">```yaml</span><br>      <span class="hljs-attr">target_type:</span> <span class="hljs-string">&#x27;aprilgrid&#x27;</span> <span class="hljs-comment">#gridtype</span><br>      <span class="hljs-comment"># 内侧角点的数量，不是格子数量</span><br>      <span class="hljs-attr">tagCols:</span> <span class="hljs-number">6</span>               <span class="hljs-comment">#number of apriltags</span><br>      <span class="hljs-attr">tagRows:</span> <span class="hljs-number">6</span>               <span class="hljs-comment">#number of apriltags</span><br>      <span class="hljs-attr">tagSize:</span> <span class="hljs-number">0.088</span>           <span class="hljs-comment">#size of apriltag, edge to edge [m]  上面截图中为 0.02m</span><br>      <span class="hljs-attr">tagSpacing:</span> <span class="hljs-number">0.3</span>          <span class="hljs-comment">#ratio of space between tags to tagSize</span><br>                               <span class="hljs-comment">#example: tagSize=2m, spacing=0.5m --&gt; tagSpacing=0.25[-]</span><br>      <span class="hljs-attr">codeOffset:</span> <span class="hljs-number">0</span>            <span class="hljs-comment">#code offset for the first tag in the aprilboard</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><code class="hljs yaml">      <span class="hljs-comment">#Accelerometers</span><br>      <span class="hljs-attr">accelerometer_noise_density:</span> <span class="hljs-number">0.2178764969</span>   <span class="hljs-comment">#Noise density (continuous-time) * 5</span><br>      <span class="hljs-attr">accelerometer_random_walk:</span>   <span class="hljs-number">6.5383798561067846e-03</span>   <span class="hljs-comment">#Bias random walk * 10</span><br>      <br>      <span class="hljs-comment">#Gyroscopes</span><br>      <span class="hljs-attr">gyroscope_noise_density:</span>     <span class="hljs-number">0.01769226014</span>   <span class="hljs-comment">#Noise density (continuous-time) * 5</span><br>      <span class="hljs-attr">gyroscope_random_walk:</span>       <span class="hljs-number">4.0272140518453810e-04</span>   <span class="hljs-comment">#Bias random walk * 10</span><br>      <br>      <span class="hljs-attr">rostopic:</span>                    <span class="hljs-string">/DAVIS346/imu</span>      <span class="hljs-comment">#the IMU ROS topic</span><br>      <span class="hljs-attr">update_rate:</span>                 <span class="hljs-number">1000.0</span>      <span class="hljs-comment">#Hz (for discretization of the values above) 后续根据实际ROS包的速率进行修改</span><br><br>   <span class="hljs-number">6</span><span class="hljs-string">.</span> <br><br><span class="hljs-comment">## 视惯联合标定</span><br><br><span class="hljs-comment">### 使用Kalibr进行视惯联合标定</span><br><br><span class="hljs-string">&gt;</span> <span class="hljs-string">在视觉惯性联合标定之前，需要先标定相机[内参](#使用Kalibr标定相机内参)和[IMU](#使用imu_utils标定IMU)。</span><br><br>[<span class="hljs-string">官方视频教程-1</span>]<span class="hljs-string">(https://www.youtube.com/watch?app=desktop&amp;v=puNXsnrYWTY)：图像帧帧率20Hz，IMU帧率200Hz。相机实操+程序运行。</span><br><br>[<span class="hljs-string">官方视频教程-2</span>]<span class="hljs-string">(https://www.youtube.com/watch?v=BtzmsuJemgI)：图像帧帧率30Hz，IMU帧率400Hz。原理讲解+程序运行。</span><br><br>[<span class="hljs-string">官方视频教程-3</span>]<span class="hljs-string">(https://www.youtube.com/watch?v=rBT5O5TEOV4)：图像帧帧率30Hz，IMU帧率200Hz。原理讲解+相机实操+程序运行。</span><br><br><span class="hljs-number">1</span><span class="hljs-string">.</span> <span class="hljs-string">准备标定板。推荐使用[Aprilgrid</span> <span class="hljs-string">6x6</span> <span class="hljs-number">0.</span><span class="hljs-string">8x0.8</span> <span class="hljs-string">m</span> <span class="hljs-string">(A0</span> <span class="hljs-string">page)](https://github.com/ethz-asl/kalibr/wiki/downloads)，配置文件[下载链接](https://github.com/ethz-asl/kalibr/wiki/downloads)。</span><br><br>   <span class="hljs-string">&gt;</span> <span class="hljs-string">如果您使用具有对称性的校准目标（棋盘格、圆网格），则必须避免可能导致目标姿态估计翻转的移动。建议使用</span> <span class="hljs-string">Aprilgrid</span> <span class="hljs-string">来完全避免此问题。</span><br><br>   <span class="hljs-number">1</span><span class="hljs-string">.</span> <span class="hljs-string">使用A0纸打印Aprilgrid，如果没有A0大小的纸，将标定板缩放到A4大小打印出来也行？</span><br><br>      <span class="hljs-string">&gt;</span> <span class="hljs-string">在最小校准目标周围保留白色边框，一个网格元素的大小（否则在某些光照条件下检测可能不成功）。</span><br><br>   <span class="hljs-number">2</span><span class="hljs-string">.</span> <span class="hljs-string">编写标定板的配置文件，内容示例：</span><br><br>      <span class="hljs-string">`april_A0.yaml`：</span><br><br>      &#123;<span class="hljs-string">%</span> <span class="hljs-string">asset_img</span> <span class="hljs-string">测量标定板的tagSize.png</span> <span class="hljs-string">测量标定板的tagSize</span> <span class="hljs-string">%</span>&#125;<br>      <br>      <span class="hljs-string">```yaml</span><br>      <span class="hljs-attr">target_type:</span> <span class="hljs-string">&#x27;aprilgrid&#x27;</span> <span class="hljs-comment">#gridtype</span><br>      <span class="hljs-comment"># 内侧角点的数量，不是格子数量</span><br>      <span class="hljs-attr">tagCols:</span> <span class="hljs-number">6</span>               <span class="hljs-comment">#number of apriltags</span><br>      <span class="hljs-attr">tagRows:</span> <span class="hljs-number">6</span>               <span class="hljs-comment">#number of apriltags</span><br>      <span class="hljs-attr">tagSize:</span> <span class="hljs-number">0.088</span>           <span class="hljs-comment">#size of apriltag, edge to edge [m]  上面截图中为 0.02m</span><br>      <span class="hljs-attr">tagSpacing:</span> <span class="hljs-number">0.3</span>          <span class="hljs-comment">#ratio of space between tags to tagSize</span><br>                               <span class="hljs-comment">#example: tagSize=2m, spacing=0.5m --&gt; tagSpacing=0.25[-]</span><br>      <span class="hljs-attr">codeOffset:</span> <span class="hljs-number">0</span>            <span class="hljs-comment">#code offset for the first tag in the aprilboard</span><br></code></pre></td></tr></table></figure>
 <p><code>april_A4.yaml</code>：</p>
 <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-attr">target_type:</span> <span class="hljs-string">&#x27;aprilgrid&#x27;</span> <span class="hljs-comment">#gridtype</span><br><span class="hljs-attr">tagCols:</span> <span class="hljs-number">6</span>               <span class="hljs-comment">#number of apriltags</span><br><span class="hljs-attr">tagRows:</span> <span class="hljs-number">6</span>               <span class="hljs-comment">#number of apriltags</span><br><span class="hljs-attr">tagSize:</span> <span class="hljs-number">0.024</span>           <span class="hljs-comment">#size of apriltag, edge to edge [m] 上面截图中为 0.02m</span><br><span class="hljs-attr">tagSpacing:</span> <span class="hljs-number">0.3125</span>          <span class="hljs-comment">#ratio of space between tags to tagSize</span><br><span class="hljs-attr">codeOffset:</span> <span class="hljs-number">0</span>            <span class="hljs-comment">#code offset for the first tag in the aprilboard</span><br></code></pre></td></tr></table></figure>
 <blockquote>
@@ -1650,7 +1650,7 @@ TypeError: an integer is required</p>
 </ol>
 </li>
 <li>
-<p>录制rosbag包。使用<code>dv-gui</code><a href="#%E5%BD%95%E5%88%B6">录制</a>生成<code>*.aedat4</code>文件，然后将其<a href="#%E8%BD%AC%E4%B8%BAbag%E5%8C%85%E6%A0%BC%E5%BC%8F">转化</a>为<code>*.bag</code>文件。</p>
+<p>录制rosbag包。使用<code>dv-gui</code><a href="#%E5%BD%95%E5%88%B6">录制</a>生成<code>*.aedat4</code>文件，然后将其<a href="#%E8%BD%AC%E4%B8%BAbag%E5%8C%85%E6%A0%BC%E5%BC%8F">转化</a>为<code>*.bag</code>文件；也可以直接<a href="#%E4%BD%BF%E7%94%A8ROS%E5%91%BD%E4%BB%A4%E8%BF%9B%E8%A1%8C%E5%BD%95%E5%88%B6">使用ROS命令进行录制</a>。</p>
 <blockquote>
 <p>可以直接使用<a href="#%E4%BD%BF%E7%94%A8Kalibr%E6%A0%87%E5%AE%9A%E7%9B%B8%E6%9C%BA%E5%86%85%E5%8F%82">使用Kalibr标定相机内参</a>里录制的bag包。</p>
 </blockquote>
@@ -1671,6 +1671,8 @@ TypeError: an integer is required</p>
 <li>保持低运动模糊：低曝光时间、低快门时间、照明良好。</li>
 <li>确保同一时钟内的低抖动时间戳。</li>
 <li>30-60 秒的数据集通常足以进行校准。</li>
+<li>相机不能离标定板太远，太远执行标定过程中就检测不到角点了。</li>
+<li>运动幅度尽量大一点，保证激励IMU。</li>
 </ul>
 <p>实施步骤：</p>
 <blockquote>
@@ -1695,21 +1697,21 @@ TypeError: an integer is required</p>
 <p>必选参数：</p>
 <ul>
 <li>
-<p>--bag filename.bag：包含图像和 IMU 数据的 ROS 包</p>
+<p><code>--bag filename.bag</code>：包含图像和 IMU 数据的 ROS 包</p>
 </li>
 <li>
-<p>--cam camchain.yaml：相机系统的内在和外在标定参数。<a href="#%E4%BD%BF%E7%94%A8Kalibr%E6%A0%87%E5%AE%9A%E7%9B%B8%E6%9C%BA%E5%86%85%E5%8F%82">使用Kalibr标定相机内参</a>的结果文件之一</p>
+<p><code>--cam camchain.yaml</code>：相机系统的内在和外在标定参数。<a href="#%E4%BD%BF%E7%94%A8Kalibr%E6%A0%87%E5%AE%9A%E7%9B%B8%E6%9C%BA%E5%86%85%E5%8F%82">使用Kalibr标定相机内参</a>的结果文件之一</p>
 </li>
 <li>
-<p>--imu imu.yaml：包含 IMU 统计信息和 IMU 主题。<a href="#%E4%BD%BF%E7%94%A8imu_utils%E6%A0%87%E5%AE%9AIMU">使用imu_utils标定IMU</a>的结果文件</p>
+<p><code>--imu imu.yaml</code>：包含 IMU 统计信息和 IMU 主题。<a href="#%E4%BD%BF%E7%94%A8imu_utils%E6%A0%87%E5%AE%9AIMU">使用imu_utils标定IMU</a>的结果文件</p>
 </li>
 <li>
-<p>--target target.yaml：标定目标（板）的配置文件</p>
+<p><code>--target target.yaml</code>：标定目标（板）的配置文件</p>
 </li>
 </ul>
 <p>可选参数：</p>
 <ul>
-<li>--show-extraction：可视化校准目标提取过程。这可能有助于发现目标配置和提取的问题。</li>
+<li><code>--show-extraction</code>：可视化校准目标提取过程。这可能有助于发现目标配置和提取的问题。</li>
 </ul>
 <p>运行示例：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># kalibr_calibrate_imu_camera --bag [filename.bag] --cam [camchain.yaml] --imu [imu.yaml] --target [target.yaml]  # 时间校准默认打开，可以使用 --no-time-calibration 参数禁用。</span><br><br><span class="hljs-built_in">cd</span> yourfloder/kalibr_workspace<br>roscore<br><span class="hljs-built_in">source</span> ./devel/setup.bash &amp;&amp; rosrun kalibr kalibr_calibrate_imu_camera \<br>	--target april_6x6.yaml \<br>	--imu imu_adis16448.yaml \  <span class="hljs-comment"># 里面指定了使用的IMU主题</span><br>	--imu-models calibrated \<br>	--cam cam_april-camchain.yaml \  <span class="hljs-comment"># 里面指定了使用的image主题</span><br>	--bag imu_april.bag \<br>	<span class="hljs-comment"># --bag-freq 10.0 \  # 提取特征的频率/Hz。根据指定频率向下采样，删除多余的图片。</span><br> 	--bag-from-to 10 100 \  <span class="hljs-comment"># 处理bag中10-100秒的数据</span><br> 	--show-extraction<br></code></pre></td></tr></table></figure>
@@ -1839,7 +1841,8 @@ camera resolution [width,height] 相机分辨率[宽度，高度]</p>
 <li><a target="_blank" rel="noopener" href="https://docs.openvins.com/gs-calibration.html">https://docs.openvins.com/gs-calibration.html</a></li>
 </ul>
 <h1 id="录制、回放与转为bag包格式">录制、回放与转为bag包格式</h1>
-<h2 id="录制">录制</h2>
+<h2 id="使用dv-gui进行录制与回放">使用dv-gui进行录制与回放</h2>
+<h3 id="录制">录制</h3>
 <img src="/posts/9d7fd48f/record-ui.png" srcset="/img/loading.gif" lazyload class="" title="UI element positions for recording">
 <ol>
 <li>在 DV 左侧栏中选择“<em>Record</em>”配置。当前配置将替换为标准录制配置（可改为自定义配置，用来只录制自己感兴趣的数据）。默认记录配置记录来自连接的 DVS / Davis 摄像机的所有事件、帧、imu 和触发数据。</li>
@@ -1848,7 +1851,7 @@ camera resolution [width,height] 相机分辨率[宽度，高度]</p>
 <li>（可选）在右侧Recorder-DIRECTORY下自定义文件保存路径。</li>
 <li>单击红色圆圈按钮即可开始录制。所有数据均以 aedat 4.0 格式记录。</li>
 </ol>
-<h2 id="回放">回放</h2>
+<h3 id="回放">回放</h3>
 <p>如果您想要可视化 AEDAT4 格式的播放数据：</p>
 <ol>
 <li>请在 DV 左侧栏中选择“<em>Visualize</em>”配置。</li>
@@ -1875,10 +1878,52 @@ camera resolution [width,height] 相机分辨率[宽度，高度]</p>
 <p>转化完成后，</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs bash">rosbag info xxx.bag  <span class="hljs-comment"># 命令来查看转化成的bag包的信息</span><br><br>roscore<br>rostopic list  <span class="hljs-comment"># 查看消息列表</span><br>rostopic <span class="hljs-built_in">echo</span> /DAVIS346/imu  <span class="hljs-comment"># 查看IMU数据</span><br>rostopic hz /DAVIS346/imu  <span class="hljs-comment"># 查看IMU的频率</span><br></code></pre></td></tr></table></figure>
 <p>更多关于rosbag的ROS命令：<a href="https://zeyulong.com/posts/c4541b88/#rosbag">ROS知识-rosbag</a></p>
-<h1 id="双目（TODO）">双目（TODO）</h1>
-<p><a target="_blank" rel="noopener" href="https://docs.inivation.com/hardware/hardware-advanced-usage/external-camera-sync.html">https://docs.inivation.com/hardware/hardware-advanced-usage/external-camera-sync.html</a></p>
-<p><a target="_blank" rel="noopener" href="https://docs.inivation.com/software/dv/gui/calibrate-event-camera.html">https://docs.inivation.com/software/dv/gui/calibrate-event-camera.html</a></p>
-<p><a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=rBT5O5TEOV4">https://www.youtube.com/watch?v=rBT5O5TEOV4</a> （35:09多相机校准）</p>
+<h2 id="使用ROS命令进行录制">使用ROS命令进行录制</h2>
+<p>也可以直接使用<code>rosbag record TOPIC1 [TOPIC2 TOPIC3 ...]</code>命令订阅主题并写入一个<code>*.bag</code>文件，具体的<a href="https://zeyulong.com/posts/c4541b88/#rosbag">参数说明</a>。</p>
+<p>具体步骤为：</p>
+<ol>
+<li>使用<a href="#rpg_dvs_ros">rpg_dvs_ros</a>或<a href="#dv-ros">dv-ros</a>进行可视化。期间可以通过修改<code>*.launch</code>文件的方式自定义<code>topic</code>名称。</li>
+<li>使用<code>rostopic list</code>命令查询当前正在使用的<code>topic</code>名称。</li>
+<li>使用<code>rosbag record TOPIC1 [TOPIC2 TOPIC3 ...]</code>命令订阅主题并写入一个<code>*.bag</code>文件。</li>
+</ol>
+<h1 id="双目">双目</h1>
+<h2 id="相关知识">相关知识</h2>
+<h3 id="外部输入触发">外部输入触发</h3>
+<p>此功能允许使用 INPUT_SIGNAL 和 OUTPUT_SIGNAL 端口与第三方摄像机和系统进行有限形式的交互。</p>
+<p>INPUT_SIGNAL 端口可以配置为检测来自另一个相机或电子系统的上升沿、下降沿和脉冲，当它检测到这种情况时，一个特殊的数据点会插入到来自 iniVation 相机的数据流中，精确的时间戳，允许将来自相机的数据与外部发生的事件相关联。</p>
+<p>此功能可以检测理论最大频率为 1 MHz 的信号。对于方波输入，我们建议仅检测上升沿，频率不要超过 100 KHz，以获得可靠的结果。不尝试去抖或信号清除。</p>
+<p>最好的情况是在外部摄像头捕获帧时仅发送脉冲，以便您可以将两者关联起来。许多机器视觉相机都支持这种触发器，例如外部 LED 灯闪烁。</p>
+<p>这不会改变 iniVation 摄像机本身的操作方式，因此无法使用此功能在 DAVIS 上启动/停止录制、配置摄像机或触发帧捕获。</p>
+<p>默认情况下，OUTPUT_SIGNAL 端口仅中继 INPUT_SIGNAL 端口，从而允许以菊花链方式连接此检测功能。一些 iniVation 相机还支持在此端口上生成类似 PWM 的信号作为可配置选项。</p>
+<p>信号输出与相机操作没有直接关系；它不会发出相机状态变化的信号，例如开始/停止记录或数据采集。下表列出了支持此额外功能的所有相机。</p>
+<p>所有这些都必须使用我们的软件进行配置和启用，这些选项通常称为“外部输入检测器”（用于 INPUT_SIGNAL 端口上的检测部分）和“外部输入发生器”（用于在 OUTPUT_SIGNAL 端口上生成可选 PWM 信号）。</p>
+<h3 id="时钟同步">时钟同步</h3>
+<p>时钟同步功能允许多个连接的摄像机使用 INPUT_CLOCK 和 OUTPUT_CLOCK 端口保持微秒精度时间戳彼此同步。</p>
+<p>摄像机以菊花链方式连接，一旦通过电缆建立物理连接，它们就会自动同步。该系列中的第一台相机（INPUT_CLOCK 上没有信号的相机）称为主相机，并且其主 LED 会打开。其他摄像机的 LED 灯将关闭。还可以在我们的软件中检查同步状态，其中“deviceIsMaster”选项通常会通知用户相机的状态。</p>
+<p>所有摄像机硬件同步后，您只需重置主摄像机的时间戳，然后主摄像机也会重置所有下游设备，确保所有摄像机具有相同的开始时间点。这是通过软件完成的，可以通过选择“Reset Timestamps”选项手动完成，也可以使用 dv-processing 的 Stereo 类自动完成此操作。</p>
+<h2 id="硬件连接">硬件连接</h2>
+<img src="/posts/9d7fd48f/%E5%8F%8C%E7%9B%AE%E7%A1%AC%E4%BB%B6%E8%BF%9E%E6%8E%A5.jpg" srcset="/img/loading.gif" lazyload class="" title="双目硬件连接">
+<p>以左目相机为主相机，右目相机为副相机。同步线从右目相机的IN口出，到左目相机的OUT口进。两个相机都使用USB线连接到电脑上。</p>
+<p>进行可视化（数据传输）时，左目相机MASTER灯和DATA灯亮，右目相机DATA灯亮。</p>
+<h2 id="可视化">可视化</h2>
+<h3 id="dv-gui">dv-gui</h3>
+<p>运行<code>dv-gui</code>后，即可在右侧工具栏的Capture-INPUT SELECTION中选择两个相机之一。当然，也可以通过搭建Structure的方式同时可视化两个相机。</p>
+<h3 id="rpg-dvs-ros-2">rpg_dvs_ros</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">source</span> ./devel/setup.zsh &amp;&amp; roslaunch dvs_renderer stereo_davis.launch<br></code></pre></td></tr></table></figure>
+<h3 id="dv-ros（TODO）">dv-ros（TODO）</h3>
+<h2 id="标定">标定</h2>
+<p>步骤与单目相机类似：</p>
+<ol>
+<li><a href="#%E7%9B%B8%E6%9C%BA%E5%AF%B9%E7%84%A6">相机对焦</a></li>
+<li><a href="#%E4%BD%BF%E7%94%A8Kalibr%E6%A0%87%E5%AE%9A%E7%9B%B8%E6%9C%BA%E5%86%85%E5%8F%82">使用Kalibr标定相机内参</a>，无非是在执行标定命令时比单目多指定一个topic。</li>
+<li><a href="#%E4%BD%BF%E7%94%A8Kalibr%E8%BF%9B%E8%A1%8C%E8%A7%86%E6%83%AF%E8%81%94%E5%90%88%E6%A0%87%E5%AE%9A">使用Kalibr进行视惯联合标定</a>，无非是在执行标定命令时比单目多指定一个topic。</li>
+</ol>
+<h2 id="参考链接-2">参考链接</h2>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://docs.inivation.com/hardware/hardware-advanced-usage/external-camera-sync.html">https://docs.inivation.com/hardware/hardware-advanced-usage/external-camera-sync.html</a></li>
+<li><a target="_blank" rel="noopener" href="https://docs.inivation.com/software/dv/gui/calibrate-event-camera.html">https://docs.inivation.com/software/dv/gui/calibrate-event-camera.html</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=rBT5O5TEOV4">https://www.youtube.com/watch?v=rBT5O5TEOV4</a> （35:09多相机校准）</li>
+</ul>
 
                 
               </div>
