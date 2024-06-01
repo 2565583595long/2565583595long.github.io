@@ -24,7 +24,7 @@
 <meta property="og:description" content="本文主要分享了Windows、Linux系统的配置与常用软件的安装。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-01-31T16:27:11.000Z">
-<meta property="article:modified_time" content="2024-05-15T01:08:22.268Z">
+<meta property="article:modified_time" content="2024-05-29T09:16:41.613Z">
 <meta property="article:author" content="龙泽雨">
 <meta name="twitter:card" content="summary_large_image">
   
@@ -409,7 +409,7 @@
               <p id="updated-time" class="note note-info" style="">
                 
                   
-                    本文最后更新于 2024年5月15日 上午
+                    本文最后更新于 2024年5月29日 下午
                   
                 
               </p>
@@ -635,6 +635,12 @@
 <td style="text-align:center"></td>
 </tr>
 <tr>
+<td style="text-align:center">鼠标驱动</td>
+<td style="text-align:center"><a target="_blank" rel="noopener" href="https://support.logi.com/hc/zh-cn/articles/360025298133-Logitech-G-HUB">Logitech G HUB</a></td>
+<td style="text-align:center"><a href="#Piper">Piper</a></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
 <td style="text-align:center">输入法</td>
 <td style="text-align:center"><a target="_blank" rel="noopener" href="https://shurufa.sogou.com/">搜狗输入法</a></td>
 <td style="text-align:center"><a target="_blank" rel="noopener" href="https://shurufa.sogou.com/">搜狗输入法</a></td>
@@ -709,7 +715,7 @@
 <tr>
 <td style="text-align:center">消息通讯</td>
 <td style="text-align:center"><a target="_blank" rel="noopener" href="https://im.qq.com/pcqq">QQ</a>、<a target="_blank" rel="noopener" href="https://weixin.qq.com/">微信</a>、<a target="_blank" rel="noopener" href="https://meeting.tencent.com/">腾讯会议</a></td>
-<td style="text-align:center">[QQ](#QQ Linux版)、<a target="_blank" rel="noopener" href="https://filehelper.weixin.qq.com/">微信文件传输助手网页版</a></td>
+<td style="text-align:center">[QQ](#QQ Linux版)、<a href="#%E5%BE%AE%E4%BF%A1">微信</a>或<a target="_blank" rel="noopener" href="https://filehelper.weixin.qq.com/">微信文件传输助手网页版</a></td>
 <td style="text-align:center">QQ、微信、腾讯会议</td>
 </tr>
 <tr>
@@ -1349,29 +1355,7 @@
 <p>点击安装没有反应可能是包安装需要提前赋予管理员权限。</p>
 </blockquote>
 <h1 id="git">git</h1>
-<h2 id="配置-2">配置</h2>
-<h3 id="git-clone超时问题">git clone超时问题</h3>
-<p>根据<a target="_blank" rel="noopener" href="https://blog.csdn.net/u_hcy2000/article/details/123052677">关于在ubuntu中git clone超时的问题</a>的说明：</p>
-<ol>
-<li>
-<p>配置了科学上网。首先确保浏览器能够访问谷歌，能访问<a target="_blank" rel="noopener" href="https://github.com">GitHub</a>。</p>
-</li>
-<li>
-<p>查看命令窗口的git配置。git是否设置了代理：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">git config --global --get http.proxy<br>git config --global --get https.proxy<br></code></pre></td></tr></table></figure>
-<p>如果什么都没有显示，说明没有配置代理。</p>
-</li>
-<li>
-<p>为git设置代理。在linux的设置，网络中查看代理的地址，例如设置如下：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">git config --global http.proxy <span class="hljs-string">&#x27;127.0.0.1:1080&#x27;</span><br>git config --global https.proxy <span class="hljs-string">&#x27;127.0.0.1:1080&#x27;</span><br></code></pre></td></tr></table></figure>
-<p>这时候再次查看应该有代理内容输出，此时在git应该是可行的。</p>
-</li>
-<li>
-<p>（可选）git移除代理。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">git config --global --<span class="hljs-built_in">unset</span> http.proxy<br>git config --global --<span class="hljs-built_in">unset</span> https.proxy<br></code></pre></td></tr></table></figure>
-</li>
-<li></li>
-</ol>
+<p><a href="https://zeyulong.com/posts/5b8fd703/">Git的配置与使用</a></p>
 <h1 id="Mission-Center">Mission Center</h1>
 <p>类似于Windows的任务管理器。</p>
 <p><a target="_blank" rel="noopener" href="https://missioncenter.io/">Mission Center官网</a></p>
@@ -1458,6 +1442,13 @@ sudo okular
 </code></pre>
 </li>
 </ol>
+<h1 id="Piper">Piper</h1>
+<p>我使用的鼠标是Logitech G502，但是Logitech的鼠标驱动<a target="_blank" rel="noopener" href="https://support.logi.com/hc/zh-cn/articles/360025298133-Logitech-G-HUB">Logitech G HUB</a>只提供了Windows和Mac版。当然，我相信Piper提供的鼠标驱动不止适用于这款鼠标。</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/libratbag/piper">项目地址</a></p>
+<h2 id="安装-4">安装</h2>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo add-apt-repository ppa:libratbag-piper/piper-libratbag-git<br>sudo apt update<br><span class="hljs-comment"># 对于 &lt; Ubuntu 20.04 版本的系统，需要先添加上面的PPA</span><br>sudo apt install piper<br></code></pre></td></tr></table></figure>
+<h2 id="使用-2">使用</h2>
+<p>Win+A打开应用列表，找到Piper点击即可。</p>
 <h1 id="QQ-Linux版">QQ Linux版</h1>
 <h2 id="下载安装">下载安装</h2>
 <p><a target="_blank" rel="noopener" href="https://im.qq.com/linuxqq/download.html">官方下载地址和安装及卸载帮助</a></p>
@@ -1683,7 +1674,7 @@ source ~/.bashrc  # source ~/.zshrc
 </tbody>
 </table>
 <p>表格摘自：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/435589701">说一说 TeXstudio</a></p>
-<h2 id="配置-3">配置</h2>
+<h2 id="配置-2">配置</h2>
 <ol>
 <li>
 <p>选项-设置，勾选左下角的“显示高级选项”。</p>
@@ -1710,7 +1701,7 @@ source ~/.bashrc  # source ~/.zshrc
 <p>（可选）实时预览：选项-设置-内置PDF查看器-勾选“有变更时自动重新编译文档”。</p>
 </li>
 </ol>
-<h2 id="使用-2">使用</h2>
+<h2 id="使用-3">使用</h2>
 <p><a href="https://zeyulong.com/posts/a8aab215/#TeXstudio">TeXstudio快捷键和使用技巧</a></p>
 <h2 id="更新（Windows）">更新（Windows）</h2>
 <p>TeXstudio更新之前需要先卸载旧版。在卸载之前，可以先复制一份用户配置以免配置文件丢失。对于Windows系统，配置文件一般在 <code>C:\Users\用户名\AppData\Roaming\texstudio</code> 路径下。*nix系统类似。</p>
@@ -1720,6 +1711,26 @@ source ~/.bashrc  # source ~/.zshrc
 <p>（覆盖旧版安装后，临时密码将会变更）</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 安装命令：</span><br>sudo apt-get install ./todesk-v4.7.2.0-amd64.deb<br><span class="hljs-comment"># 启动命令：</span><br>todesk<br><span class="hljs-comment"># 删除服务设置配置:</span><br>sudo <span class="hljs-built_in">rm</span> /opt/todesk/config/config.ini<br><span class="hljs-comment"># 卸载:</span><br>sudo apt-get remove --purge todesk<br><br><span class="hljs-comment"># 如不能正常使用,请执行以下命令初始化.</span><br>sudo systemctl stop todeskd.service<br>sudo <span class="hljs-built_in">mv</span> /opt/todesk/config/config.ini /opt/todesk/config/config.ini.bak<br>sudo systemctl start todeskd.service<br><br><span class="hljs-comment"># 排查错误可执行以下命令看日志:</span><br><span class="hljs-comment"># 查看服务日志：（例如:xxxx_xx_xx.log为2022_08_03.log）</span><br><span class="hljs-built_in">tail</span> -f /var/log/todesk/service_xxxx_xx_xx.log<br><span class="hljs-comment"># 查看客户端日志：（例如:xxxx_xx_xx.log为2022_08_03.log）</span><br><span class="hljs-built_in">tail</span> -f ~/.local/share/todesk/Logs/client_xxxx_xx_xx.log<br></code></pre></td></tr></table></figure>
 <p>默认安装位置：<code>/opt/todesk</code></p>
+<h1 id="微信">微信</h1>
+<ol>
+<li>
+<p>安装wine（需自行搜索）。</p>
+</li>
+<li>
+<p>下载 <a target="_blank" rel="noopener" href="https://weixin.qq.com/">微信 for Windows</a> 的 <code>*.exe</code>文件。</p>
+</li>
+<li>
+<p>使用wine安装微信：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">cd</span> yourfolder/<br>wine *.exe<br></code></pre></td></tr></table></figure>
+</li>
+<li>
+<p>使用wine打开微信：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># wine创建的C盘默认所在的路径是：~/.wine/drive_c/</span><br><span class="hljs-comment"># 微信默认的安装路径是：C:\Program Files\Tencent\WeChat</span><br>wine ~/.wine/drive_c/Program Files/Tencent/WeChat/WeChat.exe<br></code></pre></td></tr></table></figure>
+</li>
+<li>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_38656841/article/details/100568125">输入不显示解决方法</a>。</p>
+</li>
+</ol>
 <h1 id="Zotero">Zotero</h1>
 <h2 id="下载安装-3">下载安装</h2>
 <p><a target="_blank" rel="noopener" href="https://www.zotero.org/"> Zotero官网</a></p>
@@ -1763,7 +1774,7 @@ source ~/.bashrc  # source ~/.zshrc
 </blockquote>
 <h3 id="配置插件">配置插件</h3>
 <p>编辑-首选项</p>
-<h2 id="使用-3">使用</h2>
+<h2 id="使用-4">使用</h2>
 <p><a href="https://zeyulong.com/posts/a8aab215/">Linux系统下常用的命令及快捷键</a></p>
 <h2 id="更新-2">更新</h2>
 <h3 id="更新Zotero">更新Zotero</h3>
