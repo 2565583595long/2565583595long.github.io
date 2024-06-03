@@ -24,7 +24,7 @@
 <meta property="og:description" content="本文主要分享了在Linux下Ceres-Solver库的安装与卸载。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-02-07T03:41:13.000Z">
-<meta property="article:modified_time" content="2024-03-21T12:11:39.222Z">
+<meta property="article:modified_time" content="2024-06-01T07:57:44.119Z">
 <meta property="article:author" content="龙泽雨">
 <meta name="twitter:card" content="summary_large_image">
   
@@ -409,7 +409,7 @@
               <p id="updated-time" class="note note-info" style="">
                 
                   
-                    本文最后更新于 2024年3月21日 晚上
+                    本文最后更新于 2024年6月1日 下午
                   
                 
               </p>
@@ -434,7 +434,7 @@
 <p>使用Ceres-Solver时报关于Eigen库的错误：注意此时使用的Eigen版本要与之前编译Ceres-Solver库时使用的版本一致。如果现在使用的Eigen版本变更了，那就卸载重装一遍Ceres-Solver吧。</p>
 </blockquote>
 <h1 id="卸载重装">卸载重装</h1>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">cd</span> ceres-solver-1.14.0/build<br><span class="hljs-built_in">cat</span> install_manifest.txt | sudo xargs <span class="hljs-built_in">rm</span><br><span class="hljs-comment"># 或者</span><br>sudo xargs <span class="hljs-built_in">rm</span> &lt; install_manifest.txt<br>sudo make uninstall<br>sudo make clean <span class="hljs-comment">#清除上一次make命令生成的文件</span><br>sudo make distclean <span class="hljs-comment">#清除上一次make以及configure命令生成的文件</span><br>sudo <span class="hljs-built_in">rm</span> -r build<br></code></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">cd</span> ceres-solver-1.14.0/build<br><br><span class="hljs-built_in">cat</span> install_manifest.txt | sudo xargs <span class="hljs-built_in">rm</span><br><span class="hljs-comment"># 或者</span><br>sudo xargs <span class="hljs-built_in">rm</span> &lt; install_manifest.txt<br><br>sudo make uninstall<br>sudo make clean <span class="hljs-comment">#清除上一次make命令生成的文件</span><br>sudo make distclean <span class="hljs-comment">#清除上一次make以及configure命令生成的文件</span><br>sudo <span class="hljs-built_in">rm</span> -r build<br></code></pre></td></tr></table></figure>
 
                 
               </div>

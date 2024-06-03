@@ -24,7 +24,7 @@
 <meta property="og:description" content="本文主要分享了自己在使用Linux和Windows系统及各种软件过程中常用的命令及快捷键。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-03-05T14:33:19.000Z">
-<meta property="article:modified_time" content="2024-05-29T13:31:26.143Z">
+<meta property="article:modified_time" content="2024-06-01T07:31:21.390Z">
 <meta property="article:author" content="龙泽雨">
 <meta name="twitter:card" content="summary_large_image">
   
@@ -359,7 +359,7 @@
         
         
         
-          166 分钟
+          167 分钟
         
       </span>
     
@@ -409,7 +409,7 @@
               <p id="updated-time" class="note note-info" style="">
                 
                   
-                    本文最后更新于 2024年5月29日 晚上
+                    本文最后更新于 2024年6月1日 下午
                   
                 
               </p>
@@ -673,7 +673,7 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">pwd</span>  <span class="hljs-comment"># 显示当前目录位置 </span><br><span class="hljs-built_in">ls</span><br>-a 显示所有文件及目录 ( 以. 开头的隐藏文件也会列出)<br>-l 以长格式显示文件和目录信息，包括权限、所有者、大小、创建时间等<br>-h：文件大小以K，M，G为单位，提高信息的可读性<br><span class="hljs-built_in">ls</span> /usr/bin/gcc*   <span class="hljs-comment"># 在/usr/bin目录下所有含有gcc前缀的文件</span><br><span class="hljs-comment">#此处使用 ll 命令更好（可以看到软链接）：</span><br>ll /usr/bin/gcc*<br></code></pre></td></tr></table></figure>
 <h3 id="文件新建、复制和删除">文件新建、复制和删除</h3>
 <h4 id="基本">基本</h4>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs bash">gedit ~/.bashrc	 <span class="hljs-comment"># 使用gedit打开文件</span><br><span class="hljs-built_in">touch</span> file1.txt  <span class="hljs-comment"># 新建文件</span><br><br><span class="hljs-comment"># 在指定的目录下，创建一个名为 LINK_NAME 的硬链接或符号链接，指向名为 TARGET 的文件或目录。</span><br><span class="hljs-built_in">ln</span> [OPTION]... [-T] TARGET LINK_NAME<br><br><span class="hljs-comment"># 复制文件或目录cp命令</span><br><span class="hljs-comment"># 示例</span><br><span class="hljs-built_in">cp</span> file.txt /path/to/destination/<br>-a：此选项通常在复制目录时使用，它保留链接、文件属性，并复制目录下的所有内容。其作用等于 dpR 参数组合。<br>-r 或 --recursive：用于复制目录及其所有的子目录和文件，如果要复制目录，需要使用该选项。<br>-i 或 --interactive：在复制前提示确认，如果目标文件已存在，则会询问是否覆盖，回答 y 时目标文件将被覆盖。<br>-p 或 --preserve：保留源文件的权限、所有者和时间戳信息。<br><br><span class="hljs-comment"># 删除文件和文件夹rm命令</span><br>-i 删除前逐一询问确认。<br>-f 即使原档案属性设为唯读，亦直接删除，无需逐一确认。<br>-r 将目录及以下之档案亦逐一删除。<br></code></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs bash">gedit ~/.bashrc	 <span class="hljs-comment"># 使用gedit打开文件</span><br><span class="hljs-built_in">touch</span> file1.txt  <span class="hljs-comment"># 新建文件</span><br><br><span class="hljs-comment"># 在指定的目录下，创建一个名为 LINK_NAME 的硬链接或符号链接，指向名为 TARGET 的文件或目录。</span><br><span class="hljs-built_in">ln</span> [OPTION]... [-T] TARGET LINK_NAME<br><br><span class="hljs-comment"># 复制文件或目录cp命令</span><br><span class="hljs-comment"># 示例</span><br><span class="hljs-built_in">cp</span> file.txt /path/to/destination/<br>-a：此选项通常在复制目录时使用，它保留链接、文件属性，并复制目录下的所有内容。其作用等于 dpR 参数组合。<br>-r 或 --recursive：用于复制目录及其所有的子目录和文件，如果要复制目录，需要使用该选项。<br>-i 或 --interactive：在复制前提示确认，如果目标文件已存在，则会询问是否覆盖，回答 y 时目标文件将被覆盖。<br>-p 或 --preserve：保留源文件的权限、所有者和时间戳信息。<br><br><span class="hljs-comment"># 删除文件和文件夹rm命令</span><br><span class="hljs-built_in">rm</span> -rf <span class="hljs-built_in">test</span>/  <span class="hljs-comment"># 删除 test 文件夹，删除文件夹要加 -r 参数</span><br>-i 删除前逐一询问确认。<br>-f 即使原档案属性设为唯读，亦直接删除，无需逐一确认。<br>-r 将目录及以下之档案亦逐一删除。<br></code></pre></td></tr></table></figure>
 <h4 id="删除大量文件">删除大量文件</h4>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 使用rsync命令，原理是同步</span><br><span class="hljs-comment"># 1.</span><br><span class="hljs-comment"># 新建空文件夹</span><br><span class="hljs-comment"># 2.</span><br>rsync -av --delete [空文件夹路径] [要删除的文件夹路径]<br><span class="hljs-comment"># 示例：</span><br>rsync -av --delete /tmp/empty/ /var/log/target/<br><span class="hljs-comment"># 参数说明：</span><br>--delete 删除那些target中有而<span class="hljs-built_in">source</span>没有的文件<br>-a, --archive  归档模式，表示以递归的方式传输文件，并保持所有文件属性不变<br>-v 详细输出模式<br></code></pre></td></tr></table></figure>
 <h3 id="目录（跳转）">目录（跳转）</h3>
