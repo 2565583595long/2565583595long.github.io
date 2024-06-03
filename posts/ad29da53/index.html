@@ -24,7 +24,7 @@
 <meta property="og:description" content="本文主要分享了Windows、Linux系统的配置与常用软件的安装。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-01-31T16:27:11.000Z">
-<meta property="article:modified_time" content="2024-05-29T09:16:41.613Z">
+<meta property="article:modified_time" content="2024-06-03T10:03:45.439Z">
 <meta property="article:author" content="龙泽雨">
 <meta name="twitter:card" content="summary_large_image">
   
@@ -348,7 +348,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          8.9k 字
+          9.2k 字
         
       </span>
     
@@ -359,7 +359,7 @@
         
         
         
-          75 分钟
+          77 分钟
         
       </span>
     
@@ -409,7 +409,7 @@
               <p id="updated-time" class="note note-info" style="">
                 
                   
-                    本文最后更新于 2024年5月29日 下午
+                    本文最后更新于 2024年6月3日 晚上
                   
                 
               </p>
@@ -937,8 +937,6 @@
 </li>
 </ul>
 <h1 id="Linux系统配置">Linux系统配置</h1>
-<h2 id="锁屏不熄屏">锁屏不熄屏</h2>
-<p>短按<code>Win+L</code>会锁屏，然后关显示器； 按<code>Win+L</code>持续几秒钟（屏幕会一闪），就会采用你设置的关屏时间（设置里面的电源选项里面），设置成<code>never</code>就永远亮着了。</p>
 <h2 id="安装WiFi驱动">安装WiFi驱动</h2>
 <p>在Windows下新装的双系统Linux Ubuntu18.04无法连接WiFi（桌面右上角下拉菜单里没有WiFi设置参数选项，设置里WiFi模块提示找不到WiFi适配器），尝试了各种方法（附在最后），无果。最终，发现是网卡驱动与系统内核版本的问题。</p>
 <h3 id="实现步骤">实现步骤</h3>
@@ -991,6 +989,16 @@
 <li><a target="_blank" rel="noopener" href="https://blog.csdn.net/shaozuo133/article/details/79060536">nmcli 命令行方式连接wifi及删除连接操作</a></li>
 <li><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/565455268?utm_id=0">如何使用 Nmcli 通过 Linux 终端连接到 Wi-Fi</a></li>
 </ul>
+<h2 id="安装蓝牙驱动">安装蓝牙驱动</h2>
+<p>我的电脑网卡是Intel(R)Wi-Fi 6E AX211 160MHz，因为蓝牙模块太新和Ubuntu18.04版本太老，自己尝试了各种方法，无果。结论写在这，Linux系统还是要尽量少折腾。如果有成功的解决方案十分欢迎在下方评论区留言。</p>
+<h2 id="安装触摸板驱动">安装触摸板驱动</h2>
+<p>我的电脑触摸板是Synaptics PrecisionTouchpad Filter Driver，因为触摸板模块太新和Ubuntu18.04版本太老，自己尝试了各种方法，无果。结论写在这，Linux系统还是要尽量少折腾。如果有成功的解决方案十分欢迎在下方评论区留言。</p>
+<h2 id="安装声卡驱动">安装声卡驱动</h2>
+<p>我的电脑声卡是Realtek(R) Audio，因为声卡模块太新和Ubuntu18.04版本太老，自己尝试了各种方法，无果。结论写在这，Linux系统还是要尽量少折腾。如果有成功的解决方案十分欢迎在下方评论区留言。</p>
+<h2 id="安装鼠标驱动">安装鼠标驱动</h2>
+<p>我使用的鼠标是Logitech G502，但是Logitech的鼠标驱动<a target="_blank" rel="noopener" href="https://support.logi.com/hc/zh-cn/articles/360025298133-Logitech-G-HUB">Logitech G HUB</a>只提供了Windows和Mac版。当然，我相信<a href="#Piper">Piper</a>提供的鼠标驱动不止适用于这款鼠标。</p>
+<h2 id="锁屏不熄屏">锁屏不熄屏</h2>
+<p>短按<code>Win+L</code>会锁屏，然后关显示器； 按<code>Win+L</code>持续几秒钟（屏幕会一闪），就会采用你设置的关屏时间（设置里面的电源选项里面），设置成<code>never</code>就永远亮着了。</p>
 <h2 id="更换壁纸">更换壁纸</h2>
 <ol>
 <li>把壁纸放到<code>~/Pictures</code>文件夹下。</li>
