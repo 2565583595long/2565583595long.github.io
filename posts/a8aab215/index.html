@@ -24,7 +24,7 @@
 <meta property="og:description" content="本文主要分享了自己在使用Linux和Windows系统及各种软件过程中常用的命令及快捷键。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-03-05T14:33:19.000Z">
-<meta property="article:modified_time" content="2024-06-01T07:31:21.390Z">
+<meta property="article:modified_time" content="2024-06-04T01:35:08.240Z">
 <meta property="article:author" content="龙泽雨">
 <meta name="twitter:card" content="summary_large_image">
   
@@ -409,7 +409,7 @@
               <p id="updated-time" class="note note-info" style="">
                 
                   
-                    本文最后更新于 2024年6月1日 下午
+                    本文最后更新于 2024年6月4日 上午
                   
                 
               </p>
@@ -677,7 +677,7 @@
 <h4 id="删除大量文件">删除大量文件</h4>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 使用rsync命令，原理是同步</span><br><span class="hljs-comment"># 1.</span><br><span class="hljs-comment"># 新建空文件夹</span><br><span class="hljs-comment"># 2.</span><br>rsync -av --delete [空文件夹路径] [要删除的文件夹路径]<br><span class="hljs-comment"># 示例：</span><br>rsync -av --delete /tmp/empty/ /var/log/target/<br><span class="hljs-comment"># 参数说明：</span><br>--delete 删除那些target中有而<span class="hljs-built_in">source</span>没有的文件<br>-a, --archive  归档模式，表示以递归的方式传输文件，并保持所有文件属性不变<br>-v 详细输出模式<br></code></pre></td></tr></table></figure>
 <h3 id="目录（跳转）">目录（跳转）</h3>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">mkdir</span> 新建目录<br><br>./（点斜杠）表示当前工作目录的相对路径<br>.表示当前目录<br>..表示（当前目录的）父目录<br><br><span class="hljs-built_in">cd</span> <span class="hljs-built_in">dir</span>  <span class="hljs-comment"># 切换到指定目录</span><br><span class="hljs-built_in">cd</span> /  <span class="hljs-comment"># 进入根目录</span><br><span class="hljs-built_in">cd</span> ~  <span class="hljs-comment"># root用户， 相当于 cd /root；普通用户，相当于cd /home/当前用户名</span><br><span class="hljs-built_in">cd</span> .  <span class="hljs-comment"># 目前所在目录</span><br><span class="hljs-built_in">cd</span> ..  <span class="hljs-comment"># 返回上一层</span><br><span class="hljs-built_in">cd</span> ../..  <span class="hljs-comment"># 返回上两层</span><br><span class="hljs-built_in">cd</span> ../***  <span class="hljs-comment"># 进入当前目录父目录的**目录</span><br><span class="hljs-built_in">cd</span> ~=<span class="hljs-built_in">cd</span> /root  <span class="hljs-comment"># 进入root的根目录</span><br><br><span class="hljs-comment"># 标记目录</span><br><span class="hljs-comment"># 记录当前目录路径，待会返回需要用到</span><br>cur=`<span class="hljs-built_in">pwd</span>`<br><span class="hljs-comment"># 返回项目</span><br><span class="hljs-built_in">cd</span> <span class="hljs-variable">$cur</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">mkdir</span> 新建目录<br><br>./（点斜杠）表示当前工作目录的相对路径<br>.表示当前目录<br>..表示（当前目录的）父目录<br><br><span class="hljs-built_in">pwd</span>  <span class="hljs-comment"># 打印当前所在目录</span><br><br><span class="hljs-built_in">cd</span> <span class="hljs-built_in">dir</span>  <span class="hljs-comment"># 切换到指定目录</span><br><span class="hljs-built_in">cd</span> /  <span class="hljs-comment"># 进入根目录</span><br><span class="hljs-built_in">cd</span> ~  <span class="hljs-comment"># root用户， 相当于 cd /root；普通用户，相当于cd /home/当前用户名，即主目录</span><br><span class="hljs-built_in">cd</span> -  <span class="hljs-comment"># 切换到我们之前所在的目录</span><br><span class="hljs-built_in">cd</span> .  <span class="hljs-comment"># 目前所在目录</span><br><span class="hljs-built_in">cd</span> ..  <span class="hljs-comment"># 返回上一层</span><br><span class="hljs-built_in">cd</span> ../..  <span class="hljs-comment"># 返回上两层</span><br><span class="hljs-built_in">cd</span> ../***  <span class="hljs-comment"># 进入当前目录父目录的**目录</span><br><span class="hljs-built_in">cd</span> ~=<span class="hljs-built_in">cd</span> /root  <span class="hljs-comment"># 进入root的根目录</span><br><br><span class="hljs-comment"># 标记目录</span><br><span class="hljs-comment"># 记录当前目录路径，待会返回需要用到</span><br>cur=`<span class="hljs-built_in">pwd</span>`<br><span class="hljs-comment"># 返回项目</span><br><span class="hljs-built_in">cd</span> <span class="hljs-variable">$cur</span><br></code></pre></td></tr></table></figure>
 <ol>
 <li>
 <p>把目录结构信息保存到文本中，树状图：</p>
@@ -1158,10 +1158,18 @@
 <td style="text-align:center">Ctrl+Y</td>
 <td style="text-align:center">将之前已经清除的文本粘贴回来（主要针对CTRL+U或CTRL+W）。</td>
 </tr>
+<tr>
+<td style="text-align:center">Ctrl+S</td>
+<td style="text-align:center">冻结终端</td>
+</tr>
+<tr>
+<td style="text-align:center">Ctrl+Q</td>
+<td style="text-align:center">解冻终端</td>
+</tr>
 </tbody>
 </table>
 <blockquote>
-<p>直接将 文件管理器 中的文件拖到 GNOME终端 中就可以在终端中得到完整的路径名。</p>
+<p>直接将 文件管理器 中的文件拖到 GNOME 终端 中就可以在终端中得到完整的路径名。</p>
 </blockquote>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo apt upgrade  <span class="hljs-comment"># 安装可用的软件包更新</span><br>`高亮`<br>```高亮```<br><span class="hljs-comment">#! 执行</span><br></code></pre></td></tr></table></figure>
 <h3 id="Terminator">Terminator</h3>
