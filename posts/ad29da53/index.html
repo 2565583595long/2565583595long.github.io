@@ -24,7 +24,7 @@
 <meta property="og:description" content="本文主要分享了Windows、Linux系统的配置与常用软件的安装。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-01-31T16:27:11.000Z">
-<meta property="article:modified_time" content="2024-06-06T09:58:50.551Z">
+<meta property="article:modified_time" content="2024-06-19T10:24:49.999Z">
 <meta property="article:author" content="龙泽雨">
 <meta name="twitter:card" content="summary_large_image">
   
@@ -359,7 +359,7 @@
         
         
         
-          89 分钟
+          96 分钟
         
       </span>
     
@@ -409,7 +409,7 @@
               <p id="updated-time" class="note note-info" style="">
                 
                   
-                    本文最后更新于 2024年6月6日 下午
+                    本文最后更新于 2024年6月19日 晚上
                   
                 
               </p>
@@ -937,6 +937,12 @@
 </li>
 </ul>
 <h1 id="Linux系统配置">Linux系统配置</h1>
+<h2 id="双系统">双系统</h2>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_42257666/article/details/123709678">Win10安装Ubuntu18.04双系统，图文详解，全网最详细教程</a></p>
+<blockquote>
+<p>Windows会故意搞坏Linux的启动项，使得Linux无法启动，所以Linux只能后装；然后Linux安装后，grub会自动找到Windows，把它的启动项放在启动列表末尾，如果你不修改grub-config的话，默认会启动到Linux。</p>
+</blockquote>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_42257666/article/details/120721561">教你彻底卸载Ubuntu双系统，去污不残留</a></p>
 <h2 id="安装WiFi驱动">安装WiFi驱动</h2>
 <p>在Windows下新装的双系统Linux Ubuntu18.04无法连接WiFi（桌面右上角下拉菜单里没有WiFi设置参数选项，设置里WiFi模块提示找不到WiFi适配器），尝试了各种方法（附在最后），无果。最终，发现是网卡驱动与系统内核版本的问题。</p>
 <h3 id="实现步骤">实现步骤</h3>
@@ -988,6 +994,38 @@
 <li><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_42257666/article/details/118684372">Ubuntu18.04没有WiFi怎么解决?</a></li>
 <li><a target="_blank" rel="noopener" href="https://blog.csdn.net/shaozuo133/article/details/79060536">nmcli 命令行方式连接wifi及删除连接操作</a></li>
 <li><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/565455268?utm_id=0">如何使用 Nmcli 通过 Linux 终端连接到 Wi-Fi</a></li>
+</ul>
+<h2 id="NVIDIA显卡驱动">NVIDIA显卡驱动</h2>
+<h3 id="查询">查询</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">lspci | grep -i nvidia  <span class="hljs-comment"># 查看是否安装NVIDIA显卡</span><br>nvidia-smi  <span class="hljs-comment"># 查看显卡信息</span><br></code></pre></td></tr></table></figure>
+<h3 id="安装">安装</h3>
+<h4 id="图形界面（推荐）">图形界面（推荐）</h4>
+<p>打开应用程序界面，选择“软件和更新（softwares and updates）”-附加驱动，在此处选择“使用NVIDIA driver metapackage来自nvidia-driver-版本号(专有)”。</p>
+<blockquote>
+<p>一般安装版本号最大的那个。</p>
+</blockquote>
+<blockquote>
+<p>如果刚装好系统，应该会使用底下那个nouveau，nouveau不是英伟达提供的，是民间大佬写的适配英伟达显卡的驱动，只是浏览屏幕的话够用，但我们要深度学习，就需要使用英伟达的驱动了。</p>
+</blockquote>
+<h4 id="命令行">命令行</h4>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo add-apt-repository ppa:graphics-drivers/ppa<br>sudo apt-get update<br>ubuntu-drivers devices<br><span class="hljs-comment"># 找到最适合的驱动安装，安装recommended标记的，通常也是数字版本最大的那个</span><br>sudo apt install nvidia-driver-XXX<br><span class="hljs-comment"># 也可以自动安装系统推荐那个</span><br>sudo ubuntu-drivers autoinstall<br></code></pre></td></tr></table></figure>
+<p>如果没有遇到报错，说明安装成功，此时调用<code>nvidia-smi</code>指令可能还是看不到显卡信息，不要担心，重启系统之后就能看到了。</p>
+<h3 id="卸载">卸载</h3>
+<p>首先，打开应用程序界面，选择“软件和更新（softwares and updates）”-附加驱动，在此处选择“<a target="_blank" rel="noopener" href="http://xn--X-v96a181j.Org">使用X.Org</a> X server-Nouveau display driver来自xserver-Xorg-video-nouveau(开源)”。</p>
+<p>然后，开始卸载：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo apt-get --purge remove nvidia-*<br>sudo apt-get purge nvidia*<br>sudo apt-get purge libnvidia*<br><br><span class="hljs-comment"># 清除缓存（慎用）</span><br>sudo apt-get autoremove<br><br>sudo dpkg --list | grep nvidia  <span class="hljs-comment"># 验证一下有没有卸载干净，输出为空，表示全部卸载了</span><br><span class="hljs-comment"># (非必要不重启，万一进不了系统了)，再打开“软件与更新”，会发现显卡驱动又回到了而nouveau。执行</span><br><span class="hljs-built_in">cat</span> /proc/driver/nvidia/version   <span class="hljs-comment"># 会发现文件目录不存在，说明真的卸载干净了</span><br></code></pre></td></tr></table></figure>
+<p>之后重新安装NVIDIA驱动即可。</p>
+<h3 id="禁用nouveau">禁用nouveau</h3>
+<blockquote>
+<p>应该先装完Nvidia驱动，再在“软件与更新”里面更改驱动，最后再禁用。直接禁用后重启相当于没有驱动了，开机图形化界面进不了。</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo gedit /etc/modprobe.d/blacklist.conf <br><span class="hljs-comment"># 在blacklist.conf文件末尾加上这两行，并保存：</span><br>blacklist nouveau<br>options nouveau modeset=0<br><br>sudo update-initramfs -u  <span class="hljs-comment"># 应用更改</span><br><span class="hljs-comment"># 重启电脑，验证是否禁用nouveau</span><br>lsmod | grep nouveau  <span class="hljs-comment"># 没有信息返回说明已禁用了</span><br></code></pre></td></tr></table></figure>
+<h3 id="无法进入图形化界面">无法进入图形化界面</h3>
+<p>如果重启后无法进入图形化界面，则强制重启电脑，在BIOS引导界面不直接进入Linux系统，而是进入Advance options for Ubuntu，并选择进入其中一个内核（最好是备用内核），过段时间左上角会出现“_”符号，按住Ctrl+Alt+F2，进入终端，输入用户名和密码，随后卸载所有驱动，清除缓存，重新安装驱动并重启即可。指令如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 卸载所有驱动</span><br>sudo apt-get --purge remove nvidia-*<br>sudo apt-get purge nvidia*<br>sudo apt-get purge libnvidia*  <br><br><span class="hljs-comment"># 清除缓存（慎用）</span><br>sudo apt-get autoremove<br><br><span class="hljs-comment"># 重新安装驱动</span><br>sudo add-apt-repository ppa:graphics-drivers/ppa<br>sudo apt-get update<br>ubuntu-drivers devices<br><span class="hljs-comment"># 找到最适合的驱动安装，安装recommended标记的，通常也是数字版本最大的那个</span><br><span class="hljs-comment"># 最好安装系统之前的那个</span><br>sudo apt install nvidia-driver-XXX<br><span class="hljs-comment"># 也可以自动安装系统推荐那个</span><br>sudo ubuntu-drivers autoinstall<br><br>reboot <span class="hljs-comment"># 重启</span><br></code></pre></td></tr></table></figure>
+<h3 id="参考链接">参考链接</h3>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/zency/article/details/127356788">Ubuntu系统下由于Nvidia驱动问题导致的无法开机的问题小结</a></li>
 </ul>
 <h2 id="安装蓝牙驱动">安装蓝牙驱动</h2>
 <p>我的电脑网卡是Intel(R)Wi-Fi 6E AX211 160MHz，因为蓝牙模块太新和Ubuntu18.04版本太老，自己尝试了各种方法，无果。结论写在这，Linux系统还是要尽量少折腾。如果有成功的解决方案十分欢迎在下方评论区留言。</p>
@@ -1135,7 +1173,7 @@
 <p>（可选）也可以在「advanced mode（高级模式）」配置菜单中对以上 3 种电源模式分别进行细化配置。如果配置搞得太乱，可以通过「restore default values」按钮来恢复 Slimbook Battery 的默认电源设置，还可以对「常规配置」进行更改，如：自动启动和默认电源模式等。</p>
 </li>
 </ol>
-<h4 id="命令行">命令行</h4>
+<h4 id="命令行-2">命令行</h4>
 <h5 id="cpufrequtils">cpufrequtils</h5>
 <ol>
 <li>
@@ -1202,7 +1240,7 @@
 <blockquote>
 <p>这个配置重启后会失效。如果需要持久化，可以设置开机自动运行本脚本，或通过修改BIOS配置达到目的。</p>
 </blockquote>
-<h3 id="参考链接">参考链接</h3>
+<h3 id="参考链接-2">参考链接</h3>
 <ul>
 <li><a target="_blank" rel="noopener" href="https://blog.csdn.net/zaf0516/article/details/95758601">Ubuntu18.04下 设置CPU Performance模式</a></li>
 <li><a target="_blank" rel="noopener" href="https://www.cnblogs.com/xyf9474/p/16303596.html">ubuntu系统CPU性能模式设置</a></li>
@@ -1221,7 +1259,7 @@
 <li>VScode的远程开发做得好像是最好的？</li>
 <li>更喜欢使用哪个，看自己偏好。</li>
 </ul>
-<h2 id="安装">安装</h2>
+<h2 id="安装-2">安装</h2>
 <ol>
 <li>
 <p>在<a target="_blank" rel="noopener" href="https://www.jetbrains.com/zh-cn/clion/">下载链接</a>下载CLion。</p>
@@ -1386,7 +1424,7 @@
 </ol>
 <h2 id="使用">使用</h2>
 <p><a href="https://zeyulong.com/posts/a8aab215/">Linux系统下常用的命令及快捷键</a></p>
-<h2 id="卸载">卸载</h2>
+<h2 id="卸载-2">卸载</h2>
 <p><a target="_blank" rel="noopener" href="https://www.jetbrains.com/help/clion/uninstall.html">官方卸载说明</a></p>
 <blockquote>
 <p>注意：</p>
@@ -1509,7 +1547,7 @@
 <h1 id="Mission-Center">Mission Center</h1>
 <p>类似于Windows的任务管理器。</p>
 <p><a target="_blank" rel="noopener" href="https://missioncenter.io/">Mission Center官网</a></p>
-<h2 id="安装-2">安装</h2>
+<h2 id="安装-3">安装</h2>
 <p><a target="_blank" rel="noopener" href="https://flathub.org/setup/Ubuntu">flathub官方安装教程</a></p>
 <p><a target="_blank" rel="noopener" href="https://blog.csdn.net/jiexijihe945/article/details/137559859">Mission Center安装参考链接</a></p>
 <ol>
@@ -1559,7 +1597,7 @@
 <h1 id="Okular">Okular</h1>
 <p>Linux下使用的PDF阅读器。</p>
 <p><a target="_blank" rel="noopener" href="https://okular.kde.org/">Okular官网</a></p>
-<h2 id="安装-3">安装</h2>
+<h2 id="安装-4">安装</h2>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 首先，通过运行以下命令确保所有系统包都是最新的 apt 终端中的命令。</span><br>sudo apt update<br>sudo apt upgrade<br><span class="hljs-comment"># 默认情况下，Okular 在 Ubuntu 20.04 基础存储库中不可用。 现在运行以下命令以在您的 Ubuntu 系统上启用 Universe 存储库。</span><br>sudo add-apt-repository universe<br><span class="hljs-comment"># 运行以下命令更新包索引并安装 Okular PDF 查看器。</span><br>sudo apt update <br>sudo apt install okular<br><br><span class="hljs-comment"># 或，通过 Snap 安装 Okular</span><br><span class="hljs-comment"># 如果尚未安装 Snapd 软件包，则可以通过运行以下命令来安装它</span><br>sudo apt update<br>sudo apt install snapd<br><span class="hljs-comment"># 要安装 Okular，只需使用以下命令</span><br>sudo snap install okular<br><br><span class="hljs-comment"># 或，在软件中心搜索okular，点击install。</span><br></code></pre></td></tr></table></figure>
 <h2 id="中文配置">中文配置</h2>
 <p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_34626094/article/details/112647745">参考链接</a></p>
@@ -1595,7 +1633,7 @@ sudo okular
 <h1 id="Piper">Piper</h1>
 <p>我使用的鼠标是Logitech G502，但是Logitech的鼠标驱动<a target="_blank" rel="noopener" href="https://support.logi.com/hc/zh-cn/articles/360025298133-Logitech-G-HUB">Logitech G HUB</a>只提供了Windows和Mac版。当然，我相信Piper提供的鼠标驱动不止适用于这款鼠标。</p>
 <p><a target="_blank" rel="noopener" href="https://github.com/libratbag/piper">项目地址</a></p>
-<h2 id="安装-4">安装</h2>
+<h2 id="安装-5">安装</h2>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo add-apt-repository ppa:libratbag-piper/piper-libratbag-git<br>sudo apt update<br><span class="hljs-comment"># 对于 &lt; Ubuntu 20.04 版本的系统，需要先添加上面的PPA</span><br>sudo apt install piper<br></code></pre></td></tr></table></figure>
 <h2 id="使用-2">使用</h2>
 <p>Win+A打开应用列表，找到Piper点击即可。</p>
@@ -1775,7 +1813,7 @@ source ~/.bashrc  # source ~/.zshrc
 </li>
 <li></li>
 </ol>
-<h2 id="参考链接-2">参考链接</h2>
+<h2 id="参考链接-3">参考链接</h2>
 <p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/524165545">Linux 下自定义安装 Texlive2023</a></p>
 <p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_44375591/article/details/103953590">在Linux环境下安装texlive</a></p>
 <p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/431846297">记录在Linux/Unbuntu下安装latex</a></p>

@@ -32,7 +32,7 @@
 <meta property="og:image" content="http://zeyulong.com/posts/c4541b88/%E8%8A%82%E7%82%B9%E5%88%86%E7%BB%84%E7%BB%93%E6%9E%9C.png">
 <meta property="og:image" content="http://zeyulong.com/posts/c4541b88/rosconsole%E7%95%8C%E9%9D%A2.png">
 <meta property="article:published_time" content="2024-03-05T03:00:35.000Z">
-<meta property="article:modified_time" content="2024-06-05T08:38:15.592Z">
+<meta property="article:modified_time" content="2024-06-17T08:49:23.333Z">
 <meta property="article:author" content="龙泽雨">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="http://zeyulong.com/posts/c4541b88/rosgraph_dv.png">
@@ -368,7 +368,7 @@
         
         
         
-          150 分钟
+          154 分钟
         
       </span>
     
@@ -418,7 +418,7 @@
               <p id="updated-time" class="note note-info" style="">
                 
                   
-                    本文最后更新于 2024年6月5日 下午
+                    本文最后更新于 2024年6月17日 下午
                   
                 
               </p>
@@ -493,6 +493,19 @@
 </blockquote>
 </li>
 </ol>
+<h4 id="catkin-make">catkin_make</h4>
+<ul>
+<li>
+<p>编译指定的包：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">catkin_make -DCATKIN_WHITELIST_PACKAGES=<span class="hljs-string">&quot;package1;package2&quot;</span>  <span class="hljs-comment"># 不会自动编译依赖包，也就是说需要手动添加依赖包。or</span><br>catkin_make --only-pkg-with-deps &lt;target_package&gt;<br>catkin_make -DCATKIN_WHITELIST_PACKAGES=<span class="hljs-string">&quot;&quot;</span> <span class="hljs-comment"># 如果想要再回到那种catkin_make 编译所有包的状态</span><br></code></pre></td></tr></table></figure>
+</li>
+<li>
+<p>不编译指定包。在包的根目录（<code>CMakeLists.txt</code>、<code>package.xml</code>的同级目录）下添加名为<code>CATKIN_IGNORE</code>的空文件即可。如果有好几个包放在一个文件夹下，再在这个文件夹添加名为<code>CATKIN_IGNORE</code>的文件，则这个文件夹下所有的包都不会被编译。</p>
+<blockquote>
+<p>如果您现在运行 <code>catkin_make</code> （或任何其他 <code>catkin</code> 变体），它应该忽略该目录（以及所有子目录）中的任何包。请注意，如果您在添加 <code>CATKIN_IGNORE</code> 之前已经构建了工作区，catkin 仍可能会拾取 pkg，因为它随后会使用 <code>build</code> 目录中的一些信息。只需删除 <code>build/</code> 和 <code>devel/</code> 并重建即可解决此问题。</p>
+</blockquote>
+</li>
+</ul>
 <h4 id="catkin-tools">catkin tools</h4>
 <ul>
 <li>
@@ -508,14 +521,33 @@
 <p>不<code>catkin clean</code>直接<code>cmake build</code>只会编译修改过的包？检查到没有修改的包就跳过。</p>
 </li>
 <li>
-<p>跳过包。假设您按照 roslib 构建了每个包，但该包有一个构建错误。修复错误后，您可以再次运行相同的构建命令，但构建动词提供了在这种情况下节省时间的选项。 如果从头重新开始，roslib 的依赖项的任何产品都不会被重新构建，但是底层构建系统仍然需要一些时间来验证每个包。但是，可以通过直接跳转到给定的包来跳过这些检查。 您可以使用 <code>--start-with</code> 选项在解决问题后从中断的地方继续构建。</p>
+<p>跳过包。假设您按照 roslib 构建了每个包，但该包有一个构建错误。修复错误后，您可以再次运行相同的构建命令，但构建动词提供了在这种情况下节省时间的选项。如果从头重新开始，roslib 的依赖项的任何产品都不会被重新构建，但是底层构建系统仍然需要一些时间来验证每个包。但是，可以通过直接跳转到给定的包来跳过这些检查。 您可以使用 <code>--start-with</code> 选项在解决问题后从中断的地方继续构建。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">cd</span> /tmp/ros_tutorials_ws         <span class="hljs-comment"># Navigate to workspace</span><br>catkin build --start-with roslib <span class="hljs-comment"># Build roslib and its dependents</span><br></code></pre></td></tr></table></figure>
 </li>
 <li>
-<p>编译单个包。如果您只对在工作区中构建单个包感兴趣，您还可以使用 <code>--no-deps</code> 选项和包名称。这将跳过包的所有依赖项，构建给定的包，然后退出。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">cd</span> /tmp/ros_tutorials_ws      <span class="hljs-comment"># Navigate to workspace</span><br>catkin build roslib --no-deps <span class="hljs-comment"># Build roslib only</span><br></code></pre></td></tr></table></figure>
+<p>编译单个包。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">cd</span> /tmp/ros_tutorials_ws      <span class="hljs-comment"># Navigate to workspace</span><br>catkin build roslib  <span class="hljs-comment"># Build roslib</span><br></code></pre></td></tr></table></figure>
+<p>如果您只对在工作区中构建单个包感兴趣，您还可以使用 <code>--no-deps</code> 选项和包名称。这将跳过包的所有依赖项，构建给定的包，然后退出。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">catkin build roslib --no-deps <span class="hljs-comment"># Build roslib only</span><br></code></pre></td></tr></table></figure>
 </li>
-<li></li>
+<li>
+<p>不编译指定包。</p>
+<ul>
+<li>
+<p>在包的根目录（<code>CMakeLists.txt</code>、<code>package.xml</code>的同级目录）下添加名为<code>CATKIN_IGNORE</code>的空文件即可。如果有好几个包放在一个文件夹下，再在这个文件夹添加名为<code>CATKIN_IGNORE</code>的文件，则这个文件夹下所有的包都不会被编译。</p>
+<blockquote>
+<p>如果您现在运行 <code>catkin_make</code> （或任何其他 <code>catkin</code> 变体），它应该忽略该目录（以及所有子目录）中的任何包。请注意，如果您在添加 <code>CATKIN_IGNORE</code> 之前已经构建了工作区，catkin 仍可能会拾取 pkg，因为它随后会使用 <code>build</code> 目录中的一些信息。只需删除 <code>build/</code> 和 <code>devel/</code> 并重建即可解决此问题。</p>
+</blockquote>
+</li>
+<li>
+<p>配置参数：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">catkin config --skiplist baz  <span class="hljs-comment"># 要设置跳过列表，可以调用该命令</span><br>catkin config --no-skiplist  <span class="hljs-comment"># 要清除跳过列表，您可以使用 --no-skiplist 选项</span><br><br></code></pre></td></tr></table></figure>
+<blockquote>
+<p>请注意，您仍然可以通过将其名称显式传递给 <code>catkin build</code> 来在跳过列表和构建列表上构建包。</p>
+</blockquote>
+</li>
+</ul>
+</li>
 </ul>
 </li>
 <li>
@@ -1376,6 +1408,8 @@
 <p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_43603658/article/details/133692999">机器人操作系统ROS（十一）：ROS时间戳及其与年月日时分秒毫秒格式的转换</a></p>
 <p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/didada/p/14581116.html">ros:time::now()详解</a></p>
 <p><a target="_blank" rel="noopener" href="https://answers.ros.org/question/318667/using-rosbag-to-get-size-of-each-topic/">Using rosbag to get size of each topic</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_25458977/article/details/103963286">catkin_make 只编译一个包</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_44365861/article/details/107482177">ros 编译如何选择某些文件或包不编译</a></p>
 
                 
               </div>
@@ -1459,9 +1493,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/posts/df5eb46/" title="Anaconda的安装">
+                      <a href="/posts/df5eb46/" title="Anaconda、CUDA、cuDNN和PyTorch包的安装">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Anaconda的安装</span>
+                        <span class="hidden-mobile">Anaconda、CUDA、cuDNN和PyTorch包的安装</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
